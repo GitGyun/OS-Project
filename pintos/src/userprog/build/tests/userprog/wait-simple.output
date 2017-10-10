@@ -1,0 +1,38 @@
+Copying tests/userprog/wait-simple into /tmp/4WbU0eZbvo.dsk...
+Copying tests/userprog/child-simple into /tmp/4WbU0eZbvo.dsk...
+Writing command line to /tmp/Nej9tWwdKS.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep 19 2017 at 22:29:40
+========================================================================
+Kernel command line: -q -f put wait-simple put child-simple run wait-simple
+Pintos booting with 4,096 kB RAM...
+370 pages available in kernel pool.
+370 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+Formatting file system...done.
+Boot complete.
+Putting 'wait-simple' into the file system...
+Putting 'child-simple' into the file system...
+Executing 'wait-simple':
+(wait-simple) begin
+(child-simple) run
+child-simple: exit(81)
+(wait-simple) wait(exec()) = 81
+(wait-simple) end
+wait-simple: exit(0)
+Execution of 'wait-simple' complete.
+Timer: 392 ticks
+Thread: 34 idle ticks, 279 kernel ticks, 81 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 139 reads, 404 writes
+hd1:0: 197 reads, 0 writes
+Console: 961 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...

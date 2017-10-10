@@ -1,0 +1,9 @@
+00000000000i[      ] BXSHARE not set. using compile time default '/usr/local/share/bochs'
+00000000000i[      ] reading configuration from bochsrc.txt
+00000000000i[      ] installing nogui module as the Bochs GUI
+00000000000i[      ] using log file bochsout.txt
+Use of uninitialized value in numeric le (<=) at /home/donggyun/OS/pintos/src/utils/pintos line 769.
+========================================================================
+Bochs is exiting with the following message:
+[UNMAP ] Shutdown port: shutdown requested
+========================================================================
