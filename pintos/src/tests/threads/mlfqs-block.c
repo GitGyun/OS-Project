@@ -39,10 +39,10 @@ test_mlfqs_block (void)
   start_time = timer_ticks ();
   while (timer_elapsed (start_time) < 5 * TIMER_FREQ)
     continue;
-	
+
   msg ("Main thread releasing lock.");
   lock_release (&lock);
-  
+
   msg ("Block thread should have already acquired lock.");
 }
 

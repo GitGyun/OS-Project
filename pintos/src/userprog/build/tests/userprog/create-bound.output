@@ -1,15 +1,15 @@
-Copying tests/userprog/create-bound into /tmp/nOIzA7Aebj.dsk...
-Writing command line to /tmp/QfyxLSDLrV.dsk...
+Copying tests/userprog/create-bound into /tmp/U6nak1F6d0.dsk...
+Writing command line to /tmp/jC4pXYQbwR.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put create-bound run create-bound
 Pintos booting with 4,096 kB RAM...
-370 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in kernel pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -23,10 +23,10 @@ Executing 'create-bound':
 (create-bound) end
 create-bound: exit(0)
 Execution of 'create-bound' complete.
-Timer: 280 ticks
-Thread: 31 idle ticks, 193 kernel ticks, 59 user ticks
+Timer: 290 ticks
+Thread: 31 idle ticks, 204 kernel ticks, 59 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 88 reads, 216 writes
+hd0:1: 89 reads, 216 writes
 hd1:0: 102 reads, 0 writes
 Console: 867 characters output
 Keyboard: 0 keys pressed

@@ -96,11 +96,20 @@ timer_elapsed (int64_t then)
 void
 timer_sleep (int64_t ticks) 
 {
-	enum intr_level old_level = intr_disable ();
-  
-  int64_t due = ticks + timer_ticks ();
-  thread_sleep (due);
-  
+  /* === Original Code === */
+  /*
+  int64_t start = timer_ticks ();
+
+  ASSERT (intr_get_level () == INTR_ON);
+  while (timer_elapsed (start) < ticks) 
+    thread_yield ();
+  */
+
+  enum intr_level old_level = intr_disable ();
+
+  /* See thread_sleep () in thread.c */
+  thread_sleep (timer_ticks () + ticks);
+
   intr_set_level (old_level);
 }
 

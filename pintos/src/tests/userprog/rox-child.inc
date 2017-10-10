@@ -5,12 +5,12 @@
 #include "tests/main.h"
 
 void
-test_main (void) 
+test_main (void)
 {
   const char *child_cmd = "child-rox " CHILD_CNT;
   int handle;
   pid_t child;
-  char buffer[16];
+  char buffer[32];
 
   /* Open child-rox, read from it, write back same data. */
   CHECK ((handle = open ("child-rox")) > 1, "open \"child-rox\"");

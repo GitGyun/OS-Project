@@ -1,9 +1,9 @@
-Writing command line to /tmp/YkHTdTQyEq.dsk...
+Writing command line to /tmp/fKiuKhot6q.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q run alarm-zero
 Pintos booting with 4,096 kB RAM...

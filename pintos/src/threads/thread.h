@@ -4,10 +4,9 @@
 #include <debug.h>
 #include <list.h>
 #include <stdint.h>
+#include <stdbool.h>
+#include "devices/timer.h"
 #include "threads/synch.h"
-#include "filesys/file.h"
-
-#define THD_CNT 2048
 
 /* States in a thread's life cycle. */
 enum thread_status
@@ -15,7 +14,7 @@ enum thread_status
     THREAD_RUNNING,     /* Running thread. */
     THREAD_READY,       /* Not running but ready to run. */
     THREAD_BLOCKED,     /* Waiting for an event to trigger. */
-    THREAD_DYING 	      /* About to be destroyed. */			
+    THREAD_DYING        /* About to be destroyed. */
   };
 
 /* Thread identifier type.
@@ -27,6 +26,9 @@ typedef int tid_t;
 #define PRI_MIN 0                       /* Lowest priority. */
 #define PRI_DEFAULT 31                  /* Default priority. */
 #define PRI_MAX 63                      /* Highest priority. */
+
+#define DEF_SEMA_EXEC 1
+#define PR_SEMA_EXEC 0
 
 /* A kernel thread or user process.
 
@@ -92,28 +94,33 @@ struct thread
     char name[16];                      /* Name (for debugging purposes). */
     uint8_t *stack;                     /* Saved stack pointer. */
     int priority;                       /* Priority. */
-    int priority_sav;										/* Priority saved. */
-
-		/* Shared between thread.c and timer.c. */
-		int64_t due;						/* Due to wake up. */
+    int priority_original;              /* Original priority before donation */
+    struct lock *lock_waiting;          /* Lock that the thread waits */
+    struct list lock_holding_list;      /* List of holding locks */
+    int64_t wake_up_tick;               /* Tick when to wake up */
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
-    struct list locks;									/* List of holding locks. */
-    struct lock * waiting_lock;					/* Waiting lock. */
 
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
-    struct list children;								/* List of children. */
-    struct list_elem elem_user;					/* List element for USERPROG. */
-    struct semaphore sema_parent;				/* Semaphore for parent's waiting. */
-    struct semaphore sema_child;				/* Semaphore for child's waiting. */
-    struct semaphore *sema_dealloc;			/* Semaphore for deallocation of child. */
-    struct semaphore sema_exec;					/* Semaphore for execution. */
-    int exit_status;										/* Status when the thread exits. */
-    struct list open_files;							/* List of open files. */
+#if DEF_SEMA_EXEC
+    struct semaphore sema_exec;         /* Semaphore for exec() */
 #endif
+#endif
+
+    struct thread *parent;              /* Parent thread */
+    struct list children;               /* List of children */
+    struct semaphore sema_ch;           /* Semaphore for waiting */
+    struct semaphore sema_del;          /* Semaphore for waiting */
+    struct list_elem elem_ch;           /* List element for the list of children */
+    struct list_elem elem_th_all;       /* List element for the list of all threads */
+
+    bool is_waiting;                    /* Did this thread call wait()? */
+    int exit_status;                    /* Exit status for exit() */
+
+    struct list fd_list;                /* List of opened file descriptor */
 
     /* Owned by thread.c. */
     unsigned magic;                     /* Detects stack overflow. */
@@ -151,24 +158,20 @@ void thread_set_nice (int);
 int thread_get_recent_cpu (void);
 int thread_get_load_avg (void);
 
-/* Project 1. */
-void thread_sleep (int64_t due);
-bool cmp_due (const struct list_elem *, const struct list_elem *, void *);
-bool cmp_priority (const struct list_elem *, const struct list_elem *, void *);
-void thread_wakeup (void);
-void thread_check (void);
-void thread_update_priority (struct thread *);
 struct list *get_ready_list (void);
+struct thread *get_idle_thread (void);
 
-/* Project 2. */
-struct thread * get_thread (tid_t);
-void remove_thread (tid_t);
-struct file_elem
-{
-	struct file *file;
-	int fd;
-	struct list_elem elem;
-};
-struct file_elem * thread_get_file_elem (int);
+void thread_sleep (int64_t);
+bool cmp_wake_up_tick (const struct list_elem *,
+                       const struct list_elem *, void *);
+void check_sleeping_list (void);
+
+bool cmp_thread_priority (const struct list_elem *,
+                          const struct list_elem *, void *);
+void check_thread_priority (void);
+
+struct thread *tid_to_thread (tid_t);
+bool thread_has_child (struct thread *, tid_t);
+bool thread_same_name (const char *);
 
 #endif /* threads/thread.h */

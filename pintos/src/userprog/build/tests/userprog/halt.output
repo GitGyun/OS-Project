@@ -1,15 +1,15 @@
-Copying tests/userprog/halt into /tmp/WKDIZPSKa9.dsk...
-Writing command line to /tmp/4QGZ0oHdeg.dsk...
+Copying tests/userprog/halt into /tmp/_sMBgMdlNy.dsk...
+Writing command line to /tmp/ERCKQ8zwSp.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put halt run halt
 Pintos booting with 4,096 kB RAM...
-370 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in kernel pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -19,10 +19,10 @@ Boot complete.
 Putting 'halt' into the file system...
 Executing 'halt':
 (halt) begin
-Timer: 215 ticks
-Thread: 30 idle ticks, 157 kernel ticks, 31 user ticks
+Timer: 228 ticks
+Thread: 30 idle ticks, 166 kernel ticks, 35 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 66 reads, 206 writes
+hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes
 Console: 710 characters output
 Keyboard: 0 keys pressed

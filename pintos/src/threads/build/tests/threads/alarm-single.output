@@ -1,9 +1,9 @@
-Writing command line to /tmp/dGomgjrtzS.dsk...
+Writing command line to /tmp/QILY4VhVjz.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q run alarm-single
 Pintos booting with 4,096 kB RAM...
@@ -25,8 +25,8 @@ Executing 'alarm-single':
 (alarm-single) thread 4: duration=50, iteration=1, product=50
 (alarm-single) end
 Execution of 'alarm-single' complete.
-Timer: 356 ticks
-Thread: 250 idle ticks, 108 kernel ticks, 0 user ticks
+Timer: 357 ticks
+Thread: 250 idle ticks, 111 kernel ticks, 0 user ticks
 Console: 984 characters output
 Keyboard: 0 keys pressed
 Powering off...

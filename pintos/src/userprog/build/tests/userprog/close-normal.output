@@ -1,16 +1,16 @@
-Copying tests/userprog/close-normal into /tmp/75ojxlwMj5.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/75ojxlwMj5.dsk...
-Writing command line to /tmp/UcvE2Y0o_o.dsk...
+Copying tests/userprog/close-normal into /tmp/WZWENDVfKi.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/WZWENDVfKi.dsk...
+Writing command line to /tmp/n5bXF2SVzg.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put close-normal put sample.txt run close-normal
 Pintos booting with 4,096 kB RAM...
-370 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in kernel pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -26,10 +26,10 @@ Executing 'close-normal':
 (close-normal) end
 close-normal: exit(0)
 Execution of 'close-normal' complete.
-Timer: 290 ticks
-Thread: 31 idle ticks, 215 kernel ticks, 48 user ticks
+Timer: 299 ticks
+Thread: 31 idle ticks, 222 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 97 reads, 214 writes
+hd0:1: 98 reads, 214 writes
 hd1:0: 102 reads, 0 writes
 Console: 957 characters output
 Keyboard: 0 keys pressed

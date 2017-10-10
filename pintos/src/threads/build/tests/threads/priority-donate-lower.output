@@ -1,9 +1,9 @@
-Writing command line to /tmp/1hTA8U83kz.dsk...
+Writing command line to /tmp/U0sHj1ewYt.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q run priority-donate-lower
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'priority-donate-lower':
 (priority-donate-lower) Main thread should have priority 21.  Actual priority: 21.
 (priority-donate-lower) end
 Execution of 'priority-donate-lower' complete.
-Timer: 84 ticks
-Thread: 0 idle ticks, 86 kernel ticks, 0 user ticks
+Timer: 51 ticks
+Thread: 0 idle ticks, 51 kernel ticks, 0 user ticks
 Console: 861 characters output
 Keyboard: 0 keys pressed
 Powering off...
