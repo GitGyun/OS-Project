@@ -13,6 +13,8 @@ struct fd_elem {
 
 /* Lock for file read, write, etc... */
 struct lock file_lock;
+struct lock load_lock;
+struct lock hexdump_lock;
 
 void syscall_exit (int);
 

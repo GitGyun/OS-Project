@@ -108,6 +108,7 @@ struct thread
 #if DEF_SEMA_EXEC
     struct semaphore sema_exec;         /* Semaphore for exec() */
 #endif
+    bool load_success;                  /* Succeeded in loading excutable? */
 #endif
 
     struct thread *parent;              /* Parent thread */
@@ -173,5 +174,7 @@ void check_thread_priority (void);
 struct thread *tid_to_thread (tid_t);
 bool thread_has_child (struct thread *, tid_t);
 bool thread_same_name (const char *);
+
+void thread_print_all (void);
 
 #endif /* threads/thread.h */

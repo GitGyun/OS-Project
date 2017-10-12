@@ -1,5 +1,5 @@
-Copying tests/userprog/close-stdin into /tmp/eJyv2Qgl4F.dsk...
-Writing command line to /tmp/ONdsBXNUDh.dsk...
+Copying tests/userprog/close-stdin into /tmp/Cv_EWDvP2A.dsk...
+Writing command line to /tmp/0FsG4o1Wy5.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'close-stdin':
 (close-stdin) end
 close-stdin: exit(0)
 Execution of 'close-stdin' complete.
-Timer: 261 ticks
-Thread: 32 idle ticks, 196 kernel ticks, 36 user ticks
+Timer: 259 ticks
+Thread: 32 idle ticks, 194 kernel ticks, 36 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

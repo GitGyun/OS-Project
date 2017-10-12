@@ -1,4 +1,4 @@
-#include "userprog/process.h"
+  #include "userprog/process.h"
 #include <debug.h>
 #include <inttypes.h>
 #include <round.h>
@@ -39,7 +39,8 @@
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
-extern struct lock file_lock;
+//extern struct lock file_lock;
+extern struct lock load_lock;
 
 /* Starts a new thread running a user program loaded from
    FILENAME.  The new thread may be scheduled (and may even exit)
@@ -93,6 +94,14 @@ process_execute (const char *file_name)
 #endif
 #endif
 
+  /* Child complete to load its executable. Load succeded? */
+  if (!child->load_success)
+  {
+    //printf ("child load failed!\n");
+    palloc_free_page (fn_parse);
+    return TID_ERROR;
+  }
+
   /* Set child-parent relationship */
   child->parent = curr;
   list_push_back (&curr->children, &child->elem_ch);
@@ -139,6 +148,8 @@ start_process (void *f_name)
   if_.cs = SEL_UCSEG;
   if_.eflags = FLAG_IF | FLAG_MBS;
   success = load (arg_str[0], &if_.eip, &if_.esp);
+
+  thread_current ()->load_success = success;
 
 #if DEF_SEMA_EXEC
 #if PR_SEMA_EXEC
@@ -218,6 +229,7 @@ start_process (void *f_name)
 }
 
 #define PR_SEMA_WAIT 0
+#define PR_DEBUG_WAIT 0
 
 /* Waits for thread TID to die and returns its exit status.  If
    it was terminated by the kernel (i.e. killed due to an
@@ -231,15 +243,18 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid UNUSED)
 {
-#if PR_SEMA_WAIT
+#if PR_DEBUG_WAIT
   printf ("process wait!\n");
   printf ("current thread: %s\n", thread_name ());
+
+  //printf ("all threads:\n");
+  //thread_print_all ();
 #endif
 
   struct thread *curr = thread_current ();
   struct thread *child = tid_to_thread (child_tid);
 
-#if PR_SEMA_WAIT
+#if PR_DEBUG_WAIT
   printf ("----------\n");
   printf ("current thread: %s\n", thread_name ());
   printf ("child not null?: %s\n", (child != NULL)?"true":"false");
@@ -256,7 +271,7 @@ process_wait (tid_t child_tid UNUSED)
      thread, return -1 immediately. */
   if (child == NULL || !thread_has_child (curr, child_tid))
     {
-#if PR_SEMA_WAIT
+#if PR_DEBUG_WAIT
       printf ("child tid is not valid!!!\n");
 #endif
       return -1;
@@ -277,6 +292,7 @@ process_wait (tid_t child_tid UNUSED)
 
   curr->is_waiting = false;
 
+  //printf ("get child's exit status: %d\n", child->exit_status);
   int status = child->exit_status;
   list_remove (&child->elem_ch);
 
@@ -284,14 +300,17 @@ process_wait (tid_t child_tid UNUSED)
   //printf ("really removed?: %s\n", thread_has_child (curr, child->tid)?"false":"true");
 
 #if PR_SEMA_WAIT
-  //printf ("%s: sema del up\n", thread_name ());
+  printf ("%s: sema del up\n", thread_name ());
 #endif
   /* Up the semaphore so that child really can exit */
   sema_up (&child->sema_del);
 #if PR_SEMA_WAIT
-  //printf ("%s: sema del up complete\n", thread_name ());
+  printf ("%s: sema del up complete\n", thread_name ());
 #endif
 
+#if PR_DEBUG_WAIT
+  printf ("wait status:%d\n", status);
+#endif
   return status;
 }
 
@@ -447,8 +466,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
     goto done;
   process_activate ();
 
-  lock_acquire (&file_lock);
-
   /* Open executable file. */
   file = filesys_open (file_name);
   if (file == NULL)
@@ -543,8 +560,6 @@ load (const char *file_name, void (**eip) (void), void **esp)
  done:
   /* We arrive here whether the load is successful or not. */
   file_close (file);
-
-  lock_release (&file_lock);
 
   return success;
 }

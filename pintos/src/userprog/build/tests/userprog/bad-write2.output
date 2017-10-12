@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-write2 into /tmp/ZV1tyA5lQU.dsk...
-Writing command line to /tmp/2cxV6ricbA.dsk...
+Copying tests/userprog/bad-write2 into /tmp/zwtYtYscHm.dsk...
+Writing command line to /tmp/2xize294rn.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,7 +22,7 @@ Executing 'bad-write2':
 bad-write2: exit(-1)
 Execution of 'bad-write2' complete.
 Timer: 258 ticks
-Thread: 31 idle ticks, 197 kernel ticks, 33 user ticks
+Thread: 31 idle ticks, 196 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

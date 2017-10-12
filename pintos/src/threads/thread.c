@@ -297,6 +297,7 @@ thread_tid (void)
 }
 
 #define PR_SEMA_EXIT 0
+#define PR_DEBUG_EXIT 0
 
 /* Deschedules the current thread and destroys it.  Never
    returns to the caller. */
@@ -309,12 +310,13 @@ thread_exit (void)
   struct list_elem *e;
   struct thread *child;
 
+#if PR_DEBUG_EXIT
+  printf ("thread exit:: %s - %d, exit status: %d\n", curr->name, curr->tid, curr->exit_status);
+#endif
+
 #ifdef USERPROG
   process_exit ();
 #endif
-
-  /* Remove the thread from the list of all threads */
-  list_remove (&curr->elem_th_all);
 
   for (e = list_begin (&curr->children);
        e != list_end (&curr->children); e = list_next (e))
@@ -339,6 +341,9 @@ thread_exit (void)
 #if PR_SEMA_EXIT
   printf ("%s: sema del down complete\n", thread_name ());
 #endif
+
+  /* Remove the thread from the list of all threads */
+  list_remove (&curr->elem_th_all);
 
   /* Just set our status to dying and schedule another process.
      We will be destroyed during the call to schedule_tail(). */
@@ -823,4 +828,18 @@ thread_same_name (const char *name)
       }
     }
   return false;
+}
+
+void
+thread_print_all (void)
+{
+  struct list_elem *e;
+  struct thread *t;
+
+  for (e = list_begin (&thread_all_list);
+       e != list_end (&thread_all_list); e = list_next (e))
+    {
+      t = list_entry (e, struct thread, elem_th_all);
+      printf ("%s - %d\n", t->name, t->tid);
+    }
 }

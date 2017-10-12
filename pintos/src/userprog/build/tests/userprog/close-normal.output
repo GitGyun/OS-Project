@@ -1,6 +1,6 @@
-Copying tests/userprog/close-normal into /tmp/WZWENDVfKi.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/WZWENDVfKi.dsk...
-Writing command line to /tmp/n5bXF2SVzg.dsk...
+Copying tests/userprog/close-normal into /tmp/d1CTeRgcNy.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/d1CTeRgcNy.dsk...
+Writing command line to /tmp/u9ZS9a4Iof.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,8 +26,8 @@ Executing 'close-normal':
 (close-normal) end
 close-normal: exit(0)
 Execution of 'close-normal' complete.
-Timer: 299 ticks
-Thread: 31 idle ticks, 222 kernel ticks, 48 user ticks
+Timer: 297 ticks
+Thread: 32 idle ticks, 219 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 214 writes
 hd1:0: 102 reads, 0 writes

@@ -19,7 +19,7 @@
 
 static void syscall_handler (struct intr_frame *);
 static bool get_args (void *, int);
-static int allocate_fd (void);
+//static int allocate_fd (void);
 static struct file *fd_to_file (int);
 
 static tid_t syscall_exec (const char *);
@@ -34,10 +34,8 @@ static void syscall_seek (int, unsigned);
 static unsigned syscall_tell (int);
 static void syscall_close (int);
 
-/* Lock used by allocate_tid(). */
-static struct lock fd_lock;
-
-static struct lock hexdump_lock;
+/* Lock used by allocate_fd(). */
+//static struct lock fd_lock;
 
 uint32_t args[7];
 const int arg_nums[] = {0, 1, 1, 1, 5, 1, 1, 1, 7, 7,
@@ -55,8 +53,9 @@ void
 syscall_init (void)
 {
   intr_register_int (0x30, 3, INTR_ON, syscall_handler, "syscall");
-  lock_init (&fd_lock);
+  //lock_init (&fd_lock);
   lock_init (&file_lock);
+  lock_init (&load_lock);
   lock_init (&hexdump_lock);
 }
 
@@ -222,6 +221,7 @@ get_args (void *esp, int num)
   return true;
 }
 
+/*
 static int
 allocate_fd (void)
 {
@@ -232,8 +232,11 @@ allocate_fd (void)
   fd = next_fd++;
   lock_release (&fd_lock);
 
+  printf ("new fd: %d\n", fd);
+
   return fd;
 }
+*/
 
 static struct file *
 fd_to_file (int fd)
@@ -259,6 +262,8 @@ fd_to_file (int fd)
 void
 syscall_exit (int status)
 {
+  //printf ("syscall exit:: status %d\n", status);
+
   thread_current ()->exit_status = status;
   printf ("%s: exit(%d)\n", thread_name (), status);
   thread_exit ();
@@ -344,6 +349,15 @@ syscall_open (const char *file)
       syscall_exit (-1);
     }
 
+  if (is_kernel_vaddr (file))
+    {
+#if PR_EXIT
+      printf ("in syscall open: kernel vaddr error\n");
+#endif
+      lock_release (&file_lock);
+      syscall_exit (-1);
+    }
+
   struct file *f = filesys_open (file);
 
   //printf ("syscall open\n");
@@ -363,7 +377,7 @@ syscall_open (const char *file)
 
   struct thread *curr = thread_current ();
 
-  int fd = allocate_fd ();
+  //int fd = allocate_fd ();
   struct fd_elem *fe = malloc (sizeof (struct fd_elem));
 
   /* fd_elem allocation failed */
@@ -374,13 +388,21 @@ syscall_open (const char *file)
       return -1;
     }
 
-  fe->fd = fd;
+  /* Allocate new fd */
+  struct list *fl = &curr->fd_list;
+  int new_fd = 2;
+
+  if (!list_empty (fl))
+    new_fd = list_entry (list_back (fl),
+                         struct fd_elem, elem)->fd + 1;
+
+  fe->fd = new_fd;
   fe->file = f;
 
   list_push_back (&curr->fd_list, &fe->elem);
 
   lock_release (&file_lock);
-  return fd;
+  return new_fd;
 }
 
 static int
@@ -411,12 +433,16 @@ syscall_read (int fd, void *buffer, unsigned size)
 
   if (buffer == NULL)
     {
+#if PR_READ
+      printf ("buffer null\n");
+#endif
+
       lock_release (&file_lock);
       return -1;
     }
 
   if (is_kernel_vaddr (buffer) ||
-      is_kernel_vaddr ((uint8_t *)buffer + size))
+      is_kernel_vaddr ((uint8_t *)buffer + size - 1))
     {
 #if PR_EXIT
       printf ("in syscall read: kernel vaddr error\n");
@@ -426,8 +452,8 @@ syscall_read (int fd, void *buffer, unsigned size)
     }
 
 #if PR_READ
-  printf("syscall read!\n");
-  printf("fd: %d\n", fd);
+  printf("syscall read! ");
+  printf("fd: %d ", fd);
   printf("size: %d\n", (int)size);
 #endif // PR_READ
 
@@ -445,6 +471,10 @@ syscall_read (int fd, void *buffer, unsigned size)
 
   if (fd == 1)
     {
+#if PR_READ
+      printf ("fd = 1\n");
+#endif
+
       lock_release (&file_lock);
       return -1;
     }
@@ -452,6 +482,21 @@ syscall_read (int fd, void *buffer, unsigned size)
   struct file *f = fd_to_file (fd);
   if (f == NULL)
     {
+#if PR_READ
+      printf ("file null\n");
+      printf ("fd: %d\n", fd);
+
+      struct thread *curr = thread_current ();
+      struct list *fl = &curr->fd_list;
+      struct list_elem *e;
+      struct fd_elem *fe;
+
+      for (e = list_begin (fl); e != list_end (fl); e = list_next (e))
+        {
+          fe = list_entry (e, struct fd_elem, elem);
+          printf ("fd list: %d\n", fe->fd);
+        }
+#endif
       lock_release (&file_lock);
       return -1;
     }
@@ -460,11 +505,12 @@ syscall_read (int fd, void *buffer, unsigned size)
 #if PR_READ
   printf("read size: %u\n", size_read);
 
+  /*
   unsigned i;
   printf ("read buffer: ");
   for (i = 0; i < size; i++)
     printf ("%c", ((char *)buffer)[i]);
-  printf ("\n");
+  printf ("\n");*/
 #endif
 
   lock_release (&file_lock);
@@ -478,7 +524,17 @@ syscall_write (int fd, void *buffer, unsigned size)
 {
   lock_acquire (&file_lock);
 
-  if (is_kernel_vaddr (buffer))
+  if (buffer == NULL)
+    {
+#if PR_EXIT
+      printf ("in syscall read: buffer null error\n");
+#endif
+      lock_release (&file_lock);
+      return -1;
+    }
+
+  if (is_kernel_vaddr (buffer) ||
+      is_kernel_vaddr ((uint8_t *)buffer + size - 1))
     {
 #if PR_EXIT
       printf ("in syscall read: kernel vaddr error\n");

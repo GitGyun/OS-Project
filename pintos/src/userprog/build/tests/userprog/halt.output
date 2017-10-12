@@ -1,5 +1,5 @@
-Copying tests/userprog/halt into /tmp/_sMBgMdlNy.dsk...
-Writing command line to /tmp/ERCKQ8zwSp.dsk...
+Copying tests/userprog/halt into /tmp/sdEwmQfubd.dsk...
+Writing command line to /tmp/1_MmZBdrGi.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -19,8 +19,8 @@ Boot complete.
 Putting 'halt' into the file system...
 Executing 'halt':
 (halt) begin
-Timer: 228 ticks
-Thread: 30 idle ticks, 166 kernel ticks, 35 user ticks
+Timer: 227 ticks
+Thread: 30 idle ticks, 165 kernel ticks, 35 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

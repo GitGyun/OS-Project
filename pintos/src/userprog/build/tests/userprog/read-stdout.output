@@ -1,5 +1,5 @@
-Copying tests/userprog/read-stdout into /tmp/vTYDSHYbPj.dsk...
-Writing command line to /tmp/G8Dboy4GUJ.dsk...
+Copying tests/userprog/read-stdout into /tmp/IeQWiS_jEf.dsk...
+Writing command line to /tmp/bWbb1pej_p.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'read-stdout':
 (read-stdout) end
 read-stdout: exit(0)
 Execution of 'read-stdout' complete.
-Timer: 263 ticks
-Thread: 33 idle ticks, 198 kernel ticks, 34 user ticks
+Timer: 261 ticks
+Thread: 32 idle ticks, 195 kernel ticks, 36 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

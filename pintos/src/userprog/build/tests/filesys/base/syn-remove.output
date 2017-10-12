@@ -1,5 +1,5 @@
-Copying tests/filesys/base/syn-remove into /tmp/D7tV4mzgtd.dsk...
-Writing command line to /tmp/InSsFfCPKv.dsk...
+Copying tests/filesys/base/syn-remove into /tmp/fQgPh5EC30.dsk...
+Writing command line to /tmp/l0gNY_EXxV.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -29,8 +29,8 @@ Executing 'syn-remove':
 (syn-remove) end
 syn-remove: exit(0)
 Execution of 'syn-remove' complete.
-Timer: 324 ticks
-Thread: 32 idle ticks, 200 kernel ticks, 94 user ticks
+Timer: 323 ticks
+Thread: 32 idle ticks, 199 kernel ticks, 94 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 105 reads, 231 writes
 hd1:0: 105 reads, 0 writes

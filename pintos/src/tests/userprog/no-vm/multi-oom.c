@@ -69,27 +69,36 @@ consume_some_resources_and_die (int seed)
   random_init (seed);
   int *PHYS_BASE = (int *)0xC0000000;
 
-  switch (random_ulong () % 5)
+  long r = random_ulong () % 5;
+  //printf ("case %ld\n", r);
+
+  switch (r)
     {
       case 0:
+        //printf ("case 0\n");
         *(int *) NULL = 42;
 
       case 1:
+        //printf ("case 1\n");
         return *(int *) NULL;
 
       case 2:
+        //printf ("case 2\n");
         return *PHYS_BASE;
 
       case 3:
+        //printf ("case 3\n");
         *PHYS_BASE = 42;
 
       case 4:
+        //printf ("case 4\n");
         open ((char *)PHYS_BASE);
         exit (-1);
 
       default:
         NOT_REACHED ();
     }
+
   return 0;
 }
 
@@ -134,8 +143,15 @@ main (int argc, char *argv[])
           child_pid = spawn_child (n + 1, CRASH);
           if (child_pid != -1)
             {
+              
               if (wait (child_pid) != -1)
                 fail ("crashed child should return -1.");
+              /*
+              int w = wait (child_pid);
+              printf ("exit status: %d\n", w);
+              if (w != -1)
+                fail ("crashed child should return -1.");
+              */
             }
           /* If spawning this child failed, so should
              the next spawn_child below. */
@@ -145,8 +161,9 @@ main (int argc, char *argv[])
       child_pid = spawn_child (n + 1, RECURSE);
 
       /* If maximum depth is reached, return result. */
-      if (child_pid == -1)
-        return n;
+      if (child_pid == -1){
+        //printf ("maximum depth; n = %d\n", n);
+        return n;}
 
       /* Else wait for child to report how deeply it was able to recurse. */
       int reached_depth = wait (child_pid);

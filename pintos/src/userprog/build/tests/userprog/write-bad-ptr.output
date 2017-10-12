@@ -1,6 +1,6 @@
-Copying tests/userprog/write-bad-ptr into /tmp/jbJk5n6VsA.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/jbJk5n6VsA.dsk...
-Writing command line to /tmp/wLbQqUYzf8.dsk...
+Copying tests/userprog/write-bad-ptr into /tmp/bb_sWogPDC.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/bb_sWogPDC.dsk...
+Writing command line to /tmp/cSoWnA1PNu.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,8 +24,8 @@ Executing 'write-bad-ptr':
 (write-bad-ptr) open "sample.txt"
 write-bad-ptr: exit(-1)
 Execution of 'write-bad-ptr' complete.
-Timer: 293 ticks
-Thread: 31 idle ticks, 224 kernel ticks, 41 user ticks
+Timer: 292 ticks
+Thread: 31 idle ticks, 223 kernel ticks, 41 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 99 reads, 214 writes
 hd1:0: 102 reads, 0 writes

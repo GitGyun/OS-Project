@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-full into /tmp/fBFGwDFXf3.dsk...
-Writing command line to /tmp/U6GDkDYdFs.dsk...
+Copying tests/filesys/base/lg-full into /tmp/GEvAe7hfLs.dsk...
+Writing command line to /tmp/b_fU6xJHG4.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -29,8 +29,8 @@ Executing 'lg-full':
 (lg-full) end
 lg-full: exit(0)
 Execution of 'lg-full' complete.
-Timer: 677 ticks
-Thread: 30 idle ticks, 230 kernel ticks, 419 user ticks
+Timer: 676 ticks
+Thread: 30 idle ticks, 229 kernel ticks, 419 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 247 reads, 514 writes
 hd1:0: 103 reads, 0 writes
