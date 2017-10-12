@@ -1,6 +1,6 @@
-Copying tests/userprog/read-boundary into /tmp/pk74D_3JiM.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/pk74D_3JiM.dsk...
-Writing command line to /tmp/wtCMb4xN97.dsk...
+Copying tests/userprog/read-boundary into /tmp/YnmJqz6mdw.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/YnmJqz6mdw.dsk...
+Writing command line to /tmp/t2RUrMu78E.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -25,12 +25,12 @@ Executing 'read-boundary':
 (read-boundary) end
 read-boundary: exit(0)
 Execution of 'read-boundary' complete.
-Timer: 305 ticks
-Thread: 33 idle ticks, 227 kernel ticks, 48 user ticks
+Timer: 303 ticks
+Thread: 3 idle ticks, 255 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 101 reads, 222 writes
 hd1:0: 106 reads, 0 writes
-Console: 933 characters output
+Console: 932 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

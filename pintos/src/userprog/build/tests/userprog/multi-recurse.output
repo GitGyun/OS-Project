@@ -1,5 +1,5 @@
-Copying tests/userprog/multi-recurse into /tmp/uZg8opkgAC.dsk...
-Writing command line to /tmp/Qev2MNhjxr.dsk...
+Copying tests/userprog/multi-recurse into /tmp/OJA8K9698f.dsk...
+Writing command line to /tmp/IfjrBgHbin.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -82,12 +82,12 @@ multi-recurse: exit(14)
 (multi-recurse) end 15
 multi-recurse: exit(15)
 Execution of 'multi-recurse 15' complete.
-Timer: 1388 ticks
-Thread: 33 idle ticks, 528 kernel ticks, 830 user ticks
+Timer: 1387 ticks
+Thread: 3 idle ticks, 555 kernel ticks, 831 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 686 reads, 230 writes
 hd1:0: 111 reads, 0 writes
-Console: 2514 characters output
+Console: 2513 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -1,5 +1,5 @@
-Copying tests/userprog/no-vm/multi-oom into /tmp/NUwQelCcwY.dsk...
-Writing command line to /tmp/6c6UNLTLSX.dsk...
+Copying tests/userprog/no-vm/multi-oom into /tmp/kCRw3ZlTOF.dsk...
+Writing command line to /tmp/oLZu5ddjzC.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -903,8 +903,8 @@ multi-oom: exit(52)
 (multi-oom) end
 multi-oom: exit(52)
 Execution of 'multi-oom' complete.
-Timer: 283069 ticks
-Thread: 201 idle ticks, 20069 kernel ticks, 262802 user ticks
+Timer: 282925 ticks
+Thread: 163 idle ticks, 20106 kernel ticks, 262659 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 260198 reads, 242 writes
 hd1:0: 117 reads, 0 writes

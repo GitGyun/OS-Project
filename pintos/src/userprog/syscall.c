@@ -82,8 +82,6 @@ syscall_handler (struct intr_frame *f UNUSED)
     }
     case SYS_EXEC:      /* char * -> pid_t */
     {
-      get_args (f->esp, 1);
-
       tid_t tid = syscall_exec ((char *)args[0]);
 
       f->eax = (uint32_t)tid;
@@ -175,12 +173,13 @@ get_args (void *esp, int num)
 
   int i;
   for (i = 0; i < argc; i++)
-  {
-    if (is_kernel_vaddr (esp))
-      return false;
-    args[i] = *(uint32_t *)esp;
-    INC_PTR (esp, 4);
-  }
+    {
+      if (is_kernel_vaddr (esp))
+        return false;
+      args[i] = *(uint32_t *)esp;
+      INC_PTR (esp, 4);
+    }
+
   return true;
 }
 
@@ -227,8 +226,8 @@ syscall_exec (const char *file)
 static int
 syscall_wait (tid_t tid)
 {
+  /* If thread is already waiting, cannot wait. */
   if (thread_current ()->is_waiting)
-    /* Thread is already waiting */
     return -1;
 
   return process_wait (tid);

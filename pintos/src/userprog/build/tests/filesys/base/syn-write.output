@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-write into /tmp/bn_9TVbRiW.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/bn_9TVbRiW.dsk...
-Writing command line to /tmp/G4xpY1BWMj.dsk...
+Copying tests/filesys/base/syn-write into /tmp/iyz7ScHNoJ.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/iyz7ScHNoJ.dsk...
+Writing command line to /tmp/1WV2jvxSn4.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -57,12 +57,12 @@ child-syn-wrt: exit(8)
 (syn-write) end
 syn-write: exit(0)
 Execution of 'syn-write' complete.
-Timer: 1364 ticks
-Thread: 33 idle ticks, 526 kernel ticks, 808 user ticks
+Timer: 1362 ticks
+Thread: 5 idle ticks, 557 kernel ticks, 804 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 603 reads, 470 writes
 hd1:0: 218 reads, 0 writes
-Console: 2274 characters output
+Console: 2273 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -121,8 +121,9 @@ start_process (void *f_name)
   ret_ptr = strtok_r (file_name, " ", &save_ptr);
   while (ret_ptr && argc < MAX_ARGS)
     {
-      arg_str[argc++] = ret_ptr;
+      arg_str[argc] = ret_ptr;
       ret_ptr = strtok_r (NULL, " ", &save_ptr);
+      argc++;
     }
 
   /* Initialize interrupt frame and load executable. */
