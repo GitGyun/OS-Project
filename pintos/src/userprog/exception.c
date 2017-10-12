@@ -157,19 +157,13 @@ page_fault (struct intr_frame *f)
      Therefore, if not present error raised, then exit with status
      -1. */
   if (not_present)
-  {
-    //printf ("not present error!!!\n");
     syscall_exit (-1);
-  }
 
   /* Test bad-read2 tries to read kernel memory in user context.
      If address is kernel address and context is user context,
      then exit with status -1. */
   if (user && is_kernel_vaddr (fault_addr))
-  {
-    //printf ("user accessed to kernel vaddr!!!\n");
     syscall_exit (-1);
-  }
 
   /* To implement virtual memory, delete the rest of the function
      body, and replace it with code that brings in the page to

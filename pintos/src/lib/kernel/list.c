@@ -371,7 +371,7 @@ find_end_of_run (struct list_elem *a, struct list_elem *b,
   ASSERT (less != NULL);
   ASSERT (a != b);
   
-  do
+  do 
     {
       a = list_next (a);
     }
@@ -523,10 +523,10 @@ list_min (struct list *list, list_less_func *less, void *aux)
   if (min != list_end (list)) 
     {
       struct list_elem *e;
-
+      
       for (e = list_next (min); e != list_end (list); e = list_next (e))
         if (less (e, min, aux))
-          min = e;
+          min = e; 
     }
   return min;
 }

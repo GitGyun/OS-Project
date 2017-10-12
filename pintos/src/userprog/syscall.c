@@ -14,12 +14,8 @@
 
 #define INC_PTR(ptr, bytes) ptr = (((uint8_t *)(ptr)) + (bytes))
 
-#define PR_EXIT 0
-#define PR_DEBUG_SYSCALL 0
-
 static void syscall_handler (struct intr_frame *);
 static bool get_args (void *, int);
-//static int allocate_fd (void);
 static struct file *fd_to_file (int);
 
 static tid_t syscall_exec (const char *);
@@ -34,29 +30,15 @@ static void syscall_seek (int, unsigned);
 static unsigned syscall_tell (int);
 static void syscall_close (int);
 
-/* Lock used by allocate_fd(). */
-//static struct lock fd_lock;
-
 uint32_t args[7];
 const int arg_nums[] = {0, 1, 1, 1, 5, 1, 1, 1, 7, 7,
                         5, 1, 1, 2, 1, 1, 1, 2, 1, 1};
-
-#if PR_DEBUG_SYSCALL
-const char *syscall_str[] = {"halt",   "exit",    "exec",   "wait",
-                             "create", "remove",  "open",   "filesize",
-                             "read",   "write",   "seek",   "tell",
-                             "close",  "mmap",    "munmap", "chdir",
-                             "mkdir",  "readdir", "isdir",  "inumber"};
-#endif
 
 void
 syscall_init (void)
 {
   intr_register_int (0x30, 3, INTR_ON, syscall_handler, "syscall");
-  //lock_init (&fd_lock);
   lock_init (&file_lock);
-  lock_init (&load_lock);
-  lock_init (&hexdump_lock);
 }
 
 /* Number of arguments:
@@ -81,36 +63,19 @@ syscall_handler (struct intr_frame *f UNUSED)
 
   int syscall_num = *(int *)f->esp;
   if (syscall_num < SYS_HALT || syscall_num > SYS_INUMBER)
-    {
-      //printf ("\nsystem call number invalid\n");
-      syscall_exit (-1);
-    }
-
-#if PR_DEBUG_SYSCALL
-  printf ("\nsystem call!\n");
-  printf ("syscall no.: %s\n", syscall_str[syscall_num]);
-#endif
+    syscall_exit (-1);
 
   bool success = get_args (f->esp, syscall_num);
 
   if (!success)
     syscall_exit (-1);
 
-#if PR_DEBUG_SYSCALL
-  if (syscall_num != SYS_WRITE)
-    {
-      printf("=========\n");
-      hex_dump ((uintptr_t)f->esp, f->esp, 62, true);
-      printf("=========\n");
-    }
-#endif
-
   switch (syscall_num)
     {
-    case SYS_HALT:    /* void -> void */
+    case SYS_HALT:      /* void -> void */
       power_off ();
       break;
-    case SYS_EXIT:    /* int -> void */
+    case SYS_EXIT:      /* int -> void */
     {
       syscall_exit ((int)args[0]);
       break;
@@ -193,8 +158,6 @@ syscall_handler (struct intr_frame *f UNUSED)
       break;
     }
     }
-
-  //thread_exit ();
 }
 
 /* Return true if succeeded to get arguments */
@@ -221,23 +184,6 @@ get_args (void *esp, int num)
   return true;
 }
 
-/*
-static int
-allocate_fd (void)
-{
-  static int next_fd = 2;
-  int fd;
-
-  lock_acquire (&fd_lock);
-  fd = next_fd++;
-  lock_release (&fd_lock);
-
-  printf ("new fd: %d\n", fd);
-
-  return fd;
-}
-*/
-
 static struct file *
 fd_to_file (int fd)
 {
@@ -262,8 +208,6 @@ fd_to_file (int fd)
 void
 syscall_exit (int status)
 {
-  //printf ("syscall exit:: status %d\n", status);
-
   thread_current ()->exit_status = status;
   printf ("%s: exit(%d)\n", thread_name (), status);
   thread_exit ();
@@ -272,19 +216,9 @@ syscall_exit (int status)
 static tid_t
 syscall_exec (const char *file)
 {
-#if PR_DEBUG_SYSCALL
-  printf ("syscall exec!\n");
-#endif
-
   lock_acquire (&file_lock);
 
   tid_t tid = process_execute (file);
-
-#if PR_DEBUG_SYSCALL
-  printf ("process execute complete\n");
-  printf ("file name: %s\n", file);
-  printf ("tid: %d\n", tid);
-#endif
 
   lock_release (&file_lock);
   return tid;
@@ -293,10 +227,6 @@ syscall_exec (const char *file)
 static int
 syscall_wait (tid_t tid)
 {
-  //printf ("current thread waiting status: %s\n", thread_current ()->is_waiting?"waiting":"not waiting");
-  //printf ("syscall wait!\n");
-  //printf ("child tid: %d\n", tid);
-
   if (thread_current ()->is_waiting)
     /* Thread is already waiting */
     return -1;
@@ -312,9 +242,6 @@ syscall_create (char *name, unsigned initial_size)
   if (name == NULL)
     {
       lock_release (&file_lock);
-#if PR_EXIT
-      printf ("in syscall create: NULL error\n");
-#endif
       syscall_exit (-1);
     }
 
@@ -342,26 +269,17 @@ syscall_open (const char *file)
 
   if (file == NULL)
     {
-#if PR_EXIT
-      printf ("in syscall open: NULL error\n");
-#endif
       lock_release (&file_lock);
       syscall_exit (-1);
     }
 
   if (is_kernel_vaddr (file))
     {
-#if PR_EXIT
-      printf ("in syscall open: kernel vaddr error\n");
-#endif
       lock_release (&file_lock);
       syscall_exit (-1);
     }
 
   struct file *f = filesys_open (file);
-
-  //printf ("syscall open\n");
-  //printf ("file name: %s\n", file);
 
   /* File open failed */
   if (f == NULL)
@@ -371,13 +289,10 @@ syscall_open (const char *file)
     }
 
   /* If this file is executable, deny writing */
-  //printf ("is there a thread with name: %s?\n", file);
   if (thread_same_name (file))
     file_deny_write (f);
 
   struct thread *curr = thread_current ();
-
-  //int fd = allocate_fd ();
   struct fd_elem *fe = malloc (sizeof (struct fd_elem));
 
   /* fd_elem allocation failed */
@@ -424,8 +339,6 @@ syscall_filesize (int fd)
   return len;
 }
 
-#define PR_READ 0
-
 static int
 syscall_read (int fd, void *buffer, unsigned size)
 {
@@ -433,10 +346,6 @@ syscall_read (int fd, void *buffer, unsigned size)
 
   if (buffer == NULL)
     {
-#if PR_READ
-      printf ("buffer null\n");
-#endif
-
       lock_release (&file_lock);
       return -1;
     }
@@ -444,18 +353,9 @@ syscall_read (int fd, void *buffer, unsigned size)
   if (is_kernel_vaddr (buffer) ||
       is_kernel_vaddr ((uint8_t *)buffer + size - 1))
     {
-#if PR_EXIT
-      printf ("in syscall read: kernel vaddr error\n");
-#endif
       lock_release (&file_lock);
       syscall_exit (-1);
     }
-
-#if PR_READ
-  printf("syscall read! ");
-  printf("fd: %d ", fd);
-  printf("size: %d\n", (int)size);
-#endif // PR_READ
 
   /* Use input_getc() */
   if (fd == 0)
@@ -471,10 +371,6 @@ syscall_read (int fd, void *buffer, unsigned size)
 
   if (fd == 1)
     {
-#if PR_READ
-      printf ("fd = 1\n");
-#endif
-
       lock_release (&file_lock);
       return -1;
     }
@@ -482,42 +378,15 @@ syscall_read (int fd, void *buffer, unsigned size)
   struct file *f = fd_to_file (fd);
   if (f == NULL)
     {
-#if PR_READ
-      printf ("file null\n");
-      printf ("fd: %d\n", fd);
-
-      struct thread *curr = thread_current ();
-      struct list *fl = &curr->fd_list;
-      struct list_elem *e;
-      struct fd_elem *fe;
-
-      for (e = list_begin (fl); e != list_end (fl); e = list_next (e))
-        {
-          fe = list_entry (e, struct fd_elem, elem);
-          printf ("fd list: %d\n", fe->fd);
-        }
-#endif
       lock_release (&file_lock);
       return -1;
     }
 
   int size_read = (int)file_read (f, buffer, size);
-#if PR_READ
-  printf("read size: %u\n", size_read);
-
-  /*
-  unsigned i;
-  printf ("read buffer: ");
-  for (i = 0; i < size; i++)
-    printf ("%c", ((char *)buffer)[i]);
-  printf ("\n");*/
-#endif
 
   lock_release (&file_lock);
   return size_read;
 }
-
-#define PR_WRITE 0
 
 static int
 syscall_write (int fd, void *buffer, unsigned size)
@@ -526,9 +395,6 @@ syscall_write (int fd, void *buffer, unsigned size)
 
   if (buffer == NULL)
     {
-#if PR_EXIT
-      printf ("in syscall read: buffer null error\n");
-#endif
       lock_release (&file_lock);
       return -1;
     }
@@ -536,18 +402,10 @@ syscall_write (int fd, void *buffer, unsigned size)
   if (is_kernel_vaddr (buffer) ||
       is_kernel_vaddr ((uint8_t *)buffer + size - 1))
     {
-#if PR_EXIT
-      printf ("in syscall read: kernel vaddr error\n");
-#endif
       lock_release (&file_lock);
       syscall_exit (-1);
     }
 
-#if PR_WRITE
-  printf("syscall write!\n");
-  printf("fd: %d\n", fd);
-  printf("size: %d\n", (int)size);
-#endif
   if (fd == 0)
     {
       lock_release (&file_lock);
@@ -571,44 +429,22 @@ syscall_write (int fd, void *buffer, unsigned size)
 
   int size_written = (int)file_write (f, buffer, size);
 
-#if PR_WRITE
-  printf("written size: %d\n", size_written);
-
-  unsigned i;
-  printf ("written buffer: ");
-  for (i = 0; i < size; i++)
-    printf ("%c", ((char *)buffer)[i]);
-  printf("\n");
-#endif
-
   lock_release (&file_lock);
   return size_written;
 }
 
-#define PR_SEEK 0
-
 static void
 syscall_seek (int fd, unsigned pos)
 {
-#if PR_SEEK
-  printf ("syscall seek!\n");
-  printf ("fd: %d\n", fd);
-  printf ("pos: %u\n", pos);
-#endif
-
   lock_acquire (&file_lock);
 
   struct file *file = fd_to_file (fd);
   if (file == NULL)
     {
-#if PR_EXIT
-      printf ("in syscall seek: file null error\n");
-#endif
       lock_release (&file_lock);
       return;
     }
 
-  //printf ("calling file_seek\n");
   file_seek (file, pos);
 
   lock_release (&file_lock);

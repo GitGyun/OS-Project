@@ -6,8 +6,7 @@
 #include "threads/thread.h"
 #include "devices/timer.h"
 
-void
-test_hello(void)
-{
-  msg ("Hello, world!");
+
+void test_hello(void) {
+    msg("Hello, world!");
 }

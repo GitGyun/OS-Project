@@ -1,5 +1,5 @@
-Copying tests/userprog/args-single into /tmp/sOwySRuEkD.dsk...
-Writing command line to /tmp/75I6bCQ9u6.dsk...
+Copying tests/userprog/args-single into /tmp/JDShf4oIXl.dsk...
+Writing command line to /tmp/k8ZMsfYkyM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,8 +26,8 @@ Executing 'args-single onearg':
 (args) end
 args-single: exit(0)
 Execution of 'args-single onearg' complete.
-Timer: 271 ticks
-Thread: 32 idle ticks, 195 kernel ticks, 47 user ticks
+Timer: 272 ticks
+Thread: 32 idle ticks, 196 kernel ticks, 47 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

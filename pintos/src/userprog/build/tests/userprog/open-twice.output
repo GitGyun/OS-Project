@@ -1,6 +1,6 @@
-Copying tests/userprog/open-twice into /tmp/Qd_3vPupbR.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/Qd_3vPupbR.dsk...
-Writing command line to /tmp/iO2KR5nDel.dsk...
+Copying tests/userprog/open-twice into /tmp/F5CNldM1BN.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/F5CNldM1BN.dsk...
+Writing command line to /tmp/K0PWeP3uJi.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,8 +26,8 @@ Executing 'open-twice':
 (open-twice) end
 open-twice: exit(0)
 Execution of 'open-twice' complete.
-Timer: 305 ticks
-Thread: 32 idle ticks, 221 kernel ticks, 55 user ticks
+Timer: 306 ticks
+Thread: 32 idle ticks, 221 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 107 reads, 214 writes
 hd1:0: 102 reads, 0 writes

@@ -39,9 +39,6 @@
 static thread_func start_process NO_RETURN;
 static bool load (const char *cmdline, void (**eip) (void), void **esp);
 
-//extern struct lock file_lock;
-extern struct lock load_lock;
-
 /* Starts a new thread running a user program loaded from
    FILENAME.  The new thread may be scheduled (and may even exit)
    before process_execute() returns.  Returns the new process's
@@ -49,8 +46,6 @@ extern struct lock load_lock;
 tid_t
 process_execute (const char *file_name)
 {
-  //printf ("process executing -- file name: %s\n", file_name);
-
   char *fn_copy;
   char *fn_parse;
   tid_t tid;
@@ -83,24 +78,14 @@ process_execute (const char *file_name)
 
   /* Wait until the new thread loads its executable */
   struct thread *child = tid_to_thread (tid);
-#if DEF_SEMA_EXEC
-#if PR_SEMA_EXEC
-  printf ("%s: child thread created\n", thread_name ());
-  printf ("%s: sema exec down; wait until loading its executable\n", thread_name ());
-#endif
   sema_down (&child->sema_exec);
-#if PR_SEMA_EXEC
-  printf ("%s: sema down complete; child loaded its exectable\n", thread_name ());
-#endif
-#endif
 
   /* Child complete to load its executable. Load succeded? */
   if (!child->load_success)
-  {
-    //printf ("child load failed!\n");
-    palloc_free_page (fn_parse);
-    return TID_ERROR;
-  }
+    {
+      palloc_free_page (fn_parse);
+      return TID_ERROR;
+    }
 
   /* Set child-parent relationship */
   child->parent = curr;
@@ -115,8 +100,6 @@ process_execute (const char *file_name)
   palloc_free_page (fn_parse);
   return TID_ERROR;
 }
-
-#define PR_HEXDUMP 0
 
 /* A thread function that loads a user process and makes it start
    running. */
@@ -151,15 +134,8 @@ start_process (void *f_name)
 
   thread_current ()->load_success = success;
 
-#if DEF_SEMA_EXEC
-#if PR_SEMA_EXEC
-  printf ("%s: load executable complete\n", thread_name ());
-#endif
+  /* Load complete. Allow the parent to run */
   sema_up (&thread_current ()->sema_exec);
-#if PR_SEMA_EXEC
-  printf ("%s: sema up\n", thread_name ());
-#endif
-#endif
 
   if (!success)
     goto done;
@@ -204,14 +180,6 @@ start_process (void *f_name)
   DEC_PTR (if_.esp, 4);
   *(int32_t *)if_.esp = 0;
 
-#if PR_HEXDUMP
-  printf ("\nhexdump:\n");
-  printf ("==========\n");
-  hex_dump ((uintptr_t)if_.esp, if_.esp,
-            (uint8_t *)PHYS_BASE - (uint8_t *)if_.esp, true);
-  printf("\n");
-#endif
-
  done:
   /* If load failed, quit. */
   palloc_free_page (file_name);
@@ -228,9 +196,6 @@ start_process (void *f_name)
   NOT_REACHED ();
 }
 
-#define PR_SEMA_WAIT 0
-#define PR_DEBUG_WAIT 0
-
 /* Waits for thread TID to die and returns its exit status.  If
    it was terminated by the kernel (i.e. killed due to an
    exception), returns -1.  If TID is invalid or if it was not a
@@ -243,74 +208,27 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid UNUSED)
 {
-#if PR_DEBUG_WAIT
-  printf ("process wait!\n");
-  printf ("current thread: %s\n", thread_name ());
-
-  //printf ("all threads:\n");
-  //thread_print_all ();
-#endif
-
   struct thread *curr = thread_current ();
   struct thread *child = tid_to_thread (child_tid);
-
-#if PR_DEBUG_WAIT
-  printf ("----------\n");
-  printf ("current thread: %s\n", thread_name ());
-  printf ("child not null?: %s\n", (child != NULL)?"true":"false");
-  if (child != NULL)
-    {
-      printf ("child name: %s\n", child->name);
-      printf ("child tid: %d\n", child_tid);
-      printf ("is child?: %s\n", thread_has_child (curr, child_tid)?"true":"false");
-    }
-  printf ("----------\n");
-#endif
 
   /* If the thread with CHILD_TID is not a child of the current
      thread, return -1 immediately. */
   if (child == NULL || !thread_has_child (curr, child_tid))
-    {
-#if PR_DEBUG_WAIT
-      printf ("child tid is not valid!!!\n");
-#endif
-      return -1;
-    }
+    return -1;
 
-  //printf ("change is_waiting to true\n");
   curr->is_waiting = true;
 
-#if PR_SEMA_WAIT
-  printf ("%s: sema ch down\n", thread_name ());
-#endif
   /* Wait until CHILD ups the semaphore when it exits. */
   sema_down (&child->sema_ch);
-#if PR_SEMA_WAIT
-  printf ("%s: sema ch down complete\n", thread_name ());
-  printf ("child process %s exited\n", child->name);
-#endif
 
   curr->is_waiting = false;
 
-  //printf ("get child's exit status: %d\n", child->exit_status);
   int status = child->exit_status;
   list_remove (&child->elem_ch);
 
-  //printf ("removed from children list\n");
-  //printf ("really removed?: %s\n", thread_has_child (curr, child->tid)?"false":"true");
-
-#if PR_SEMA_WAIT
-  printf ("%s: sema del up\n", thread_name ());
-#endif
   /* Up the semaphore so that child really can exit */
   sema_up (&child->sema_del);
-#if PR_SEMA_WAIT
-  printf ("%s: sema del up complete\n", thread_name ());
-#endif
 
-#if PR_DEBUG_WAIT
-  printf ("wait status:%d\n", status);
-#endif
   return status;
 }
 
@@ -335,13 +253,8 @@ process_exit (void)
       free (fe);
     }
 
-#if DEF_SEMA_EXEC
-#if PR_SEMA_EXEC
-  printf ("%s: thread exit\n", thread_name ());
-  printf ("%s: sema exec up\n", thread_name ());
-#endif
+  /* Allow the parent to run */
   sema_up (&curr->sema_exec);
-#endif
 
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
@@ -606,7 +519,12 @@ validate_segment (const struct Elf32_Phdr *phdr, struct file *file)
      it then user code that passed a null pointer to system calls
      could quite likely panic the kernel by way of null pointer
      assertions in memcpy(), etc. */
-  //if (phdr->p_vaddr < PGSIZE)
+  /* ========================================= */
+  /* Notice: replace 'p_vaddr' with 'p_offset'.
+     See
+       http://klms.kaist.ac.kr/mod/ubboard/article.php?id=205606&bwid=83625 */
+  // if (phdr->p_vaddr < PGSIZE)
+  /* ========================================= */
   if (phdr->p_offset < PGSIZE)
     return false;
 
@@ -686,11 +604,7 @@ setup_stack (void **esp)
     {
       success = install_page (((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
       if (success)
-#if ARG_PASS
         *esp = PHYS_BASE;
-#else
-        *esp = PHYS_BASE - 12;
-#endif
       else
         palloc_free_page (kpage);
     }

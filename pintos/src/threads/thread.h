@@ -27,9 +27,6 @@ typedef int tid_t;
 #define PRI_DEFAULT 31                  /* Default priority. */
 #define PRI_MAX 63                      /* Highest priority. */
 
-#define DEF_SEMA_EXEC 1
-#define PR_SEMA_EXEC 0
-
 /* A kernel thread or user process.
 
    Each thread structure is stored in its own 4 kB page.  The
@@ -105,9 +102,7 @@ struct thread
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
-#if DEF_SEMA_EXEC
     struct semaphore sema_exec;         /* Semaphore for exec() */
-#endif
     bool load_success;                  /* Succeeded in loading excutable? */
 #endif
 
@@ -174,7 +169,5 @@ void check_thread_priority (void);
 struct thread *tid_to_thread (tid_t);
 bool thread_has_child (struct thread *, tid_t);
 bool thread_same_name (const char *);
-
-void thread_print_all (void);
 
 #endif /* threads/thread.h */

@@ -1,5 +1,5 @@
-Copying tests/userprog/create-null into /tmp/xxjiyqiJtR.dsk...
-Writing command line to /tmp/PQ_cF2O793.dsk...
+Copying tests/userprog/create-null into /tmp/eelraOChXS.dsk...
+Writing command line to /tmp/Joo0PittvI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -21,8 +21,8 @@ Executing 'create-null':
 (create-null) begin
 create-null: exit(-1)
 Execution of 'create-null' complete.
-Timer: 257 ticks
-Thread: 33 idle ticks, 193 kernel ticks, 33 user ticks
+Timer: 258 ticks
+Thread: 33 idle ticks, 194 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

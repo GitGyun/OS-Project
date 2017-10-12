@@ -296,9 +296,6 @@ thread_tid (void)
   return thread_current ()->tid;
 }
 
-#define PR_SEMA_EXIT 0
-#define PR_DEBUG_EXIT 0
-
 /* Deschedules the current thread and destroys it.  Never
    returns to the caller. */
 void
@@ -309,10 +306,6 @@ thread_exit (void)
   struct thread *curr = thread_current ();
   struct list_elem *e;
   struct thread *child;
-
-#if PR_DEBUG_EXIT
-  printf ("thread exit:: %s - %d, exit status: %d\n", curr->name, curr->tid, curr->exit_status);
-#endif
 
 #ifdef USERPROG
   process_exit ();
@@ -325,22 +318,12 @@ thread_exit (void)
     sema_up (&child->sema_del);
   }
 
-#if PR_SEMA_EXIT
-  printf ("%s: sema ch up\n", thread_name ());
-#endif
   /* Up the semaphore so that waiting parent thread can be
      executed. */
   sema_up (&curr->sema_ch);
-#if PR_SEMA_EXIT
-  printf ("%s: sema ch up complete\n", thread_name ());
 
-  printf ("%s: sema del down\n", thread_name ());
-#endif
   /* Wait until the parent gets exit status */
   sema_down (&curr->sema_del);
-#if PR_SEMA_EXIT
-  printf ("%s: sema del down complete\n", thread_name ());
-#endif
 
   /* Remove the thread from the list of all threads */
   list_remove (&curr->elem_th_all);
@@ -525,11 +508,7 @@ init_thread (struct thread *t, const char *name, int priority)
   t->lock_waiting = NULL;
   list_init (&t->lock_holding_list);
 
-#ifdef USERPROG
-#ifdef DEF_SEMA_EXEC
   sema_init (&t->sema_exec, 0);
-#endif
-#endif
 
   t->parent = NULL;
   list_init (&t->children);
@@ -776,15 +755,13 @@ check_thread_priority (void)
 struct thread *
 tid_to_thread (tid_t tid)
 {
-  //printf ("tid_to_thread! tid: %d\n", tid);
   struct list_elem *e;
   struct thread *t;
-  //printf ("now searching...\n");
+
   for (e = list_begin (&thread_all_list);
        e != list_end (&thread_all_list); e = list_next (e))
     {
       t = list_entry (e, struct thread, elem_th_all);
-      //printf ("curr tid: %d\n", t->tid);
       if (t->tid == tid)
         return t;
     }
@@ -818,28 +795,8 @@ thread_same_name (const char *name)
        e != list_end (&thread_all_list); e = list_next (e))
     {
       t = list_entry (e, struct thread, elem_th_all);
-      //printf ("current thread name: %s\n", t->name);
       if (strcmp (t->name, name) == 0)
-      {
-        //printf ("\nthere are thread with same name!!!\n");
-        //printf ("query: %s\n", name);
-        //printf ("thread name: %s\n\n", t->name);
         return true;
-      }
     }
   return false;
-}
-
-void
-thread_print_all (void)
-{
-  struct list_elem *e;
-  struct thread *t;
-
-  for (e = list_begin (&thread_all_list);
-       e != list_end (&thread_all_list); e = list_next (e))
-    {
-      t = list_entry (e, struct thread, elem_th_all);
-      printf ("%s - %d\n", t->name, t->tid);
-    }
 }

@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-create into /tmp/oz_11NNqLO.dsk...
-Writing command line to /tmp/3ueK55fS6V.dsk...
+Copying tests/filesys/base/lg-create into /tmp/YmsXgAsEbN.dsk...
+Writing command line to /tmp/CIqzVD3SJe.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,7 +27,7 @@ Executing 'lg-create':
 lg-create: exit(0)
 Execution of 'lg-create' complete.
 Timer: 485 ticks
-Thread: 31 idle ticks, 229 kernel ticks, 227 user ticks
+Thread: 30 idle ticks, 230 kernel ticks, 227 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 242 reads, 366 writes
 hd1:0: 103 reads, 0 writes
