@@ -1,0 +1,323 @@
+			+---------------------------+
+			|          CS 330           |
+			| PROJECT 2: USER PROGRAMS  |
+			|      DESIGN DOCUMENT      |
+			+---------------------------+
+
+---- GROUP ----
+
+>> Fill in the names and email addresses of your group members.
+
+team 27:
+	김동균 <kdgyun425@kaist.ac.kr>
+	김정우 <souldomination@kaist.ac.kr>
+
+---- PRELIMINARIES ----
+
+>> If you have any preliminary comments on your submission, notes for the
+>> TAs, or extra credit, please give them here.
+
+>> Please cite any offline or online sources you consulted while
+>> preparing your submission, other than the Pintos documentation, course
+>> text, lecture notes, and course staff.
+
+http://downman.tistory.com/230
+http://csl.skku.edu/uploads/SWE3004S15/project2.pdf
+hzttp://dcclab.sogang.ac.kr/?mid=os2014&page=2&document_srl=321
+
+
+			   ARGUMENT PASSING
+			   ================
+
+---- DATA STRUCTURES ----
+
+>> A1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+
+없음.
+
+---- ALGORITHMS ----
+
+>> A2: Briefly describe how you implemented argument parsing.  How do
+>> you arrange for the elements of argv[] to be in the right order?
+>> How do you avoid overflowing the stack page?
+
+먼저 주어진 문자열을 strtok_r()을 이용해서 공백을 기준으로 나눈다. 그리고 각 토큰의
+길이만큼 esp를 감소시키고 strlcpy()로 토큰을 esp 위치에 복사하였다. 모든 토큰에 대해서
+수행한 뒤, 토큰 길이의 합을 이용해서 word align을 적용해주고 토큰을 복사할 당시의 esp
+주소를 저장해놨다가 역순으로 스택에 넣는다.
+
+인자 개수를 32개로 제한하긴 했으나 각 인자의 길이는 제한하지 않았기 때문에 매우 긴 인자가
+소수 들어오면 스택 오버플로가 일어날 수도 있다. 이에 대한 대책은 따로 마련하지 않았다.
+
+---- RATIONALE ----
+
+>> A3: Why does Pintos implement strtok_r() but not strtok()?
+
+strtok() 함수는 외부에서 포인터를 받는 대신 static 변수로 저장용 포인터를 가지고 있다.
+하지만 이런 구현은 멀티프로세스 환경에서 다수의 프로세스가 static 변수에 접근하여 정보
+오염이 일어날 가능성이 매우 크다. 따라서 strtok_r()은 static 변수를 사용하지 않고 프로
+세스마다 따로 저장용 포인터를 사용할 수 있게 외부에서 인자로 포인터를 받게 하였다.
+
+>> A4: In Pintos, the kernel separates commands into a executable name
+>> and arguments.  In Unix-like systems, the shell does this
+>> separation.  Identify at least two advantages of the Unix approach.
+
+1. 유닉스 셸이 미리 파싱을 하므로 커널이 작업을 수행하는 시간이 줄어든다.
+2. 명령어가 매우 길어지면 커널에 전달 되었을 때 커널 메모리 문제가 발생하여 커널 패닉이
+일어날 수 있다. 하지만 유닉스 셸이 명령어를 다루면 메모리 문제가 발생하더라도 커널엔
+영향이 가지 않는다.
+
+			     SYSTEM CALLS
+			     ============
+
+---- DATA STRUCTURES ----
+
+>> B1: Copy here the declaration of each new or changed `struct' or
+>> `struct' member, global or static variable, `typedef', or
+>> enumeration.  Identify the purpose of each in 25 words or less.
+
+thread.h - struct thread:
+
+  struct semaphore sema_exec;
+    자식 프로세스를 생성할 때 실행 파일 로드 시 동기화를 위해 사용하는 semaphore
+
+  bool load_success;
+    프로세스가 만들어지고 나서 처음 실행 파일을 로드 시 로드에 성공하면 true, 아니면 false
+
+  struct thread *parent;
+    부모 스레드를 가리키는 포인터
+
+  struct list_children;
+    자식 스레드들의 리스트
+
+  struct semaphore sema_ch;
+  struct semaphore sema_del;
+    exit()와 wait()에서 사용되는 세마포어
+
+  struct list_elem elem_ch;
+    스레드 구조체를 자식 리스트에 넣기 위한 리스트 list_elem
+
+  struct list_elem elem_th_all;
+    스레드 구조체를 모든 스레드의 리스트에 넣기 위한 list_elem
+
+  bool is_waiting;
+    현재 프로세스가 다른 프로세스를 기다리고 있으면 true, 아니면 false
+
+  int exit_status;
+    exit()로 종료할 때 status
+
+  struct list fd_list;
+    현재 프로세스가 연 파일들의 리스트
+
+thread.c:
+
+  static struct list thread_all_list;
+    모든 스레드의 리스트
+
+syscall.h:
+
+  struct fd_elem {
+    int fd;
+    struct file *file;
+    struct list_elem elem;
+  };
+    fd와 파일을 가리키는 포인터를 가지는 리스트 노드
+
+syscall.c:
+
+  struct lock file_lock;
+    파일에 관련된 시스템 호출(read(), write() 등)에서 동기화를 위한 lock
+
+>> B2: Describe how file descriptors are associated with open files.
+>> Are file descriptors unique within the entire OS or just within a
+>> single process?
+
+syscall.h에 정의된 fd_elem 구조체는 멤버 변수로 fd와 파일을 가리키는 포인터를 가진다.
+프로세스가 새 파일을 열면 fd_elem 구조체가 동적 할당되어 스레드 구조체의 fd_list 리스트에
+추가되고 멤버 변수에 새 fd와 방금 연 파일의 포인터가 대입된다. 한 프로세스 내에서는 각
+파일은 fd와 일대일 대응이 되기 때문에 파일에 접근할 때 fd만 주어져도 충분하다.
+
+fd는 OS 전체에서 유일하지 않고 프로세스 별로 유일하도록 구현하였다. 즉, 프로세스 A의 fd가
+6인 파일과 프로세스 B의 fd가 6인 파일은 서로 다른 파일일 수 있다.
+
+---- ALGORITHMS ----
+
+>> B3: Describe your code for reading and writing user data from the
+>> kernel.
+
+read()와 write()는 파일에 접근하므로 동시에 여러 프로세스가 한 파일에 접근하는 것을 막기
+위해 file_lock이라는 전역 lock을 도입해서 제일 처음에 lock_acquire()를 하고 마지막에
+lock_release()를 해주었다. 이는 파일에 접근하는 다른 시스템 호출에도 적용된다. 또한 둘 다
+buffer라는 포인터를 받는데, 이것이 NULL이거나 커널 메모리 영역을 가리키는지 먼저 검사하였다.
+특히 후자의 경우는 매뉴얼에 명시된 대로 즉시 프로세스를 종료한다.
+
+read()는 fd가 0일 때와 그 외로 나누어진다. fd가 0이면 input_getc() 함수를 사용해 콘솔의
+내용을 buffer에 배열처럼 접근하여 한 글자씩, 총 size만큼 쓴다. 그리고 쓴 글자 수는 size와
+동일하므로 size를 그대로 반환한다. fd가 0이 아니면 현재 프로세스가 연 파일 중 같은 fd를
+가진 파일을 검색하고, file_read() 함수를 이용해서 파일을 읽었다. 그런 파일을 찾을 수 없으면
+-1을 반환한다.
+
+write()는 fd가 1일 때와 그 외로 나누어진다. fd가 1이면 putbuf() 함수를 사용해 직접 콘솔에
+buffer의 내용을 쓴다. 쓴 글자수는 size이므로 그대로 반환하면 된다. fd가 1이 아니면 fd에서
+파일을 찾고, file_write() 함수로 파일에 buffer의 내용을 쓴다. 역시 그러한 파일을 찾을 수
+없으면 -1을 반환한다.
+
+>> B4: Suppose a system call causes a full page (4,096 bytes) of data
+>> to be copied from user space into the kernel.  What is the least
+>> and the greatest possible number of inspections of the page table
+>> (e.g. calls to pagedir_get_page()) that might result?  What about
+>> for a system call that only copies 2 bytes of data?  Is there room
+>> for improvement in these numbers, and how much?
+
+2048:
+  최솟값 1 (모든 데이터가 한 페이지 안에 있을 경우)
+  최댓값 2048 (모든 데이터가 다른 페이지에 있을 경우)
+
+2:
+  최솟값 1 (두 데이터가 한 페이지 안에 있을 경우)
+  최댓값 2 (두 데이터가 다른 페이지에 있을 경우)
+
+>> B5: Briefly describe your implementation of the "wait" system call
+>> and how it interacts with process termination.
+
+wait() 시스템 호출과 프로세스 종료에는 sema_ch와 sema_del이라는 두 semaphore가 관여한다.
+처음 스레드가 생성되면 이들은 0으로 초기화되어있다. wait()는 먼저 현재 프로세스가 이미
+어떤 다른 프로세스를 wait하고 있는지 검사한다. 그리고 process_wait()를 호출하는데, 여기선
+자식 프로세스의 sema_ch를 down하여 대기한다. 이후 자식 프로세스가 종료될 때 thread_exit()
+함수에서는 sema_ch를 up하여 부모 프로세스가 다시 실행 가능하도록 하고 status를 자식의
+스레드 구조체에 저장한 다음 sema_del을 down하여 대기한다. 그동안 부모는 자식의 exit_status를
+받아오고 자신의 children 리스트에서 자식을 제거한다. 그리고 자식의 sema_del을 up해주면 다시
+자식이 실행되어 최종적으로 자식 프로세스가 종료된다.
+
+>> B6: Any access to user program memory at a user-specified address
+>> can fail due to a bad pointer value.  Such accesses must cause the
+>> process to be terminated.  System calls are fraught with such
+>> accesses, e.g. a "write" system call requires reading the system
+>> call number from the user stack, then each of the call's three
+>> arguments, then an arbitrary amount of user memory, and any of
+>> these can fail at any point.  This poses a design and
+>> error-handling problem: how do you best avoid obscuring the primary
+>> function of code in a morass of error-handling?  Furthermore, when
+>> an error is detected, how do you ensure that all temporarily
+>> allocated resources (locks, buffers, etc.) are freed?  In a few
+>> paragraphs, describe the strategy or strategies you adopted for
+>> managing these issues.  Give an example.
+
+첫 번째는 시스템 호출에 들어오는 인자들을 검사하는 것이다. 위에서 설명했듯이, write() 시스템
+호출은 두 번째 인자인 buffer가 NULL이거나 is_kernel_vaddr() 함수로 커널 메모리 영역을
+가리키는지 검사한다. 나머지 모든 시스템 호출도 인자에 포인터가 있을 경우 항상 유효성 검사를
+해 주었다.
+
+두 번째로 페이지 폴트를 핸들링하면서 포인트를 검사하는 것이다. 위 방법은 시스템 호출에 잘못
+들어가는 포인터 인자를 걸러낼 수 있지만, 그 외의 포인터 오류들, 이를테면 NULL을 역참조 하거나
+PHYS_BASE에 접근하는 행위 등은 시스템 호출이 아니라 페이지 폴트를 발생시키므로 첫 번째만으로는
+해결할 수 없다. 따라서 page_fault() 함수에서 not present 에러와 유저 모드에서 커널 영역에
+접근하는 에러를 직접 감지해서 프로세스를 종료시켜야 한다.
+
+---- SYNCHRONIZATION ----
+
+>> B7: The "exec" system call returns -1 if loading the new executable
+>> fails, so it cannot return before the new executable has completed
+>> loading.  How does your code ensure this?  How is the load
+>> success/failure status passed back to the thread that calls "exec"?
+
+기본값 0을 가지는 sema_exec이라는 semaphore를 사용해 동기화하였다. process_execute()에서
+자식 프로세스를 만들고 나면 부모 프로세스는 sema_exec을 down해서 대기한다. 자식 프로세스는
+start_process()에서 load()로 실행 파일을 불러온 후에 sema_exec을 up해준다. 여기서 자식이
+제대로 실행 파일을 불러왔는지 부모가 알 수 있어야 하므로 스레드 구조체 내에 load_success라는
+멤버 변수를 정의하여 여기에 성공 여부를 저장했다. 이후 부모는 자식의 성공 여부를 보고서
+실패했으면 즉시 -1을 반환한다. 이 과정에서 thread_create()가 반환한 tid만을 가지고 자식의
+구조체에 접근해야 하는 상황이 나타나는데, 모든 스레드의 리스트를 만들고 거기서 tid를 검색하는
+방법으로 해결했다.
+
+>> B8: Consider parent process P with child process C.  How do you
+>> ensure proper synchronization and avoid race conditions when P
+>> calls wait(C) before C exits?  After C exits?  How do you ensure
+>> that all resources are freed in each case?  How about when P
+>> terminates without waiting, before C exits?  After C exits?  Are
+>> there any special cases?
+
+wait() 시스템 호출은 자식 프로세스가 종료할 때까지 기다리고 exit status를 받아온다. wait()
+하기 전에 자식이 종료되어도 status를 받아올 수 있으려면 부모가 wait()를 실행하기 전까지
+자식은 종료를 요청하더라도 대기해야 한다. 이 때문에 부모가 기다리기 위한 semaphore와 자식이
+기다리기 위한 semaphore가 따로 필요하다. (각각 sema_ch와 sema_del) status를 자식에서
+부모에게 전달하기 위해 스레드 구조체 내부에 변수를 만들어 이를 거쳐가게 했다.
+
+프로세스가 가진 모든 자원은 thread_exit()에서 free하도록 구현했기 때문에 모든 경우에서 P와
+C가 정상 종료되는지 확인하면 된다.
+
+1. C가 종료되기 전에 P가 wait()를 호출한 경우
+P는 sema_ch를 down하고 기다린다. C가 종료될 때 C는 sema_ch를 up해서 P가 실행될 수 있게 하고,
+sema_del을 down하여 기다린다. P는 C의 exit status를 받아오고 sema_del을 up하면 C는 최종적
+으로 종료된다.
+
+2. C가 종료된 후에 P가 wait()를 호출한 경우
+C가 종료를 요청하면 sema_ch를 up한 뒤, sema_del이 down되므로 실질적으로는 종료되지 않는다.
+이후 P가 wait()를 호출하면 이미 sema_ch가 up되었으므로 sema_ch를 down해도 대기하지 않고,
+곧바로 C의 exit status를 받아온 후 sema_del을 up하여 C가 종료된다.
+
+3. C가 종료되기 전에 P가 종료된 경우
+이 경우엔 C가 sema_del을 down하면 up해줄 P가 사라졌으므로 C는 영원히 종료되지 못한다. 따라서
+모든 프로세스는 종료 전에 자기 자식들의 sema_del을 up하여 자신이 종료되어도 자식들이 정상
+종료할 수 있도록 하였다.
+
+4. C가 종료한 후에 wait() 없이 P가 종료된 경우
+C가 sema_del을 down하여 기다리는 상황에서 P가 종료되면서 C의 sema_del을 up해주므로 양쪽 모두
+정상 종료된다.
+
+---- RATIONALE ----
+
+>> B9: Why did you choose to implement access to user memory from the
+>> kernel in the way that you did?
+
+여기서는 시스템 호출에서 인자의 유효성을 우선적으로 검사했다. 최대한 유효성 검사를 빨리 해서
+오류가 나는 부분은 많이 진행하지 않고 즉시 -1을 반환하거나 프로세스가 종료하도록 하여 실행
+시간을 조금이나마 줄이려는 생각에서 이렇게 구현하였다. 다만 이 방식만으로는 페이지 폴트까지 막을
+수는 없으므로 여기서 사용한 방식은 핀토스 매뉴얼에서 제시한 것과는 차이가 있다. (putuser()
+함수를 사용하거나 pagedir.c를 참고하지 않았다.)
+
+>> B10: What advantages or disadvantages can you see to your design
+>> for file descriptors?
+
+장점:
+스레드 별로 fd 및 파일을 따로 관리하기 때문에 다른 스레드의 자원에 침범할 일이 없다.
+리스트를 이용해서 효율적으로 관리할 수 있다.
+
+단점:
+리스트를 위해 구조체를 새로 정의해야 한다.
+malloc()으로 fd 및 파일을 위한 공간을 동적 할당하므로 이에 대한 위험성이 있다.
+스레드 구조체가 차지하는 공간이 늘어난다.
+커널 차원에서 파일을 동시적으로 관리할 수 없다(현재 열린 모든 파일의 통계를 계산하는 등).
+
+>> B11: The default tid_t to pid_t mapping is the identity mapping.
+>> If you changed it, what advantages are there to your approach?
+
+변경하지 않았음.
+
+현재 핀토스는 싱글스레드이기 때문에 pid와 tid를 구분해서 생기는 이점은 크지 않을 것이다.
+
+			   SURVEY QUESTIONS
+			   ================
+
+Answering these questions is optional, but it will help us improve the
+course in future quarters.  Feel free to tell us anything you
+want--these questions are just to spur your thoughts.  You may also
+choose to respond anonymously in the course evaluations at the end of
+the quarter.
+
+>> In your opinion, was this assignment, or any one of the three problems
+>> in it, too easy or too hard?  Did it take too long or too little time?
+
+>> Did you find that working on a particular part of the assignment gave
+>> you greater insight into some aspect of OS design?
+
+>> Is there some particular fact or hint we should give students in
+>> future quarters to help them solve the problems?  Conversely, did you
+>> find any of our guidance to be misleading?
+
+>> Do you have any suggestions for the TAs to more effectively assist
+>> students, either for future quarters or the remaining projects?
+
+>> Any other comments?
