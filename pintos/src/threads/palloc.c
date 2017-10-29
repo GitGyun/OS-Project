@@ -72,7 +72,7 @@ palloc_init (void)
    If PAL_USER is set, the pages are obtained from the user pool,
    otherwise from the kernel pool.  If PAL_ZERO is set in FLAGS,
    then the pages are filled with zeros.  If too few pages are
-   availa[[[[[[[[[[[[[[[[[[[[[ble, returns a null pointer, unless PAL_ASSERT is set in
+   available, returns a null pointer, unless PAL_ASSERT is set in
    FLAGS, in which case the kernel panics. */
 void *
 palloc_get_multiple (enum palloc_flags flags, size_t page_cnt)

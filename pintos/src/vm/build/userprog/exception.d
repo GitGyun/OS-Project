@@ -4,4 +4,5 @@ userprog/exception.o: ../../userprog/exception.c \
  ../../lib/stdbool.h ../../lib/stddef.h ../../lib/kernel/stdio.h \
  ../../userprog/gdt.h ../../threads/loader.h ../../threads/interrupt.h \
  ../../threads/thread.h ../../lib/kernel/list.h ../../devices/timer.h \
- ../../lib/round.h
+ ../../lib/round.h ../../threads/synch.h ../../threads/vaddr.h \
+ ../../userprog/syscall.h

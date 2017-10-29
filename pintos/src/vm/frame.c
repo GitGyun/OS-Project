@@ -4,6 +4,8 @@
 static struct hash frame_table;
 
 static unsigned fte_hash (const struct hash_elem *, void *);
+static bool fte_cmp_paddr (const struct hash_elem *,
+                           const struct hash_elem *, void *);
 
 
 /* Initialize the frame table. Called by init.c */
@@ -25,7 +27,7 @@ frame_table_insert (struct fte *f)
 
 /* Find fte from address */
 struct fte *
-frame_table_find (const void *paddr)
+frame_table_find (void *paddr)
 {
   struct fte f;
   f.paddr = paddr;
@@ -37,10 +39,44 @@ frame_table_find (const void *paddr)
   return NULL;
 }
 
+/* Delete fte from the frame table */
+void
+frame_table_del (struct fte *f)
+{
+  hash_delete (&frame_table, &f->elem);
+}
+
 /* Allocate a new frame */
 void *
-frame_alloc ()
+frame_alloc (enum palloc_flags flags)
+{
+  void *kpage;
+  while ((kpage = palloc_get_page (flags)) == NULL)
+    {
+      // TODO : eviction
+    }
 
+  struct fte *fte_new = malloc (sizeof (struct fte));
+  fte_new->paddr = kpage;
+  fte_new->proccess = thread_current ();
+
+  hash_insert (&frame_table, &fte_new->elem);
+
+  return kpage;
+}
+
+/* Free KPAGE */
+void
+frame_free (void *kpage)
+{
+  struct fte *f = frame_table_find (kpage);
+  if (f != NULL)
+    {
+      palloc_free_page (kpage);
+      frame_table_del (f);
+      free (f);
+    }
+}
 
 /* Hash function */
 static unsigned

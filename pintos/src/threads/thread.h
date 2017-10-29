@@ -102,9 +102,10 @@ struct thread
 #ifdef USERPROG
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
+#endif
+
     struct semaphore sema_exec;         /* Semaphore for exec() */
     bool load_success;                  /* Succeeded in loading excutable? */
-#endif
 
     struct thread *parent;              /* Parent thread */
     struct list children;               /* List of children */

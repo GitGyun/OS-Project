@@ -151,6 +151,8 @@ page_fault (struct intr_frame *f)
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
 
+  //printf("%s %s %s\n", not_present?"not_present":"", write?"write":"", user?"user":"");
+
   /* Test sc-bad-sp raises not present error:
         Page fault at 0x40480d7: not present error reading page
         in kernel context.

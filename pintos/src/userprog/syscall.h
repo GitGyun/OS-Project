@@ -11,9 +11,6 @@ struct fd_elem {
   struct list_elem elem;
 };
 
-/* Lock for file read, write, etc... */
-struct lock file_lock;
-
 void syscall_exit (int);
 
 #endif /* userprog/syscall.h */

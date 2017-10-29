@@ -30,6 +30,9 @@ static void syscall_seek (int, unsigned);
 static unsigned syscall_tell (int);
 static void syscall_close (int);
 
+/* Lock for file read, write, etc... */
+struct lock file_lock;
+
 uint32_t args[7];
 const int arg_nums[] = {0, 1, 1, 1, 5, 1, 1, 1, 7, 7,
                         5, 1, 1, 2, 1, 1, 1, 2, 1, 1};
@@ -413,7 +416,6 @@ syscall_write (int fd, void *buffer, unsigned size)
 
   if (fd == 1)
     {
-      /* Read the data from console and write to buffer */
       putbuf (buffer, size);
       lock_release (&file_lock);
       return (int)size;

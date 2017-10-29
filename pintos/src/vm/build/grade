@@ -1,0 +1,1740 @@
+TOTAL TESTING SCORE: 44.9%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY BY TEST SET
+
+Test Set                                      Pts Max  % Ttl  % Max
+--------------------------------------------- --- --- ------ ------
+tests/vm/Rubric.functionality                   5/ 55   4.5%/ 50.0%
+tests/vm/Rubric.robustness                     10/ 28   5.4%/ 15.0%
+tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
+tests/userprog/Rubric.robustness               88/ 88   5.0%/  5.0%
+tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
+--------------------------------------------- --- --- ------ ------
+Total                                                  44.9%/100.0%
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+SUMMARY OF INDIVIDUAL TESTS
+
+Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
+	- Test stack growth.
+	  ** 0/ 3 tests/vm/pt-grow-stack
+	  ** 0/ 3 tests/vm/pt-grow-stk-sc
+	  ** 0/ 3 tests/vm/pt-big-stk-obj
+	  ** 0/ 3 tests/vm/pt-grow-pusha
+
+	- Test paging behavior.
+	  ** 0/ 3 tests/vm/page-linear
+	  ** 0/ 3 tests/vm/page-parallel
+	     3/ 3 tests/vm/page-shuffle
+	  ** 0/ 4 tests/vm/page-merge-seq
+	  ** 0/ 4 tests/vm/page-merge-par
+	  ** 0/ 4 tests/vm/page-merge-mm
+	  ** 0/ 4 tests/vm/page-merge-stk
+
+	- Test "mmap" system call.
+	  ** 0/ 2 tests/vm/mmap-read
+	  ** 0/ 2 tests/vm/mmap-write
+	  ** 0/ 2 tests/vm/mmap-shuffle
+
+	  ** 0/ 2 tests/vm/mmap-twice
+
+	     2/ 2 tests/vm/mmap-unmap
+	  ** 0/ 1 tests/vm/mmap-exit
+
+	  ** 0/ 3 tests/vm/mmap-clean
+
+	  ** 0/ 2 tests/vm/mmap-close
+	  ** 0/ 2 tests/vm/mmap-remove
+
+	- Section summary.
+	      2/ 20 tests passed
+	      5/ 55 points subtotal
+
+Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
+	- Test robustness of page table support.
+	     2/ 2 tests/vm/pt-bad-addr
+	     3/ 3 tests/vm/pt-bad-read
+	  ** 0/ 2 tests/vm/pt-write-code
+	  ** 0/ 3 tests/vm/pt-write-code2
+	     4/ 4 tests/vm/pt-grow-bad
+
+	- Test robustness of "mmap" system call.
+	  ** 0/ 1 tests/vm/mmap-bad-fd
+	  ** 0/ 1 tests/vm/mmap-inherit
+	  ** 0/ 1 tests/vm/mmap-null
+	     1/ 1 tests/vm/mmap-zero
+
+	  ** 0/ 2 tests/vm/mmap-misalign
+
+	  ** 0/ 2 tests/vm/mmap-over-code
+	  ** 0/ 2 tests/vm/mmap-over-data
+	  ** 0/ 2 tests/vm/mmap-over-stk
+	  ** 0/ 2 tests/vm/mmap-overlap
+
+
+	- Section summary.
+	      4/ 14 tests passed
+	     10/ 28 points subtotal
+
+Functionality of system calls (tests/userprog/Rubric.functionality):
+	- Test argument passing on Pintos command line.
+	     3/ 3 tests/userprog/args-none
+	     3/ 3 tests/userprog/args-single
+	     3/ 3 tests/userprog/args-multiple
+	     3/ 3 tests/userprog/args-many
+	     3/ 3 tests/userprog/args-dbl-space
+
+	- Test "create" system call.
+	     3/ 3 tests/userprog/create-empty
+	     3/ 3 tests/userprog/create-long
+	     3/ 3 tests/userprog/create-normal
+	     3/ 3 tests/userprog/create-exists
+
+	- Test "open" system call.
+	     3/ 3 tests/userprog/open-missing
+	     3/ 3 tests/userprog/open-normal
+	     3/ 3 tests/userprog/open-twice
+
+	- Test "read" system call.
+	     3/ 3 tests/userprog/read-normal
+	     3/ 3 tests/userprog/read-zero
+
+	- Test "write" system call.
+	     3/ 3 tests/userprog/write-normal
+	     3/ 3 tests/userprog/write-zero
+
+	- Test "close" system call.
+	     3/ 3 tests/userprog/close-normal
+
+	- Test "exec" system call.
+	     5/ 5 tests/userprog/exec-once
+	     5/ 5 tests/userprog/exec-multiple
+	     5/ 5 tests/userprog/exec-arg
+
+	- Test "wait" system call.
+	     5/ 5 tests/userprog/wait-simple
+	     5/ 5 tests/userprog/wait-twice
+
+	- Test "exit" system call.
+	     5/ 5 tests/userprog/exit
+
+	- Test "halt" system call.
+	     3/ 3 tests/userprog/halt
+
+	- Test recursive execution of user programs.
+	    15/15 tests/userprog/multi-recurse
+
+	- Test read-only executable feature.
+	     3/ 3 tests/userprog/rox-simple
+	     3/ 3 tests/userprog/rox-child
+	     3/ 3 tests/userprog/rox-multichild
+
+	- Section summary.
+	     28/ 28 tests passed
+	    108/108 points subtotal
+
+Robustness of system calls (tests/userprog/Rubric.robustness):
+	- Test robustness of file descriptor handling.
+	     2/ 2 tests/userprog/close-stdin
+	     2/ 2 tests/userprog/close-stdout
+	     2/ 2 tests/userprog/close-bad-fd
+	     2/ 2 tests/userprog/close-twice
+	     2/ 2 tests/userprog/read-bad-fd
+	     2/ 2 tests/userprog/read-stdout
+	     2/ 2 tests/userprog/write-bad-fd
+	     2/ 2 tests/userprog/write-stdin
+	     2/ 2 tests/userprog/multi-child-fd
+
+	- Test robustness of pointer handling.
+	     3/ 3 tests/userprog/create-bad-ptr
+	     3/ 3 tests/userprog/exec-bad-ptr
+	     3/ 3 tests/userprog/open-bad-ptr
+	     3/ 3 tests/userprog/read-bad-ptr
+	     3/ 3 tests/userprog/write-bad-ptr
+
+	- Test robustness of buffer copying across page boundaries.
+	     3/ 3 tests/userprog/create-bound
+	     3/ 3 tests/userprog/open-boundary
+	     3/ 3 tests/userprog/read-boundary
+	     3/ 3 tests/userprog/write-boundary
+
+	- Test handling of null pointer and empty strings.
+	     2/ 2 tests/userprog/create-null
+	     2/ 2 tests/userprog/open-null
+	     2/ 2 tests/userprog/open-empty
+
+	- Test robustness of system call implementation.
+	     3/ 3 tests/userprog/sc-bad-arg
+	     3/ 3 tests/userprog/sc-bad-sp
+	     5/ 5 tests/userprog/sc-boundary
+	     5/ 5 tests/userprog/sc-boundary-2
+
+	- Test robustness of "exec" and "wait" system calls.
+	     5/ 5 tests/userprog/exec-missing
+	     5/ 5 tests/userprog/wait-bad-pid
+	     5/ 5 tests/userprog/wait-killed
+
+	- Test robustness of exception handling.
+	     1/ 1 tests/userprog/bad-read
+	     1/ 1 tests/userprog/bad-write
+	     1/ 1 tests/userprog/bad-jump
+	     1/ 1 tests/userprog/bad-read2
+	     1/ 1 tests/userprog/bad-write2
+	     1/ 1 tests/userprog/bad-jump2
+
+	- Section summary.
+	     34/ 34 tests passed
+	     88/ 88 points subtotal
+
+Functionality of base file system (tests/filesys/base/Rubric):
+	- Test basic support for small files.
+	     1/ 1 tests/filesys/base/sm-create
+	     2/ 2 tests/filesys/base/sm-full
+	     2/ 2 tests/filesys/base/sm-random
+	     2/ 2 tests/filesys/base/sm-seq-block
+	     3/ 3 tests/filesys/base/sm-seq-random
+
+	- Test basic support for large files.
+	     1/ 1 tests/filesys/base/lg-create
+	     2/ 2 tests/filesys/base/lg-full
+	     2/ 2 tests/filesys/base/lg-random
+	     2/ 2 tests/filesys/base/lg-seq-block
+	     3/ 3 tests/filesys/base/lg-seq-random
+
+	- Test synchronized multiprogram access to files.
+	     4/ 4 tests/filesys/base/syn-read
+	     4/ 4 tests/filesys/base/syn-write
+	     2/ 2 tests/filesys/base/syn-remove
+
+	- Section summary.
+	     13/ 13 tests passed
+	     30/ 30 points subtotal
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-grow-stack FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (pt-grow-stack) begin
+  (pt-grow-stack) cksum: 3424492700
+  (pt-grow-stack) end
+Differences in `diff -u' format:
+  (pt-grow-stack) begin
+- (pt-grow-stack) cksum: 3424492700
+- (pt-grow-stack) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/pt-grow-stack:
+
+Copying tests/vm/pt-grow-stack into /tmp/RYGkjwMrZ1.dsk...
+Writing command line to /tmp/IUZMC0H93w.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put pt-grow-stack run pt-grow-stack
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-grow-stack' into the file system...
+Executing 'pt-grow-stack':
+(pt-grow-stack) begin
+pt-grow-stack: exit(-1)
+Execution of 'pt-grow-stack' complete.
+Timer: 277 ticks
+Thread: 30 idle ticks, 216 kernel ticks, 33 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 70 reads, 226 writes
+hd1:0: 109 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 927 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-grow-stk-sc FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (pt-grow-stk-sc) begin
+  (pt-grow-stk-sc) create "sample.txt"
+  (pt-grow-stk-sc) open "sample.txt"
+  (pt-grow-stk-sc) write "sample.txt"
+  (pt-grow-stk-sc) 2nd open "sample.txt"
+  (pt-grow-stk-sc) read "sample.txt"
+  (pt-grow-stk-sc) compare written data against read data
+  (pt-grow-stk-sc) end
+Differences in `diff -u' format:
+  (pt-grow-stk-sc) begin
+- (pt-grow-stk-sc) create "sample.txt"
+- (pt-grow-stk-sc) open "sample.txt"
+- (pt-grow-stk-sc) write "sample.txt"
+- (pt-grow-stk-sc) 2nd open "sample.txt"
+- (pt-grow-stk-sc) read "sample.txt"
+- (pt-grow-stk-sc) compare written data against read data
+- (pt-grow-stk-sc) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/pt-grow-stk-sc:
+
+Copying tests/vm/pt-grow-stk-sc into /tmp/adV1jlQyrB.dsk...
+Writing command line to /tmp/SVqL5PS9VW.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put pt-grow-stk-sc run pt-grow-stk-sc
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-grow-stk-sc' into the file system...
+Executing 'pt-grow-stk-sc':
+(pt-grow-stk-sc) begin
+pt-grow-stk-sc: exit(-1)
+Execution of 'pt-grow-stk-sc' complete.
+Timer: 275 ticks
+Thread: 31 idle ticks, 212 kernel ticks, 34 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 70 reads, 214 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 934 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-big-stk-obj FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (pt-big-stk-obj) begin
+  (pt-big-stk-obj) cksum: 3256410166
+  (pt-big-stk-obj) end
+Differences in `diff -u' format:
+  (pt-big-stk-obj) begin
+- (pt-big-stk-obj) cksum: 3256410166
+- (pt-big-stk-obj) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/pt-big-stk-obj:
+
+Copying tests/vm/pt-big-stk-obj into /tmp/28UNDzkTFN.dsk...
+Writing command line to /tmp/v4sKsuuEoC.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put pt-big-stk-obj run pt-big-stk-obj
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-big-stk-obj' into the file system...
+Executing 'pt-big-stk-obj':
+(pt-big-stk-obj) begin
+pt-big-stk-obj: exit(-1)
+Execution of 'pt-big-stk-obj' complete.
+Timer: 276 ticks
+Thread: 31 idle ticks, 213 kernel ticks, 34 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 70 reads, 226 writes
+hd1:0: 109 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 934 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-grow-pusha FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (pt-grow-pusha) begin
+  (pt-grow-pusha) end
+Differences in `diff -u' format:
+  (pt-grow-pusha) begin
+- (pt-grow-pusha) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/pt-grow-pusha:
+
+Copying tests/vm/pt-grow-pusha into /tmp/lSX7Pt1aka.dsk...
+Writing command line to /tmp/jUvKtmw8uz.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put pt-grow-pusha run pt-grow-pusha
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-grow-pusha' into the file system...
+Executing 'pt-grow-pusha':
+(pt-grow-pusha) begin
+pt-grow-pusha: exit(-1)
+Execution of 'pt-grow-pusha' complete.
+Timer: 271 ticks
+Thread: 31 idle ticks, 209 kernel ticks, 33 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 67 reads, 206 writes
+hd1:0: 99 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 926 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-linear FAILURE:
+
+Run didn't produce any output
+
+OUTPUT FROM tests/vm/page-linear:
+
+Copying tests/vm/page-linear into /tmp/iwJZxJwYmM.dsk...
+Writing command line to /tmp/3htZLyvHKd.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-linear run page-linear
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-linear' into the file system...
+Executing 'page-linear':
+Execution of 'page-linear' complete.
+Timer: 1347 ticks
+Thread: 30 idle ticks, 197 kernel ticks, 1122 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 66 reads, 218 writes
+hd1:0: 105 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 874 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-parallel FAILURE:
+
+run: exec "child-linear": FAILED
+
+OUTPUT FROM tests/vm/page-parallel:
+
+Copying tests/vm/page-parallel into /tmp/TBzqj8hryV.dsk...
+Copying tests/vm/child-linear into /tmp/TBzqj8hryV.dsk...
+Writing command line to /tmp/crr6AFjXkU.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-parallel put child-linear run page-parallel
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-parallel' into the file system...
+Putting 'child-linear' into the file system...
+Executing 'page-parallel':
+(page-parallel) begin
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear": FAILED
+page-parallel: exit(1)
+Execution of 'page-parallel' complete.
+Timer: 2022 ticks
+Thread: 33 idle ticks, 332 kernel ticks, 1659 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 174 reads, 418 writes
+hd1:0: 204 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1110 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-seq FAILURE:
+
+Run didn't produce any output
+
+OUTPUT FROM tests/vm/page-merge-seq:
+
+Copying tests/vm/page-merge-seq into /tmp/lALg9omoa8.dsk...
+Copying tests/vm/child-sort into /tmp/lALg9omoa8.dsk...
+Writing command line to /tmp/yIm6AgkhLs.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-merge-seq put child-sort run page-merge-seq
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-seq' into the file system...
+Putting 'child-sort' into the file system...
+Executing 'page-merge-seq':
+Execution of 'page-merge-seq' complete.
+Timer: 1427 ticks
+Thread: 31 idle ticks, 277 kernel ticks, 1121 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 94 reads, 428 writes
+hd1:0: 209 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 949 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-par FAILURE:
+
+Run didn't produce any output
+
+OUTPUT FROM tests/vm/page-merge-par:
+
+Copying tests/vm/page-merge-par into /tmp/_6HVS1mx1F.dsk...
+Copying tests/vm/child-sort into /tmp/_6HVS1mx1F.dsk...
+Writing command line to /tmp/3EE1EFaL9G.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Putting 'child-sort' into the file system...
+Executing 'page-merge-par':
+Execution of 'page-merge-par' complete.
+Timer: 1432 ticks
+Thread: 32 idle ticks, 281 kernel ticks, 1121 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 95 reads, 432 writes
+hd1:0: 211 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 949 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-mm FAILURE:
+
+Run didn't produce any output
+
+OUTPUT FROM tests/vm/page-merge-mm:
+
+Copying tests/vm/page-merge-mm into /tmp/VwBY4N5x8I.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/VwBY4N5x8I.dsk...
+Writing command line to /tmp/7g7KD4ZH3N.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-mm' into the file system...
+Putting 'child-qsort-mm' into the file system...
+Executing 'page-merge-mm':
+Execution of 'page-merge-mm' complete.
+Timer: 1433 ticks
+Thread: 30 idle ticks, 284 kernel ticks, 1121 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 95 reads, 450 writes
+hd1:0: 220 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 952 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-stk FAILURE:
+
+Run didn't produce any output
+
+OUTPUT FROM tests/vm/page-merge-stk:
+
+Copying tests/vm/page-merge-stk into /tmp/KIuxgmv5aa.dsk...
+Copying tests/vm/child-qsort into /tmp/KIuxgmv5aa.dsk...
+Writing command line to /tmp/p3w3HlEOp_.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-stk' into the file system...
+Putting 'child-qsort' into the file system...
+Executing 'page-merge-stk':
+Execution of 'page-merge-stk' complete.
+Timer: 1433 ticks
+Thread: 33 idle ticks, 281 kernel ticks, 1121 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 95 reads, 450 writes
+hd1:0: 220 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 951 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-read FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-read) begin
+  (mmap-read) open "sample.txt"
+  (mmap-read) mmap "sample.txt"
+  (mmap-read) end
+Differences in `diff -u' format:
+  (mmap-read) begin
+  (mmap-read) open "sample.txt"
+  (mmap-read) mmap "sample.txt"
+- (mmap-read) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-read:
+
+Copying tests/vm/mmap-read into /tmp/oxaX_Mij2T.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/oxaX_Mij2T.dsk...
+Writing command line to /tmp/QxwARP9gYR.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-read put sample.txt run mmap-read
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-read' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-read':
+(mmap-read) begin
+(mmap-read) open "sample.txt"
+(mmap-read) mmap "sample.txt"
+mmap-read: exit(-1)
+Execution of 'mmap-read' complete.
+Timer: 308 ticks
+Thread: 30 idle ticks, 237 kernel ticks, 44 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 101 reads, 222 writes
+hd1:0: 106 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1020 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-write FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-write) begin
+  (mmap-write) create "sample.txt"
+  (mmap-write) open "sample.txt"
+  (mmap-write) mmap "sample.txt"
+  (mmap-write) compare read data against written data
+  (mmap-write) end
+Differences in `diff -u' format:
+  (mmap-write) begin
+  (mmap-write) create "sample.txt"
+  (mmap-write) open "sample.txt"
+  (mmap-write) mmap "sample.txt"
+- (mmap-write) compare read data against written data
+- (mmap-write) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-write:
+
+Copying tests/vm/mmap-write into /tmp/zAF_eWdR8A.dsk...
+Writing command line to /tmp/ITQfVCMBPP.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+mmap-write: exit(-1)
+Execution of 'mmap-write' complete.
+Timer: 304 ticks
+Thread: 30 idle ticks, 211 kernel ticks, 66 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 96 reads, 220 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1001 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-shuffle FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-shuffle) begin
+  (mmap-shuffle) create "buffer"
+  (mmap-shuffle) open "buffer"
+  (mmap-shuffle) mmap "buffer"
+  (mmap-shuffle) init: cksum=3115322833
+  (mmap-shuffle) shuffle 0: cksum=1691062564
+  (mmap-shuffle) shuffle 1: cksum=1973575879
+  (mmap-shuffle) shuffle 2: cksum=1647619479
+  (mmap-shuffle) shuffle 3: cksum=96566261
+  (mmap-shuffle) shuffle 4: cksum=3885786467
+  (mmap-shuffle) shuffle 5: cksum=3022003332
+  (mmap-shuffle) shuffle 6: cksum=3614934266
+  (mmap-shuffle) shuffle 7: cksum=2704001777
+  (mmap-shuffle) shuffle 8: cksum=735775156
+  (mmap-shuffle) shuffle 9: cksum=1864109763
+  (mmap-shuffle) end
+Differences in `diff -u' format:
+  (mmap-shuffle) begin
+  (mmap-shuffle) create "buffer"
+  (mmap-shuffle) open "buffer"
+  (mmap-shuffle) mmap "buffer"
+- (mmap-shuffle) init: cksum=3115322833
+- (mmap-shuffle) shuffle 0: cksum=1691062564
+- (mmap-shuffle) shuffle 1: cksum=1973575879
+- (mmap-shuffle) shuffle 2: cksum=1647619479
+- (mmap-shuffle) shuffle 3: cksum=96566261
+- (mmap-shuffle) shuffle 4: cksum=3885786467
+- (mmap-shuffle) shuffle 5: cksum=3022003332
+- (mmap-shuffle) shuffle 6: cksum=3614934266
+- (mmap-shuffle) shuffle 7: cksum=2704001777
+- (mmap-shuffle) shuffle 8: cksum=735775156
+- (mmap-shuffle) shuffle 9: cksum=1864109763
+- (mmap-shuffle) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-shuffle:
+
+Copying tests/vm/mmap-shuffle into /tmp/jRS_jR_ULH.dsk...
+Writing command line to /tmp/viV0MprP8D.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-shuffle' into the file system...
+Executing 'mmap-shuffle':
+(mmap-shuffle) begin
+(mmap-shuffle) create "buffer"
+(mmap-shuffle) open "buffer"
+(mmap-shuffle) mmap "buffer"
+mmap-shuffle: exit(-1)
+Execution of 'mmap-shuffle' complete.
+Timer: 351 ticks
+Thread: 30 idle ticks, 215 kernel ticks, 109 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 96 reads, 486 writes
+hd1:0: 109 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1010 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-twice FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-twice) begin
+  (mmap-twice) open "sample.txt" #0
+  (mmap-twice) mmap "sample.txt" #0 at 0x10000000
+  (mmap-twice) open "sample.txt" #1
+  (mmap-twice) mmap "sample.txt" #1 at 0x20000000
+  (mmap-twice) compare mmap'd file 0 against data
+  (mmap-twice) compare mmap'd file 1 against data
+  (mmap-twice) end
+Differences in `diff -u' format:
+  (mmap-twice) begin
+  (mmap-twice) open "sample.txt" #0
+  (mmap-twice) mmap "sample.txt" #0 at 0x10000000
+  (mmap-twice) open "sample.txt" #1
+  (mmap-twice) mmap "sample.txt" #1 at 0x20000000
+  (mmap-twice) compare mmap'd file 0 against data
+- (mmap-twice) compare mmap'd file 1 against data
+- (mmap-twice) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-twice:
+
+Copying tests/vm/mmap-twice into /tmp/O597adAUVm.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/O597adAUVm.dsk...
+Writing command line to /tmp/F0jXsvj_H_.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-twice' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-twice':
+(mmap-twice) begin
+(mmap-twice) open "sample.txt" #0
+(mmap-twice) mmap "sample.txt" #0 at 0x10000000
+(mmap-twice) open "sample.txt" #1
+(mmap-twice) mmap "sample.txt" #1 at 0x20000000
+(mmap-twice) compare mmap'd file 0 against data
+mmap-twice: exit(-1)
+Execution of 'mmap-twice' complete.
+Timer: 327 ticks
+Thread: 30 idle ticks, 237 kernel ticks, 63 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 104 reads, 222 writes
+hd1:0: 106 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1179 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-exit FAILURE:
+
+run: wait for child (should return 0): FAILED
+
+OUTPUT FROM tests/vm/mmap-exit:
+
+Copying tests/vm/mmap-exit into /tmp/hMJOJGwAmM.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/hMJOJGwAmM.dsk...
+Writing command line to /tmp/KoQDi2uCy8.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-exit' into the file system...
+Putting 'child-mm-wrt' into the file system...
+Executing 'mmap-exit':
+(mmap-exit) begin
+(child-mm-wrt) begin
+(child-mm-wrt) create "sample.txt"
+(child-mm-wrt) open "sample.txt"
+(child-mm-wrt) mmap "sample.txt"
+child-mm-wrt: exit(-1)
+(mmap-exit) wait for child (should return 0): FAILED
+mmap-exit: exit(1)
+Execution of 'mmap-exit' complete.
+Timer: 455 ticks
+Thread: 30 idle ticks, 312 kernel ticks, 115 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 181 reads, 424 writes
+hd1:0: 204 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1162 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-clean FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-clean) begin
+  (mmap-clean) open "sample.txt"
+  (mmap-clean) mmap "sample.txt"
+  (mmap-clean) write "sample.txt"
+  (mmap-clean) munmap "sample.txt"
+  (mmap-clean) seek "sample.txt"
+  (mmap-clean) read "sample.txt"
+  (mmap-clean) file change was retained after munmap
+  (mmap-clean) end
+Differences in `diff -u' format:
+  (mmap-clean) begin
+  (mmap-clean) open "sample.txt"
+  (mmap-clean) mmap "sample.txt"
+- (mmap-clean) write "sample.txt"
+- (mmap-clean) munmap "sample.txt"
+- (mmap-clean) seek "sample.txt"
+- (mmap-clean) read "sample.txt"
+- (mmap-clean) file change was retained after munmap
+- (mmap-clean) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-clean:
+
+Copying tests/vm/mmap-clean into /tmp/w3IgcS2Geg.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/w3IgcS2Geg.dsk...
+Writing command line to /tmp/KZKE2hQCwr.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-clean put sample.txt run mmap-clean
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-clean' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-clean':
+(mmap-clean) begin
+(mmap-clean) open "sample.txt"
+(mmap-clean) mmap "sample.txt"
+mmap-clean: exit(-1)
+Execution of 'mmap-clean' complete.
+Timer: 309 ticks
+Thread: 31 idle ticks, 238 kernel ticks, 43 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 102 reads, 224 writes
+hd1:0: 107 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1029 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-close FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-close) begin
+  (mmap-close) open "sample.txt"
+  (mmap-close) mmap "sample.txt"
+  (mmap-close) end
+Differences in `diff -u' format:
+  (mmap-close) begin
+  (mmap-close) open "sample.txt"
+  (mmap-close) mmap "sample.txt"
+- (mmap-close) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-close:
+
+Copying tests/vm/mmap-close into /tmp/ZRimmljqbo.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ZRimmljqbo.dsk...
+Writing command line to /tmp/56bPSn7jZT.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-close' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-close':
+(mmap-close) begin
+(mmap-close) open "sample.txt"
+(mmap-close) mmap "sample.txt"
+mmap-close: exit(-1)
+Execution of 'mmap-close' complete.
+Timer: 307 ticks
+Thread: 31 idle ticks, 236 kernel ticks, 43 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 107 reads, 220 writes
+hd1:0: 105 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1029 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-remove FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-remove) begin
+  (mmap-remove) open "sample.txt"
+  (mmap-remove) mmap "sample.txt"
+  (mmap-remove) remove "sample.txt"
+  (mmap-remove) try to open "sample.txt"
+  (mmap-remove) create "another"
+  (mmap-remove) end
+Differences in `diff -u' format:
+  (mmap-remove) begin
+  (mmap-remove) open "sample.txt"
+  (mmap-remove) mmap "sample.txt"
+  (mmap-remove) remove "sample.txt"
+  (mmap-remove) try to open "sample.txt"
+  (mmap-remove) create "another"
+- (mmap-remove) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-remove:
+
+Copying tests/vm/mmap-remove into /tmp/3ZSjH_nmRT.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/3ZSjH_nmRT.dsk...
+Writing command line to /tmp/rWEhEJN5eb.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-remove' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-remove':
+(mmap-remove) begin
+(mmap-remove) open "sample.txt"
+(mmap-remove) mmap "sample.txt"
+(mmap-remove) remove "sample.txt"
+(mmap-remove) try to open "sample.txt"
+(mmap-remove) create "another"
+mmap-remove: exit(-1)
+Execution of 'mmap-remove' complete.
+Timer: 369 ticks
+Thread: 31 idle ticks, 236 kernel ticks, 104 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 148 reads, 311 writes
+hd1:0: 107 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1143 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-write-code FAILURE:
+
+Output missing 'pt-write-code: exit(-1)' message.
+
+OUTPUT FROM tests/vm/pt-write-code:
+
+Copying tests/vm/pt-write-code into /tmp/qT6vl8v2SB.dsk...
+Writing command line to /tmp/FlHYXPXV8P.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put pt-write-code run pt-write-code
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-write-code' into the file system...
+Executing 'pt-write-code':
+(pt-write-code) begin
+Page fault at 0x80480d4: rights violation error writing page in user context.
+pt-write-code: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480d7
+ cr2=080480d4 error=00000007
+ eax=00000100 ebx=00000000 ecx=0000000e edx=00000027
+ esi=00000000 edi=00000000 esp=bfffff74 ebp=bfffffa8
+ cs=001b ds=0023 es=0023 ss=0023
+Execution of 'pt-write-code' complete.
+Timer: 307 ticks
+Thread: 31 idle ticks, 209 kernel ticks, 70 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 67 reads, 206 writes
+hd1:0: 99 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1278 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/pt-write-code2 FAILURE:
+
+Kernel panic in run: PANIC at ../../userprog/exception.c:103 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc0106acd
+Translation of call stack:
+0xc0106acd: debug_panic (.../../lib/kernel/debug.c:34)
+
+OUTPUT FROM tests/vm/pt-write-code2:
+
+Copying tests/vm/pt-write-code2 into /tmp/BqEaiJ91O8.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/BqEaiJ91O8.dsk...
+Writing command line to /tmp/9NyNl3Zltr.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'pt-write-code2' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'pt-write-code2':
+(pt-write-code2) begin
+(pt-write-code2) open "sample.txt"
+Page fault at 0x80480d4: rights violation error writing page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01060e8
+ cr2=080480d4 error=00000003
+ eax=080480d4 ebx=00000001 ecx=0000003d edx=00000000
+ esi=c011f20c edi=00000000 esp=00000000 ebp=00000001
+ cs=0008 ds=0010 es=0010 ss=0001
+Kernel PANIC at ../../userprog/exception.c:103 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc0106acdpt-write-code2: exit(-1)
+Execution of 'pt-write-code2' complete.
+Timer: 338 ticks
+Thread: 31 idle ticks, 235 kernel ticks, 75 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 99 reads, 216 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1461 characters output
+Keyboard: 0 keys pressed
+Exception: 2 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-bad-fd FAILURE:
+
+run: try to mmap invalid fd: FAILED
+
+OUTPUT FROM tests/vm/mmap-bad-fd:
+
+Copying tests/vm/mmap-bad-fd into /tmp/PLhN9U1BwT.dsk...
+Writing command line to /tmp/zFbpcDLYwy.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-bad-fd run mmap-bad-fd
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-bad-fd' into the file system...
+Executing 'mmap-bad-fd':
+(mmap-bad-fd) begin
+(mmap-bad-fd) try to mmap invalid fd
+(mmap-bad-fd) try to mmap invalid fd: FAILED
+mmap-bad-fd: exit(1)
+Execution of 'mmap-bad-fd' complete.
+Timer: 279 ticks
+Thread: 31 idle ticks, 209 kernel ticks, 42 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 67 reads, 208 writes
+hd1:0: 100 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 994 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-inherit FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (mmap-inherit) begin
+  (mmap-inherit) open "sample.txt"
+  (mmap-inherit) mmap "sample.txt"
+  (mmap-inherit) exec "child-inherit"
+  (child-inherit) begin
+  child-inherit: exit(-1)
+  (mmap-inherit) checking that mmap'd file still has same data
+  (mmap-inherit) end
+  mmap-inherit: exit(0)
+Differences in `diff -u' format:
+  (mmap-inherit) begin
+  (mmap-inherit) open "sample.txt"
+  (mmap-inherit) mmap "sample.txt"
+- (mmap-inherit) exec "child-inherit"
+- (child-inherit) begin
+- child-inherit: exit(-1)
+- (mmap-inherit) checking that mmap'd file still has same data
+- (mmap-inherit) end
+- mmap-inherit: exit(0)
++ mmap-inherit: exit(-1)
+
+(User fault messages are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/mmap-inherit:
+
+Copying tests/vm/mmap-inherit into /tmp/ptkjKhTDU1.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ptkjKhTDU1.dsk...
+Copying tests/vm/child-inherit into /tmp/ptkjKhTDU1.dsk...
+Writing command line to /tmp/VzDlz65eLd.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-inherit' into the file system...
+Putting 'sample.txt' into the file system...
+Putting 'child-inherit' into the file system...
+Executing 'mmap-inherit':
+(mmap-inherit) begin
+(mmap-inherit) open "sample.txt"
+(mmap-inherit) mmap "sample.txt"
+mmap-inherit: exit(-1)
+Execution of 'mmap-inherit' complete.
+Timer: 389 ticks
+Thread: 31 idle ticks, 316 kernel ticks, 45 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 131 reads, 426 writes
+hd1:0: 207 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1113 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-null FAILURE:
+
+run: try to mmap at address 0: FAILED
+
+OUTPUT FROM tests/vm/mmap-null:
+
+Copying tests/vm/mmap-null into /tmp/4V6PCY_Kr2.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/4V6PCY_Kr2.dsk...
+Writing command line to /tmp/gyl6gXBUHP.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-null put sample.txt run mmap-null
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-null' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-null':
+(mmap-null) begin
+(mmap-null) open "sample.txt"
+(mmap-null) try to mmap at address 0
+(mmap-null) try to mmap at address 0: FAILED
+mmap-null: exit(1)
+Execution of 'mmap-null' complete.
+Timer: 311 ticks
+Thread: 30 idle ticks, 235 kernel ticks, 49 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 216 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1070 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-misalign FAILURE:
+
+run: try to mmap at misaligned address: FAILED
+
+OUTPUT FROM tests/vm/mmap-misalign:
+
+Copying tests/vm/mmap-misalign into /tmp/ujCWsevpgM.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ujCWsevpgM.dsk...
+Writing command line to /tmp/6lnSV0TRD0.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-misalign' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-misalign':
+(mmap-misalign) begin
+(mmap-misalign) open "sample.txt"
+(mmap-misalign) try to mmap at misaligned address
+(mmap-misalign) try to mmap at misaligned address: FAILED
+mmap-misalign: exit(1)
+Execution of 'mmap-misalign' complete.
+Timer: 315 ticks
+Thread: 32 idle ticks, 234 kernel ticks, 52 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 216 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1128 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-over-code FAILURE:
+
+run: try to mmap over code segment: FAILED
+
+OUTPUT FROM tests/vm/mmap-over-code:
+
+Copying tests/vm/mmap-over-code into /tmp/f191PlGSDX.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/f191PlGSDX.dsk...
+Writing command line to /tmp/npQ1HZb0D0.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-over-code' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-over-code':
+(mmap-over-code) begin
+(mmap-over-code) open "sample.txt"
+(mmap-over-code) try to mmap over code segment
+(mmap-over-code) try to mmap over code segment: FAILED
+mmap-over-code: exit(1)
+Execution of 'mmap-over-code' complete.
+Timer: 315 ticks
+Thread: 32 idle ticks, 234 kernel ticks, 52 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 216 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1130 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-over-data FAILURE:
+
+run: try to mmap over data segment: FAILED
+
+OUTPUT FROM tests/vm/mmap-over-data:
+
+Copying tests/vm/mmap-over-data into /tmp/8C2Ppxj9UJ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/8C2Ppxj9UJ.dsk...
+Writing command line to /tmp/axAgO4efx4.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-over-data' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-over-data':
+(mmap-over-data) begin
+(mmap-over-data) open "sample.txt"
+(mmap-over-data) try to mmap over data segment
+(mmap-over-data) try to mmap over data segment: FAILED
+mmap-over-data: exit(1)
+Execution of 'mmap-over-data' complete.
+Timer: 315 ticks
+Thread: 32 idle ticks, 234 kernel ticks, 52 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 216 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1130 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-over-stk FAILURE:
+
+run: try to mmap over stack segment: FAILED
+
+OUTPUT FROM tests/vm/mmap-over-stk:
+
+Copying tests/vm/mmap-over-stk into /tmp/JYb9K__FE9.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/JYb9K__FE9.dsk...
+Writing command line to /tmp/UynP51D4Uv.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-over-stk' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-over-stk':
+(mmap-over-stk) begin
+(mmap-over-stk) open "sample.txt"
+(mmap-over-stk) try to mmap over stack segment
+(mmap-over-stk) try to mmap over stack segment: FAILED
+mmap-over-stk: exit(1)
+Execution of 'mmap-over-stk' complete.
+Timer: 315 ticks
+Thread: 32 idle ticks, 234 kernel ticks, 51 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 216 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1122 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-overlap FAILURE:
+
+run: try to mmap "zeros" again: FAILED
+
+OUTPUT FROM tests/vm/mmap-overlap:
+
+Copying tests/vm/mmap-overlap into /tmp/AKVbN7gZ8C.dsk...
+Copying tests/vm/zeros into /tmp/AKVbN7gZ8C.dsk...
+Writing command line to /tmp/imX1HQfjEr.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-overlap' into the file system...
+Putting 'zeros' into the file system...
+Executing 'mmap-overlap':
+(mmap-overlap) begin
+(mmap-overlap) open "zeros" once
+(mmap-overlap) mmap "zeros"
+(mmap-overlap) open "zeros" again
+(mmap-overlap) try to mmap "zeros" again
+(mmap-overlap) try to mmap "zeros" again: FAILED
+mmap-overlap: exit(1)
+Execution of 'mmap-overlap' complete.
+Timer: 329 ticks
+Thread: 32 idle ticks, 241 kernel ticks, 59 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 110 reads, 242 writes
+hd1:0: 116 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1155 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...

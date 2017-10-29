@@ -1,0 +1,37 @@
+Copying tests/userprog/open-normal into /tmp/PSnr1l_ugw.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/PSnr1l_ugw.dsk...
+Writing command line to /tmp/x9VQrOAjlr.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put open-normal put sample.txt run open-normal
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'open-normal' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'open-normal':
+(open-normal) begin
+(open-normal) end
+open-normal: exit(0)
+Execution of 'open-normal' complete.
+Timer: 301 ticks
+Thread: 30 idle ticks, 235 kernel ticks, 39 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 98 reads, 212 writes
+hd1:0: 101 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 990 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...
