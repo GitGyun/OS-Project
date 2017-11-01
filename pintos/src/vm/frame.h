@@ -9,8 +9,10 @@
 /* Frame table entry */
 struct fte
   {
-    uint8_t *paddr;
-    struct thread *proccess;
+    uint8_t *paddr;							/* Physical address for the frame. */
+    struct thread *proccess;		/* Process that occupying the frame. */
+    bool accessed;							/* Accessed bit. */
+    bool dirty;									/* Dirty bit. */
 
     struct hash_elem elem;
   };

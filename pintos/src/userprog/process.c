@@ -20,7 +20,7 @@
 #include "userprog/syscall.h"
 
 #include "threads/malloc.h"
-#include "vm/frame.h"
+//#include "vm/frame.h"
 
 /* GCC provides the operations to void pointers as non-standard
    extension.
@@ -601,14 +601,16 @@ setup_stack (void **esp)
   uint8_t *kpage;
   bool success = false;
 
-  kpage = frame_alloc (PAL_USER | PAL_ZERO);
+	kpage = palloc_get_page (PAL_USER | PAL_ZERO);
+  //kpage = frame_alloc (PAL_USER | PAL_ZERO);
   if (kpage != NULL)
     {
       success = install_page (((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
       if (success)
         *esp = PHYS_BASE;
       else
-        frame_free (kpage);
+        //frame_free (kpage);
+        palloc_free_page (kpage);
     }
   return success;
 }

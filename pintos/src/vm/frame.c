@@ -51,14 +51,17 @@ void *
 frame_alloc (enum palloc_flags flags)
 {
   void *kpage;
-  while ((kpage = palloc_get_page (flags)) == NULL)
+  if ((kpage = palloc_get_page (flags)) == NULL)
     {
+			PANIC("Cannot allocate new frame");
       // TODO : eviction
     }
 
   struct fte *fte_new = malloc (sizeof (struct fte));
   fte_new->paddr = kpage;
   fte_new->proccess = thread_current ();
+  fte_new->accessed = 0;
+  fte_new->dirty = 0;
 
   hash_insert (&frame_table, &fte_new->elem);
 
@@ -77,6 +80,10 @@ frame_free (void *kpage)
       free (f);
     }
 }
+
+
+
+/* ===== Helpers ===== */
 
 /* Hash function */
 static unsigned

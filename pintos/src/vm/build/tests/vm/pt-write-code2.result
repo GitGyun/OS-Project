@@ -1,5 +1,0 @@
-FAIL
-Kernel panic in run: PANIC at ../../userprog/exception.c:103 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc0106acd
-Translation of call stack:
-0xc0106acd: debug_panic (.../../lib/kernel/debug.c:34)
