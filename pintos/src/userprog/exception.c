@@ -7,6 +7,15 @@
 #include "threads/vaddr.h"
 
 #include "userprog/syscall.h"
+#include "threads/palloc.h"
+#include "userprog/pagedir.h"
+#ifdef VM
+#include "vm/frame.h"
+#include "vm/page.h"
+#endif
+
+/* Maximum stack size of process 4 MB */
+#define MAX_STACK_SIZE (1 << 22)
 
 /* Number of page faults processed. */
 static long long page_fault_cnt;
@@ -151,7 +160,33 @@ page_fault (struct intr_frame *f)
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
 
-  //printf("%s %s %s\n", not_present?"not_present":"", write?"write":"", user?"user":"");
+  struct thread *t = thread_current ();
+
+#ifdef VM
+  /* Determine if the page fault is caused by stack access. Then
+     perform the stack growth */
+  uint8_t *esp = user ? f->esp : t->user_esp;
+  if (fault_addr < PHYS_BASE
+      && fault_addr >= PHYS_BASE - MAX_STACK_SIZE
+      && (uint8_t *)fault_addr >= esp - 32)
+    {
+      /* Calculate user page address to allocate */
+      void *new_upage = pg_round_down (fault_addr);
+      /* Allocate corresponding kernel page */
+      void *new_kpage = frame_alloc (PAL_USER | PAL_ZERO);
+      if (new_kpage != NULL)
+        {
+          /* upage - kpage mapping */
+          pagedir_set_page (t->pagedir, new_upage, new_kpage, true);
+          /* Update suppl. page table */
+          struct spte *p = spte_create (new_upage);
+          suppl_page_table_insert(t->suppl_page_table, p);
+
+          /* Stack growth complete. Exit PF handler. */
+          return;
+        }
+    }
+#endif
 
   /* Test sc-bad-sp raises not present error:
         Page fault at 0x40480d7: not present error reading page

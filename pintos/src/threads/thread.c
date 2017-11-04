@@ -71,10 +71,6 @@ static void schedule (void);
 void schedule_tail (struct thread *prev);
 static tid_t allocate_tid (void);
 
-/* ======================= */
-/*     Added Variables     */
-/* ======================= */
-
 /* List of sleeping threads */
 static struct list sleeping_list;
 
@@ -641,10 +637,6 @@ allocate_tid (void)
 /* Offset of `stack' member within `struct thread'.
    Used by switch.S, which can't figure it out on its own. */
 uint32_t thread_stack_ofs = offsetof (struct thread, stack);
-
-/* ======================= */
-/*     Added Functions     */
-/* ======================= */
 
 /* Return ready list (for convenience) */
 struct list *

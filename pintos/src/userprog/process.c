@@ -20,7 +20,9 @@
 #include "userprog/syscall.h"
 
 #include "threads/malloc.h"
+#ifdef VM
 #include "vm/frame.h"
+#endif
 
 /* GCC provides the operations to void pointers as non-standard
    extension.
@@ -379,6 +381,14 @@ load (const char *file_name, void (**eip) (void), void **esp)
   t->pagedir = pagedir_create ();
   if (t->pagedir == NULL)
     goto done;
+
+#ifdef VM
+  /* Allocate and activate suppl. page table. */
+  t->suppl_page_table = suppl_page_table_create();
+  if (t->suppl_page_table == NULL)
+    goto done;
+#endif
+
   process_activate ();
 
   /* Open executable file. */
@@ -601,14 +611,22 @@ setup_stack (void **esp)
   uint8_t *kpage;
   bool success = false;
 
+#ifdef VM
   kpage = frame_alloc (PAL_USER | PAL_ZERO);
+#else
+  kpage = palloc_get_page (PAL_USER | PAL_ZERO);
+#endif
   if (kpage != NULL)
     {
       success = install_page (((uint8_t *) PHYS_BASE) - PGSIZE, kpage, true);
       if (success)
         *esp = PHYS_BASE;
       else
+#ifdef VM
         frame_free (kpage);
+#else
+        palloc_free_page (kpage);
+#endif
     }
   return success;
 }

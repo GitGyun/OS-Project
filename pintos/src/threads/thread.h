@@ -8,6 +8,10 @@
 #include "devices/timer.h"
 #include "threads/synch.h"
 
+#ifdef VM
+#include "vm/page.h"
+#endif
+
 /* States in a thread's life cycle. */
 enum thread_status
   {
@@ -118,6 +122,12 @@ struct thread
     int exit_status;                    /* Exit status for exit() */
 
     struct list fd_list;                /* List of opened file descriptor */
+
+#ifdef VM
+    void *user_esp;
+
+    struct hash *suppl_page_table;
+#endif
 
     /* Owned by thread.c. */
     unsigned magic;                     /* Detects stack overflow. */

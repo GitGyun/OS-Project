@@ -61,6 +61,8 @@ syscall_init (void)
 static void
 syscall_handler (struct intr_frame *f UNUSED)
 {
+  struct thread *t = thread_current ();
+
   if (is_kernel_vaddr (f->esp))
     syscall_exit (-1);
 
@@ -72,6 +74,11 @@ syscall_handler (struct intr_frame *f UNUSED)
 
   if (!success)
     syscall_exit (-1);
+
+#ifdef VM
+  /* Copy esp for page fault handling */
+  t->user_esp = f->esp;
+#endif
 
   switch (syscall_num)
     {

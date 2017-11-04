@@ -9,8 +9,11 @@
 /* Frame table entry */
 struct fte
   {
-    uint8_t *paddr;
-    struct thread *proccess;
+    void *kpage;                /* Address to kernel page */
+    struct thread *proccess;    /* Owner of this frame */
+
+    bool accessed;              /* Accessed bit */
+    bool dirty;                 /* Dirty bit */
 
     struct hash_elem elem;
   };
