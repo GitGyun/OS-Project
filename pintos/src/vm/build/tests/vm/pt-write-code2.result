@@ -1,4 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../userprog/exception.c:112 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack:
-Translation of call stack:
+PASS

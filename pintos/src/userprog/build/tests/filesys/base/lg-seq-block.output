@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-seq-block into /tmp/jwIRAqGEti.dsk...
-Writing command line to /tmp/gHi47XkAUQ.dsk...
+Copying tests/filesys/base/lg-seq-block into /tmp/s35ru6U0vW.dsk...
+Writing command line to /tmp/0be443i26y.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -30,7 +30,7 @@ Executing 'lg-seq-block':
 lg-seq-block: exit(0)
 Execution of 'lg-seq-block' complete.
 Timer: 864 ticks
-Thread: 33 idle ticks, 231 kernel ticks, 604 user ticks
+Thread: 31 idle ticks, 229 kernel ticks, 606 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 540 reads, 661 writes
 hd1:0: 103 reads, 0 writes

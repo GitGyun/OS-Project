@@ -1,2 +1,5 @@
 FAIL
-Run didn't produce any output
+Kernel panic in run: PANIC at ../../threads/vaddr.h:84 in vtop(): assertion `is_kernel_vaddr (vaddr)' failed.
+Call stack: 0xc0106acd
+Translation of call stack:
+0xc0106acd: debug_panic (.../../lib/kernel/debug.c:34)

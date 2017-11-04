@@ -1,6 +1,6 @@
-Copying tests/vm/pt-write-code2 into /tmp/qhA2jA8q8s.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/qhA2jA8q8s.dsk...
-Writing command line to /tmp/gfm6GK29rv.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/fZuZepZrEa.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/fZuZepZrEa.dsk...
+Writing command line to /tmp/knlDKgyVlp.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -23,24 +23,15 @@ Putting 'sample.txt' into the file system...
 Executing 'pt-write-code2':
 (pt-write-code2) begin
 (pt-write-code2) open "sample.txt"
-Page fault at 0x80480d4: rights violation error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01060e8
- cr2=080480d4 error=00000003
- eax=080480d4 ebx=00000001 ecx=0000003d edx=00000000
- esi=c011f20c edi=00000000 esp=00000000 ebp=00000001
- cs=0008 ds=0010 es=0010 ss=0001
-Kernel PANIC at ../../userprog/exception.c:112 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack:.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 305 ticks
-Thread: 31 idle ticks, 203 kernel ticks, 71 user ticks
+pt-write-code2: exit(-1)
+Execution of 'pt-write-code2' complete.
+Timer: 308 ticks
+Thread: 31 idle ticks, 235 kernel ticks, 44 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 99 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1541 characters output
+Console: 1029 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

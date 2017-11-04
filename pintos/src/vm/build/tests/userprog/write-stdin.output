@@ -1,5 +1,5 @@
-Copying tests/userprog/write-stdin into /tmp/t7tNClhOnR.dsk...
-Writing command line to /tmp/vNnkTZyjKg.dsk...
+Copying tests/userprog/write-stdin into /tmp/Qy0MQWk8iP.dsk...
+Writing command line to /tmp/GLegprvGzz.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,7 +24,7 @@ Executing 'write-stdin':
 write-stdin: exit(0)
 Execution of 'write-stdin' complete.
 Timer: 274 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 37 user ticks
+Thread: 30 idle ticks, 207 kernel ticks, 39 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

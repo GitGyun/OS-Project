@@ -1,5 +1,5 @@
-Copying tests/vm/pt-grow-pusha into /tmp/wbjyUQlMJx.dsk...
-Writing command line to /tmp/BJTvntCXOe.dsk...
+Copying tests/vm/pt-grow-pusha into /tmp/Iv8geUkPz1.dsk...
+Writing command line to /tmp/Bg3KJFBJ_1.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -23,8 +23,8 @@ Executing 'pt-grow-pusha':
 (pt-grow-pusha) end
 pt-grow-pusha: exit(0)
 Execution of 'pt-grow-pusha' complete.
-Timer: 277 ticks
-Thread: 30 idle ticks, 210 kernel ticks, 40 user ticks
+Timer: 280 ticks
+Thread: 31 idle ticks, 211 kernel ticks, 40 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

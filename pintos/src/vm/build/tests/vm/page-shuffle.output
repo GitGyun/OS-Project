@@ -1,5 +1,5 @@
-Copying tests/vm/page-shuffle into /tmp/rMeveY6fZJ.dsk...
-Writing command line to /tmp/wJ2h4XVoMY.dsk...
+Copying tests/vm/page-shuffle into /tmp/Nn0PZpkIqb.dsk...
+Writing command line to /tmp/4GLB3TyVh9.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -34,8 +34,8 @@ Executing 'page-shuffle':
 (page-shuffle) end
 page-shuffle: exit(0)
 Execution of 'page-shuffle' complete.
-Timer: 21612 ticks
-Thread: 30 idle ticks, 269 kernel ticks, 21316 user ticks
+Timer: 21628 ticks
+Thread: 30 idle ticks, 268 kernel ticks, 21332 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 226 writes
 hd1:0: 109 reads, 0 writes

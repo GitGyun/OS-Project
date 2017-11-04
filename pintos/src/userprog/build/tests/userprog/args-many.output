@@ -1,5 +1,5 @@
-Copying tests/userprog/args-many into /tmp/xJRfumN_Fg.dsk...
-Writing command line to /tmp/YCA27cZ1bk.dsk...
+Copying tests/userprog/args-many into /tmp/NHUwPO9Bz4.dsk...
+Writing command line to /tmp/ytattIIEMV.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -48,7 +48,7 @@ Executing 'args-many a b c d e f g h i j k l m n o p q r s t u v':
 args-many: exit(0)
 Execution of 'args-many a b c d e f g h i j k l m n o p q r s t u v' complete.
 Timer: 341 ticks
-Thread: 31 idle ticks, 204 kernel ticks, 109 user ticks
+Thread: 30 idle ticks, 205 kernel ticks, 109 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

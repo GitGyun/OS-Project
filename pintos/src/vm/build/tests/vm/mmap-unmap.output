@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-unmap into /tmp/SlChDzDEdS.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/SlChDzDEdS.dsk...
-Writing command line to /tmp/v1NV_nRtN1.dsk...
+Copying tests/vm/mmap-unmap into /tmp/VErFMQAK0z.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/VErFMQAK0z.dsk...
+Writing command line to /tmp/Krij6FTQ8b.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,8 +26,8 @@ Executing 'mmap-unmap':
 (mmap-unmap) mmap "sample.txt"
 mmap-unmap: exit(-1)
 Execution of 'mmap-unmap' complete.
-Timer: 308 ticks
-Thread: 31 idle ticks, 234 kernel ticks, 46 user ticks
+Timer: 312 ticks
+Thread: 32 idle ticks, 236 kernel ticks, 46 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 108 reads, 220 writes
 hd1:0: 105 reads, 0 writes

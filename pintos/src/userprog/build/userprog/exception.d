@@ -5,4 +5,4 @@ userprog/exception.o: ../../userprog/exception.c \
  ../../userprog/gdt.h ../../threads/loader.h ../../threads/interrupt.h \
  ../../threads/thread.h ../../lib/kernel/list.h ../../devices/timer.h \
  ../../lib/round.h ../../threads/synch.h ../../threads/vaddr.h \
- ../../userprog/syscall.h
+ ../../userprog/syscall.h ../../threads/palloc.h ../../userprog/pagedir.h

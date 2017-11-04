@@ -1,5 +1,5 @@
-Copying tests/userprog/exit into /tmp/CEPUXdCvWw.dsk...
-Writing command line to /tmp/RFyyLFyket.dsk...
+Copying tests/userprog/exit into /tmp/8Rtb9CB5s9.dsk...
+Writing command line to /tmp/Z7Bza5XuEI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'exit':
 (exit) begin
 exit: exit(57)
 Execution of 'exit' complete.
-Timer: 267 ticks
-Thread: 31 idle ticks, 205 kernel ticks, 33 user ticks
+Timer: 269 ticks
+Thread: 31 idle ticks, 206 kernel ticks, 35 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

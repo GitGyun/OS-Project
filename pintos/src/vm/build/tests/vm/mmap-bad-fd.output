@@ -1,5 +1,5 @@
-Copying tests/vm/mmap-bad-fd into /tmp/rqO7O34TLf.dsk...
-Writing command line to /tmp/IFv7r1M82v.dsk...
+Copying tests/vm/mmap-bad-fd into /tmp/OVdXtpoC8Q.dsk...
+Writing command line to /tmp/Vp78PItznV.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,8 +24,8 @@ Executing 'mmap-bad-fd':
 (mmap-bad-fd) try to mmap invalid fd: FAILED
 mmap-bad-fd: exit(1)
 Execution of 'mmap-bad-fd' complete.
-Timer: 279 ticks
-Thread: 30 idle ticks, 208 kernel ticks, 44 user ticks
+Timer: 282 ticks
+Thread: 30 idle ticks, 209 kernel ticks, 45 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 208 writes
 hd1:0: 100 reads, 0 writes

@@ -31,7 +31,7 @@
 00000000000i[      ]   Sound support: no
 00000000000i[      ]   USB support: no
 00000000000i[      ]   VGA extension support: vbe
-00000000000i[MEM0  ] allocated memory at 0x7fe63b8e2010. after alignment, vector=0x7fe63b8e3000
+00000000000i[MEM0  ] allocated memory at 0x7fabeeb16010. after alignment, vector=0x7fabeeb17000
 00000000000i[MEM0  ] 4.00MB
 00000000000i[MEM0  ] mem block size = 0x00020000, blocks=32
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
@@ -65,16 +65,16 @@
 00000000000i[PLUGIN] init_dev of 'keyboard' plugin device by virtual method
 00000000000i[KBD   ] will paste characters every 400 keyboard ticks
 00000000000i[PLUGIN] init_dev of 'harddrv' plugin device by virtual method
-00000000000i[HD    ] HD on ata0-0: '/tmp/w6Rd_kjIKE.dsk', 'flat' mode
+00000000000i[HD    ] HD on ata0-0: '/tmp/TkEILNkJXg.dsk', 'flat' mode
 00000000000i[IMG   ] hd_size: 516096
 00000000000i[HD    ] ata0-0: using specified geometry: CHS=1/16/63
-00000000000i[HD    ] HD on ata0-1: '/tmp/PhD5kB3Ltd.dsk', 'flat' mode
+00000000000i[HD    ] HD on ata0-1: '/tmp/SLEjVkuWkN.dsk', 'flat' mode
 00000000000i[IMG   ] hd_size: 2064384
 00000000000i[HD    ] ata0-1: using specified geometry: CHS=4/16/63
-00000000000i[HD    ] HD on ata1-0: '/tmp/TG4NXL1zlQ.dsk', 'flat' mode
+00000000000i[HD    ] HD on ata1-0: '/tmp/Ut0OKRl5Zf.dsk', 'flat' mode
 00000000000i[IMG   ] hd_size: 516096
 00000000000i[HD    ] ata1-0: using specified geometry: CHS=1/16/63
-00000000000i[HD    ] HD on ata1-1: '/tmp/Gk36Y0Z1l8.dsk', 'flat' mode
+00000000000i[HD    ] HD on ata1-1: '/tmp/RiXtJSESJ3.dsk', 'flat' mode
 00000000000i[IMG   ] hd_size: 4128768
 00000000000i[HD    ] ata1-1: using specified geometry: CHS=8/16/63
 00000000000i[PLUGIN] init_dev of 'pci_ide' plugin device by virtual method
@@ -189,26 +189,26 @@
 00001951030i[BIOS  ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
 00002004750i[BIOS  ] ata1-1: PCHS=8/16/63 translation=none LCHS=8/16/63
 00005086515i[BIOS  ] Booting from 0000:7c00
-00009145094p[UNMAP ] >>PANIC<< Shutdown port: shutdown requested
-00009145094i[CPU0  ] CPU is in protected mode (active)
-00009145094i[CPU0  ] CS.mode = 32 bit
-00009145094i[CPU0  ] SS.mode = 32 bit
-00009145094i[CPU0  ] EFER   = 0x00000000
-00009145094i[CPU0  ] | EAX=0000006e  EBX=c010b840  ECX=c002ff8e  EDX=ffff8900
-00009145094i[CPU0  ] | ESP=c002ff80  EBP=c002ffe8  ESI=00000000  EDI=c0115918
-00009145094i[CPU0  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
-00009145094i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00009145094i[CPU0  ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
-00009145094i[CPU0  ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00009145094i[CPU0  ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00009145094i[CPU0  ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
-00009145094i[CPU0  ] |  FS:0023( 0004| 0|  3) 00000000 ffffffff 1 1
-00009145094i[CPU0  ] |  GS:0023( 0004| 0|  3) 00000000 ffffffff 1 1
-00009145094i[CPU0  ] | EIP=c01000a3 (c01000a2)
-00009145094i[CPU0  ] | CR0=0xe0010015 CR2=0x080480d4
-00009145094i[CPU0  ] | CR3=0x00119000 CR4=0x00000000
-00009145094i[CPU0  ] 0xc01000a2>> out dx, al : EE
-00009145094i[CMOS  ] Last time is 9 (Thu Jan  1 09:00:09 1970)
-00009145094i[NOGUI ] bx_nogui_gui_c::exit() not implemented yet.
-00009145094i[      ] restoring default signal behavior
-00009145094i[SIM   ] quit_sim called with exit code 1
+00020446172p[UNMAP ] >>PANIC<< Shutdown port: shutdown requested
+00020446172i[CPU0  ] CPU is in protected mode (active)
+00020446172i[CPU0  ] CS.mode = 32 bit
+00020446172i[CPU0  ] SS.mode = 32 bit
+00020446172i[CPU0  ] EFER   = 0x00000000
+00020446172i[CPU0  ] | EAX=0000006e  EBX=c010b860  ECX=c002ff8e  EDX=ffff8900
+00020446172i[CPU0  ] | ESP=c002ff80  EBP=c002ffe8  ESI=00000000  EDI=c0115920
+00020446172i[CPU0  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
+00020446172i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00020446172i[CPU0  ] |  CS:0008( 0001| 0|  0) 00000000 ffffffff 1 1
+00020446172i[CPU0  ] |  DS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00020446172i[CPU0  ] |  SS:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00020446172i[CPU0  ] |  ES:0010( 0002| 0|  0) 00000000 ffffffff 1 1
+00020446172i[CPU0  ] |  FS:0023( 0004| 0|  3) 00000000 ffffffff 1 1
+00020446172i[CPU0  ] |  GS:0023( 0004| 0|  3) 00000000 ffffffff 1 1
+00020446172i[CPU0  ] | EIP=c01000a3 (c01000a2)
+00020446172i[CPU0  ] | CR0=0xe0010015 CR2=0x00000000
+00020446172i[CPU0  ] | CR3=0x00119000 CR4=0x00000000
+00020446172i[CPU0  ] 0xc01000a2>> out dx, al : EE
+00020446172i[CMOS  ] Last time is 20 (Thu Jan  1 09:00:20 1970)
+00020446172i[NOGUI ] bx_nogui_gui_c::exit() not implemented yet.
+00020446172i[      ] restoring default signal behavior
+00020446172i[SIM   ] quit_sim called with exit code 1

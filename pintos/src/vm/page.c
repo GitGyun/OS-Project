@@ -30,13 +30,12 @@ spte_create (void *upage)
 }
 
 /* Insert spte to the supplemental page table */
-void
+bool
 suppl_page_table_insert (struct hash *spt, struct spte *p)
 {
-  bool is_already_in = hash_insert (spt, &p->elem);
+  bool success = (hash_insert (spt, &p->elem) == NULL);
 
-  if (is_already_in)
-    printf("already exist!\n");
+  return success;
 }
 
 /* Find spte from address */

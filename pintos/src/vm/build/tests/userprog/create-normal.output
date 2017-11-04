@@ -1,5 +1,5 @@
-Copying tests/userprog/create-normal into /tmp/D4n2JJsreL.dsk...
-Writing command line to /tmp/fZr8RtGZNk.dsk...
+Copying tests/userprog/create-normal into /tmp/wbQ99Fbeg4.dsk...
+Writing command line to /tmp/fW2tl2cPeA.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -25,7 +25,7 @@ Executing 'create-normal':
 create-normal: exit(0)
 Execution of 'create-normal' complete.
 Timer: 294 ticks
-Thread: 30 idle ticks, 210 kernel ticks, 56 user ticks
+Thread: 31 idle ticks, 209 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 89 reads, 210 writes
 hd1:0: 99 reads, 0 writes

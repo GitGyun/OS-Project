@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-remove into /tmp/Y_ca9ER3Jn.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/Y_ca9ER3Jn.dsk...
-Writing command line to /tmp/Wt2sKw1aEZ.dsk...
+Copying tests/vm/mmap-remove into /tmp/Ly0aRpkFhZ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/Ly0aRpkFhZ.dsk...
+Writing command line to /tmp/PDKak_qYs6.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -29,8 +29,8 @@ Executing 'mmap-remove':
 (mmap-remove) create "another"
 mmap-remove: exit(-1)
 Execution of 'mmap-remove' complete.
-Timer: 368 ticks
-Thread: 32 idle ticks, 236 kernel ticks, 103 user ticks
+Timer: 369 ticks
+Thread: 31 idle ticks, 236 kernel ticks, 105 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 148 reads, 311 writes
 hd1:0: 107 reads, 0 writes

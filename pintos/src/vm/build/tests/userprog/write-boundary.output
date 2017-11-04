@@ -1,6 +1,6 @@
-Copying tests/userprog/write-boundary into /tmp/UlVl8fiMXl.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/UlVl8fiMXl.dsk...
-Writing command line to /tmp/FbqgIHq1gT.dsk...
+Copying tests/userprog/write-boundary into /tmp/ePuhvexfeI.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/ePuhvexfeI.dsk...
+Writing command line to /tmp/9cPte5X3Rk.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,8 +26,8 @@ Executing 'write-boundary':
 (write-boundary) end
 write-boundary: exit(0)
 Execution of 'write-boundary' complete.
-Timer: 314 ticks
-Thread: 32 idle ticks, 237 kernel ticks, 48 user ticks
+Timer: 316 ticks
+Thread: 31 idle ticks, 236 kernel ticks, 51 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 100 reads, 221 writes
 hd1:0: 105 reads, 0 writes

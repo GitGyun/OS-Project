@@ -1,5 +1,5 @@
-Copying tests/userprog/close-bad-fd into /tmp/rJbC6a_bZu.dsk...
-Writing command line to /tmp/KMyXpzJbV2.dsk...
+Copying tests/userprog/close-bad-fd into /tmp/W6PNMRPrqZ.dsk...
+Writing command line to /tmp/CX5fIMAaX2.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,7 +24,7 @@ Executing 'close-bad-fd':
 close-bad-fd: exit(0)
 Execution of 'close-bad-fd' complete.
 Timer: 274 ticks
-Thread: 31 idle ticks, 210 kernel ticks, 37 user ticks
+Thread: 30 idle ticks, 208 kernel ticks, 39 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

@@ -173,20 +173,17 @@ page_fault (struct intr_frame *f)
       /* Calculate user page address to allocate */
       void *new_upage = pg_round_down (fault_addr);
       /* Allocate corresponding kernel page */
-      void *new_kpage = frame_alloc (PAL_USER | PAL_ZERO);
+      void *new_kpage = frame_alloc (new_upage, PAL_USER | PAL_ZERO, true);
       if (new_kpage != NULL)
-        {
-          /* upage - kpage mapping */
-          pagedir_set_page (t->pagedir, new_upage, new_kpage, true);
-          /* Update suppl. page table */
-          struct spte *p = spte_create (new_upage);
-          suppl_page_table_insert(t->suppl_page_table, p);
-
-          /* Stack growth complete. Exit PF handler. */
-          return;
-        }
+        /* Stack growth complete. Exit PF handler. */
+        return;
     }
 #endif
+
+  /* Handling rights violation error caused by writing data on
+     the read-only region. */
+  if (!not_present)
+    syscall_exit (-1);
 
   /* Test sc-bad-sp raises not present error:
         Page fault at 0x40480d7: not present error reading page

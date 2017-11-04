@@ -1,5 +1,5 @@
-Copying tests/vm/page-linear into /tmp/RxKr_FYC7d.dsk...
-Writing command line to /tmp/LbNoO8_0eG.dsk...
+Copying tests/vm/page-linear into /tmp/6OluP7hfE_.dsk...
+Writing command line to /tmp/zzGG6pU8XI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -19,14 +19,16 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-linear' into the file system...
 Executing 'page-linear':
+Kernel PANIC at ../../threads/vaddr.h:84 in vtop(): assertion `is_kernel_vaddr (vaddr)' failed.
+Call stack: 0xc0106acd 0page-linear: exit(-1)
 Execution of 'page-linear' complete.
-Timer: 1351 ticks
-Thread: 30 idle ticks, 200 kernel ticks, 1123 user ticks
+Timer: 1466 ticks
+Thread: 30 idle ticks, 197 kernel ticks, 1245 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 218 writes
 hd1:0: 105 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 874 characters output
+Console: 1016 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

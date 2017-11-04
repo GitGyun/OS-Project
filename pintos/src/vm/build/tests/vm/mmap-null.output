@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-null into /tmp/gjq5wPDwEl.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/gjq5wPDwEl.dsk...
-Writing command line to /tmp/uIK07dLC5p.dsk...
+Copying tests/vm/mmap-null into /tmp/34Ghl4qIdJ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/34Ghl4qIdJ.dsk...
+Writing command line to /tmp/Zid7znX29C.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,8 +27,8 @@ Executing 'mmap-null':
 (mmap-null) try to mmap at address 0: FAILED
 mmap-null: exit(1)
 Execution of 'mmap-null' complete.
-Timer: 311 ticks
-Thread: 30 idle ticks, 234 kernel ticks, 50 user ticks
+Timer: 314 ticks
+Thread: 30 idle ticks, 234 kernel ticks, 52 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 216 writes
 hd1:0: 103 reads, 0 writes
