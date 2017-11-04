@@ -188,10 +188,13 @@ page_fault (struct intr_frame *f)
 
   if (not_present && is_user_vaddr (fault_addr))
     {
-      printf ("swap in needed!!!\n");
-      struct ste *s = swap_find (pg_round_down (fault_addr));
+      struct ste *s = swap_table_find (pg_round_down (fault_addr));
       if (s != NULL)
-        swap_in (s);
+        {
+      //    printf ("swap-in !!!\n");
+          swap_in (s);
+          return;
+        }
     }
 #endif
 

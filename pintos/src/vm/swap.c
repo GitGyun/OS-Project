@@ -5,9 +5,11 @@
 #include "vm/page.h"
 #include "devices/disk.h"
 #include <hash.h>
+#include <bitmap.h>
 #include <stdio.h>
 
 static struct hash swap_table;
+static struct bitmap empty_sector;
 static disk_sector_t sec_no_curr;
 
 static unsigned swap_hash (const struct hash_elem *, void *);
@@ -16,24 +18,23 @@ static bool ste_cmp_less (const struct hash_elem *,
 
 /* Create and initialize the swap table. */
 void
-swap_init (void)
+swap_table_init (void)
 {
 	hash_init (&swap_table, swap_hash, ste_cmp_less, NULL);
 }
 
 /* Insert ste to the swap table */
-void
-swap_insert (struct ste *s)
+bool
+swap_table_insert (struct ste *s)
 {
-  bool is_already_in = hash_insert (&swap_table, &s->elem);
+  bool is_already_in = (hash_insert (&swap_table, &s->elem) == NULL);
 
-  if (is_already_in)
-    printf("already exist!\n");
+  return is_already_in;
 }
 
 /* Find ste from address */
 struct ste *
-swap_find (void *upage)
+swap_table_find (void *upage)
 {
   struct ste s;
   s.upage = upage;
@@ -48,7 +49,7 @@ swap_find (void *upage)
 
 /* Delete ste from the swap table */
 void
-swap_del (struct ste *s)
+swap_table_del (struct ste *s)
 {
   hash_delete (&swap_table, &s->elem);
 }
@@ -69,18 +70,19 @@ swap_out (struct fte *victim)
 	int i;
 	for (i = 0; i < PGSIZE / DISK_SECTOR_SIZE; i++)
 		{
-      disk_write (swap, sec_no, victim->kpage + DISK_SECTOR_SIZE*i);
+      disk_write (swap, sec_no, (uint8_t *)victim->kpage + DISK_SECTOR_SIZE*i);
 			sec_no++;
 		}
 
 	sec_no_curr = sec_no;
 
-	swap_insert (s);
+	swap_table_insert (s);
 }
 
 void
 swap_in (struct ste *slot)
 {
+  //printf ("swap in!!!\n");
   void *swap = disk_get (1, 1);
   disk_sector_t sec_no = slot->sec_no;
 
@@ -89,11 +91,11 @@ swap_in (struct ste *slot)
   int i;
   for (i = 0; i < PGSIZE / DISK_SECTOR_SIZE; i++)
     {
-      disk_read (swap, sec_no, kpage + DISK_SECTOR_SIZE*i);
+      disk_read (swap, sec_no, (uint8_t *)kpage + DISK_SECTOR_SIZE*i);
       sec_no++;
     }
 
-  swap_del (slot);
+  swap_table_del (slot);
   free (slot);
 }
 

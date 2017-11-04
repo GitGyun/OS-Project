@@ -1,5 +1,5 @@
-Copying tests/userprog/create-bad-ptr into /tmp/62UURoqUDl.dsk...
-Writing command line to /tmp/edhbrARNiN.dsk...
+Copying tests/userprog/create-bad-ptr into /tmp/Sab79i_xpy.dsk...
+Writing command line to /tmp/Pmtr8eJMND.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'create-bad-ptr':
 (create-bad-ptr) begin
 create-bad-ptr: exit(-1)
 Execution of 'create-bad-ptr' complete.
-Timer: 275 ticks
-Thread: 31 idle ticks, 206 kernel ticks, 40 user ticks
+Timer: 276 ticks
+Thread: 31 idle ticks, 207 kernel ticks, 40 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 209 writes
 hd1:0: 99 reads, 0 writes

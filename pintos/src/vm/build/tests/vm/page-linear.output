@@ -1,5 +1,5 @@
-Copying tests/vm/page-linear into /tmp/zJPWdp5hCK.dsk...
-Writing command line to /tmp/MLWGmS5oO3.dsk...
+Copying tests/vm/page-linear into /tmp/Xa47a5tND9.dsk...
+Writing command line to /tmp/TmuO4aFLo5.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -19,15 +19,16 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-linear' into the file system...
 Executing 'page-linear':
-page-linear: exit(-1)
+Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
+Call stack: 0xc0106ad2 0 0page-linear: exit(-1)
 Execution of 'page-linear' complete.
-Timer: 1466 ticks
-Thread: 30 idle ticks, 197 kernel ticks, 1245 user ticks
+Timer: 11489 ticks
+Thread: 30 idle ticks, 829 kernel ticks, 10633 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 66 reads, 218 writes
+hd0:1: 68 reads, 218 writes
 hd1:0: 105 reads, 0 writes
-hd1:1: 0 reads, 8 writes
-Console: 896 characters output
+hd1:1: 3440 reads, 8064 writes
+Console: 1032 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 862 page faults
 Powering off...

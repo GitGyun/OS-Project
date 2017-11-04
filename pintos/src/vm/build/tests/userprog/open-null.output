@@ -1,5 +1,5 @@
-Copying tests/userprog/open-null into /tmp/ANHmK9QAEu.dsk...
-Writing command line to /tmp/SmuPOKsTe5.dsk...
+Copying tests/userprog/open-null into /tmp/Gut0BMVuOG.dsk...
+Writing command line to /tmp/k1Q2Xmgnc3.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'open-null':
 (open-null) begin
 open-null: exit(-1)
 Execution of 'open-null' complete.
-Timer: 272 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 35 user ticks
+Timer: 273 ticks
+Thread: 30 idle ticks, 210 kernel ticks, 35 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

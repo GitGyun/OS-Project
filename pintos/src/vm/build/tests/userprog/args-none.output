@@ -1,5 +1,5 @@
-Copying tests/userprog/args-none into /tmp/g_RiLa9OWf.dsk...
-Writing command line to /tmp/MsmnkOE11y.dsk...
+Copying tests/userprog/args-none into /tmp/4eKW96Ueg4.dsk...
+Writing command line to /tmp/T_Qd_LML_S.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,7 +27,7 @@ Executing 'args-none':
 args-none: exit(0)
 Execution of 'args-none' complete.
 Timer: 282 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 45 user ticks
+Thread: 30 idle ticks, 210 kernel ticks, 45 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

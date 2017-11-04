@@ -16,10 +16,10 @@ struct ste
     struct hash_elem elem;		/* Hash element. */
   };
 
-void swap_init (void);
-void swap_insert (struct ste *);
-struct ste *swap_find (void *);
-void swap_del (struct ste *);
+void swap_table_init (void);
+bool swap_table_insert (struct ste *);
+struct ste *swap_table_find (void *);
+void swap_table_del (struct ste *);
 
 void swap_out (struct fte *);
 void swap_in (struct ste *);

@@ -37,6 +37,7 @@
 
 #ifdef VM
 #include "vm/frame.h"
+#include "vm/swap.h"
 #endif
 
 /* Amount of physical memory, in 4 kB pages. */
@@ -94,6 +95,7 @@ main (void)
 
 #ifdef VM
   frame_table_init ();
+  swap_table_init ();
 #endif
 
   /* Segmentation. */

@@ -1,5 +1,5 @@
-Copying tests/userprog/sc-boundary-2 into /tmp/oVZPVX5R1V.dsk...
-Writing command line to /tmp/4Uqw2H8hgD.dsk...
+Copying tests/userprog/sc-boundary-2 into /tmp/4CrnOIRBXD.dsk...
+Writing command line to /tmp/IVo32YBbSo.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'sc-boundary-2':
 (sc-boundary-2) begin
 sc-boundary-2: exit(67)
 Execution of 'sc-boundary-2' complete.
-Timer: 282 ticks
-Thread: 30 idle ticks, 213 kernel ticks, 42 user ticks
+Timer: 281 ticks
+Thread: 30 idle ticks, 213 kernel ticks, 41 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 212 writes
 hd1:0: 102 reads, 0 writes

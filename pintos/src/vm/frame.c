@@ -75,7 +75,7 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
   struct fte *fte_new = malloc (sizeof (struct fte));
   fte_new->kpage = kpage;
   fte_new->upage = upage;
-  fte_new->process = thread_current ();
+  fte_new->process = t;
   fte_new->accessed = false;
   fte_new->dirty = false;
   fte_new->writable = writable;

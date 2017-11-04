@@ -1,6 +1,6 @@
-Copying tests/vm/page-parallel into /tmp/YdKuetw3OG.dsk...
-Copying tests/vm/child-linear into /tmp/YdKuetw3OG.dsk...
-Writing command line to /tmp/k98dVVRs0H.dsk...
+Copying tests/vm/page-parallel into /tmp/RDwgO9lc6m.dsk...
+Copying tests/vm/child-linear into /tmp/RDwgO9lc6m.dsk...
+Writing command line to /tmp/nh4nOliNnX.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,17 +24,20 @@ Executing 'page-parallel':
 (page-parallel) begin
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
 child-linear: exit(-1)
-(page-parallel) exec "child-linear": FAILED
-page-parallel: exit(1)
-Execution of 'page-parallel' complete.
-Timer: 2181 ticks
-Thread: 31 idle ticks, 330 kernel ticks, 1831 user ticks
+(page-parallel) exec "child-linear"
+child-liKernel PANIC at ../../threads/vaddr.h:84 in vtop(): assertion `is_kernel_vaddr (vaddr)' failed.
+Call stack: 0xc0106ad2cnear: exit(-1)
+hild-linear: exit(-1)
+(page-parallel) exec "childKernel PANIC recursion at ../../threads/palloc.c:147 in palloc_free_multiple().
+Timer: 9628 ticks
+Thread: 33 idle ticks, 450 kernel ticks, 9145 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 174 reads, 418 writes
+hd0:1: 227 reads, 418 writes
 hd1:0: 204 reads, 0 writes
-hd1:1: 0 reads, 8 writes
-Console: 1133 characters output
+hd1:1: 56 reads, 2672 writes
+Console: 1374 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 13 page faults
 Powering off...

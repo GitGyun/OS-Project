@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-par into /tmp/vdoW0iWPTq.dsk...
-Copying tests/vm/child-sort into /tmp/vdoW0iWPTq.dsk...
-Writing command line to /tmp/5wS6GaH1en.dsk...
+Copying tests/vm/page-merge-par into /tmp/XKPfrq63_m.dsk...
+Copying tests/vm/child-sort into /tmp/XKPfrq63_m.dsk...
+Writing command line to /tmp/b22VXc2K1Y.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -21,15 +21,16 @@ Boot complete.
 Putting 'page-merge-par' into the file system...
 Putting 'child-sort' into the file system...
 Executing 'page-merge-par':
-page-merge-par: exit(-1)
+Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
+Call stack: 0xc0106ad2 0 0page-merge-par: exit(-1)
 Execution of 'page-merge-par' complete.
-Timer: 1548 ticks
-Thread: 32 idle ticks, 278 kernel ticks, 1245 user ticks
+Timer: 11572 ticks
+Thread: 32 idle ticks, 911 kernel ticks, 10632 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 95 reads, 432 writes
+hd0:1: 97 reads, 432 writes
 hd1:0: 211 reads, 0 writes
-hd1:1: 0 reads, 8 writes
-Console: 974 characters output
+hd1:1: 3440 reads, 8064 writes
+Console: 1110 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 862 page faults
 Powering off...
