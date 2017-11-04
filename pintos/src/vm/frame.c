@@ -11,7 +11,7 @@ static struct hash frame_table;
 static unsigned fte_hash (const struct hash_elem *, void *);
 static bool fte_cmp_kpage (const struct hash_elem *,
                            const struct hash_elem *, void *);
-struct fte *frame_select_victim (void);
+static struct fte *frame_select_victim (void);
 
 
 /* Initialize the frame table. Called by init.c */
@@ -26,6 +26,7 @@ bool
 frame_table_insert (struct fte *f)
 {
   bool success = (hash_insert (&frame_table, &f->elem) == NULL);
+  f->accessed = true;
 
   return success;
 }
@@ -40,7 +41,12 @@ frame_table_find (void *kpage)
   struct hash_elem *e = hash_find (&frame_table, &f.elem);
 
   if (e != NULL)
-    return hash_entry (e, struct fte, elem);
+    {
+			struct fte *f = hash_entry (e, struct fte, elem);
+			f->accessed = true;
+			return f;
+		}
+  
   return NULL;
 }
 
@@ -77,7 +83,6 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
   fte_new->upage = upage;
   fte_new->process = t;
   fte_new->accessed = false;
-  fte_new->dirty = false;
   fte_new->writable = writable;
 
   hash_insert (&frame_table, &fte_new->elem);
@@ -123,14 +128,20 @@ frame_free (void *kpage)
 }
 
 /* Select fte to be evicted */
-struct fte *
+static struct fte *
 frame_select_victim (void)
 {
   struct hash_iterator i;
-
+  struct fte *f;
   hash_first (&i, &frame_table);
-  hash_next (&i);
-  struct fte *f = hash_entry (hash_cur (&i), struct fte, elem);
+  
+  while (hash_next (&i))
+		{
+			f = hash_entry (hash_cur (&i), struct fte, elem);
+			if (f->accessed == false)
+				break;
+			f->accessed = true;
+		}
 
   return f;
 }

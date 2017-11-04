@@ -1,10 +1,10 @@
-Copying tests/filesys/base/sm-random into /tmp/7ND70BzhNR.dsk...
-Writing command line to /tmp/WEXaasFMZG.dsk...
+Copying tests/filesys/base/sm-random into /tmp/0Dee0CxduT.dsk...
+Writing command line to /tmp/45khUhXtwZ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put sm-random run sm-random
 Pintos booting with 4,096 kB RAM...
@@ -28,8 +28,8 @@ Executing 'sm-random':
 (sm-random) end
 sm-random: exit(0)
 Execution of 'sm-random' complete.
-Timer: 531 ticks
-Thread: 30 idle ticks, 213 kernel ticks, 290 user ticks
+Timer: 530 ticks
+Thread: 30 idle ticks, 212 kernel ticks, 290 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 347 reads, 354 writes
 hd1:0: 106 reads, 0 writes

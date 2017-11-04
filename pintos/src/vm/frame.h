@@ -12,7 +12,6 @@ struct fte
     struct thread *process;     /* Owner of this frame */
 
     bool accessed;              /* Accessed bit */
-    bool dirty;                 /* Dirty bit */
     bool writable;              /* Writability */
 
     struct hash_elem elem;

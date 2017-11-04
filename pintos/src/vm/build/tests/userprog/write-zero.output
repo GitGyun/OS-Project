@@ -1,11 +1,11 @@
-Copying tests/userprog/write-zero into /tmp/BQlpLKjs_t.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/BQlpLKjs_t.dsk...
-Writing command line to /tmp/D7dnr4BQVI.dsk...
+Copying tests/userprog/write-zero into /tmp/u51WRKXELT.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/u51WRKXELT.dsk...
+Writing command line to /tmp/fQh5glLukn.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put write-zero put sample.txt run write-zero
 Pintos booting with 4,096 kB RAM...
@@ -26,8 +26,8 @@ Executing 'write-zero':
 (write-zero) end
 write-zero: exit(0)
 Execution of 'write-zero' complete.
-Timer: 307 ticks
-Thread: 30 idle ticks, 235 kernel ticks, 45 user ticks
+Timer: 306 ticks
+Thread: 30 idle ticks, 234 kernel ticks, 45 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 214 writes
 hd1:0: 102 reads, 0 writes

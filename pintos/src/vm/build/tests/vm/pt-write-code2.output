@@ -1,11 +1,11 @@
-Copying tests/vm/pt-write-code2 into /tmp/y1Ka_AvvzD.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/y1Ka_AvvzD.dsk...
-Writing command line to /tmp/ubncfYjyHD.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/5yUinbaElO.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/5yUinbaElO.dsk...
+Writing command line to /tmp/pdAIL8Ca1H.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
 Pintos booting with 4,096 kB RAM...
@@ -25,8 +25,8 @@ Executing 'pt-write-code2':
 (pt-write-code2) open "sample.txt"
 pt-write-code2: exit(-1)
 Execution of 'pt-write-code2' complete.
-Timer: 308 ticks
-Thread: 31 idle ticks, 235 kernel ticks, 44 user ticks
+Timer: 309 ticks
+Thread: 31 idle ticks, 236 kernel ticks, 44 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 99 reads, 216 writes
 hd1:0: 103 reads, 0 writes

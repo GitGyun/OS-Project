@@ -1,11 +1,11 @@
-Copying tests/filesys/base/syn-write into /tmp/hDe9TtZkJn.dsk...
-Copying tests/filesys/base/child-syn-wrt into /tmp/hDe9TtZkJn.dsk...
-Writing command line to /tmp/syNyqHp2KZ.dsk...
+Copying tests/filesys/base/syn-write into /tmp/JsaOsPBR_P.dsk...
+Copying tests/filesys/base/child-syn-wrt into /tmp/JsaOsPBR_P.dsk...
+Writing command line to /tmp/j84AiXzeN7.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put syn-write put child-syn-wrt run syn-write
 Pintos booting with 4,096 kB RAM...
@@ -58,8 +58,8 @@ child-syn-wrt: exit(5)
 (syn-write) end
 syn-write: exit(0)
 Execution of 'syn-write' complete.
-Timer: 1409 ticks
-Thread: 34 idle ticks, 538 kernel ticks, 839 user ticks
+Timer: 1408 ticks
+Thread: 35 idle ticks, 538 kernel ticks, 837 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 603 reads, 470 writes
 hd1:0: 218 reads, 0 writes

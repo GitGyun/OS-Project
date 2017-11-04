@@ -1,10 +1,10 @@
-Copying tests/userprog/bad-write into /tmp/QwygY623Sc.dsk...
-Writing command line to /tmp/ZB1yyhYcmC.dsk...
+Copying tests/userprog/bad-write into /tmp/NMSGnNqm2w.dsk...
+Writing command line to /tmp/wvMQCgkD8V.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put bad-write run bad-write
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'bad-write':
 (bad-write) begin
 bad-write: exit(-1)
 Execution of 'bad-write' complete.
-Timer: 274 ticks
-Thread: 30 idle ticks, 211 kernel ticks, 35 user ticks
+Timer: 272 ticks
+Thread: 30 idle ticks, 209 kernel ticks, 35 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

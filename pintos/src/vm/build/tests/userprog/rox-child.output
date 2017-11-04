@@ -1,11 +1,11 @@
-Copying tests/userprog/rox-child into /tmp/PBM0W1Xet8.dsk...
-Copying tests/userprog/child-rox into /tmp/PBM0W1Xet8.dsk...
-Writing command line to /tmp/svALIk3f4v.dsk...
+Copying tests/userprog/rox-child into /tmp/nSWiv8w87a.dsk...
+Copying tests/userprog/child-rox into /tmp/nSWiv8w87a.dsk...
+Writing command line to /tmp/BxgXzLBFm_.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put rox-child put child-rox run rox-child
 Pintos booting with 4,096 kB RAM...
@@ -35,8 +35,8 @@ child-rox: exit(12)
 (rox-child) end
 rox-child: exit(0)
 Execution of 'rox-child' complete.
-Timer: 462 ticks
-Thread: 30 idle ticks, 315 kernel ticks, 120 user ticks
+Timer: 463 ticks
+Thread: 30 idle ticks, 316 kernel ticks, 120 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 151 reads, 438 writes
 hd1:0: 213 reads, 0 writes

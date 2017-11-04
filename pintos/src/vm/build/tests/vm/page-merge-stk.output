@@ -1,11 +1,11 @@
-Copying tests/vm/page-merge-stk into /tmp/Riy1oeohQh.dsk...
-Copying tests/vm/child-qsort into /tmp/Riy1oeohQh.dsk...
-Writing command line to /tmp/Y7r702ZaV4.dsk...
+Copying tests/vm/page-merge-stk into /tmp/vaUp4_hdMv.dsk...
+Copying tests/vm/child-qsort into /tmp/vaUp4_hdMv.dsk...
+Writing command line to /tmp/ktwV3QzCGy.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
 Pintos booting with 4,096 kB RAM...
@@ -21,16 +21,18 @@ Boot complete.
 Putting 'page-merge-stk' into the file system...
 Putting 'child-qsort' into the file system...
 Executing 'page-merge-stk':
-Kernel PANIC at ../../devices/disk.c:436 in select_sector(): assertion `sec_no < d->capacity' failed.
-Call stack: 0xc0106ad2 0 0page-merge-stk: exit(-1)
-Execution of 'page-merge-stk' complete.
-Timer: 11576 ticks
-Thread: 34 idle ticks, 913 kernel ticks, 10631 user ticks
+Kernel PANIC at ../../vm/swap.c:74 in swap_out(): No remaining swap slot!
+Call stack: 0xc0106ad2 0xbffff000.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 10937 ticks
+Thread: 33 idle ticks, 265 kernel ticks, 10639 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 450 writes
 hd1:0: 220 reads, 0 writes
 hd1:1: 3440 reads, 8064 writes
-Console: 1112 characters output
+Console: 1182 characters output
 Keyboard: 0 keys pressed
-Exception: 862 page faults
+Exception: 861 page faults
 Powering off...

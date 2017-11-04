@@ -1,10 +1,10 @@
-Copying tests/userprog/multi-recurse into /tmp/5Pao0mCQls.dsk...
-Writing command line to /tmp/ZgbPecWFUB.dsk...
+Copying tests/userprog/multi-recurse into /tmp/AF8nTXcnHx.dsk...
+Writing command line to /tmp/eoQKVwyP69.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
 Pintos booting with 4,096 kB RAM...
@@ -83,8 +83,8 @@ multi-recurse: exit(14)
 (multi-recurse) end 15
 multi-recurse: exit(15)
 Execution of 'multi-recurse 15' complete.
-Timer: 1440 ticks
-Thread: 34 idle ticks, 543 kernel ticks, 865 user ticks
+Timer: 1439 ticks
+Thread: 35 idle ticks, 543 kernel ticks, 863 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 686 reads, 230 writes
 hd1:0: 111 reads, 0 writes

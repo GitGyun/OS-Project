@@ -1,11 +1,11 @@
-Copying tests/vm/page-parallel into /tmp/RDwgO9lc6m.dsk...
-Copying tests/vm/child-linear into /tmp/RDwgO9lc6m.dsk...
-Writing command line to /tmp/nh4nOliNnX.dsk...
+Copying tests/vm/page-parallel into /tmp/nvTn6MqwhI.dsk...
+Copying tests/vm/child-linear into /tmp/nvTn6MqwhI.dsk...
+Writing command line to /tmp/W28A1GsFzm.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
 Pintos booting with 4,096 kB RAM...
@@ -24,20 +24,18 @@ Executing 'page-parallel':
 (page-parallel) begin
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
-(page-parallel) exec "child-linear"
-child-linear: exit(-1)
-(page-parallel) exec "child-linear"
-child-liKernel PANIC at ../../threads/vaddr.h:84 in vtop(): assertion `is_kernel_vaddr (vaddr)' failed.
-Call stack: 0xc0106ad2cnear: exit(-1)
-hild-linear: exit(-1)
-(page-parallel) exec "childKernel PANIC recursion at ../../threads/palloc.c:147 in palloc_free_multiple().
-Timer: 9628 ticks
-Thread: 33 idle ticks, 450 kernel ticks, 9145 user ticks
+Kernel PANIC at ../../threads/vaddr.h:84 in vtop(): assertion `is_kernel_vaddr (vaddr)' failed.
+Call stack: 0xc0106ad2.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 5066 ticks
+Thread: 32 idle ticks, 259 kernel ticks, 4775 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 227 reads, 418 writes
+hd0:1: 174 reads, 418 writes
 hd1:0: 204 reads, 0 writes
-hd1:1: 56 reads, 2672 writes
-Console: 1374 characters output
+hd1:1: 8 reads, 1248 writes
+Console: 1281 characters output
 Keyboard: 0 keys pressed
-Exception: 13 page faults
+Exception: 2 page faults
 Powering off...

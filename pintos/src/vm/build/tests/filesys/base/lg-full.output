@@ -1,10 +1,10 @@
-Copying tests/filesys/base/lg-full into /tmp/IEM6zjXY8B.dsk...
-Writing command line to /tmp/lnupdXCJq8.dsk...
+Copying tests/filesys/base/lg-full into /tmp/GxD1ufRqsj.dsk...
+Writing command line to /tmp/s0FmFNgMSI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put lg-full run lg-full
 Pintos booting with 4,096 kB RAM...
@@ -30,8 +30,8 @@ Executing 'lg-full':
 (lg-full) end
 lg-full: exit(0)
 Execution of 'lg-full' complete.
-Timer: 695 ticks
-Thread: 32 idle ticks, 239 kernel ticks, 427 user ticks
+Timer: 696 ticks
+Thread: 32 idle ticks, 240 kernel ticks, 427 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 247 reads, 514 writes
 hd1:0: 103 reads, 0 writes

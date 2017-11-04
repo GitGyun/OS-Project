@@ -1,11 +1,11 @@
-Copying tests/userprog/exec-once into /tmp/ddBrM8f6y9.dsk...
-Copying tests/userprog/child-simple into /tmp/ddBrM8f6y9.dsk...
-Writing command line to /tmp/MtIgvl_tkw.dsk...
+Copying tests/userprog/exec-once into /tmp/i3J0P6qjaA.dsk...
+Copying tests/userprog/child-simple into /tmp/i3J0P6qjaA.dsk...
+Writing command line to /tmp/11vGHxiKAA.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put exec-once put child-simple run exec-once
 Pintos booting with 4,096 kB RAM...
@@ -27,8 +27,8 @@ child-simple: exit(81)
 (exec-once) end
 exec-once: exit(0)
 Execution of 'exec-once' complete.
-Timer: 418 ticks
-Thread: 31 idle ticks, 307 kernel ticks, 82 user ticks
+Timer: 417 ticks
+Thread: 32 idle ticks, 306 kernel ticks, 81 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 141 reads, 404 writes
 hd1:0: 197 reads, 0 writes

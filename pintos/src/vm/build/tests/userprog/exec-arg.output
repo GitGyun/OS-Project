@@ -1,11 +1,11 @@
-Copying tests/userprog/exec-arg into /tmp/SJuyBuZ7Am.dsk...
-Copying tests/userprog/child-args into /tmp/SJuyBuZ7Am.dsk...
-Writing command line to /tmp/rDETbJX8nC.dsk...
+Copying tests/userprog/exec-arg into /tmp/U0oeEQhzzo.dsk...
+Copying tests/userprog/child-args into /tmp/U0oeEQhzzo.dsk...
+Writing command line to /tmp/ytDRFsnye9.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put exec-arg put child-args run exec-arg
 Pintos booting with 4,096 kB RAM...
@@ -33,7 +33,7 @@ child-args: exit(0)
 exec-arg: exit(0)
 Execution of 'exec-arg' complete.
 Timer: 429 ticks
-Thread: 31 idle ticks, 304 kernel ticks, 96 user ticks
+Thread: 32 idle ticks, 304 kernel ticks, 95 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 133 reads, 406 writes
 hd1:0: 198 reads, 0 writes

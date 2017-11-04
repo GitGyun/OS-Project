@@ -57,7 +57,7 @@ swap_table_del (struct ste *s)
 void
 swap_out (struct fte *victim)
 {
-	void *swap = disk_get (1, 1);
+	struct disk *swap = disk_get (1, 1);
 	disk_sector_t sec_no = sec_no_curr;
 
 	/* Make a swap table entry for the swap slot of the victim. */
@@ -70,6 +70,9 @@ swap_out (struct fte *victim)
 	int i;
 	for (i = 0; i < PGSIZE / DISK_SECTOR_SIZE; i++)
 		{
+			if (sec_no >= disk_size (swap))
+				PANIC ("No remaining swap slot!");
+			
       disk_write (swap, sec_no, (uint8_t *)victim->kpage + DISK_SECTOR_SIZE*i);
 			sec_no++;
 		}

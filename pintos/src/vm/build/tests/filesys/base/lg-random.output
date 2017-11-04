@@ -1,10 +1,10 @@
-Copying tests/filesys/base/lg-random into /tmp/NjCoc6x5Sc.dsk...
-Writing command line to /tmp/HXgi3tTdLL.dsk...
+Copying tests/filesys/base/lg-random into /tmp/xEgSBS9MOW.dsk...
+Writing command line to /tmp/akcbPImaET.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put lg-random run lg-random
 Pintos booting with 4,096 kB RAM...
@@ -28,8 +28,8 @@ Executing 'lg-random':
 (lg-random) end
 lg-random: exit(0)
 Execution of 'lg-random' complete.
-Timer: 751 ticks
-Thread: 38 idle ticks, 245 kernel ticks, 470 user ticks
+Timer: 750 ticks
+Thread: 38 idle ticks, 244 kernel ticks, 470 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 245 reads, 524 writes
 hd1:0: 106 reads, 0 writes

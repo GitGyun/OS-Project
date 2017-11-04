@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-over-code into /tmp/DcLOPVp6Rp.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/DcLOPVp6Rp.dsk...
-Writing command line to /tmp/bTD9int2uK.dsk...
+Copying tests/vm/mmap-over-code into /tmp/33_cgOoxlm.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/33_cgOoxlm.dsk...
+Writing command line to /tmp/_8ROXHPph0.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
 Pintos booting with 4,096 kB RAM...
@@ -27,8 +27,8 @@ Executing 'mmap-over-code':
 (mmap-over-code) try to mmap over code segment: FAILED
 mmap-over-code: exit(1)
 Execution of 'mmap-over-code' complete.
-Timer: 317 ticks
-Thread: 32 idle ticks, 233 kernel ticks, 54 user ticks
+Timer: 318 ticks
+Thread: 32 idle ticks, 234 kernel ticks, 54 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 216 writes
 hd1:0: 103 reads, 0 writes
