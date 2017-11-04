@@ -1,0 +1,37 @@
+Copying tests/userprog/open-twice into /tmp/LmJXmKx42e.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/LmJXmKx42e.dsk...
+Writing command line to /tmp/wwSQJtyfA_.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put open-twice put sample.txt run open-twice
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+Formatting file system...done.
+Boot complete.
+Putting 'open-twice' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'open-twice':
+(open-twice) begin
+(open-twice) open "sample.txt" once
+(open-twice) open "sample.txt" again
+(open-twice) end
+open-twice: exit(0)
+Execution of 'open-twice' complete.
+Timer: 305 ticks
+Thread: 32 idle ticks, 221 kernel ticks, 55 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 107 reads, 214 writes
+hd1:0: 102 reads, 0 writes
+Console: 948 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...

@@ -2,6 +2,7 @@ userprog/process.o: ../../userprog/process.c ../../userprog/process.h \
  ../../threads/thread.h ../../lib/debug.h ../../lib/kernel/list.h \
  ../../lib/stdbool.h ../../lib/stddef.h ../../lib/stdint.h \
  ../../devices/timer.h ../../lib/round.h ../../threads/synch.h \
+ ../../vm/page.h ../../lib/kernel/hash.h ../../lib/kernel/list.h \
  ../../lib/inttypes.h ../../lib/stdio.h ../../lib/stdarg.h \
  ../../lib/kernel/stdio.h ../../lib/stdlib.h ../../lib/string.h \
  ../../userprog/gdt.h ../../threads/loader.h ../../userprog/pagedir.h \
@@ -9,4 +10,4 @@ userprog/process.o: ../../userprog/process.c ../../userprog/process.h \
  ../../filesys/file.h ../../filesys/off_t.h ../../filesys/filesys.h \
  ../../threads/flags.h ../../threads/init.h ../../threads/interrupt.h \
  ../../threads/palloc.h ../../threads/vaddr.h ../../userprog/syscall.h \
- ../../threads/malloc.h
+ ../../threads/malloc.h ../../vm/frame.h

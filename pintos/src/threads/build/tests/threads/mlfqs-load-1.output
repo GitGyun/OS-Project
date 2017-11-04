@@ -1,0 +1,29 @@
+Writing command line to /tmp/SjemnT_dQL.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -mlfqs run mlfqs-load-1
+Pintos booting with 4,096 kB RAM...
+372 pages available in kernel pool.
+371 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+Boot complete.
+Executing 'mlfqs-load-1':
+(mlfqs-load-1) begin
+(mlfqs-load-1) spinning for up to 45 seconds, please wait...
+(mlfqs-load-1) FAIL: load average stayed below 0.5 for more than 45 seconds
+Kernel PANIC at ../../tests/threads/tests.c:94 in fail(): test failed
+Call stack: 0xc0106a0dInterrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0104da9
+ cr2=0000002e error=00000000
+ eax=0000000b ebx=0000002e ecx=00000796 edx=000003d4
+ esi=0000005e edi=c010b6a0 esp=0000000a ebp=c002fec8
+ cs=0008 ds=0010 es=0010 ss=ce6b
+Kernel PANIC recursion at ../../threads/interrupt.c:373 in intr_handler().
+Timer: 4636 ticks
+Thread: 0 idle ticks, 4636 kernel ticks, 0 user ticks
+Console: 859 characters output
+Keyboard: 0 keys pressed
+Powering off...
