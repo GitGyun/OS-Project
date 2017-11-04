@@ -7,4 +7,4 @@ userprog/exception.o: ../../userprog/exception.c \
  ../../lib/round.h ../../threads/synch.h ../../vm/page.h \
  ../../lib/kernel/hash.h ../../lib/kernel/list.h ../../threads/vaddr.h \
  ../../userprog/syscall.h ../../threads/palloc.h ../../userprog/pagedir.h \
- ../../vm/frame.h
+ ../../vm/frame.h ../../vm/swap.h ../../devices/disk.h

@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-mm into /tmp/rKGKhXpoHD.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/rKGKhXpoHD.dsk...
-Writing command line to /tmp/pEaBM0sChU.dsk...
+Copying tests/vm/page-merge-mm into /tmp/gNTCyuCMfh.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/gNTCyuCMfh.dsk...
+Writing command line to /tmp/eZ5yf0ubsz.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -21,16 +21,15 @@ Boot complete.
 Putting 'page-merge-mm' into the file system...
 Putting 'child-qsort-mm' into the file system...
 Executing 'page-merge-mm':
-Kernel PANIC at ../../threads/vaddr.h:84 in vtop(): assertion `is_kernel_vaddr (vaddr)' failed.
-Call stack: 0xc0106acd 0page-merge-mm: exit(-1)
+page-merge-mm: exit(-1)
 Execution of 'page-merge-mm' complete.
 Timer: 1553 ticks
-Thread: 31 idle ticks, 285 kernel ticks, 1243 user ticks
+Thread: 31 idle ticks, 285 kernel ticks, 1244 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 95 reads, 450 writes
 hd1:0: 220 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1096 characters output
+hd1:1: 0 reads, 8 writes
+Console: 976 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

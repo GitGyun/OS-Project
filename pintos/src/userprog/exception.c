@@ -12,6 +12,7 @@
 #ifdef VM
 #include "vm/frame.h"
 #include "vm/page.h"
+#include "vm/swap.h"
 #endif
 
 /* Maximum stack size of process 4 MB */
@@ -159,6 +160,12 @@ page_fault (struct intr_frame *f)
   not_present = (f->error_code & PF_P) == 0;
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
+/*
+  printf ("Page fault at %p: %s error %s page in %s context.\n",
+          fault_addr,
+          not_present ? "not present" : "rights violation",
+          write ? "writing" : "reading",
+          user ? "user" : "kernel");*/
 
   struct thread *t = thread_current ();
 
@@ -177,6 +184,14 @@ page_fault (struct intr_frame *f)
       if (new_kpage != NULL)
         /* Stack growth complete. Exit PF handler. */
         return;
+    }
+
+  if (not_present && is_user_vaddr (fault_addr))
+    {
+      printf ("swap in needed!!!\n");
+      struct ste *s = swap_find (pg_round_down (fault_addr));
+      if (s != NULL)
+        swap_in (s);
     }
 #endif
 

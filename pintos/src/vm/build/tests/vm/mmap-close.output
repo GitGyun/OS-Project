@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-close into /tmp/bwsOgxf5zx.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/bwsOgxf5zx.dsk...
-Writing command line to /tmp/EKVgq0l0El.dsk...
+Copying tests/vm/mmap-close into /tmp/mt8svGyGPS.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/mt8svGyGPS.dsk...
+Writing command line to /tmp/Aeesj_hvKL.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,13 +26,13 @@ Executing 'mmap-close':
 (mmap-close) mmap "sample.txt"
 mmap-close: exit(-1)
 Execution of 'mmap-close' complete.
-Timer: 310 ticks
-Thread: 30 idle ticks, 236 kernel ticks, 47 user ticks
+Timer: 309 ticks
+Thread: 30 idle ticks, 235 kernel ticks, 47 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 107 reads, 220 writes
 hd1:0: 105 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1029 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 2 page faults
 Powering off...

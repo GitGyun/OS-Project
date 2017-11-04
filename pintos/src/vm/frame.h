@@ -2,6 +2,7 @@
 #define VM_FRAME_H
 
 #include "threads/palloc.h"
+#include <hash.h>
 
 /* Frame table entry */
 struct fte
@@ -12,6 +13,7 @@ struct fte
 
     bool accessed;              /* Accessed bit */
     bool dirty;                 /* Dirty bit */
+    bool writable;              /* Writability */
 
     struct hash_elem elem;
   };

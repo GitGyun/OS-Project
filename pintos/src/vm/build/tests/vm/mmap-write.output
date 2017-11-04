@@ -1,5 +1,5 @@
-Copying tests/vm/mmap-write into /tmp/oUeru52Npa.dsk...
-Writing command line to /tmp/l0__glOk2s.dsk...
+Copying tests/vm/mmap-write into /tmp/9K_arqJBIE.dsk...
+Writing command line to /tmp/JTS35RFtps.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -25,13 +25,13 @@ Executing 'mmap-write':
 (mmap-write) mmap "sample.txt"
 mmap-write: exit(-1)
 Execution of 'mmap-write' complete.
-Timer: 307 ticks
-Thread: 30 idle ticks, 210 kernel ticks, 69 user ticks
+Timer: 306 ticks
+Thread: 30 idle ticks, 210 kernel ticks, 68 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 96 reads, 220 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1001 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 2 page faults
 Powering off...

@@ -1,5 +1,5 @@
-Copying tests/vm/pt-big-stk-obj into /tmp/PO0C7zQd4U.dsk...
-Writing command line to /tmp/a4q_szEseV.dsk...
+Copying tests/vm/pt-big-stk-obj into /tmp/5IFWTuXc6w.dsk...
+Writing command line to /tmp/9gFXTlk8IU.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,8 +24,8 @@ Executing 'pt-big-stk-obj':
 (pt-big-stk-obj) end
 pt-big-stk-obj: exit(0)
 Execution of 'pt-big-stk-obj' complete.
-Timer: 588 ticks
-Thread: 31 idle ticks, 242 kernel ticks, 317 user ticks
+Timer: 587 ticks
+Thread: 31 idle ticks, 241 kernel ticks, 317 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 226 writes
 hd1:0: 109 reads, 0 writes

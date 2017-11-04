@@ -4,7 +4,6 @@
 #include "vm/frame.h"
 #include "vm/page.h"
 #include "vm/swap.h"
-#include <hash.h>
 #include <stdio.h>
 
 static struct hash frame_table;
@@ -67,15 +66,19 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
       /* Evict the victim to swap disk */
       swap_out (victim);
 
+      /* Free kpage */
+      frame_free (victim->kpage);
+
       kpage = palloc_get_page (flags);
     }
 
   struct fte *fte_new = malloc (sizeof (struct fte));
   fte_new->kpage = kpage;
   fte_new->upage = upage;
-  fte_new->proccess = thread_current ();
+  fte_new->process = thread_current ();
   fte_new->accessed = false;
   fte_new->dirty = false;
+  fte_new->writable = writable;
 
   hash_insert (&frame_table, &fte_new->elem);
 
@@ -101,21 +104,21 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
 void
 frame_free (void *kpage)
 {
-  struct thread *t = thread_current ();
   struct fte *f = frame_table_find (kpage);
+  struct thread *t = f->process;
 
   if (f != NULL)
     {
-      palloc_free_page (kpage);
-      frame_table_del (f);
-      free (f);
-
       void *upage = f->upage;
       pagedir_clear_page (t->pagedir, upage);
 
       struct spte *p = suppl_page_table_find (t->suppl_page_table, upage);
       if (p != NULL)
         suppl_page_table_del(t->suppl_page_table, p);
+
+      palloc_free_page (kpage);
+      frame_table_del (f);
+      free (f);
     }
 }
 
