@@ -1,10 +1,10 @@
-Copying tests/vm/page-linear into /tmp/cSO4GytE8i.dsk...
-Writing command line to /tmp/Kvv5Img5cE.dsk...
+Copying tests/vm/page-linear into /tmp/u_W792xOLI.dsk...
+Writing command line to /tmp/h3t22ublsS.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put page-linear run page-linear
 Pintos booting with 4,096 kB RAM...
@@ -19,18 +19,22 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-linear' into the file system...
 Executing 'page-linear':
-Kernel PANIC at ../../vm/swap.c:74 in swap_out(): No remaining swap slot!
-Call stack: 0xc0106ad2 0xbffff000.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 10850 ticks
-Thread: 30 idle ticks, 180 kernel ticks, 10640 user ticks
+(page-linear) begin
+(page-linear) initialize
+(page-linear) read pass
+(page-linear) read/modify/write pass one
+(page-linear) read/modify/write pass two
+(page-linear) read pass
+(page-linear) end
+page-linear: exit(0)
+Execution of 'page-linear' complete.
+Timer: 44997 ticks
+Thread: 32 idle ticks, 208 kernel ticks, 44760 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 68 reads, 218 writes
 hd1:0: 105 reads, 0 writes
-hd1:1: 3440 reads, 8064 writes
-Console: 1108 characters output
+hd1:1: 20712 reads, 21896 writes
+Console: 1098 characters output
 Keyboard: 0 keys pressed
-Exception: 861 page faults
+Exception: 2589 page faults
 Powering off...

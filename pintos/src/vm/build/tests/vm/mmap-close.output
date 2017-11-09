@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-close into /tmp/JXfzGcW9so.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/JXfzGcW9so.dsk...
-Writing command line to /tmp/Q3RZ7BmlzA.dsk...
+Copying tests/vm/mmap-close into /tmp/bxlS3BZQSY.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/bxlS3BZQSY.dsk...
+Writing command line to /tmp/eFAekFKaVY.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
 Pintos booting with 4,096 kB RAM...
@@ -26,10 +26,10 @@ Executing 'mmap-close':
 (mmap-close) mmap "sample.txt"
 mmap-close: exit(-1)
 Execution of 'mmap-close' complete.
-Timer: 310 ticks
-Thread: 31 idle ticks, 234 kernel ticks, 47 user ticks
+Timer: 325 ticks
+Thread: 30 idle ticks, 233 kernel ticks, 64 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 108 reads, 220 writes
+hd0:1: 107 reads, 220 writes
 hd1:0: 105 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1029 characters output

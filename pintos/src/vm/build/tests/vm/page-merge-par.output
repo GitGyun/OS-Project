@@ -1,11 +1,11 @@
-Copying tests/vm/page-merge-par into /tmp/CosaSaGGlR.dsk...
-Copying tests/vm/child-sort into /tmp/CosaSaGGlR.dsk...
-Writing command line to /tmp/2lPf8bELIY.dsk...
+Copying tests/vm/page-merge-par into /tmp/0D99uoo733.dsk...
+Copying tests/vm/child-sort into /tmp/0D99uoo733.dsk...
+Writing command line to /tmp/qYxRxLsiZu.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
 Pintos booting with 4,096 kB RAM...
@@ -21,18 +21,45 @@ Boot complete.
 Putting 'page-merge-par' into the file system...
 Putting 'child-sort' into the file system...
 Executing 'page-merge-par':
-Kernel PANIC at ../../vm/swap.c:74 in swap_out(): No remaining swap slot!
-Call stack: 0xc0106ad2 0xbffff000.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 10932 ticks
-Thread: 32 idle ticks, 261 kernel ticks, 10639 user ticks
+(page-merge-par) begin
+(page-merge-par) init
+(page-merge-par) sort chunk 0
+(page-merge-par) sort chunk 1
+(page-merge-par) sort chunk 2
+child-sort: exit(123)
+child-sort: exit(123)
+(page-merge-par) sort chunk 3
+(page-merge-par) sort chunk 4
+(page-merge-par) sort chunk 5
+(page-merge-par) sort chunk 6
+(page-merge-par) sort chunk 7
+(page-merge-par) wait for child 0
+(page-merge-par) wait for child 1
+child-sort: exit(123)
+child-sort: exit(123)
+(page-merge-par) wait for child 2
+(page-merge-par) wait for child 3
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+(page-merge-par) wait for child 4
+(page-merge-par) wait for child 5
+(page-merge-par) wait for child 6
+(page-merge-par) wait for child 7
+(page-merge-par) merge
+(page-merge-par) verify
+(page-merge-par) success, buf_idx=1,048,576
+(page-merge-par) end
+page-merge-par: exit(0)
+Execution of 'page-merge-par' complete.
+Timer: 29516 ticks
+Thread: 69 idle ticks, 367 kernel ticks, 29083 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 97 reads, 432 writes
+hd0:1: 4985 reads, 6608 writes
 hd1:0: 211 reads, 0 writes
-hd1:1: 3440 reads, 8064 writes
-Console: 1180 characters output
+hd1:1: 5936 reads, 7120 writes
+Console: 1829 characters output
 Keyboard: 0 keys pressed
-Exception: 861 page faults
+Exception: 742 page faults
 Powering off...

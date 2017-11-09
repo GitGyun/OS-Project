@@ -1,10 +1,10 @@
-Copying tests/userprog/sc-bad-arg into /tmp/VxYpK4CIol.dsk...
-Writing command line to /tmp/sh5ZN6Bjpt.dsk...
+Copying tests/userprog/sc-bad-arg into /tmp/X75zmo5xdN.dsk...
+Writing command line to /tmp/MEGN_Yc287.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put sc-bad-arg run sc-bad-arg
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'sc-bad-arg':
 (sc-bad-arg) begin
 sc-bad-arg: exit(-1)
 Execution of 'sc-bad-arg' complete.
-Timer: 271 ticks
-Thread: 30 idle ticks, 208 kernel ticks, 36 user ticks
+Timer: 286 ticks
+Thread: 30 idle ticks, 204 kernel ticks, 54 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 208 writes
 hd1:0: 100 reads, 0 writes

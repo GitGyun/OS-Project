@@ -1,10 +1,10 @@
-Copying tests/userprog/args-dbl-space into /tmp/s_yrBhg6uN.dsk...
-Writing command line to /tmp/L5pwdzC_Z_.dsk...
+Copying tests/userprog/args-dbl-space into /tmp/kfeg1ue1Nd.dsk...
+Writing command line to /tmp/_fkEoLJpMK.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put args-dbl-space run 'args-dbl-space two  spaces!'
 Pintos booting with 4,096 kB RAM...
@@ -28,8 +28,8 @@ Executing 'args-dbl-space two  spaces!':
 (args) end
 args-dbl-space: exit(0)
 Execution of 'args-dbl-space two  spaces!' complete.
-Timer: 292 ticks
-Thread: 31 idle ticks, 211 kernel ticks, 53 user ticks
+Timer: 307 ticks
+Thread: 31 idle ticks, 208 kernel ticks, 70 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

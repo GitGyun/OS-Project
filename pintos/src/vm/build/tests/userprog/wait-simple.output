@@ -1,11 +1,11 @@
-Copying tests/userprog/wait-simple into /tmp/kFqqkiH9DT.dsk...
-Copying tests/userprog/child-simple into /tmp/kFqqkiH9DT.dsk...
-Writing command line to /tmp/ABViAMwnz3.dsk...
+Copying tests/userprog/wait-simple into /tmp/1dTbzw6elk.dsk...
+Copying tests/userprog/child-simple into /tmp/1dTbzw6elk.dsk...
+Writing command line to /tmp/J2ugZCpQhQ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put wait-simple put child-simple run wait-simple
 Pintos booting with 4,096 kB RAM...
@@ -28,13 +28,13 @@ child-simple: exit(81)
 (wait-simple) end
 wait-simple: exit(0)
 Execution of 'wait-simple' complete.
-Timer: 419 ticks
-Thread: 30 idle ticks, 307 kernel ticks, 85 user ticks
+Timer: 438 ticks
+Thread: 30 idle ticks, 292 kernel ticks, 119 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 141 reads, 404 writes
 hd1:0: 197 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1069 characters output
+Console: 1070 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

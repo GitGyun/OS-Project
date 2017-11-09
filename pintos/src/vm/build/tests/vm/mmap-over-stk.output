@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-over-stk into /tmp/bFCrdQgLyj.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/bFCrdQgLyj.dsk...
-Writing command line to /tmp/ptzVBkS2jY.dsk...
+Copying tests/vm/mmap-over-stk into /tmp/Ymc00FvhoK.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/Ymc00FvhoK.dsk...
+Writing command line to /tmp/_8NrwDHstM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
 Pintos booting with 4,096 kB RAM...
@@ -27,8 +27,8 @@ Executing 'mmap-over-stk':
 (mmap-over-stk) try to mmap over stack segment: FAILED
 mmap-over-stk: exit(1)
 Execution of 'mmap-over-stk' complete.
-Timer: 316 ticks
-Thread: 32 idle ticks, 233 kernel ticks, 54 user ticks
+Timer: 331 ticks
+Thread: 33 idle ticks, 230 kernel ticks, 70 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 216 writes
 hd1:0: 103 reads, 0 writes

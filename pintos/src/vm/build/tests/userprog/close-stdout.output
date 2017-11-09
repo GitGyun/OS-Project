@@ -1,10 +1,10 @@
-Copying tests/userprog/close-stdout into /tmp/Te1XFNVQeT.dsk...
-Writing command line to /tmp/1vkMuRSN1L.dsk...
+Copying tests/userprog/close-stdout into /tmp/cNtWB9CgOa.dsk...
+Writing command line to /tmp/05zZHuOr5T.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put close-stdout run close-stdout
 Pintos booting with 4,096 kB RAM...
@@ -23,8 +23,8 @@ Executing 'close-stdout':
 (close-stdout) end
 close-stdout: exit(0)
 Execution of 'close-stdout' complete.
-Timer: 274 ticks
-Thread: 30 idle ticks, 208 kernel ticks, 39 user ticks
+Timer: 289 ticks
+Thread: 30 idle ticks, 204 kernel ticks, 57 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

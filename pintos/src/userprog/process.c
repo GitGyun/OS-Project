@@ -22,6 +22,9 @@
 #include "threads/malloc.h"
 #ifdef VM
 #include "vm/frame.h"
+#include "vm/page.h"
+#include "vm/swap.h"
+#include <hash.h>
 #endif
 
 /* GCC provides the operations to void pointers as non-standard
@@ -259,6 +262,16 @@ process_exit (void)
 
   /* Allow the parent to run */
   sema_up (&curr->sema_exec);
+
+#ifdef VM
+  struct hash *spt = curr->suppl_page_table;
+  ASSERT (spt != NULL);
+
+  /* Destroy the current process's supplemental page table. Also
+     deallocate frames and swap slots. */
+  if (spt != NULL)
+    suppl_page_table_del (spt);
+#endif
 
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
@@ -622,6 +635,7 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 static bool
 setup_stack (void **esp)
 {
+  //printf ("setup stack\n");
   uint8_t *kpage;
   bool success = false;
 
@@ -630,6 +644,12 @@ setup_stack (void **esp)
                        PAL_USER | PAL_ZERO, true);
   if (kpage != NULL)
     {
+      struct fte *f = frame_table_find (kpage);
+      if (f != NULL)
+        suppl_page_table_set_page_status (f->process->suppl_page_table, f->upage, PG_ON_MEMORY);
+      else
+        return false;
+
       *esp = PHYS_BASE;
       return true;
     }

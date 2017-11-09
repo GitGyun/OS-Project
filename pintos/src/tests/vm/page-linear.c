@@ -6,6 +6,8 @@
 #include "tests/lib.h"
 #include "tests/main.h"
 
+//#include <stdio.h>
+
 #define SIZE (2 * 1024 * 1024)
 
 static char buf[SIZE];
@@ -15,6 +17,12 @@ test_main (void)
 {
   struct arc4 arc4;
   size_t i;
+  /*
+  printf ("main addr: %p\n", test_main);
+  printf ("arc4 size: %zu\n", sizeof (struct arc4));
+  printf ("arc4 addr: %p\n", &arc4);
+  printf ("i addr   : %p\n", &i);
+  */
 
   /* Initialize to 0x5a. */
   msg ("initialize");

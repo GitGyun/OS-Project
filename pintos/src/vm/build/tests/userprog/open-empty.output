@@ -1,10 +1,10 @@
-Copying tests/userprog/open-empty into /tmp/wG7kmU_TuY.dsk...
-Writing command line to /tmp/Mkx0WEnd5b.dsk...
+Copying tests/userprog/open-empty into /tmp/r_Dh19lOEy.dsk...
+Writing command line to /tmp/4MuAa6vBRu.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put open-empty run open-empty
 Pintos booting with 4,096 kB RAM...
@@ -23,10 +23,10 @@ Executing 'open-empty':
 (open-empty) end
 open-empty: exit(0)
 Execution of 'open-empty' complete.
-Timer: 285 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 48 user ticks
+Timer: 298 ticks
+Thread: 30 idle ticks, 204 kernel ticks, 67 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 84 reads, 206 writes
+hd0:1: 83 reads, 206 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 921 characters output

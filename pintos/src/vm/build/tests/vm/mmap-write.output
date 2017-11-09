@@ -1,10 +1,10 @@
-Copying tests/vm/mmap-write into /tmp/EC5pQbaxye.dsk...
-Writing command line to /tmp/fFq2Jiuy22.dsk...
+Copying tests/vm/mmap-write into /tmp/4tPi3fK0KV.dsk...
+Writing command line to /tmp/axE4PK076j.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put mmap-write run mmap-write
 Pintos booting with 4,096 kB RAM...
@@ -25,8 +25,8 @@ Executing 'mmap-write':
 (mmap-write) mmap "sample.txt"
 mmap-write: exit(-1)
 Execution of 'mmap-write' complete.
-Timer: 307 ticks
-Thread: 30 idle ticks, 210 kernel ticks, 69 user ticks
+Timer: 319 ticks
+Thread: 31 idle ticks, 206 kernel ticks, 85 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 96 reads, 220 writes
 hd1:0: 103 reads, 0 writes

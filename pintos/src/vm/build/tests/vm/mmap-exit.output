@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-exit into /tmp/G7zLcipcSm.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/G7zLcipcSm.dsk...
-Writing command line to /tmp/PDZD1gHVWG.dsk...
+Copying tests/vm/mmap-exit into /tmp/BTYNQJefdu.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/BTYNQJefdu.dsk...
+Writing command line to /tmp/Tzsefj6IPr.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
 Pintos booting with 4,096 kB RAM...
@@ -30,8 +30,8 @@ child-mm-wrt: exit(-1)
 (mmap-exit) wait for child (should return 0): FAILED
 mmap-exit: exit(1)
 Execution of 'mmap-exit' complete.
-Timer: 457 ticks
-Thread: 31 idle ticks, 309 kernel ticks, 120 user ticks
+Timer: 475 ticks
+Thread: 32 idle ticks, 294 kernel ticks, 152 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 181 reads, 424 writes
 hd1:0: 204 reads, 0 writes

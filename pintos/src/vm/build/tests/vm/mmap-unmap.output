@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-unmap into /tmp/mxzlxpvHcQ.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/mxzlxpvHcQ.dsk...
-Writing command line to /tmp/rZcbQbqqeb.dsk...
+Copying tests/vm/mmap-unmap into /tmp/qM8fUy4Rnl.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/qM8fUy4Rnl.dsk...
+Writing command line to /tmp/tsNiWarnfO.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put mmap-unmap put sample.txt run mmap-unmap
 Pintos booting with 4,096 kB RAM...
@@ -26,8 +26,8 @@ Executing 'mmap-unmap':
 (mmap-unmap) mmap "sample.txt"
 mmap-unmap: exit(-1)
 Execution of 'mmap-unmap' complete.
-Timer: 311 ticks
-Thread: 31 idle ticks, 235 kernel ticks, 47 user ticks
+Timer: 324 ticks
+Thread: 31 idle ticks, 232 kernel ticks, 64 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 108 reads, 220 writes
 hd1:0: 105 reads, 0 writes

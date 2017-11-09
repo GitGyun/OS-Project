@@ -1,10 +1,10 @@
-Copying tests/userprog/open-null into /tmp/VanXFmE7Q4.dsk...
-Writing command line to /tmp/7bzazuyby_.dsk...
+Copying tests/userprog/open-null into /tmp/tTBdX0Iql8.dsk...
+Writing command line to /tmp/9jFha8o9aC.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put open-null run open-null
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'open-null':
 (open-null) begin
 open-null: exit(-1)
 Execution of 'open-null' complete.
-Timer: 272 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 35 user ticks
+Timer: 285 ticks
+Thread: 30 idle ticks, 205 kernel ticks, 53 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

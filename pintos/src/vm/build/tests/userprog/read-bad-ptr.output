@@ -1,11 +1,11 @@
-Copying tests/userprog/read-bad-ptr into /tmp/QK0KCHhgyw.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/QK0KCHhgyw.dsk...
-Writing command line to /tmp/Vjj3lBH3Eb.dsk...
+Copying tests/userprog/read-bad-ptr into /tmp/xcx0ixisK_.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/xcx0ixisK_.dsk...
+Writing command line to /tmp/4dyNrkh5ds.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put read-bad-ptr put sample.txt run read-bad-ptr
 Pintos booting with 4,096 kB RAM...
@@ -25,8 +25,8 @@ Executing 'read-bad-ptr':
 (read-bad-ptr) open "sample.txt"
 read-bad-ptr: exit(-1)
 Execution of 'read-bad-ptr' complete.
-Timer: 306 ticks
-Thread: 32 idle ticks, 233 kernel ticks, 43 user ticks
+Timer: 319 ticks
+Thread: 32 idle ticks, 229 kernel ticks, 61 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 214 writes
 hd1:0: 102 reads, 0 writes

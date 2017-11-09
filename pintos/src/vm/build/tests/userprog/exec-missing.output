@@ -1,10 +1,10 @@
-Copying tests/userprog/exec-missing into /tmp/n4FKVWD7QR.dsk...
-Writing command line to /tmp/l3BPAc3tmt.dsk...
+Copying tests/userprog/exec-missing into /tmp/K630PbDsUf.dsk...
+Writing command line to /tmp/plMr86dceb.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put exec-missing run exec-missing
 Pintos booting with 4,096 kB RAM...
@@ -24,8 +24,8 @@ Executing 'exec-missing':
 (exec-missing) end
 exec-missing: exit(0)
 Execution of 'exec-missing' complete.
-Timer: 294 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 57 user ticks
+Timer: 307 ticks
+Thread: 30 idle ticks, 205 kernel ticks, 75 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 84 reads, 206 writes
 hd1:0: 99 reads, 0 writes

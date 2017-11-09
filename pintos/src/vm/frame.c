@@ -1,40 +1,55 @@
+#include "vm/frame.h"
+#include "devices/timer.h"
 #include "threads/thread.h"
 #include "threads/malloc.h"
+#include "threads/synch.h"
+#include "threads/vaddr.h"
 #include "userprog/pagedir.h"
-#include "vm/frame.h"
-#include "vm/page.h"
 #include "vm/swap.h"
 #include <stdio.h>
 
 static struct hash frame_table;
+static struct list victim_selector;
+
+/* Lock used for paging system */
+static struct lock paging_lock;
+static int pgl_nested = 0;
+
+static bool frame_table_insert (struct fte *);
+static void frame_table_del_frame (struct fte *);
 
 static unsigned fte_hash (const struct hash_elem *, void *);
 static bool fte_cmp_kpage (const struct hash_elem *,
                            const struct hash_elem *, void *);
-static struct fte *frame_select_victim (void);
-
+static bool fte_cmp_tick (const struct list_elem *,
+                          const struct list_elem *, void *);
+static struct fte *select_victim (void);
 
 /* Initialize the frame table. Called by init.c */
 void
 frame_table_init (void)
 {
   hash_init (&frame_table, fte_hash, fte_cmp_kpage, NULL);
+  list_init (&victim_selector);
+  lock_init (&paging_lock);
 }
 
 /* Insert fte to the frame table */
-bool
+static bool
 frame_table_insert (struct fte *f)
 {
   bool success = (hash_insert (&frame_table, &f->elem) == NULL);
-  f->accessed = true;
+  list_push_back (&victim_selector, &f->lelem);
 
   return success;
 }
 
-/* Find fte from address */
+/* Find fte from address. If fte does not exist, return NULL. */
 struct fte *
 frame_table_find (void *kpage)
 {
+  pgl_acquire ();
+
   struct fte f;
   f.kpage = kpage;
 
@@ -42,115 +57,150 @@ frame_table_find (void *kpage)
 
   if (e != NULL)
     {
-			struct fte *f = hash_entry (e, struct fte, elem);
-			f->accessed = true;
-			return f;
-		}
-  
+      struct fte *f_found = hash_entry (e, struct fte, elem);
+      f_found->last_ac_tick = timer_ticks ();
+
+      pgl_release ();
+      return f_found;
+    }
+
+  pgl_release ();
   return NULL;
 }
 
 /* Delete fte from the frame table */
-void
-frame_table_del (struct fte *f)
+static void
+frame_table_del_frame (struct fte *f)
 {
   hash_delete (&frame_table, &f->elem);
+  list_remove (&f->lelem);
 }
 
 /* Allocate a new frame */
 void *
 frame_alloc (void *upage, enum palloc_flags flags, bool writable)
 {
+  ASSERT (upage != NULL);
+
+  pgl_acquire ();
+
   struct thread *t = thread_current ();
 
-  void *kpage;
-  if ((kpage = palloc_get_page (flags)) == NULL)
+  /* First attempt to allocate new frame. */
+  void *kpage = palloc_get_page (flags);
+  if (kpage  == NULL)
     {
-      /* fte to be needed */
-      struct fte *victim = frame_select_victim ();
+      /* Physical memory insufficient. Eviction is required. */
+      /* Select victim which is to be evicted. */
+      struct fte *victim = select_victim ();
 
-      /* Evict the victim to swap disk */
+      /* Evict victim to swap disk */
       swap_out (victim);
 
-      /* Free kpage */
-      frame_free (victim->kpage);
-
+      /* Retry frame allocation once more */
       kpage = palloc_get_page (flags);
     }
 
+  /* If retry is also failed, eviction performed incorrectly. */
+  if (kpage == NULL)
+    PANIC ("Eviction failed");
+
+  /* upage - kpage mapping on pagedir */
+  bool success = (pagedir_get_page (t->pagedir, upage) == NULL)
+                 && pagedir_set_page (t->pagedir, upage, kpage, writable);
+  if (!success)
+    goto update_error;
+
+  /* Allocate new frame table entry (fte) */
   struct fte *fte_new = malloc (sizeof (struct fte));
+  ASSERT (fte_new != NULL);
+
+  /* Initialize fte */
   fte_new->kpage = kpage;
   fte_new->upage = upage;
   fte_new->process = t;
-  fte_new->accessed = false;
   fte_new->writable = writable;
+  fte_new->last_ac_tick = timer_ticks ();
 
-  hash_insert (&frame_table, &fte_new->elem);
-
-  /* upage - kpage mapping */
-  bool success = pagedir_get_page (t->pagedir, upage) == NULL
-                 && pagedir_set_page (t->pagedir, upage, kpage, writable);
+  /* Insert fte to the frame table */
+  success = frame_table_insert (fte_new);
   if (!success)
     {
-      palloc_free_page (kpage);
-      return NULL;
+      free (fte_new);
+      goto update_error;
     }
 
-  /* Update suppl. page table */
-  struct spte *p = spte_create (upage);
-  success = suppl_page_table_insert(t->suppl_page_table, p);
-  if (!success)
-    return NULL;
+  /* Update supplemental page table. */
+  struct spte *p = suppl_page_table_find (t->suppl_page_table, upage);
+  if (p == NULL)
+    {
+      /* Current upage is not in supplemental page table. I.e., frame
+         allocation for this UPAGE is first time. (If this UPAGE have
+         been evicted, then frame is reallocated to swap in.)
+         Allocate new spte. */
+      p = spte_create (upage, kpage);
+      success = suppl_page_table_insert (t->suppl_page_table, p);
 
+      if (!success)
+        {
+          free (fte_new);
+          free (p);
+          goto update_error;
+        }
+    }
+  else
+    /* This page is swapped in. Just update kpage only. */
+    p->kpage = kpage;
+  p->stat = PG_ON_MEMORY;
+
+  pgl_release ();
   return kpage;
+
+ update_error:
+  palloc_free_page (kpage);
+  pgl_release ();
+
+  PANIC ("Error occured while updating"
+         "page directory, frame table, or supplimental page table.");
+  return NULL;
 }
 
 /* Free KPAGE */
 void
 frame_free (void *kpage)
 {
+  pgl_acquire ();
+
   struct fte *f = frame_table_find (kpage);
   struct thread *t = f->process;
+  void *upage = f->upage;
 
-  if (f != NULL)
-    {
-      void *upage = f->upage;
-      pagedir_clear_page (t->pagedir, upage);
+  /* Discard fte from the frame table */
+  frame_table_del_frame (f);
+  free (f);
 
-      struct spte *p = suppl_page_table_find (t->suppl_page_table, upage);
-      if (p != NULL)
-        suppl_page_table_del(t->suppl_page_table, p);
+  /* Discard upage - kpage mapping from pagedir */
+  pagedir_clear_page (t->pagedir, upage);
 
-      palloc_free_page (kpage);
-      frame_table_del (f);
-      free (f);
-    }
+  /* Free KPAGE */
+  palloc_free_page (kpage);
+
+  pgl_release ();
 }
 
 /* Select fte to be evicted */
 static struct fte *
-frame_select_victim (void)
+select_victim (void)
 {
-  struct hash_iterator i;
-  struct fte *f;
-  hash_first (&i, &frame_table);
-  
-  while (hash_next (&i))
-		{
-			f = hash_entry (hash_cur (&i), struct fte, elem);
-			if (f->accessed == false)
-				break;
-			f->accessed = true;
-		}
-
-  return f;
+  struct list_elem *e = list_min(&victim_selector, fte_cmp_tick, NULL);
+  return list_entry (e, struct fte, lelem);
 }
 
 
 
 /* ===== Helpers ===== */
 
-/* Hash function */
+/* Hash function for fte. */
 static unsigned
 fte_hash (const struct hash_elem *e, void *aux UNUSED)
 {
@@ -158,7 +208,7 @@ fte_hash (const struct hash_elem *e, void *aux UNUSED)
   return hash_bytes (&f->kpage, sizeof f->kpage);
 }
 
-/* Compare fte's addresses */
+/* Compare fte's addresses. */
 static bool
 fte_cmp_kpage (const struct hash_elem *a_,
                const struct hash_elem *b_, void *aux UNUSED)
@@ -167,4 +217,31 @@ fte_cmp_kpage (const struct hash_elem *a_,
   const struct fte *b = hash_entry (b_, struct fte, elem);
 
   return a->kpage < b->kpage;
+}
+
+/* Compare fte's last accessed time. */
+static bool
+fte_cmp_tick (const struct list_elem *a_,
+              const struct list_elem *b_, void *aux UNUSED)
+{
+  const struct fte *a = list_entry (a_, struct fte, lelem);
+  const struct fte *b = list_entry (b_, struct fte, lelem);
+
+  return a->last_ac_tick < b->last_ac_tick;
+}
+
+void
+pgl_acquire (void)
+{
+  if (!lock_held_by_current_thread (&paging_lock))
+    lock_acquire (&paging_lock);
+  pgl_nested++;
+}
+
+void
+pgl_release (void)
+{
+  pgl_nested--;
+  if (pgl_nested == 0)
+    lock_release (&paging_lock);
 }

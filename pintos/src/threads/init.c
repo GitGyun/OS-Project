@@ -93,11 +93,6 @@ main (void)
   malloc_init ();
   paging_init ();
 
-#ifdef VM
-  frame_table_init ();
-  swap_table_init ();
-#endif
-
   /* Segmentation. */
 #ifdef USERPROG
   tss_init ();
@@ -123,6 +118,11 @@ main (void)
   /* Initialize file system. */
   disk_init ();
   filesys_init (format_filesys);
+#endif
+
+#ifdef VM
+  frame_table_init ();
+  swap_table_init ();
 #endif
 
   printf ("Boot complete.\n");

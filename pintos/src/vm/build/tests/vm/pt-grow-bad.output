@@ -1,10 +1,10 @@
-Copying tests/vm/pt-grow-bad into /tmp/fCPPgpKo4E.dsk...
-Writing command line to /tmp/mquDU4XLm8.dsk...
+Copying tests/vm/pt-grow-bad into /tmp/H6dQm5up1O.dsk...
+Writing command line to /tmp/BT19xXu01U.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put pt-grow-bad run pt-grow-bad
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'pt-grow-bad':
 (pt-grow-bad) begin
 pt-grow-bad: exit(-1)
 Execution of 'pt-grow-bad' complete.
-Timer: 271 ticks
-Thread: 31 idle ticks, 207 kernel ticks, 36 user ticks
+Timer: 286 ticks
+Thread: 31 idle ticks, 203 kernel ticks, 54 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

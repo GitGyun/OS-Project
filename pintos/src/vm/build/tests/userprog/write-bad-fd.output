@@ -1,10 +1,10 @@
-Copying tests/userprog/write-bad-fd into /tmp/5ym3_zNV0V.dsk...
-Writing command line to /tmp/g7Z4vepCG7.dsk...
+Copying tests/userprog/write-bad-fd into /tmp/nuNBYrlr8M.dsk...
+Writing command line to /tmp/8n4AXLvkwK.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put write-bad-fd run write-bad-fd
 Pintos booting with 4,096 kB RAM...
@@ -23,8 +23,8 @@ Executing 'write-bad-fd':
 (write-bad-fd) end
 write-bad-fd: exit(0)
 Execution of 'write-bad-fd' complete.
-Timer: 275 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 39 user ticks
+Timer: 290 ticks
+Thread: 30 idle ticks, 206 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 208 writes
 hd1:0: 100 reads, 0 writes

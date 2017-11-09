@@ -1,10 +1,10 @@
-Copying tests/userprog/args-single into /tmp/eWqa9JlhFg.dsk...
-Writing command line to /tmp/WwWMTPUmxy.dsk...
+Copying tests/userprog/args-single into /tmp/U714wc_S9H.dsk...
+Writing command line to /tmp/wLhhUmQ7aj.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put args-single run 'args-single onearg'
 Pintos booting with 4,096 kB RAM...
@@ -27,8 +27,8 @@ Executing 'args-single onearg':
 (args) end
 args-single: exit(0)
 Execution of 'args-single onearg' complete.
-Timer: 288 ticks
-Thread: 30 idle ticks, 211 kernel ticks, 49 user ticks
+Timer: 301 ticks
+Thread: 30 idle ticks, 207 kernel ticks, 67 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

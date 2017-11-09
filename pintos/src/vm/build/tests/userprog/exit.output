@@ -1,10 +1,10 @@
-Copying tests/userprog/exit into /tmp/OnZjIGKOu4.dsk...
-Writing command line to /tmp/k9c7kdpf13.dsk...
+Copying tests/userprog/exit into /tmp/dzCmXE71zp.dsk...
+Writing command line to /tmp/X1SsDPU_xq.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put exit run exit
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'exit':
 (exit) begin
 exit: exit(57)
 Execution of 'exit' complete.
-Timer: 269 ticks
-Thread: 31 idle ticks, 206 kernel ticks, 35 user ticks
+Timer: 283 ticks
+Thread: 31 idle ticks, 202 kernel ticks, 52 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

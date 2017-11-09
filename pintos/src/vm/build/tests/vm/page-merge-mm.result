@@ -1,7 +1,2 @@
 FAIL
-Kernel panic in run: PANIC at ../../vm/swap.c:74 in swap_out(): No remaining swap slot!
-Call stack: 0xc0106ad2 0xbffff000
-Translation of call stack:
-In kernel.o:
-0xc0106ad2: debug_panic (.../../lib/kernel/debug.c:34)
-0xbffff000: (unknown)
+run: wait for child 0: FAILED

@@ -1,10 +1,10 @@
-Copying tests/userprog/bad-read2 into /tmp/TgHhgd69aJ.dsk...
-Writing command line to /tmp/lUcQRBZqn0.dsk...
+Copying tests/userprog/bad-read2 into /tmp/U2BhsC6OIa.dsk...
+Writing command line to /tmp/scwiNNbwdn.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put bad-read2 run bad-read2
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'bad-read2':
 (bad-read2) begin
 bad-read2: exit(-1)
 Execution of 'bad-read2' complete.
-Timer: 272 ticks
-Thread: 30 idle ticks, 209 kernel ticks, 35 user ticks
+Timer: 285 ticks
+Thread: 30 idle ticks, 205 kernel ticks, 53 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes

@@ -1,10 +1,10 @@
-Copying tests/userprog/sc-boundary-2 into /tmp/PG8HkeQOe6.dsk...
-Writing command line to /tmp/OWf_rW6fMj.dsk...
+Copying tests/userprog/sc-boundary-2 into /tmp/zgZCh0JGKp.dsk...
+Writing command line to /tmp/SiDecQ1aql.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put sc-boundary-2 run sc-boundary-2
 Pintos booting with 4,096 kB RAM...
@@ -22,8 +22,8 @@ Executing 'sc-boundary-2':
 (sc-boundary-2) begin
 sc-boundary-2: exit(67)
 Execution of 'sc-boundary-2' complete.
-Timer: 282 ticks
-Thread: 30 idle ticks, 214 kernel ticks, 41 user ticks
+Timer: 297 ticks
+Thread: 31 idle ticks, 206 kernel ticks, 62 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 212 writes
 hd1:0: 102 reads, 0 writes

@@ -14,6 +14,7 @@
 #include "vm/page.h"
 #include "vm/swap.h"
 #endif
+#include <hash.h>
 
 /* Maximum stack size of process 4 MB */
 #define MAX_STACK_SIZE (1 << 22)
@@ -160,48 +161,46 @@ page_fault (struct intr_frame *f)
   not_present = (f->error_code & PF_P) == 0;
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
-/*
-  printf ("Page fault at %p: %s error %s page in %s context.\n",
-          fault_addr,
-          not_present ? "not present" : "rights violation",
-          write ? "writing" : "reading",
-          user ? "user" : "kernel");*/
 
   struct thread *t = thread_current ();
+  void *fault_upage = pg_round_down (fault_addr);
 
 #ifdef VM
+  struct spte *p = suppl_page_table_find (t->suppl_page_table, fault_upage);
+  ASSERT (!not_present || p == NULL || p->stat != PG_ON_MEMORY);
+
   /* Determine if the page fault is caused by stack access. Then
      perform the stack growth */
-  uint8_t *esp = user ? f->esp : t->user_esp;
+  uint8_t *esp = user ? f->esp : t->user_esp;\
   if (fault_addr < PHYS_BASE
       && fault_addr >= PHYS_BASE - MAX_STACK_SIZE
-      && (uint8_t *)fault_addr >= esp - 32)
+      && (uint8_t *)fault_addr >= esp - 32
+      && p == NULL)
     {
-      /* Calculate user page address to allocate */
-      void *new_upage = pg_round_down (fault_addr);
       /* Allocate corresponding kernel page */
-      void *new_kpage = frame_alloc (new_upage, PAL_USER | PAL_ZERO, true);
+      void *new_kpage = frame_alloc (fault_upage, PAL_USER | PAL_ZERO, true);
       if (new_kpage != NULL)
         /* Stack growth complete. Exit PF handler. */
         return;
+      else
+        PANIC ("Cannot grow stack");
     }
 
-  if (not_present && is_user_vaddr (fault_addr))
+  /* Swap in the evicted page to memory */
+  if (not_present
+      && is_user_vaddr (fault_addr)
+      && p != NULL
+      && p->stat == PG_EVICTED)
     {
-      struct ste *s = swap_table_find (pg_round_down (fault_addr));
-      if (s != NULL)
-        {
-      //    printf ("swap-in !!!\n");
-          swap_in (s);
-          return;
-        }
+      swap_in (p);
+      return;
     }
-#endif
 
   /* Handling rights violation error caused by writing data on
-     the read-only region. */
+   the read-only region. */
   if (!not_present)
     syscall_exit (-1);
+#endif
 
   /* Test sc-bad-sp raises not present error:
         Page fault at 0x40480d7: not present error reading page

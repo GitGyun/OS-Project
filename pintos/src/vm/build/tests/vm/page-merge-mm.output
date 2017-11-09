@@ -1,11 +1,11 @@
-Copying tests/vm/page-merge-mm into /tmp/WPBE5gcfkD.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/WPBE5gcfkD.dsk...
-Writing command line to /tmp/wXn16GACVF.dsk...
+Copying tests/vm/page-merge-mm into /tmp/rlftsXpwBX.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/rlftsXpwBX.dsk...
+Writing command line to /tmp/QJEqBgdUYp.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
@@ -21,18 +21,35 @@ Boot complete.
 Putting 'page-merge-mm' into the file system...
 Putting 'child-qsort-mm' into the file system...
 Executing 'page-merge-mm':
-Kernel PANIC at ../../vm/swap.c:74 in swap_out(): No remaining swap slot!
-Call stack: 0xc0106ad2 0xbffff000.
-The `backtrace' program can make call stacks useful.
-Read "Backtraces" in the "Debugging Tools" chapter
-of the Pintos documentation for more information.
-Timer: 10937 ticks
-Thread: 31 idle ticks, 268 kernel ticks, 10638 user ticks
+(page-merge-mm) begin
+(page-merge-mm) init
+(page-merge-mm) sort chunk 0
+(page-merge-mm) sort chunk 1
+(page-merge-mm) sort chunk 2
+(page-merge-mm) sort chunk 3
+(page-merge-mm) sort chunk 4
+(page-merge-mm) sort chunk 5
+(page-merge-mm) sort chunk 6
+(page-merge-mm) sort chunk 7
+(page-merge-mm) wait for child 0
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+(page-merge-mm) wait for child 0: FAILED
+page-merge-mm: exit(1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+Execution of 'page-merge-mm' complete.
+Timer: 11830 ticks
+Thread: 39 idle ticks, 353 kernel ticks, 11444 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 97 reads, 450 writes
+hd0:1: 789 reads, 4578 writes
 hd1:0: 220 reads, 0 writes
-hd1:1: 3440 reads, 8064 writes
-Console: 1184 characters output
+hd1:1: 2088 reads, 3720 writes
+Console: 1534 characters output
 Keyboard: 0 keys pressed
-Exception: 861 page faults
+Exception: 269 page faults
 Powering off...

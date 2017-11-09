@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-read into /tmp/7IpD858xtY.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/7IpD858xtY.dsk...
-Writing command line to /tmp/kW3ga57Jxn.dsk...
+Copying tests/filesys/base/syn-read into /tmp/VA1ABjju9D.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/VA1ABjju9D.dsk...
+Writing command line to /tmp/74rCBATkDE.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -35,18 +35,18 @@ Executing 'syn-read':
 (syn-read) exec child 8 of 10: "child-syn-read 7"
 (syn-read) exec child 9 of 10: "child-syn-read 8"
 (syn-read) exec child 10 of 10: "child-syn-read 9"
+child-syn-read: exit(3)
 child-syn-read: exit(9)
-child-syn-read: exit(1)
 child-syn-read: exit(7)
 child-syn-read: exit(8)
-child-syn-read: exit(3)
 child-syn-read: exit(5)
+child-syn-read: exit(2)
 child-syn-read: exit(4)
-child-syn-read: exit(6)
+child-syn-read: exit(1)
 child-syn-read: exit(0)
+child-syn-read: exit(6)
 (syn-read) wait for child 1 of 10 returned 0 (expected 0)
 (syn-read) wait for child 2 of 10 returned 1 (expected 1)
-child-syn-read: exit(2)
 (syn-read) wait for child 3 of 10 returned 2 (expected 2)
 (syn-read) wait for child 4 of 10 returned 3 (expected 3)
 (syn-read) wait for child 5 of 10 returned 4 (expected 4)
@@ -58,8 +58,8 @@ child-syn-read: exit(2)
 (syn-read) end
 syn-read: exit(0)
 Execution of 'syn-read' complete.
-Timer: 10626 ticks
-Thread: 33 idle ticks, 502 kernel ticks, 10094 user ticks
+Timer: 10716 ticks
+Thread: 33 idle ticks, 504 kernel ticks, 10182 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 10854 reads, 456 writes
 hd1:0: 219 reads, 0 writes
