@@ -1,11 +1,11 @@
-Copying tests/vm/page-merge-seq into /tmp/GO2PIV3vrz.dsk...
-Copying tests/vm/child-sort into /tmp/GO2PIV3vrz.dsk...
-Writing command line to /tmp/oABYCcqMha.dsk...
+Copying tests/vm/page-merge-seq into /tmp/1mdWZ7wfBO.dsk...
+Copying tests/vm/child-sort into /tmp/1mdWZ7wfBO.dsk...
+Writing command line to /tmp/oF5kvyKxt8.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put page-merge-seq put child-sort run page-merge-seq
 Pintos booting with 4,096 kB RAM...
@@ -28,46 +28,16 @@ child-sort: exit(123)
 (page-merge-seq) sort chunk 1
 child-sort: exit(123)
 (page-merge-seq) sort chunk 2
-child-sort: exit(123)
-(page-merge-seq) sort chunk 3
-child-sort: exit(123)
-(page-merge-seq) sort chunk 4
-child-sort: exit(123)
-(page-merge-seq) sort chunk 5
-child-sort: exit(123)
-(page-merge-seq) sort chunk 6
-child-sort: exit(123)
-(page-merge-seq) sort chunk 7
-child-sort: exit(123)
-(page-merge-seq) sort chunk 8
-child-sort: exit(123)
-(page-merge-seq) sort chunk 9
-child-sort: exit(123)
-(page-merge-seq) sort chunk 10
-child-sort: exit(123)
-(page-merge-seq) sort chunk 11
-child-sort: exit(123)
-(page-merge-seq) sort chunk 12
-child-sort: exit(123)
-(page-merge-seq) sort chunk 13
-child-sort: exit(123)
-(page-merge-seq) sort chunk 14
-child-sort: exit(123)
-(page-merge-seq) sort chunk 15
-child-sort: exit(123)
-(page-merge-seq) merge
-(page-merge-seq) verify
-(page-merge-seq) success, buf_idx=1,032,192
-(page-merge-seq) end
-page-merge-seq: exit(0)
+(page-merge-seq) exec "child-sort buffer": FAILED
+page-merge-seq: exit(1)
 Execution of 'page-merge-seq' complete.
-Timer: 35338 ticks
-Thread: 86 idle ticks, 448 kernel ticks, 34807 user ticks
+Timer: 10936 ticks
+Thread: 37 idle ticks, 588 kernel ticks, 10314 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 5143 reads, 4590 writes
+hd0:1: 799 reads, 1188 writes
 hd1:0: 209 reads, 0 writes
-hd1:1: 4576 reads, 5696 writes
-Console: 1979 characters output
+hd1:1: 2056 reads, 3488 writes
+Console: 1212 characters output
 Keyboard: 0 keys pressed
-Exception: 572 page faults
+Exception: 257 page faults
 Powering off...

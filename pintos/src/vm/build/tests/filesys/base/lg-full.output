@@ -1,10 +1,10 @@
-Copying tests/filesys/base/lg-full into /tmp/q5AzYAF3s8.dsk...
-Writing command line to /tmp/vKaaxVXNfL.dsk...
+Copying tests/filesys/base/lg-full into /tmp/zlsuajrVVN.dsk...
+Writing command line to /tmp/WBQHnJEPMn.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put lg-full run lg-full
 Pintos booting with 4,096 kB RAM...
@@ -19,24 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'lg-full' into the file system...
 Executing 'lg-full':
-(lg-full) begin
-(lg-full) create "quux"
-(lg-full) open "quux"
-(lg-full) writing "quux"
-(lg-full) close "quux"
-(lg-full) open "quux" for verification
-(lg-full) verified contents of "quux"
-(lg-full) close "quux"
-(lg-full) end
-lg-full: exit(0)
 Execution of 'lg-full' complete.
-Timer: 720 ticks
-Thread: 32 idle ticks, 204 kernel ticks, 486 user ticks
+Timer: 299 ticks
+Thread: 32 idle ticks, 194 kernel ticks, 80 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 247 reads, 514 writes
+hd0:1: 68 reads, 214 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1094 characters output
+Console: 851 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

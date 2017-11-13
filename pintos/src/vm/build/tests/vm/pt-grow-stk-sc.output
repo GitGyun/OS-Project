@@ -1,10 +1,10 @@
-Copying tests/vm/pt-grow-stk-sc into /tmp/5Ozec7ODm5.dsk...
-Writing command line to /tmp/NACjy14V2X.dsk...
+Copying tests/vm/pt-grow-stk-sc into /tmp/5GUduw431R.dsk...
+Writing command line to /tmp/r42vKHoTAa.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put pt-grow-stk-sc run pt-grow-stk-sc
 Pintos booting with 4,096 kB RAM...
@@ -19,23 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'pt-grow-stk-sc' into the file system...
 Executing 'pt-grow-stk-sc':
-(pt-grow-stk-sc) begin
-(pt-grow-stk-sc) create "sample.txt"
-(pt-grow-stk-sc) open "sample.txt"
-(pt-grow-stk-sc) write "sample.txt"
-(pt-grow-stk-sc) 2nd open "sample.txt"
-(pt-grow-stk-sc) read "sample.txt"
-(pt-grow-stk-sc) compare written data against read data
-(pt-grow-stk-sc) end
-pt-grow-stk-sc: exit(0)
 Execution of 'pt-grow-stk-sc' complete.
-Timer: 358 ticks
-Thread: 32 idle ticks, 207 kernel ticks, 121 user ticks
+Timer: 265 ticks
+Thread: 32 idle ticks, 202 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 103 reads, 222 writes
+hd0:1: 70 reads, 214 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1194 characters output
+Console: 886 characters output
 Keyboard: 0 keys pressed
-Exception: 3 page faults
+Exception: 0 page faults
 Powering off...

@@ -171,8 +171,9 @@ page_fault (struct intr_frame *f)
 
   /* Determine if the page fault is caused by stack access. Then
      perform the stack growth */
-  uint8_t *esp = user ? f->esp : t->user_esp;\
-  if (fault_addr < PHYS_BASE
+  uint8_t *esp = user ? f->esp : t->user_esp;
+  if (not_present
+      && is_user_vaddr (fault_addr)
       && fault_addr >= PHYS_BASE - MAX_STACK_SIZE
       && (uint8_t *)fault_addr >= esp - 32
       && p == NULL)

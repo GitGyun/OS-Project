@@ -1,11 +1,11 @@
-Copying tests/userprog/write-boundary into /tmp/h5pJxZ7Qow.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/h5pJxZ7Qow.dsk...
-Writing command line to /tmp/sTb9hNVX6i.dsk...
+Copying tests/userprog/write-boundary into /tmp/mz5sedt0e9.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/mz5sedt0e9.dsk...
+Writing command line to /tmp/wpzPuiVX0g.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put write-boundary put sample.txt run write-boundary
 Pintos booting with 4,096 kB RAM...
@@ -21,18 +21,14 @@ Boot complete.
 Putting 'write-boundary' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'write-boundary':
-(write-boundary) begin
-(write-boundary) open "sample.txt"
-(write-boundary) end
-write-boundary: exit(0)
 Execution of 'write-boundary' complete.
-Timer: 331 ticks
-Thread: 31 idle ticks, 232 kernel ticks, 70 user ticks
+Timer: 293 ticks
+Thread: 31 idle ticks, 227 kernel ticks, 37 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 100 reads, 221 writes
+hd0:1: 95 reads, 220 writes
 hd1:0: 105 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1050 characters output
+Console: 946 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

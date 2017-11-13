@@ -1,10 +1,10 @@
-Copying tests/userprog/create-long into /tmp/MwBPoqDHV0.dsk...
-Writing command line to /tmp/D9UWGamGuz.dsk...
+Copying tests/userprog/create-long into /tmp/Qn7JBq7LfL.dsk...
+Writing command line to /tmp/0uG22pwz1H.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put create-long run create-long
 Pintos booting with 4,096 kB RAM...
@@ -19,18 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'create-long' into the file system...
 Executing 'create-long':
-(create-long) begin
-(create-long) create("x..."): 0
-(create-long) end
-create-long: exit(0)
 Execution of 'create-long' complete.
-Timer: 298 ticks
-Thread: 30 idle ticks, 206 kernel ticks, 65 user ticks
+Timer: 261 ticks
+Thread: 30 idle ticks, 200 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 71 reads, 212 writes
+hd0:1: 67 reads, 208 writes
 hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 962 characters output
+Console: 871 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

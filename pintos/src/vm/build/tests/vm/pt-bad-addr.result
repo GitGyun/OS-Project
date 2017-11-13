@@ -1,1 +1,2 @@
-PASS
+FAIL
+First line of output is not `(pt-bad-addr) begin' message.

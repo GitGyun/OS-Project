@@ -1,11 +1,11 @@
-Copying tests/vm/page-parallel into /tmp/U47q6aVicy.dsk...
-Copying tests/vm/child-linear into /tmp/U47q6aVicy.dsk...
-Writing command line to /tmp/NIdtZQjxH8.dsk...
+Copying tests/vm/page-parallel into /tmp/F6VDm5oHks.dsk...
+Copying tests/vm/child-linear into /tmp/F6VDm5oHks.dsk...
+Writing command line to /tmp/5LLSznXwSM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
 Pintos booting with 4,096 kB RAM...
@@ -21,29 +21,14 @@ Boot complete.
 Putting 'page-parallel' into the file system...
 Putting 'child-linear' into the file system...
 Executing 'page-parallel':
-(page-parallel) begin
-(page-parallel) exec "child-linear"
-(page-parallel) exec "child-linear"
-(page-parallel) exec "child-linear"
-(page-parallel) exec "child-linear"
-(page-parallel) wait for child 0
-child-linear: exit(66)
-(page-parallel) wait for child 1
-child-linear: exit(66)
-(page-parallel) wait for child 2
-child-linear: exit(66)
-(page-parallel) wait for child 3
-child-linear: exit(66)
-(page-parallel) end
-page-parallel: exit(0)
 Execution of 'page-parallel' complete.
-Timer: 58841 ticks
-Thread: 284 idle ticks, 328 kernel ticks, 58232 user ticks
+Timer: 341 ticks
+Thread: 31 idle ticks, 279 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 258 reads, 418 writes
+hd0:1: 94 reads, 418 writes
 hd1:0: 204 reads, 0 writes
-hd1:1: 19312 reads, 21680 writes
-Console: 1393 characters output
+hd1:1: 0 reads, 0 writes
+Console: 945 characters output
 Keyboard: 0 keys pressed
-Exception: 2414 page faults
+Exception: 0 page faults
 Powering off...

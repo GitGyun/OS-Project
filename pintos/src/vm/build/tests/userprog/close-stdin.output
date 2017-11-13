@@ -1,10 +1,10 @@
-Copying tests/userprog/close-stdin into /tmp/KveycEENIn.dsk...
-Writing command line to /tmp/pclhkvkK64.dsk...
+Copying tests/userprog/close-stdin into /tmp/XIhKf8Q4Zi.dsk...
+Writing command line to /tmp/DP7yH7mOQx.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put close-stdin run close-stdin
 Pintos booting with 4,096 kB RAM...
@@ -19,17 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'close-stdin' into the file system...
 Executing 'close-stdin':
-(close-stdin) begin
-(close-stdin) end
-close-stdin: exit(0)
 Execution of 'close-stdin' complete.
-Timer: 288 ticks
-Thread: 31 idle ticks, 204 kernel ticks, 56 user ticks
+Timer: 261 ticks
+Thread: 31 idle ticks, 198 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 929 characters output
+Console: 870 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

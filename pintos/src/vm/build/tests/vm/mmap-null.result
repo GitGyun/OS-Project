@@ -1,2 +1,2 @@
 FAIL
-run: try to mmap at address 0: FAILED
+Run didn't produce any output

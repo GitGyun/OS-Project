@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-misalign into /tmp/ZT3PjumKQr.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/ZT3PjumKQr.dsk...
-Writing command line to /tmp/27eaOxIV3i.dsk...
+Copying tests/vm/mmap-misalign into /tmp/wZVT5tDlq7.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/wZVT5tDlq7.dsk...
+Writing command line to /tmp/7J2TjTENkb.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
 Pintos booting with 4,096 kB RAM...
@@ -21,19 +21,14 @@ Boot complete.
 Putting 'mmap-misalign' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'mmap-misalign':
-(mmap-misalign) begin
-(mmap-misalign) open "sample.txt"
-(mmap-misalign) try to mmap at misaligned address
-(mmap-misalign) try to mmap at misaligned address: FAILED
-mmap-misalign: exit(1)
 Execution of 'mmap-misalign' complete.
-Timer: 331 ticks
-Thread: 32 idle ticks, 230 kernel ticks, 72 user ticks
+Timer: 287 ticks
+Thread: 32 idle ticks, 224 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 94 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1128 characters output
+Console: 941 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

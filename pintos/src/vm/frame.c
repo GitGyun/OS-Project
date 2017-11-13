@@ -85,17 +85,20 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
   pgl_acquire ();
 
   struct thread *t = thread_current ();
+  struct fte *fte_new = NULL;
 
   /* First attempt to allocate new frame. */
   void *kpage = palloc_get_page (flags);
-  if (kpage  == NULL)
+  if (kpage == NULL)
     {
       /* Physical memory insufficient. Eviction is required. */
       /* Select victim which is to be evicted. */
-      struct fte *victim = select_victim ();
+      fte_new = select_victim ();
+      if (fte_new == NULL)
+        PANIC ("Cannot select victim");
 
       /* Evict victim to swap disk */
-      swap_out (victim);
+      swap_out (fte_new);
 
       /* Retry frame allocation once more */
       kpage = palloc_get_page (flags);
@@ -111,8 +114,20 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
   if (!success)
     goto update_error;
 
-  /* Allocate new frame table entry (fte) */
-  struct fte *fte_new = malloc (sizeof (struct fte));
+  if (fte_new == NULL)
+    {
+      /* Allocate new frame table entry (fte) */
+      fte_new = malloc (sizeof (struct fte));
+      
+      /* Insert fte to the frame table */
+      success = frame_table_insert (fte_new);
+      if (!success)
+        {
+          free (fte_new);
+          goto update_error;
+        }
+    }
+      
   ASSERT (fte_new != NULL);
 
   /* Initialize fte */
@@ -121,14 +136,6 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
   fte_new->process = t;
   fte_new->writable = writable;
   fte_new->last_ac_tick = timer_ticks ();
-
-  /* Insert fte to the frame table */
-  success = frame_table_insert (fte_new);
-  if (!success)
-    {
-      free (fte_new);
-      goto update_error;
-    }
 
   /* Update supplemental page table. */
   struct spte *p = suppl_page_table_find (t->suppl_page_table, upage);
@@ -139,6 +146,8 @@ frame_alloc (void *upage, enum palloc_flags flags, bool writable)
          been evicted, then frame is reallocated to swap in.)
          Allocate new spte. */
       p = spte_create (upage, kpage);
+      if (p == NULL)
+        PANIC("Cannot create spte");
       success = suppl_page_table_insert (t->suppl_page_table, p);
 
       if (!success)
@@ -192,7 +201,7 @@ frame_free (void *kpage)
 static struct fte *
 select_victim (void)
 {
-  struct list_elem *e = list_min(&victim_selector, fte_cmp_tick, NULL);
+  struct list_elem *e = list_min (&victim_selector, fte_cmp_tick, NULL);
   return list_entry (e, struct fte, lelem);
 }
 

@@ -1,10 +1,10 @@
-Copying tests/vm/mmap-shuffle into /tmp/3JCMoZlnr8.dsk...
-Writing command line to /tmp/gNgqZXnvZY.dsk...
+Copying tests/vm/mmap-shuffle into /tmp/lx5CqczSOm.dsk...
+Writing command line to /tmp/QSgstaLBMv.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
 Pintos booting with 4,096 kB RAM...
@@ -19,19 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'mmap-shuffle' into the file system...
 Executing 'mmap-shuffle':
-(mmap-shuffle) begin
-(mmap-shuffle) create "buffer"
-(mmap-shuffle) open "buffer"
-(mmap-shuffle) mmap "buffer"
-mmap-shuffle: exit(-1)
 Execution of 'mmap-shuffle' complete.
-Timer: 367 ticks
-Thread: 30 idle ticks, 211 kernel ticks, 129 user ticks
+Timer: 268 ticks
+Thread: 30 idle ticks, 207 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 96 reads, 486 writes
+hd0:1: 70 reads, 226 writes
 hd1:0: 109 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1010 characters output
+Console: 876 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

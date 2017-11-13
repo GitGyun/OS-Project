@@ -1,11 +1,11 @@
-Copying tests/userprog/read-normal into /tmp/EL1xbE5jWO.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/EL1xbE5jWO.dsk...
-Writing command line to /tmp/VzjM8lLbc9.dsk...
+Copying tests/userprog/read-normal into /tmp/8XTem9y14E.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/8XTem9y14E.dsk...
+Writing command line to /tmp/XUYVH3hUTk.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put read-normal put sample.txt run read-normal
 Pintos booting with 4,096 kB RAM...
@@ -21,20 +21,14 @@ Boot complete.
 Putting 'read-normal' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'read-normal':
-(read-normal) begin
-(read-normal) open "sample.txt" for verification
-(read-normal) verified contents of "sample.txt"
-(read-normal) close "sample.txt"
-(read-normal) end
-read-normal: exit(0)
 Execution of 'read-normal' complete.
-Timer: 333 ticks
-Thread: 30 idle ticks, 231 kernel ticks, 75 user ticks
+Timer: 288 ticks
+Thread: 30 idle ticks, 226 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 107 reads, 214 writes
+hd0:1: 102 reads, 214 writes
 hd1:0: 102 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1121 characters output
+Console: 932 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

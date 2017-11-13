@@ -1,12 +1,12 @@
-Copying tests/userprog/multi-child-fd into /tmp/x9TB6BUCKj.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/x9TB6BUCKj.dsk...
-Copying tests/userprog/child-close into /tmp/x9TB6BUCKj.dsk...
-Writing command line to /tmp/ckKxpIlAso.dsk...
+Copying tests/userprog/multi-child-fd into /tmp/3eX9JIF1xQ.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/3eX9JIF1xQ.dsk...
+Copying tests/userprog/child-close into /tmp/3eX9JIF1xQ.dsk...
+Writing command line to /tmp/bo_J8iAuQo.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put multi-child-fd put sample.txt put child-close run multi-child-fd
 Pintos booting with 4,096 kB RAM...
@@ -23,23 +23,14 @@ Putting 'multi-child-fd' into the file system...
 Putting 'sample.txt' into the file system...
 Putting 'child-close' into the file system...
 Executing 'multi-child-fd':
-(multi-child-fd) begin
-(multi-child-fd) open "sample.txt"
-(child-close) begin
-(child-close) end
-child-close: exit(0)
-(multi-child-fd) wait(exec()) = 0
-(multi-child-fd) verified contents of "sample.txt"
-(multi-child-fd) end
-multi-child-fd: exit(0)
 Execution of 'multi-child-fd' complete.
-Timer: 495 ticks
-Thread: 32 idle ticks, 324 kernel ticks, 141 user ticks
+Timer: 373 ticks
+Thread: 31 idle ticks, 310 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 182 reads, 438 writes
+hd0:1: 132 reads, 438 writes
 hd1:0: 213 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1257 characters output
+Console: 1009 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

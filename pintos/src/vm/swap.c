@@ -64,7 +64,13 @@ swap_out (struct fte *victim)
 	swap_table_set_available (pg_idx, false);
 
 	/* Discard victim's kpage from the frame table */
-	frame_free (victim->kpage);
+	//frame_free (victim->kpage);
+  
+  /* Discard upage - kpage mapping from pagedir */
+  pagedir_clear_page (victim->process->pagedir, victim->upage);
+
+  /* Free KPAGE */
+  palloc_free_page (victim->kpage);
 
   pgl_release ();
 }

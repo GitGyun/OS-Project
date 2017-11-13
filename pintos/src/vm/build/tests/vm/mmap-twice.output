@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-twice into /tmp/ZPVlgXzw0j.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/ZPVlgXzw0j.dsk...
-Writing command line to /tmp/u9Okv0l2HJ.dsk...
+Copying tests/vm/mmap-twice into /tmp/YBM5nfYe2R.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/YBM5nfYe2R.dsk...
+Writing command line to /tmp/PGFdSJ2Oq9.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
 Pintos booting with 4,096 kB RAM...
@@ -21,21 +21,14 @@ Boot complete.
 Putting 'mmap-twice' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'mmap-twice':
-(mmap-twice) begin
-(mmap-twice) open "sample.txt" #0
-(mmap-twice) mmap "sample.txt" #0 at 0x10000000
-(mmap-twice) open "sample.txt" #1
-(mmap-twice) mmap "sample.txt" #1 at 0x20000000
-(mmap-twice) compare mmap'd file 0 against data
-mmap-twice: exit(-1)
 Execution of 'mmap-twice' complete.
-Timer: 346 ticks
-Thread: 32 idle ticks, 235 kernel ticks, 81 user ticks
+Timer: 290 ticks
+Thread: 30 idle ticks, 228 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 104 reads, 222 writes
+hd0:1: 97 reads, 222 writes
 hd1:0: 106 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1179 characters output
+Console: 926 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

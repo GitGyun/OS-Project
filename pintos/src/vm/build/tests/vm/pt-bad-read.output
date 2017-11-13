@@ -1,11 +1,11 @@
-Copying tests/vm/pt-bad-read into /tmp/3bE9DdCB0I.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/3bE9DdCB0I.dsk...
-Writing command line to /tmp/3Eo5LHIf7P.dsk...
+Copying tests/vm/pt-bad-read into /tmp/mWgmmLI6wh.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/mWgmmLI6wh.dsk...
+Writing command line to /tmp/OM9WSksQtS.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put pt-bad-read put sample.txt run pt-bad-read
 Pintos booting with 4,096 kB RAM...
@@ -21,17 +21,14 @@ Boot complete.
 Putting 'pt-bad-read' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'pt-bad-read':
-(pt-bad-read) begin
-(pt-bad-read) open "sample.txt"
-pt-bad-read: exit(-1)
 Execution of 'pt-bad-read' complete.
-Timer: 321 ticks
-Thread: 30 idle ticks, 233 kernel ticks, 60 user ticks
+Timer: 287 ticks
+Thread: 30 idle ticks, 226 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 99 reads, 216 writes
+hd0:1: 94 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1005 characters output
+Console: 931 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

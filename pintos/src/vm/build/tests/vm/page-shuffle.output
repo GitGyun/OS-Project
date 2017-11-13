@@ -1,10 +1,10 @@
-Copying tests/vm/page-shuffle into /tmp/2hclfY2gzU.dsk...
-Writing command line to /tmp/q3K7j0ofec.dsk...
+Copying tests/vm/page-shuffle into /tmp/0em_nCd0zK.dsk...
+Writing command line to /tmp/CQ85nD34Bh.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put page-shuffle run page-shuffle
 Pintos booting with 4,096 kB RAM...
@@ -19,28 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-shuffle' into the file system...
 Executing 'page-shuffle':
-(page-shuffle) begin
-(page-shuffle) init: cksum=3115322833
-(page-shuffle) shuffle 0: cksum=1691062564
-(page-shuffle) shuffle 1: cksum=1973575879
-(page-shuffle) shuffle 2: cksum=1647619479
-(page-shuffle) shuffle 3: cksum=96566261
-(page-shuffle) shuffle 4: cksum=3885786467
-(page-shuffle) shuffle 5: cksum=3022003332
-(page-shuffle) shuffle 6: cksum=3614934266
-(page-shuffle) shuffle 7: cksum=2704001777
-(page-shuffle) shuffle 8: cksum=735775156
-(page-shuffle) shuffle 9: cksum=1864109763
-(page-shuffle) end
-page-shuffle: exit(0)
 Execution of 'page-shuffle' complete.
-Timer: 21656 ticks
-Thread: 30 idle ticks, 211 kernel ticks, 21418 user ticks
+Timer: 344 ticks
+Thread: 30 idle ticks, 200 kernel ticks, 116 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 226 writes
 hd1:0: 109 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1408 characters output
+Console: 877 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

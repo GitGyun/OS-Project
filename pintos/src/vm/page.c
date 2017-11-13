@@ -39,8 +39,11 @@ struct spte *
 spte_create (void *upage, void *kpage)
 {
   struct spte *p = malloc (sizeof (struct spte));
-  p->kpage = kpage;
-  p->upage = upage;
+  if (p != NULL)
+    {
+      p->kpage = kpage;
+      p->upage = upage;
+    }
 
   return p;
 }

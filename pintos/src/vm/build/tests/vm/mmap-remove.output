@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-remove into /tmp/dHeFVZbCh6.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/dHeFVZbCh6.dsk...
-Writing command line to /tmp/KJ17O8ouYJ.dsk...
+Copying tests/vm/mmap-remove into /tmp/FVZzhpLPs8.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/FVZzhpLPs8.dsk...
+Writing command line to /tmp/f4CsdyZCEU.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
 Pintos booting with 4,096 kB RAM...
@@ -21,21 +21,14 @@ Boot complete.
 Putting 'mmap-remove' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'mmap-remove':
-(mmap-remove) begin
-(mmap-remove) open "sample.txt"
-(mmap-remove) mmap "sample.txt"
-(mmap-remove) remove "sample.txt"
-(mmap-remove) try to open "sample.txt"
-(mmap-remove) create "another"
-mmap-remove: exit(-1)
 Execution of 'mmap-remove' complete.
-Timer: 384 ticks
-Thread: 31 idle ticks, 233 kernel ticks, 123 user ticks
+Timer: 291 ticks
+Thread: 31 idle ticks, 228 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 148 reads, 311 writes
+hd0:1: 98 reads, 224 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1143 characters output
+Console: 931 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

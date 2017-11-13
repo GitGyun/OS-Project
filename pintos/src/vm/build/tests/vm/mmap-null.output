@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-null into /tmp/BgBpmMn_Kx.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/BgBpmMn_Kx.dsk...
-Writing command line to /tmp/sIhg3xhvwm.dsk...
+Copying tests/vm/mmap-null into /tmp/p1AM7WkDNO.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/p1AM7WkDNO.dsk...
+Writing command line to /tmp/qu7ujwE7Ya.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put mmap-null put sample.txt run mmap-null
 Pintos booting with 4,096 kB RAM...
@@ -21,19 +21,14 @@ Boot complete.
 Putting 'mmap-null' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'mmap-null':
-(mmap-null) begin
-(mmap-null) open "sample.txt"
-(mmap-null) try to mmap at address 0
-(mmap-null) try to mmap at address 0: FAILED
-mmap-null: exit(1)
 Execution of 'mmap-null' complete.
-Timer: 327 ticks
-Thread: 30 idle ticks, 231 kernel ticks, 69 user ticks
+Timer: 282 ticks
+Thread: 30 idle ticks, 225 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 94 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1070 characters output
+Console: 921 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

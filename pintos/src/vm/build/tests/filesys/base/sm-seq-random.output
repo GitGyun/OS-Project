@@ -1,10 +1,10 @@
-Copying tests/filesys/base/sm-seq-random into /tmp/zBuhiy3M5r.dsk...
-Writing command line to /tmp/AO8ReDgO5L.dsk...
+Copying tests/filesys/base/sm-seq-random into /tmp/Q6xgQlQm4i.dsk...
+Writing command line to /tmp/n1ohjy9oLF.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put sm-seq-random run sm-seq-random
 Pintos booting with 4,096 kB RAM...
@@ -19,24 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'sm-seq-random' into the file system...
 Executing 'sm-seq-random':
-(sm-seq-random) begin
-(sm-seq-random) create "nibble"
-(sm-seq-random) open "nibble"
-(sm-seq-random) writing "nibble"
-(sm-seq-random) close "nibble"
-(sm-seq-random) open "nibble" for verification
-(sm-seq-random) verified contents of "nibble"
-(sm-seq-random) close "nibble"
-(sm-seq-random) end
-sm-seq-random: exit(0)
 Execution of 'sm-seq-random' complete.
-Timer: 381 ticks
-Thread: 30 idle ticks, 208 kernel ticks, 146 user ticks
+Timer: 265 ticks
+Thread: 30 idle ticks, 202 kernel ticks, 35 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 125 reads, 250 writes
+hd0:1: 68 reads, 214 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1198 characters output
+Console: 881 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

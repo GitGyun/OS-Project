@@ -1,11 +1,11 @@
-Copying tests/userprog/open-normal into /tmp/uQznVJ3cbE.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/uQznVJ3cbE.dsk...
-Writing command line to /tmp/ZQUyEmMz03.dsk...
+Copying tests/userprog/open-normal into /tmp/BYLCrJa2jo.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/BYLCrJa2jo.dsk...
+Writing command line to /tmp/xjqionoJAI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put open-normal put sample.txt run open-normal
 Pintos booting with 4,096 kB RAM...
@@ -21,17 +21,14 @@ Boot complete.
 Putting 'open-normal' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'open-normal':
-(open-normal) begin
-(open-normal) end
-open-normal: exit(0)
 Execution of 'open-normal' complete.
-Timer: 317 ticks
-Thread: 30 idle ticks, 231 kernel ticks, 59 user ticks
+Timer: 286 ticks
+Thread: 30 idle ticks, 225 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 212 writes
+hd0:1: 94 reads, 212 writes
 hd1:0: 101 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 990 characters output
+Console: 931 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

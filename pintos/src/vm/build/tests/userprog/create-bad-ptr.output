@@ -1,10 +1,10 @@
-Copying tests/userprog/create-bad-ptr into /tmp/4awwXayTog.dsk...
-Writing command line to /tmp/DREEtl1HYC.dsk...
+Copying tests/userprog/create-bad-ptr into /tmp/7FFQo9kM9Q.dsk...
+Writing command line to /tmp/8Dh85b0h9A.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put create-bad-ptr run create-bad-ptr
 Pintos booting with 4,096 kB RAM...
@@ -19,16 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'create-bad-ptr' into the file system...
 Executing 'create-bad-ptr':
-(create-bad-ptr) begin
-create-bad-ptr: exit(-1)
 Execution of 'create-bad-ptr' complete.
-Timer: 289 ticks
-Thread: 31 idle ticks, 203 kernel ticks, 58 user ticks
+Timer: 261 ticks
+Thread: 31 idle ticks, 199 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 70 reads, 209 writes
+hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 933 characters output
+Console: 885 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

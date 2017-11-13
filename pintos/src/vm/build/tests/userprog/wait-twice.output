@@ -1,11 +1,11 @@
-Copying tests/userprog/wait-twice into /tmp/BBrmOMDRvU.dsk...
-Copying tests/userprog/child-simple into /tmp/BBrmOMDRvU.dsk...
-Writing command line to /tmp/J_dLzD8weQ.dsk...
+Copying tests/userprog/wait-twice into /tmp/8JQHm_LUWq.dsk...
+Copying tests/userprog/child-simple into /tmp/8JQHm_LUWq.dsk...
+Writing command line to /tmp/D5144x4Jq5.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put wait-twice put child-simple run wait-twice
 Pintos booting with 4,096 kB RAM...
@@ -21,21 +21,14 @@ Boot complete.
 Putting 'wait-twice' into the file system...
 Putting 'child-simple' into the file system...
 Executing 'wait-twice':
-(wait-twice) begin
-(child-simple) run
-child-simple: exit(81)
-(wait-twice) wait(exec()) = 81
-(wait-twice) wait(exec()) = -1
-(wait-twice) end
-wait-twice: exit(0)
 Execution of 'wait-twice' complete.
-Timer: 442 ticks
-Thread: 31 idle ticks, 291 kernel ticks, 122 user ticks
+Timer: 338 ticks
+Thread: 31 idle ticks, 276 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 141 reads, 406 writes
+hd0:1: 94 reads, 406 writes
 hd1:0: 198 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1092 characters output
+Console: 930 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

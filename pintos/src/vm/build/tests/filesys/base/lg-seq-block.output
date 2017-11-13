@@ -1,10 +1,10 @@
-Copying tests/filesys/base/lg-seq-block into /tmp/muG7_jFoaT.dsk...
-Writing command line to /tmp/PexXxO6fe1.dsk...
+Copying tests/filesys/base/lg-seq-block into /tmp/YzL1DzTQAG.dsk...
+Writing command line to /tmp/k5w7ax55Bp.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put lg-seq-block run lg-seq-block
 Pintos booting with 4,096 kB RAM...
@@ -19,24 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'lg-seq-block' into the file system...
 Executing 'lg-seq-block':
-(lg-seq-block) begin
-(lg-seq-block) create "noodle"
-(lg-seq-block) open "noodle"
-(lg-seq-block) writing "noodle"
-(lg-seq-block) close "noodle"
-(lg-seq-block) open "noodle" for verification
-(lg-seq-block) verified contents of "noodle"
-(lg-seq-block) close "noodle"
-(lg-seq-block) end
-lg-seq-block: exit(0)
 Execution of 'lg-seq-block' complete.
-Timer: 907 ticks
-Thread: 30 idle ticks, 206 kernel ticks, 673 user ticks
+Timer: 305 ticks
+Thread: 30 idle ticks, 197 kernel ticks, 80 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 540 reads, 661 writes
+hd0:1: 68 reads, 214 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1183 characters output
+Console: 876 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

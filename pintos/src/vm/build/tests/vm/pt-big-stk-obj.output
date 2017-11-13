@@ -1,10 +1,10 @@
-Copying tests/vm/pt-big-stk-obj into /tmp/jIH1ieiF4h.dsk...
-Writing command line to /tmp/yUwr8boEv2.dsk...
+Copying tests/vm/pt-big-stk-obj into /tmp/woQO95xImK.dsk...
+Writing command line to /tmp/b477YDZxgr.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put pt-big-stk-obj run pt-big-stk-obj
 Pintos booting with 4,096 kB RAM...
@@ -19,18 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'pt-big-stk-obj' into the file system...
 Executing 'pt-big-stk-obj':
-(pt-big-stk-obj) begin
-(pt-big-stk-obj) cksum: 3256410166
-(pt-big-stk-obj) end
-pt-big-stk-obj: exit(0)
 Execution of 'pt-big-stk-obj' complete.
-Timer: 608 ticks
-Thread: 31 idle ticks, 210 kernel ticks, 370 user ticks
+Timer: 268 ticks
+Thread: 31 idle ticks, 206 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 226 writes
 hd1:0: 109 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 990 characters output
+Console: 886 characters output
 Keyboard: 0 keys pressed
-Exception: 16 page faults
+Exception: 0 page faults
 Powering off...

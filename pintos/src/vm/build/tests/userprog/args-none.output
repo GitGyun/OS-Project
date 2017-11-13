@@ -1,10 +1,10 @@
-Copying tests/userprog/args-none into /tmp/0D1lYJiwe_.dsk...
-Writing command line to /tmp/sxM7O3kBGx.dsk...
+Copying tests/userprog/args-none into /tmp/61zdafokbx.dsk...
+Writing command line to /tmp/MKPEf3MwDZ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put args-none run args-none
 Pintos booting with 4,096 kB RAM...
@@ -19,20 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'args-none' into the file system...
 Executing 'args-none':
-(args) begin
-(args) argc = 1
-(args) argv[0] = 'args-none'
-(args) argv[1] = null
-(args) end
-args-none: exit(0)
 Execution of 'args-none' complete.
-Timer: 295 ticks
-Thread: 30 idle ticks, 205 kernel ticks, 63 user ticks
+Timer: 255 ticks
+Thread: 30 idle ticks, 199 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 970 characters output
+Console: 860 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

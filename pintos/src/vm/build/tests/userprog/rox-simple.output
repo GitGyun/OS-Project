@@ -1,10 +1,10 @@
-Copying tests/userprog/rox-simple into /tmp/E0hoVoXXXa.dsk...
-Writing command line to /tmp/wtDu9HvqpG.dsk...
+Copying tests/userprog/rox-simple into /tmp/XGkzr7BsYG.dsk...
+Writing command line to /tmp/9u9PCKGmqK.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put rox-simple run rox-simple
 Pintos booting with 4,096 kB RAM...
@@ -19,20 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'rox-simple' into the file system...
 Executing 'rox-simple':
-(rox-simple) begin
-(rox-simple) open "rox-simple"
-(rox-simple) read "rox-simple"
-(rox-simple) try to write "rox-simple"
-(rox-simple) end
-rox-simple: exit(0)
 Execution of 'rox-simple' complete.
-Timer: 305 ticks
-Thread: 30 idle ticks, 207 kernel ticks, 70 user ticks
+Timer: 261 ticks
+Thread: 30 idle ticks, 200 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 71 reads, 208 writes
+hd0:1: 67 reads, 208 writes
 hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1023 characters output
+Console: 866 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-read into /tmp/pWNiKSht1Y.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/pWNiKSht1Y.dsk...
-Writing command line to /tmp/SjUvHGlt28.dsk...
+Copying tests/vm/mmap-read into /tmp/OAH2cen5gb.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/OAH2cen5gb.dsk...
+Writing command line to /tmp/UexZhWLoPG.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put mmap-read put sample.txt run mmap-read
 Pintos booting with 4,096 kB RAM...
@@ -21,18 +21,14 @@ Boot complete.
 Putting 'mmap-read' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'mmap-read':
-(mmap-read) begin
-(mmap-read) open "sample.txt"
-(mmap-read) mmap "sample.txt"
-mmap-read: exit(-1)
 Execution of 'mmap-read' complete.
-Timer: 325 ticks
-Thread: 31 idle ticks, 234 kernel ticks, 63 user ticks
+Timer: 285 ticks
+Thread: 31 idle ticks, 228 kernel ticks, 33 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 101 reads, 222 writes
+hd0:1: 97 reads, 222 writes
 hd1:0: 106 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1020 characters output
+Console: 921 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

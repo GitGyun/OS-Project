@@ -1,1 +1,2 @@
-PASS
+FAIL
+run: exec "child-sort buffer": FAILED

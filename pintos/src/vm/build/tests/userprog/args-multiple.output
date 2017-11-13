@@ -1,10 +1,10 @@
-Copying tests/userprog/args-multiple into /tmp/dYBBN7xvUm.dsk...
-Writing command line to /tmp/GsDza1jlIk.dsk...
+Copying tests/userprog/args-multiple into /tmp/QBpFppWkfw.dsk...
+Writing command line to /tmp/w4VOpjzPJ0.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put args-multiple run 'args-multiple some arguments for you!'
 Pintos booting with 4,096 kB RAM...
@@ -19,24 +19,14 @@ Formatting file system...done.
 Boot complete.
 Putting 'args-multiple' into the file system...
 Executing 'args-multiple some arguments for you!':
-(args) begin
-(args) argc = 5
-(args) argv[0] = 'args-multiple'
-(args) argv[1] = 'some'
-(args) argv[2] = 'arguments'
-(args) argv[3] = 'for'
-(args) argv[4] = 'you!'
-(args) argv[5] = null
-(args) end
-args-multiple: exit(0)
 Execution of 'args-multiple some arguments for you!' complete.
-Timer: 315 ticks
-Thread: 30 idle ticks, 210 kernel ticks, 77 user ticks
+Timer: 265 ticks
+Thread: 30 idle ticks, 207 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 206 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1172 characters output
+Console: 954 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

@@ -1,11 +1,11 @@
-Copying tests/userprog/close-normal into /tmp/NUoN6Wv_7T.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/NUoN6Wv_7T.dsk...
-Writing command line to /tmp/TVD_CKY9vJ.dsk...
+Copying tests/userprog/close-normal into /tmp/OtooDLMVyS.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/OtooDLMVyS.dsk...
+Writing command line to /tmp/YkhAGTLht3.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep  7 2017 at 15:54:38
+                  Compiled on Sep 19 2017 at 22:29:40
 ========================================================================
 Kernel command line: -q -f put close-normal put sample.txt run close-normal
 Pintos booting with 4,096 kB RAM...
@@ -21,19 +21,14 @@ Boot complete.
 Putting 'close-normal' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'close-normal':
-(close-normal) begin
-(close-normal) open "sample.txt"
-(close-normal) close "sample.txt"
-(close-normal) end
-close-normal: exit(0)
 Execution of 'close-normal' complete.
-Timer: 326 ticks
-Thread: 32 idle ticks, 229 kernel ticks, 67 user ticks
+Timer: 287 ticks
+Thread: 32 idle ticks, 223 kernel ticks, 34 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 214 writes
+hd0:1: 94 reads, 214 writes
 hd1:0: 102 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1065 characters output
+Console: 936 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...
