@@ -1,16 +1,16 @@
-Copying tests/userprog/write-zero into /tmp/YOJcYAbEgB.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/YOJcYAbEgB.dsk...
-Writing command line to /tmp/LIQ3X3_Ype.dsk...
+Copying tests/userprog/write-zero into /tmp/OTa9vBqvKw.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/OTa9vBqvKw.dsk...
+Writing command line to /tmp/M00Nwo47oD.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put write-zero put sample.txt run write-zero
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -21,14 +21,18 @@ Boot complete.
 Putting 'write-zero' into the file system...
 Putting 'sample.txt' into the file system...
 Executing 'write-zero':
+(write-zero) begin
+(write-zero) open "sample.txt"
+(write-zero) end
+write-zero: exit(0)
 Execution of 'write-zero' complete.
-Timer: 286 ticks
-Thread: 30 idle ticks, 225 kernel ticks, 33 user ticks
+Timer: 321 ticks
+Thread: 30 idle ticks, 227 kernel ticks, 67 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 94 reads, 214 writes
+hd0:1: 97 reads, 214 writes
 hd1:0: 102 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 926 characters output
+Console: 1013 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...

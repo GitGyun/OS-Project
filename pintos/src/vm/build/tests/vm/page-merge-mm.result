@@ -1,2 +1,2 @@
 FAIL
-run: exec "child-qsort-mm buf5": FAILED
+run: wait for child 0: FAILED

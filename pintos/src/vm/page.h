@@ -2,22 +2,40 @@
 #define VM_PAGE_H
 
 #include <hash.h>
+#include "filesys/file.h"
+#include "filesys/off_t.h"
 
 enum pg_status
   {
-    PG_ON_MEMORY,
-    PG_EVICTED,
-    PG_UNLOADED,
+    PG_ON_MEMORY,       /* Page is currently on memory. */
+    PG_EVICTED,         /* Writable and unmapped Page is swapped. */
+  };
+
+enum pg_source
+  {
+    PG_SWAP,            /* From swap disk */
+    PG_FILE,            /* From file */
   };
 
 /* Supplemental page table entry */
 struct spte
   {
-    void *kpage;            /* Address to kernel page */
-    void *upage;            /* Address to user page */
+    void *kpage;                    /* Address to kernel page */
+    void *upage;                    /* Address to user page */
 
-    enum pg_status stat;    /* Status of current page */
-    size_t pg_idx;          /* Page index in swap disk which page is evicted to */
+    enum pg_status stat;            /* Status of page */
+    enum pg_source src;             /* Where to search when page is not present */
+    bool writable;                  /* Is the page writable or read-only? */
+    bool mapped;                    /* Is the page mapped to a file? */
+
+    /* For swapping */
+    size_t pg_idx;                  /* Page index in swap disk which page is evicted to */
+
+    /* For lazily loaded page and mapped file */
+    struct file *file;
+    off_t ofs;
+    size_t page_read_bytes;
+    size_t page_zero_bytes;
 
     struct hash_elem elem;
   };

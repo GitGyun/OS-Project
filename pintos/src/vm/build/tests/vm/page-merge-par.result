@@ -1,2 +1,1 @@
-FAIL
-run: exec "child-sort buf3": FAILED
+PASS

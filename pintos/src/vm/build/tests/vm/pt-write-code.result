@@ -1,2 +1,1 @@
-FAIL
-First line of output is not `(pt-write-code) begin' message.
+PASS

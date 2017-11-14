@@ -1,15 +1,15 @@
-Copying tests/userprog/write-stdin into /tmp/W_FmBRNx7u.dsk...
-Writing command line to /tmp/Kev4sFfv9j.dsk...
+Copying tests/userprog/write-stdin into /tmp/3DNfR0Yat_.dsk...
+Writing command line to /tmp/NzxGD9cIFg.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put write-stdin run write-stdin
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -19,14 +19,17 @@ Formatting file system...done.
 Boot complete.
 Putting 'write-stdin' into the file system...
 Executing 'write-stdin':
+(write-stdin) begin
+(write-stdin) end
+write-stdin: exit(0)
 Execution of 'write-stdin' complete.
-Timer: 261 ticks
-Thread: 30 idle ticks, 199 kernel ticks, 34 user ticks
+Timer: 288 ticks
+Thread: 30 idle ticks, 202 kernel ticks, 59 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 67 reads, 206 writes
+hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 870 characters output
+Console: 929 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...

@@ -1,15 +1,15 @@
-Copying tests/vm/page-linear into /tmp/z_cIXHMxN0.dsk...
-Writing command line to /tmp/4NzdbDeI2L.dsk...
+Copying tests/vm/page-linear into /tmp/HKaDG0eWhw.dsk...
+Writing command line to /tmp/2AjTFXPb25.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put page-linear run page-linear
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -28,13 +28,13 @@ Executing 'page-linear':
 (page-linear) end
 page-linear: exit(0)
 Execution of 'page-linear' complete.
-Timer: 44266 ticks
-Thread: 31 idle ticks, 301 kernel ticks, 43936 user ticks
+Timer: 40289 ticks
+Thread: 41 idle ticks, 204 kernel ticks, 40046 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 68 reads, 218 writes
+hd0:1: 194 reads, 218 writes
 hd1:0: 105 reads, 0 writes
-hd1:1: 20712 reads, 21896 writes
-Console: 1098 characters output
+hd1:1: 16464 reads, 17640 writes
+Console: 1099 characters output
 Keyboard: 0 keys pressed
-Exception: 2589 page faults
+Exception: 2590 page faults
 Powering off...

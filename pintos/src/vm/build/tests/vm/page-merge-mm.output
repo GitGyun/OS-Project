@@ -1,16 +1,16 @@
-Copying tests/vm/page-merge-mm into /tmp/10lJezfT18.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/10lJezfT18.dsk...
-Writing command line to /tmp/okq6NwJGfc.dsk...
+Copying tests/vm/page-merge-mm into /tmp/HZMJb7GG6h.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/HZMJb7GG6h.dsk...
+Writing command line to /tmp/i5LlGexP3y.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
-                  Compiled on Sep 19 2017 at 22:29:40
+                  Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -28,22 +28,26 @@ Executing 'page-merge-mm':
 (page-merge-mm) sort chunk 2
 (page-merge-mm) sort chunk 3
 (page-merge-mm) sort chunk 4
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
 (page-merge-mm) sort chunk 5
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-(page-merge-mm) exec "child-qsort-mm buf5": FAILED
+(page-merge-mm) sort chunk 6
+(page-merge-mm) sort chunk 7
+(page-merge-mm) wait for child 0
+(page-merge-mm) wait for child 0: FAILED
 page-merge-mm: exit(1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
 Execution of 'page-merge-mm' complete.
-Timer: 11233 ticks
-Thread: 38 idle ticks, 444 kernel ticks, 10753 user ticks
+Timer: 11591 ticks
+Thread: 31 idle ticks, 343 kernel ticks, 11224 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 588 reads, 3546 writes
+hd0:1: 789 reads, 4578 writes
 hd1:0: 220 reads, 0 writes
-hd1:1: 2088 reads, 3552 writes
-Console: 1378 characters output
+hd1:1: 2088 reads, 3504 writes
+Console: 1484 characters output
 Keyboard: 0 keys pressed
-Exception: 266 page faults
+Exception: 269 page faults
 Powering off...

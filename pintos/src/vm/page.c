@@ -43,6 +43,11 @@ spte_create (void *upage, void *kpage)
     {
       p->kpage = kpage;
       p->upage = upage;
+      p->stat = PG_ON_MEMORY;
+      p->src = PG_SWAP;
+      p->writable = true;
+      p->mapped = false;
+      p->file = NULL;
     }
 
   return p;
@@ -133,8 +138,11 @@ spt_clear_func (struct hash_elem *e, void *aux UNUSED)
     }
     case PG_EVICTED:
     {
-      /* Empty page slot in the swap disk */
-      swap_table_set_available (p->pg_idx, true);
+      if (p->mapped == false)
+        /* Empty page slot in the swap disk */
+        swap_table_set_available (p->pg_idx, true);
+      else
+        {}
       break;
     }
     default:

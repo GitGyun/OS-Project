@@ -1,2 +1,5 @@
 FAIL
-Run didn't produce any output
+Kernel panic in run: PANIC at ../../lib/kernel/bitmap.c:149 in bitmap_set(): assertion `idx < b->bit_cnt' failed.
+Call stack: 0xc0106ad2c
+Translation of call stack:
+0xc0106ad2c: (unknown)

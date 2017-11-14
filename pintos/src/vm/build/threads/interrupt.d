@@ -5,4 +5,5 @@ threads/interrupt.o: ../../threads/interrupt.c ../../threads/interrupt.h \
  ../../threads/intr-stubs.h ../../threads/io.h ../../threads/thread.h \
  ../../lib/kernel/list.h ../../devices/timer.h ../../lib/round.h \
  ../../threads/synch.h ../../vm/page.h ../../lib/kernel/hash.h \
- ../../lib/kernel/list.h ../../threads/vaddr.h ../../threads/loader.h
+ ../../lib/kernel/list.h ../../filesys/file.h ../../filesys/off_t.h \
+ ../../threads/vaddr.h ../../threads/loader.h

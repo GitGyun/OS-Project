@@ -12,4 +12,7 @@ void swap_table_set_available (size_t idx, bool available);
 void swap_out (struct fte *);
 void swap_in (struct spte *);
 
+void evict_file (struct fte *);
+void lazy_load (struct spte *);
+
 #endif

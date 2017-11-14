@@ -497,7 +497,7 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
  done:
   /* We arrive here whether the load is successful or not. */
-  file_close (file);
+  //file_close (file);
 
   return success;
 }
@@ -579,6 +579,42 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
   ASSERT (pg_ofs (upage) == 0);
   ASSERT (ofs % PGSIZE == 0);
 
+  //printf ("load segment: ofs %d, upage %p, read_bytes %u, zero_bytes %u, writable %s\n",
+  //        ofs, upage, read_bytes, zero_bytes,
+  //        writable? "true" : "false");
+
+#ifdef VM
+  off_t page_ofs = ofs;
+  while (read_bytes > 0 || zero_bytes > 0)
+    {
+      size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;
+      size_t page_zero_bytes = PGSIZE - page_read_bytes;
+
+      struct spte *p = spte_create (upage, NULL);
+      ASSERT (p != NULL);
+
+      p->stat = PG_EVICTED;
+      p->src = PG_FILE;
+      p->file = file;
+      p->ofs = page_ofs;
+      p->page_read_bytes = page_read_bytes;
+      p->page_zero_bytes = page_zero_bytes;
+      p->writable = writable;
+      p->mapped = false;
+
+      suppl_page_table_insert (thread_current ()->suppl_page_table, p);
+
+      //printf ("load segment: page ofs %d, upage %p, pg_read_bytes %u, pg_zero_bytes %u, writable %s\n",
+      //        page_ofs, upage, page_read_bytes, page_zero_bytes,
+      //        writable? "true" : "false");
+      //printf ("set page stat EVICTED; src FILE\n");
+
+      page_ofs += page_read_bytes;
+      read_bytes -= page_read_bytes;
+      zero_bytes -= page_zero_bytes;
+      upage += PGSIZE;
+    }
+#else
   file_seek (file, ofs);
   while (read_bytes > 0 || zero_bytes > 0)
     {
@@ -589,19 +625,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       size_t page_zero_bytes = PGSIZE - page_read_bytes;
 
       /* Get a page of memory. */
-#ifdef VM
-      uint8_t *kpage = frame_alloc (upage, PAL_USER, writable);
-      if (kpage == NULL)
-        return false;
-
-      /* Load this page. */
-      if (file_read (file, kpage, page_read_bytes) != (int) page_read_bytes)
-        {
-          frame_free (kpage);
-          return false;
-        }
-      memset (kpage + page_read_bytes, 0, page_zero_bytes);
-#else
       uint8_t *kpage = palloc_get_page (PAL_USER);
       if (kpage == NULL)
         return false;
@@ -620,13 +643,13 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
           palloc_free_page (kpage);
           return false;
         }
-#endif
 
       /* Advance. */
       read_bytes -= page_read_bytes;
       zero_bytes -= page_zero_bytes;
       upage += PGSIZE;
     }
+#endif
   return true;
 }
 
