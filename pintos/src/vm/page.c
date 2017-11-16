@@ -39,16 +39,11 @@ struct spte *
 spte_create (void *upage, void *kpage)
 {
   struct spte *p = malloc (sizeof (struct spte));
-  if (p != NULL)
-    {
-      p->kpage = kpage;
-      p->upage = upage;
-      p->stat = PG_ON_MEMORY;
-      p->src = PG_SWAP;
-      p->writable = true;
-      p->mapped = false;
-      p->file = NULL;
-    }
+  p->kpage = kpage;
+  p->upage = upage;
+  p->writable = true;
+  p->mapped = false;
+  p->file = NULL;
 
   return p;
 }
@@ -83,6 +78,7 @@ suppl_page_table_find (struct hash *spt, void *upage)
 }
 
 /* Change status of the page */
+/*
 void
 suppl_page_table_set_page_status (struct hash *spt, void *upage, enum pg_status stat)
 {
@@ -94,6 +90,7 @@ suppl_page_table_set_page_status (struct hash *spt, void *upage, enum pg_status 
 
   pgl_release ();
 }
+*/
 
 
 
@@ -138,11 +135,9 @@ spt_clear_func (struct hash_elem *e, void *aux UNUSED)
     }
     case PG_EVICTED:
     {
-      if (p->mapped == false)
+      if (p->file == NULL)
         /* Empty page slot in the swap disk */
         swap_table_set_available (p->pg_idx, true);
-      else
-        {}
       break;
     }
     default:

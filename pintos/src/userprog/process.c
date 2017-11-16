@@ -32,7 +32,7 @@
     e.g.)
       int a = 3;
       void *ptr = &a;
-      ptr += 2;         // ptr increased by 2 byte.
+      ptr = ptr + 2;         // ptr increased by 2 byte.
    See
     https://gcc.gnu.org/onlinedocs/gcc-4.1.2/gcc/Pointer-Arith.html
    In here, however, the pointers are type cast to uint8_t
@@ -496,8 +496,10 @@ load (const char *file_name, void (**eip) (void), void **esp)
   success = true;
 
  done:
+#ifndef VM
   /* We arrive here whether the load is successful or not. */
-  //file_close (file);
+  file_close (file);
+#endif
 
   return success;
 }
@@ -579,10 +581,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
   ASSERT (pg_ofs (upage) == 0);
   ASSERT (ofs % PGSIZE == 0);
 
-  //printf ("load segment: ofs %d, upage %p, read_bytes %u, zero_bytes %u, writable %s\n",
-  //        ofs, upage, read_bytes, zero_bytes,
-  //        writable? "true" : "false");
-
 #ifdef VM
   off_t page_ofs = ofs;
   while (read_bytes > 0 || zero_bytes > 0)
@@ -594,7 +592,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
       ASSERT (p != NULL);
 
       p->stat = PG_EVICTED;
-      p->src = PG_FILE;
       p->file = file;
       p->ofs = page_ofs;
       p->page_read_bytes = page_read_bytes;
@@ -604,10 +601,12 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
       suppl_page_table_insert (thread_current ()->suppl_page_table, p);
 
-      //printf ("load segment: page ofs %d, upage %p, pg_read_bytes %u, pg_zero_bytes %u, writable %s\n",
-      //        page_ofs, upage, page_read_bytes, page_zero_bytes,
-      //        writable? "true" : "false");
-      //printf ("set page stat EVICTED; src FILE\n");
+      /*
+      printf ("load segment: page ofs %d, upage %p, pg_read_bytes %u, pg_zero_bytes %u, writable %s\n",
+              page_ofs, upage, page_read_bytes, page_zero_bytes,
+              writable? "true" : "false");
+      printf ("set page stat EVICTED; src FILE\n");
+      */
 
       page_ofs += page_read_bytes;
       read_bytes -= page_read_bytes;
@@ -658,7 +657,6 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 static bool
 setup_stack (void **esp)
 {
-  //printf ("setup stack\n");
   uint8_t *kpage;
   bool success = false;
 
@@ -669,7 +667,12 @@ setup_stack (void **esp)
     {
       struct fte *f = frame_table_find (kpage);
       if (f != NULL)
-        suppl_page_table_set_page_status (f->process->suppl_page_table, f->upage, PG_ON_MEMORY);
+        {
+          struct hash *spt = f->process->suppl_page_table;
+          struct spte *p = suppl_page_table_find (spt, f->upage);
+          if (p != NULL)
+            p->stat = PG_ON_MEMORY;
+        }
       else
         return false;
 

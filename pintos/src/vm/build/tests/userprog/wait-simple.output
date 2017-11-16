@@ -1,6 +1,6 @@
-Copying tests/userprog/wait-simple into /tmp/ob3_28Cbji.dsk...
-Copying tests/userprog/child-simple into /tmp/ob3_28Cbji.dsk...
-Writing command line to /tmp/1oxcU4I8sX.dsk...
+Copying tests/userprog/wait-simple into /tmp/yGR4O7_WA9.dsk...
+Copying tests/userprog/child-simple into /tmp/yGR4O7_WA9.dsk...
+Writing command line to /tmp/Mt4EyRVgiJ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put wait-simple put child-simple run wait-simple
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -28,8 +28,8 @@ child-simple: exit(81)
 (wait-simple) end
 wait-simple: exit(0)
 Execution of 'wait-simple' complete.
-Timer: 433 ticks
-Thread: 31 idle ticks, 285 kernel ticks, 120 user ticks
+Timer: 419 ticks
+Thread: 30 idle ticks, 286 kernel ticks, 105 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 139 reads, 404 writes
 hd1:0: 197 reads, 0 writes

@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-close into /tmp/9qo1RNB_mb.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/9qo1RNB_mb.dsk...
-Writing command line to /tmp/oqxL0Uzwka.dsk...
+Copying tests/vm/mmap-close into /tmp/QfzjYLS0AJ.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/QfzjYLS0AJ.dsk...
+Writing command line to /tmp/XTQlmVfSz6.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -26,13 +26,13 @@ Executing 'mmap-close':
 (mmap-close) mmap "sample.txt"
 mmap-close: exit(-1)
 Execution of 'mmap-close' complete.
-Timer: 325 ticks
-Thread: 30 idle ticks, 232 kernel ticks, 65 user ticks
+Timer: 316 ticks
+Thread: 30 idle ticks, 228 kernel ticks, 60 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 107 reads, 220 writes
+hd0:1: 106 reads, 220 writes
 hd1:0: 105 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1029 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...

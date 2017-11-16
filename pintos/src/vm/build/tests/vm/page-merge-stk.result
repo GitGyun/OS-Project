@@ -1,1 +1,2 @@
-PASS
+FAIL
+Run didn't shut down properly: no "Timer: # ticks" message

@@ -1,5 +1,5 @@
-Copying tests/userprog/multi-recurse into /tmp/7dhh9zjsC6.dsk...
-Writing command line to /tmp/WiiyrcmM0F.dsk...
+Copying tests/userprog/multi-recurse into /tmp/wx8m56KeSx.dsk...
+Writing command line to /tmp/su99NKDMjY.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -9,7 +9,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -54,16 +54,42 @@ Executing 'multi-recurse 15':
 multi-recurse: exit(0)
 (multi-recurse) end 1
 multi-recurse: exit(1)
-Kernel PANIC at ../../lib/kernel/bitmap.c:149 in bitmap_set(): assertion `idx < b->bit_cnt' failed.
-Call stack: 0xc0106ad2multi-recurse: exit(-1)
-Kernel PANIC recursion at ../../lib/kernel/bitmap.c:149 in bitmap_set().
-Timer: 998 ticks
-Thread: 33 idle ticks, 211 kernel ticks, 754 user ticks
+(multi-recurse) end 2
+multi-recurse: exit(2)
+(multi-recurse) end 3
+multi-recurse: exit(3)
+(multi-recurse) end 4
+multi-recurse: exit(4)
+(multi-recurse) end 5
+multi-recurse: exit(5)
+(multi-recurse) end 6
+multi-recurse: exit(6)
+(multi-recurse) end 7
+multi-recurse: exit(7)
+(multi-recurse) end 8
+multi-recurse: exit(8)
+(multi-recurse) end 9
+multi-recurse: exit(9)
+(multi-recurse) end 10
+multi-recurse: exit(10)
+(multi-recurse) end 11
+multi-recurse: exit(11)
+(multi-recurse) end 12
+multi-recurse: exit(12)
+(multi-recurse) end 13
+multi-recurse: exit(13)
+(multi-recurse) end 14
+multi-recurse: exit(14)
+(multi-recurse) end 15
+multi-recurse: exit(15)
+Execution of 'multi-recurse 15' complete.
+Timer: 1272 ticks
+Thread: 33 idle ticks, 320 kernel ticks, 922 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 608 reads, 230 writes
 hd1:0: 111 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 2156 characters output
+Console: 2622 characters output
 Keyboard: 0 keys pressed
-Exception: 65 page faults
+Exception: 64 page faults
 Powering off...

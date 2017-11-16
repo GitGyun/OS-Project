@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-over-data into /tmp/BRnCCqOTRV.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/BRnCCqOTRV.dsk...
-Writing command line to /tmp/D9Um8SsfZ7.dsk...
+Copying tests/vm/mmap-over-data into /tmp/S8ZIfFrdYH.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/S8ZIfFrdYH.dsk...
+Writing command line to /tmp/xYzIr8sfRO.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -27,13 +27,13 @@ Executing 'mmap-over-data':
 (mmap-over-data) try to mmap over data segment: FAILED
 mmap-over-data: exit(1)
 Execution of 'mmap-over-data' complete.
-Timer: 333 ticks
-Thread: 32 idle ticks, 231 kernel ticks, 72 user ticks
+Timer: 323 ticks
+Thread: 32 idle ticks, 226 kernel ticks, 68 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 97 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1130 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...

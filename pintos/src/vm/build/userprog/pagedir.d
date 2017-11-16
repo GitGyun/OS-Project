@@ -5,4 +5,4 @@ userprog/pagedir.o: ../../userprog/pagedir.c ../../userprog/pagedir.h \
  ../../threads/palloc.h ../../threads/thread.h ../../lib/kernel/list.h \
  ../../devices/timer.h ../../lib/round.h ../../threads/synch.h \
  ../../vm/page.h ../../lib/kernel/hash.h ../../lib/kernel/list.h \
- ../../filesys/file.h ../../filesys/off_t.h
+ ../../filesys/off_t.h

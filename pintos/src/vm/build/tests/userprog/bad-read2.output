@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-read2 into /tmp/lUskrVh16g.dsk...
-Writing command line to /tmp/zP5p_roriJ.dsk...
+Copying tests/userprog/bad-read2 into /tmp/TUCb1XYiyP.dsk...
+Writing command line to /tmp/Yy34ApkunB.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -9,7 +9,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put bad-read2 run bad-read2
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -22,8 +22,8 @@ Executing 'bad-read2':
 (bad-read2) begin
 bad-read2: exit(-1)
 Execution of 'bad-read2' complete.
-Timer: 285 ticks
-Thread: 30 idle ticks, 201 kernel ticks, 56 user ticks
+Timer: 275 ticks
+Thread: 30 idle ticks, 201 kernel ticks, 47 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes

@@ -1,5 +1,5 @@
-Copying tests/userprog/write-stdin into /tmp/3DNfR0Yat_.dsk...
-Writing command line to /tmp/NzxGD9cIFg.dsk...
+Copying tests/userprog/write-stdin into /tmp/IO_GC9TfUa.dsk...
+Writing command line to /tmp/fvUoDBM9u1.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -9,7 +9,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put write-stdin run write-stdin
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -23,8 +23,8 @@ Executing 'write-stdin':
 (write-stdin) end
 write-stdin: exit(0)
 Execution of 'write-stdin' complete.
-Timer: 288 ticks
-Thread: 30 idle ticks, 202 kernel ticks, 59 user ticks
+Timer: 279 ticks
+Thread: 30 idle ticks, 201 kernel ticks, 50 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes

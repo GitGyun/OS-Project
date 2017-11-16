@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-read into /tmp/AcdhiTEDOp.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/AcdhiTEDOp.dsk...
-Writing command line to /tmp/17EW3GDXZN.dsk...
+Copying tests/filesys/base/syn-read into /tmp/7y7M9xiBw4.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/7y7M9xiBw4.dsk...
+Writing command line to /tmp/k9pGZ8kzGe.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -37,17 +37,17 @@ Executing 'syn-read':
 (syn-read) exec child 9 of 10: "child-syn-read 8"
 (syn-read) exec child 10 of 10: "child-syn-read 9"
 child-syn-read: exit(4)
-child-syn-read: exit(6)
-child-syn-read: exit(8)
+child-syn-read: exit(2)
+child-syn-read: exit(1)
 child-syn-read: exit(5)
-child-syn-read: exit(9)
+child-syn-read: exit(6)
 child-syn-read: exit(7)
+child-syn-read: exit(8)
+child-syn-read: exit(9)
 child-syn-read: exit(0)
 (syn-read) wait for child 1 of 10 returned 0 (expected 0)
-child-syn-read: exit(1)
-(syn-read) wait for child 2 of 10 returned 1 (expected 1)
 child-syn-read: exit(3)
-child-syn-read: exit(2)
+(syn-read) wait for child 2 of 10 returned 1 (expected 1)
 (syn-read) wait for child 3 of 10 returned 2 (expected 2)
 (syn-read) wait for child 4 of 10 returned 3 (expected 3)
 (syn-read) wait for child 5 of 10 returned 4 (expected 4)
@@ -59,13 +59,13 @@ child-syn-read: exit(2)
 (syn-read) end
 syn-read: exit(0)
 Execution of 'syn-read' complete.
-Timer: 10857 ticks
-Thread: 38 idle ticks, 386 kernel ticks, 10436 user ticks
+Timer: 10690 ticks
+Thread: 34 idle ticks, 360 kernel ticks, 10299 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 10854 reads, 456 writes
+hd0:1: 10794 reads, 456 writes
 hd1:0: 219 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 2400 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 44 page faults
 Powering off...

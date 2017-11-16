@@ -1,6 +1,6 @@
-Copying tests/userprog/read-bad-ptr into /tmp/xLdBQb9oaP.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/xLdBQb9oaP.dsk...
-Writing command line to /tmp/rynl8lErMF.dsk...
+Copying tests/userprog/read-bad-ptr into /tmp/sLA07VzueU.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/sLA07VzueU.dsk...
+Writing command line to /tmp/BLCALtJPwM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put read-bad-ptr put sample.txt run read-bad-ptr
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -25,8 +25,8 @@ Executing 'read-bad-ptr':
 (read-bad-ptr) open "sample.txt"
 read-bad-ptr: exit(-1)
 Execution of 'read-bad-ptr' complete.
-Timer: 321 ticks
-Thread: 32 idle ticks, 226 kernel ticks, 65 user ticks
+Timer: 312 ticks
+Thread: 30 idle ticks, 227 kernel ticks, 58 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 214 writes
 hd1:0: 102 reads, 0 writes

@@ -1,7 +1,6 @@
 #include "userprog/exception.h"
 #include <inttypes.h>
 #include <stdio.h>
-#include <string.h>
 #include "userprog/gdt.h"
 #include "threads/interrupt.h"
 #include "threads/thread.h"
@@ -123,8 +122,6 @@ kill (struct intr_frame *f)
     }
 }
 
-static const bool debug = false;
-
 /* Page fault handler.  This is a skeleton that must be filled in
    to implement virtual memory.  Some solutions to project 2 may
    also require modifying this code.
@@ -168,72 +165,45 @@ page_fault (struct intr_frame *f)
   struct thread *t = thread_current ();
   void *fault_upage = pg_round_down (fault_addr);
 
-  if (debug)
-    printf ("Page fault at %p: %s error %s page in %s context.\n",
-            fault_addr,
-            not_present ? "not present" : "rights violation",
-            write ? "writing" : "reading",
-            user ? "user" : "kernel");
+  /*
+  printf ("(%d) ", t->tid);
+  printf ("Page fault at %p: %s error %s page in %s context.\n",
+          fault_addr,
+          not_present ? "not present" : "rights violation",
+          write ? "writing" : "reading",
+          user ? "user" : "kernel");
+  */
 
 #ifdef VM
   struct spte *p = suppl_page_table_find (t->suppl_page_table, fault_upage);
   ASSERT (!(not_present && p != NULL && p->stat == PG_ON_MEMORY));
 
-  if (debug)
-    printf ("p stat %s, src %s\n", p->stat==PG_ON_MEMORY?"ON_MEM":"EVIC", p->src==PG_SWAP?"SWAP":"FILE");
-
   /* Determine if the page fault is caused by stack access. Then
      perform the stack growth */
-  uint8_t *esp = user ? f->esp : t->user_esp;
-  //printf ("fault addr %p, esp %p\n", fault_addr, esp);
-
-  if (not_present && is_user_vaddr (fault_addr))
+  uint8_t *esp = user ? f->esp : t->user_esp;\
+  if (fault_addr < PHYS_BASE
+      && fault_addr >= PHYS_BASE - MAX_STACK_SIZE
+      && (uint8_t *)fault_addr >= esp - 32
+      && p == NULL)
     {
-      //printf ("not present and user vaddr\n");
-      if (fault_addr >= PHYS_BASE - MAX_STACK_SIZE
-          && (uint8_t *)fault_addr >= esp - 32
-          && p == NULL)
-        {
-          //printf ("grow stack\n");
-          /* Allocate corresponding kernel page */
-          void *new_kpage = frame_alloc (fault_upage, PAL_USER | PAL_ZERO, true);
-          if (new_kpage != NULL)
-            /* Stack growth complete. Exit PF handler. */
-            return;
-
-          PANIC ("Cannot grow stack");
-        }
-
-      /* Swap in the evicted page to memory */
-      if (p != NULL && p->src == PG_SWAP)
-        {
-          swap_in (p);
-          return;
-        }
-
-      if (p != NULL && p->src == PG_FILE)
-        {
-          if (p->mapped == false)
-            {
-              /* Load the lazily loaded page */
-              if (debug)
-                {
-                  printf ("Load load: ofs %d, upage %p, read_bytes %u, zero_bytes %u, writable %s\n",
-                          p->ofs, p->upage, p->page_read_bytes, p->page_zero_bytes,
-                          p->writable ? "true" : "false");
-                }
-
-              lazy_load (p);
-              return;
-            }
-          else
-            {
-              /* Load memory-mapped file to memory */
-            }
-        }
+      /* Allocate corresponding kernel page */
+      void *new_kpage = frame_alloc (fault_upage, PAL_USER | PAL_ZERO, true);
+      if (new_kpage != NULL)
+        /* Stack growth complete. Exit PF handler. */
+        return;
+      else
+        PANIC ("Cannot grow stack");
     }
 
-  //printf ("not stack growth nor load evicted page\n");
+  /* Swap in the evicted page to memory */
+  if (not_present
+      && is_user_vaddr (fault_addr)
+      && p != NULL
+      && p->stat == PG_EVICTED)
+    {
+      swap_in (p);
+      return;
+    }
 
   /* Handling rights violation error caused by writing data on
    the read-only region. */

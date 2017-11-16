@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-mm into /tmp/HZMJb7GG6h.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/HZMJb7GG6h.dsk...
-Writing command line to /tmp/i5LlGexP3y.dsk...
+Copying tests/vm/page-merge-mm into /tmp/LcUOvpTQVA.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/LcUOvpTQVA.dsk...
+Writing command line to /tmp/kCCuPdYSGY.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-370 pages available in user pool.
+371 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -28,26 +28,28 @@ Executing 'page-merge-mm':
 (page-merge-mm) sort chunk 2
 (page-merge-mm) sort chunk 3
 (page-merge-mm) sort chunk 4
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
 (page-merge-mm) sort chunk 5
 (page-merge-mm) sort chunk 6
 (page-merge-mm) sort chunk 7
 (page-merge-mm) wait for child 0
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
 (page-merge-mm) wait for child 0: FAILED
 page-merge-mm: exit(1)
 child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
 Execution of 'page-merge-mm' complete.
-Timer: 11591 ticks
-Thread: 31 idle ticks, 343 kernel ticks, 11224 user ticks
+Timer: 6262 ticks
+Thread: 36 idle ticks, 353 kernel ticks, 5880 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 789 reads, 4578 writes
+hd0:1: 686 reads, 4578 writes
 hd1:0: 220 reads, 0 writes
-hd1:1: 2088 reads, 3504 writes
-Console: 1484 characters output
+hd1:1: 0 reads, 0 writes
+Console: 1526 characters output
 Keyboard: 0 keys pressed
-Exception: 269 page faults
+Exception: 294 page faults
 Powering off...
