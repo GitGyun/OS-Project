@@ -1,6 +1,6 @@
-Copying tests/vm/page-parallel into /tmp/68LuNw24Wy.dsk...
-Copying tests/vm/child-linear into /tmp/68LuNw24Wy.dsk...
-Writing command line to /tmp/6BxZyWWcTj.dsk...
+Copying tests/vm/page-parallel into /tmp/X1N1aGIQeC.dsk...
+Copying tests/vm/child-linear into /tmp/X1N1aGIQeC.dsk...
+Writing command line to /tmp/IsOaO0HywP.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -27,23 +27,6 @@ Executing 'page-parallel':
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
 (page-parallel) wait for child 0
-child-linear: exit(66)
-child-linear: exit(66)
-(page-parallel) wait for child 1
-child-linear: exit(66)
-(page-parallel) wait for child 2
-child-linear: exit(66)
-(page-parallel) wait for child 3
-(page-parallel) end
-page-parallel: exit(0)
-Execution of 'page-parallel' complete.
-Timer: 57547 ticks
-Thread: 281 idle ticks, 313 kernel ticks, 56956 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 451 reads, 418 writes
-hd1:0: 204 reads, 0 writes
-hd1:1: 16616 reads, 19792 writes
-Console: 1393 characters output
-Keyboard: 0 keys pressed
-Exception: 3148 page faults
-Powering off...
+Kernel PANIC at ../../vm/swap.c:72 in swap_out(): assertion `p->kpage == victim->kpage && p->upage == victim->upage' failed.
+Call stack: 0xc0106ad2child-linear: exit(-1)
+Simulation terminated due to kernel panic.

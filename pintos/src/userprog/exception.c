@@ -136,6 +136,10 @@ kill (struct intr_frame *f)
 static void
 page_fault (struct intr_frame *f)
 {
+  bool use_lock = false;
+  if (use_lock)
+    pgl_acquire ();
+
   bool not_present;  /* True: not-present page, false: writing r/o page. */
   bool write;        /* True: access was write, false: access was read. */
   bool user;         /* True: access by user, false: access by kernel. */
@@ -165,18 +169,34 @@ page_fault (struct intr_frame *f)
   struct thread *t = thread_current ();
   void *fault_upage = pg_round_down (fault_addr);
 
-  /*
-  printf ("(%d) ", t->tid);
-  printf ("Page fault at %p: %s error %s page in %s context.\n",
-          fault_addr,
-          not_present ? "not present" : "rights violation",
-          write ? "writing" : "reading",
-          user ? "user" : "kernel");
-  */
+  bool debug = false;
+
+  if (debug)
+    {
+      printf ("(%2d) ", t->tid);
+      printf ("Page fault at %p: %s error %s page in %s context.\n",
+              fault_addr,
+              not_present ? "not present" : "rights violation",
+              write ? "writing" : "reading",
+              user ? "user" : "kernel");
+    }
 
 #ifdef VM
   struct spte *p = suppl_page_table_find (t->suppl_page_table, fault_upage);
-  ASSERT (!(not_present && p != NULL && p->stat == PG_ON_MEMORY));
+  if (p != NULL)
+    {
+      if (not_present && p->stat == PG_ON_MEMORY)
+        {
+//          if (debug)
+//            printf ("%p\n", pagedir_get_page (t->pagedir, fault_upage));
+//          return;
+        }
+      //ASSERT (!(not_present && p->stat == PG_ON_MEMORY));
+    }
+
+  if (debug)
+    if (p != NULL)
+      printf ("(%2d)   upage %p, kpage %p, \n", t->tid, p->upage, p->kpage);
 
   /* Determine if the page fault is caused by stack access. Then
      perform the stack growth */
@@ -186,8 +206,11 @@ page_fault (struct intr_frame *f)
       && (uint8_t *)fault_addr >= esp - 32
       && p == NULL)
     {
+      if (debug)
+        printf ("(%2d) stack growth\n", t->tid);
       /* Allocate corresponding kernel page */
       void *new_kpage = frame_alloc (fault_upage, PAL_USER | PAL_ZERO, true);
+      if (use_lock) pgl_release ();
       if (new_kpage != NULL)
         /* Stack growth complete. Exit PF handler. */
         return;
@@ -201,9 +224,15 @@ page_fault (struct intr_frame *f)
       && p != NULL
       && p->stat == PG_EVICTED)
     {
+      if (debug)
+        printf ("(%2d) page is evicted\n", thread_tid ());
+      //printf ("fault addr %p, file NULL? %s\n", fault_addr, p->file == NULL? "NULL" : "Not NULL");
       swap_in (p);
+      if (use_lock) pgl_release ();
       return;
     }
+
+    if (use_lock) pgl_release ();
 
   /* Handling rights violation error caused by writing data on
    the read-only region. */

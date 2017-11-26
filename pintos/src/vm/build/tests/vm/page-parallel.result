@@ -1,1 +1,5 @@
-PASS
+FAIL
+Kernel panic in run: PANIC at ../../vm/swap.c:72 in swap_out(): assertion `p->kpage == victim->kpage && p->upage == victim->upage' failed.
+Call stack: 0xc0106ad2c
+Translation of call stack:
+0xc0106ad2c: (unknown)

@@ -1,6 +1,6 @@
-Copying tests/userprog/open-normal into /tmp/A0YmB4XiR4.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/A0YmB4XiR4.dsk...
-Writing command line to /tmp/6NCveKFql7.dsk...
+Copying tests/userprog/open-normal into /tmp/QvlYGveO0i.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/QvlYGveO0i.dsk...
+Writing command line to /tmp/xG5TC7vMIG.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put open-normal put sample.txt run open-normal
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -25,8 +25,8 @@ Executing 'open-normal':
 (open-normal) end
 open-normal: exit(0)
 Execution of 'open-normal' complete.
-Timer: 309 ticks
-Thread: 31 idle ticks, 227 kernel ticks, 54 user ticks
+Timer: 310 ticks
+Thread: 30 idle ticks, 228 kernel ticks, 55 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 212 writes
 hd1:0: 101 reads, 0 writes

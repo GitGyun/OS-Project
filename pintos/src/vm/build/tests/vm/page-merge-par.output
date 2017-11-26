@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-par into /tmp/hezLRVdAT2.dsk...
-Copying tests/vm/child-sort into /tmp/hezLRVdAT2.dsk...
-Writing command line to /tmp/bCFf64Wzpv.dsk...
+Copying tests/vm/page-merge-par into /tmp/Orr7c0BrdM.dsk...
+Copying tests/vm/child-sort into /tmp/Orr7c0BrdM.dsk...
+Writing command line to /tmp/z5hlroduLB.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -27,39 +27,39 @@ Executing 'page-merge-par':
 (page-merge-par) sort chunk 1
 (page-merge-par) sort chunk 2
 (page-merge-par) sort chunk 3
-child-sort: exit(123)
-child-sort: exit(123)
-child-sort: exit(123)
 (page-merge-par) sort chunk 4
 (page-merge-par) sort chunk 5
 (page-merge-par) sort chunk 6
-child-sort: exit(123)
 (page-merge-par) sort chunk 7
 (page-merge-par) wait for child 0
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
 (page-merge-par) wait for child 1
+child-sort: exit(123)
+child-sort: exit(123)
 (page-merge-par) wait for child 2
 (page-merge-par) wait for child 3
 (page-merge-par) wait for child 4
-child-sort: exit(123)
-child-sort: exit(123)
-child-sort: exit(123)
-child-sort: exit(123)
 (page-merge-par) wait for child 5
 (page-merge-par) wait for child 6
 (page-merge-par) wait for child 7
 (page-merge-par) merge
 (page-merge-par) verify
-(page-merge-par) success, buf_idx=1,048,576
+(page-merge-par) success, buf_idx=128
 (page-merge-par) end
 page-merge-par: exit(0)
 Execution of 'page-merge-par' complete.
-Timer: 21723 ticks
-Thread: 45 idle ticks, 346 kernel ticks, 21335 user ticks
+Timer: 1382 ticks
+Thread: 35 idle ticks, 344 kernel ticks, 1005 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 4925 reads, 6608 writes
+hd0:1: 834 reads, 488 writes
 hd1:0: 211 reads, 0 writes
-hd1:1: 456 reads, 1632 writes
-Console: 1828 characters output
+hd1:1: 0 reads, 0 writes
+Console: 1813 characters output
 Keyboard: 0 keys pressed
-Exception: 866 page faults
+Exception: 45 page faults
 Powering off...

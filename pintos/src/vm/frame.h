@@ -12,9 +12,6 @@ struct fte
     void *upage;                /* Address to user page */
     struct thread *process;     /* Owner of this frame */
 
-    bool writable;              /* Writability */
-    int64_t last_ac_tick;       /* Last access time */
-
     struct hash_elem elem;
     struct list_elem lelem;
   };

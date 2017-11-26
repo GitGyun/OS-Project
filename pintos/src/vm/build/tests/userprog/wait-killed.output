@@ -1,6 +1,6 @@
-Copying tests/userprog/wait-killed into /tmp/zraI1gzvOc.dsk...
-Copying tests/userprog/child-bad into /tmp/zraI1gzvOc.dsk...
-Writing command line to /tmp/hjmwdLSrpm.dsk...
+Copying tests/userprog/wait-killed into /tmp/GCzXXtqTVW.dsk...
+Copying tests/userprog/child-bad into /tmp/GCzXXtqTVW.dsk...
+Writing command line to /tmp/uKewBJEw05.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put wait-killed put child-bad run wait-killed
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -28,8 +28,8 @@ child-bad: exit(-1)
 (wait-killed) end
 wait-killed: exit(0)
 Execution of 'wait-killed' complete.
-Timer: 421 ticks
-Thread: 31 idle ticks, 284 kernel ticks, 109 user ticks
+Timer: 422 ticks
+Thread: 32 idle ticks, 286 kernel ticks, 107 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 131 reads, 406 writes
 hd1:0: 198 reads, 0 writes

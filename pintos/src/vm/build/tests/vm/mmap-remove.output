@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-remove into /tmp/UbZ4VsyEoR.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/UbZ4VsyEoR.dsk...
-Writing command line to /tmp/N8iraxK0w_.dsk...
+Copying tests/vm/mmap-remove into /tmp/7wt6A74jbT.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/7wt6A74jbT.dsk...
+Writing command line to /tmp/g3iP6lIgpM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -10,7 +10,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -29,8 +29,8 @@ Executing 'mmap-remove':
 (mmap-remove) create "another"
 mmap-remove: exit(-1)
 Execution of 'mmap-remove' complete.
-Timer: 373 ticks
-Thread: 31 idle ticks, 229 kernel ticks, 116 user ticks
+Timer: 374 ticks
+Thread: 31 idle ticks, 230 kernel ticks, 116 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 146 reads, 311 writes
 hd1:0: 107 reads, 0 writes

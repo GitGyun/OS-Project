@@ -1,5 +1,5 @@
-Copying tests/userprog/exit into /tmp/32W_SjDOvO.dsk...
-Writing command line to /tmp/bUN3IusgyJ.dsk...
+Copying tests/userprog/exit into /tmp/kx26SRE4Rt.dsk...
+Writing command line to /tmp/t3PCfai7TY.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -9,7 +9,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put exit run exit
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -22,8 +22,8 @@ Executing 'exit':
 (exit) begin
 exit: exit(57)
 Execution of 'exit' complete.
-Timer: 275 ticks
-Thread: 31 idle ticks, 200 kernel ticks, 47 user ticks
+Timer: 274 ticks
+Thread: 31 idle ticks, 199 kernel ticks, 46 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes

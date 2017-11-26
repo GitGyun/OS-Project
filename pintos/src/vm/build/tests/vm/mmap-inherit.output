@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-inherit into /tmp/tIPi5NT7UG.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/tIPi5NT7UG.dsk...
-Copying tests/vm/child-inherit into /tmp/tIPi5NT7UG.dsk...
-Writing command line to /tmp/naHV05QnVj.dsk...
+Copying tests/vm/mmap-inherit into /tmp/G841Nb2zP7.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/G841Nb2zP7.dsk...
+Copying tests/vm/child-inherit into /tmp/G841Nb2zP7.dsk...
+Writing command line to /tmp/Jd7wzvlLIA.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -11,7 +11,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -28,8 +28,8 @@ Executing 'mmap-inherit':
 (mmap-inherit) mmap "sample.txt"
 mmap-inherit: exit(-1)
 Execution of 'mmap-inherit' complete.
-Timer: 394 ticks
-Thread: 32 idle ticks, 308 kernel ticks, 56 user ticks
+Timer: 393 ticks
+Thread: 32 idle ticks, 308 kernel ticks, 55 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 129 reads, 426 writes
 hd1:0: 207 reads, 0 writes

@@ -503,10 +503,12 @@ load (const char *file_name, void (**eip) (void), void **esp)
 
   return success;
 }
-
+
 /* load() helpers. */
 
+#ifndef VM
 static bool install_page (void *upage, void *kpage, bool writable);
+#endif
 
 /* Checks whether PHDR describes a valid, loadable segment in
    FILE and returns true if so, false otherwise. */
@@ -581,7 +583,12 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
   ASSERT (pg_ofs (upage) == 0);
   ASSERT (ofs % PGSIZE == 0);
 
+  bool debug = false;
+
 #ifdef VM
+  if (debug)
+    printf ("load segment ::::::: ====================\n");
+
   off_t page_ofs = ofs;
   while (read_bytes > 0 || zero_bytes > 0)
     {
@@ -601,12 +608,10 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
       suppl_page_table_insert (thread_current ()->suppl_page_table, p);
 
-      /*
-      printf ("load segment: page ofs %d, upage %p, pg_read_bytes %u, pg_zero_bytes %u, writable %s\n",
-              page_ofs, upage, page_read_bytes, page_zero_bytes,
-              writable? "true" : "false");
-      printf ("set page stat EVICTED; src FILE\n");
-      */
+      if (debug)
+        printf ("(%2d) load segment: page ofs %d, upage %p, pg_read_bytes %u, pg_zero_bytes %u, writable %s\n",
+                thread_tid (), page_ofs, upage, page_read_bytes, page_zero_bytes,
+                writable? "true" : "false");
 
       page_ofs += page_read_bytes;
       read_bytes -= page_read_bytes;
@@ -663,23 +668,20 @@ setup_stack (void **esp)
 #ifdef VM
   kpage = frame_alloc (((uint8_t *) PHYS_BASE) - PGSIZE,
                        PAL_USER | PAL_ZERO, true);
-  if (kpage != NULL)
+
+  struct fte *f = frame_table_find (kpage);
+  if (f != NULL)
     {
-      struct fte *f = frame_table_find (kpage);
-      if (f != NULL)
-        {
-          struct hash *spt = f->process->suppl_page_table;
-          struct spte *p = suppl_page_table_find (spt, f->upage);
-          if (p != NULL)
-            p->stat = PG_ON_MEMORY;
-        }
-      else
-        return false;
+      struct hash *spt = f->process->suppl_page_table;
+      struct spte *p = suppl_page_table_find (spt, f->upage);
+      if (p != NULL)
+        p->stat = PG_ON_MEMORY;
 
       *esp = PHYS_BASE;
       return true;
     }
-  return false;
+  else
+    return false;
 #else
   kpage = palloc_get_page (PAL_USER | PAL_ZERO);
   if (kpage != NULL)
@@ -694,6 +696,7 @@ setup_stack (void **esp)
   return success;
 }
 
+#ifndef VM
 /* Adds a mapping from user virtual address UPAGE to kernel
    virtual address KPAGE to the page table.
    If WRITABLE is true, the user process may modify the page;
@@ -713,3 +716,4 @@ install_page (void *upage, void *kpage, bool writable)
   return (pagedir_get_page (t->pagedir, upage) == NULL
           && pagedir_set_page (t->pagedir, upage, kpage, writable));
 }
+#endif

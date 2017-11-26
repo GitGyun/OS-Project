@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 74.9%
+TOTAL TESTING SCORE: 64.9%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,13 +6,13 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/vm/Rubric.functionality                  35/ 55  31.8%/ 50.0%
+tests/vm/Rubric.functionality                  24/ 55  21.8%/ 50.0%
 tests/vm/Rubric.robustness                     15/ 28   8.0%/ 15.0%
 tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
 tests/userprog/Rubric.robustness               88/ 88   5.0%/  5.0%
 tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  74.9%/100.0%
+Total                                                  64.9%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -27,12 +27,12 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 
 	- Test paging behavior.
 	     3/ 3 tests/vm/page-linear
-	     3/ 3 tests/vm/page-parallel
+	  ** 0/ 3 tests/vm/page-parallel
 	     3/ 3 tests/vm/page-shuffle
 	     4/ 4 tests/vm/page-merge-seq
-	     4/ 4 tests/vm/page-merge-par
+	  ** 0/ 4 tests/vm/page-merge-par
 	  ** 0/ 4 tests/vm/page-merge-mm
-	     4/ 4 tests/vm/page-merge-stk
+	  ** 0/ 4 tests/vm/page-merge-stk
 
 	- Test "mmap" system call.
 	  ** 0/ 2 tests/vm/mmap-read
@@ -50,8 +50,8 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 	  ** 0/ 2 tests/vm/mmap-remove
 
 	- Section summary.
-	     11/ 20 tests passed
-	     35/ 55 points subtotal
+	      8/ 20 tests passed
+	     24/ 55 points subtotal
 
 Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
 	- Test robustness of page table support.
@@ -216,15 +216,183 @@ Functionality of base file system (tests/filesys/base/Rubric):
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+DETAILS OF tests/vm/page-parallel FAILURE:
+
+Kernel panic in run: PANIC at ../../vm/swap.c:72 in swap_out(): assertion `p->kpage == victim->kpage && p->upage == victim->upage' failed.
+Call stack: 0xc0106ad2c
+Translation of call stack:
+0xc0106ad2c: (unknown)
+
+OUTPUT FROM tests/vm/page-parallel:
+
+Copying tests/vm/page-parallel into /tmp/X1N1aGIQeC.dsk...
+Copying tests/vm/child-linear into /tmp/X1N1aGIQeC.dsk...
+Writing command line to /tmp/IsOaO0HywP.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-parallel put child-linear run page-parallel
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+370 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-parallel' into the file system...
+Putting 'child-linear' into the file system...
+Executing 'page-parallel':
+(page-parallel) begin
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+(page-parallel) wait for child 0
+Kernel PANIC at ../../vm/swap.c:72 in swap_out(): assertion `p->kpage == victim->kpage && p->upage == victim->upage' failed.
+Call stack: 0xc0106ad2child-linear: exit(-1)
+Simulation terminated due to kernel panic.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-par FAILURE:
+
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (page-merge-par) begin
+  (page-merge-par) init
+  (page-merge-par) sort chunk 0
+  (page-merge-par) sort chunk 1
+  (page-merge-par) sort chunk 2
+  (page-merge-par) sort chunk 3
+  (page-merge-par) sort chunk 4
+  (page-merge-par) sort chunk 5
+  (page-merge-par) sort chunk 6
+  (page-merge-par) sort chunk 7
+  (page-merge-par) wait for child 0
+  (page-merge-par) wait for child 1
+  (page-merge-par) wait for child 2
+  (page-merge-par) wait for child 3
+  (page-merge-par) wait for child 4
+  (page-merge-par) wait for child 5
+  (page-merge-par) wait for child 6
+  (page-merge-par) wait for child 7
+  (page-merge-par) merge
+  (page-merge-par) verify
+  (page-merge-par) success, buf_idx=1,048,576
+  (page-merge-par) end
+Differences in `diff -u' format:
+  (page-merge-par) begin
+  (page-merge-par) init
+  (page-merge-par) sort chunk 0
+  (page-merge-par) sort chunk 1
+  (page-merge-par) sort chunk 2
+  (page-merge-par) sort chunk 3
+  (page-merge-par) sort chunk 4
+  (page-merge-par) sort chunk 5
+  (page-merge-par) sort chunk 6
+  (page-merge-par) sort chunk 7
+  (page-merge-par) wait for child 0
+  (page-merge-par) wait for child 1
+  (page-merge-par) wait for child 2
+  (page-merge-par) wait for child 3
+  (page-merge-par) wait for child 4
+  (page-merge-par) wait for child 5
+  (page-merge-par) wait for child 6
+  (page-merge-par) wait for child 7
+  (page-merge-par) merge
+  (page-merge-par) verify
+- (page-merge-par) success, buf_idx=1,048,576
++ (page-merge-par) success, buf_idx=128
+  (page-merge-par) end
+
+(Process exit codes are excluded for matching purposes.)
+
+OUTPUT FROM tests/vm/page-merge-par:
+
+Copying tests/vm/page-merge-par into /tmp/Orr7c0BrdM.dsk...
+Copying tests/vm/child-sort into /tmp/Orr7c0BrdM.dsk...
+Writing command line to /tmp/z5hlroduLB.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+370 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-par' into the file system...
+Putting 'child-sort' into the file system...
+Executing 'page-merge-par':
+(page-merge-par) begin
+(page-merge-par) init
+(page-merge-par) sort chunk 0
+(page-merge-par) sort chunk 1
+(page-merge-par) sort chunk 2
+(page-merge-par) sort chunk 3
+(page-merge-par) sort chunk 4
+(page-merge-par) sort chunk 5
+(page-merge-par) sort chunk 6
+(page-merge-par) sort chunk 7
+(page-merge-par) wait for child 0
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+child-sort: exit(123)
+(page-merge-par) wait for child 1
+child-sort: exit(123)
+child-sort: exit(123)
+(page-merge-par) wait for child 2
+(page-merge-par) wait for child 3
+(page-merge-par) wait for child 4
+(page-merge-par) wait for child 5
+(page-merge-par) wait for child 6
+(page-merge-par) wait for child 7
+(page-merge-par) merge
+(page-merge-par) verify
+(page-merge-par) success, buf_idx=128
+(page-merge-par) end
+page-merge-par: exit(0)
+Execution of 'page-merge-par' complete.
+Timer: 1382 ticks
+Thread: 35 idle ticks, 344 kernel ticks, 1005 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 834 reads, 488 writes
+hd1:0: 211 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1813 characters output
+Keyboard: 0 keys pressed
+Exception: 45 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 DETAILS OF tests/vm/page-merge-mm FAILURE:
 
 run: wait for child 0: FAILED
 
 OUTPUT FROM tests/vm/page-merge-mm:
 
-Copying tests/vm/page-merge-mm into /tmp/2WL_jbjOko.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/2WL_jbjOko.dsk...
-Writing command line to /tmp/F75spH7XDS.dsk...
+Copying tests/vm/page-merge-mm into /tmp/LrP7t4idth.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/LrP7t4idth.dsk...
+Writing command line to /tmp/TEhxOLnM_Q.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -234,7 +402,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -255,28 +423,73 @@ Executing 'page-merge-mm':
 (page-merge-mm) sort chunk 5
 (page-merge-mm) sort chunk 6
 (page-merge-mm) sort chunk 7
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
 (page-merge-mm) wait for child 0
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
 (page-merge-mm) wait for child 0: FAILED
 page-merge-mm: exit(1)
 child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
 Execution of 'page-merge-mm' complete.
-Timer: 11830 ticks
-Thread: 39 idle ticks, 353 kernel ticks, 11444 user ticks
+Timer: 1104 ticks
+Thread: 33 idle ticks, 354 kernel ticks, 724 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 789 reads, 4578 writes
+hd0:1: 694 reads, 498 writes
 hd1:0: 220 reads, 0 writes
-hd1:1: 2088 reads, 3720 writes
-Console: 1534 characters output
+hd1:1: 0 reads, 0 writes
+Console: 1524 characters output
 Keyboard: 0 keys pressed
-Exception: 269 page faults
+Exception: 37 page faults
 Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/page-merge-stk FAILURE:
+
+run: TIMEOUT after 60 seconds of host CPU time
+
+OUTPUT FROM tests/vm/page-merge-stk:
+
+Copying tests/vm/page-merge-stk into /tmp/zuzHL87LZT.dsk...
+Copying tests/vm/child-qsort into /tmp/zuzHL87LZT.dsk...
+Writing command line to /tmp/3_jfbJbX3v.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
+Pintos booting with 4,096 kB RAM...
+371 pages available in kernel pool.
+370 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-stk' into the file system...
+Putting 'child-qsort' into the file system...
+Executing 'page-merge-stk':
+(page-merge-stk) begin
+(page-merge-stk) init
+(page-merge-stk) sort chunk 0
+(page-merge-stk) sort chunk 1
+(page-merge-stk) sort chunk 2
+(page-merge-stk) sort chunk 3
+(page-merge-stk) sort chunk 4
+(page-merge-stk) sort chunk 5
+(page-merge-stk) sort chunk 6
+(page-merge-stk) sort chunk 7
+(page-merge-stk) wait for child 0
+
+TIMEOUT after 60 seconds of host CPU time
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -299,9 +512,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-read:
 
-Copying tests/vm/mmap-read into /tmp/MstowkqtfZ.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/MstowkqtfZ.dsk...
-Writing command line to /tmp/7pworKkWuU.dsk...
+Copying tests/vm/mmap-read into /tmp/C_RroTpQwH.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/C_RroTpQwH.dsk...
+Writing command line to /tmp/aZStIhjwCG.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -311,7 +524,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-read put sample.txt run mmap-read
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -327,15 +540,15 @@ Executing 'mmap-read':
 (mmap-read) mmap "sample.txt"
 mmap-read: exit(-1)
 Execution of 'mmap-read' complete.
-Timer: 325 ticks
-Thread: 31 idle ticks, 234 kernel ticks, 63 user ticks
+Timer: 312 ticks
+Thread: 30 idle ticks, 229 kernel ticks, 55 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 101 reads, 222 writes
+hd0:1: 99 reads, 222 writes
 hd1:0: 106 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1020 characters output
+Console: 1019 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -363,8 +576,8 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-write:
 
-Copying tests/vm/mmap-write into /tmp/1dNCN74dOe.dsk...
-Writing command line to /tmp/1yNWhcn6KK.dsk...
+Copying tests/vm/mmap-write into /tmp/eJypIGR8WV.dsk...
+Writing command line to /tmp/T_yjt5G5b0.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -374,7 +587,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-write run mmap-write
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -390,15 +603,15 @@ Executing 'mmap-write':
 (mmap-write) mmap "sample.txt"
 mmap-write: exit(-1)
 Execution of 'mmap-write' complete.
-Timer: 319 ticks
-Thread: 31 idle ticks, 206 kernel ticks, 85 user ticks
+Timer: 307 ticks
+Thread: 32 idle ticks, 202 kernel ticks, 75 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 96 reads, 220 writes
+hd0:1: 94 reads, 220 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1001 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -446,8 +659,8 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-shuffle:
 
-Copying tests/vm/mmap-shuffle into /tmp/xqZLoh5qP1.dsk...
-Writing command line to /tmp/n2hN7ItTng.dsk...
+Copying tests/vm/mmap-shuffle into /tmp/x8S5kvzP9q.dsk...
+Writing command line to /tmp/7MnACBP50z.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -457,7 +670,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -473,15 +686,15 @@ Executing 'mmap-shuffle':
 (mmap-shuffle) mmap "buffer"
 mmap-shuffle: exit(-1)
 Execution of 'mmap-shuffle' complete.
-Timer: 367 ticks
-Thread: 30 idle ticks, 211 kernel ticks, 129 user ticks
+Timer: 359 ticks
+Thread: 30 idle ticks, 207 kernel ticks, 125 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 96 reads, 486 writes
+hd0:1: 95 reads, 486 writes
 hd1:0: 109 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1010 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -513,9 +726,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-twice:
 
-Copying tests/vm/mmap-twice into /tmp/uZXjNO9jxQ.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/uZXjNO9jxQ.dsk...
-Writing command line to /tmp/zUTjqqrHbx.dsk...
+Copying tests/vm/mmap-twice into /tmp/8nAjQ2OpYl.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/8nAjQ2OpYl.dsk...
+Writing command line to /tmp/VncfwVxi9a.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -525,7 +738,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -544,15 +757,15 @@ Executing 'mmap-twice':
 (mmap-twice) compare mmap'd file 0 against data
 mmap-twice: exit(-1)
 Execution of 'mmap-twice' complete.
-Timer: 346 ticks
-Thread: 32 idle ticks, 235 kernel ticks, 81 user ticks
+Timer: 331 ticks
+Thread: 31 idle ticks, 229 kernel ticks, 73 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 104 reads, 222 writes
+hd0:1: 102 reads, 222 writes
 hd1:0: 106 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1179 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -563,9 +776,9 @@ run: wait for child (should return 0): FAILED
 
 OUTPUT FROM tests/vm/mmap-exit:
 
-Copying tests/vm/mmap-exit into /tmp/ZqTBByYo8G.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/ZqTBByYo8G.dsk...
-Writing command line to /tmp/QYh7qSOUyv.dsk...
+Copying tests/vm/mmap-exit into /tmp/A8YpZMBUvs.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/A8YpZMBUvs.dsk...
+Writing command line to /tmp/BNqN7qfl3R.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -575,7 +788,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -595,15 +808,15 @@ child-mm-wrt: exit(-1)
 (mmap-exit) wait for child (should return 0): FAILED
 mmap-exit: exit(1)
 Execution of 'mmap-exit' complete.
-Timer: 475 ticks
-Thread: 32 idle ticks, 294 kernel ticks, 152 user ticks
+Timer: 455 ticks
+Thread: 32 idle ticks, 286 kernel ticks, 139 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 181 reads, 424 writes
+hd0:1: 171 reads, 424 writes
 hd1:0: 204 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1162 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 10 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -637,9 +850,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-clean:
 
-Copying tests/vm/mmap-clean into /tmp/cU4SAXztGa.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/cU4SAXztGa.dsk...
-Writing command line to /tmp/EZ5JpxobWi.dsk...
+Copying tests/vm/mmap-clean into /tmp/mrmyTZRKAK.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/mrmyTZRKAK.dsk...
+Writing command line to /tmp/RClVYNJ41U.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -649,7 +862,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-clean put sample.txt run mmap-clean
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -665,15 +878,15 @@ Executing 'mmap-clean':
 (mmap-clean) mmap "sample.txt"
 mmap-clean: exit(-1)
 Execution of 'mmap-clean' complete.
-Timer: 327 ticks
-Thread: 30 idle ticks, 235 kernel ticks, 64 user ticks
+Timer: 313 ticks
+Thread: 30 idle ticks, 229 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 102 reads, 224 writes
+hd0:1: 100 reads, 224 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1029 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -697,9 +910,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-close:
 
-Copying tests/vm/mmap-close into /tmp/8lqFfEI5dA.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/8lqFfEI5dA.dsk...
-Writing command line to /tmp/lnzQBWnfBc.dsk...
+Copying tests/vm/mmap-close into /tmp/wyGnGBUfoF.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/wyGnGBUfoF.dsk...
+Writing command line to /tmp/g3Y2k6DO3k.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -709,7 +922,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -725,15 +938,15 @@ Executing 'mmap-close':
 (mmap-close) mmap "sample.txt"
 mmap-close: exit(-1)
 Execution of 'mmap-close' complete.
-Timer: 325 ticks
-Thread: 30 idle ticks, 233 kernel ticks, 64 user ticks
+Timer: 315 ticks
+Thread: 31 idle ticks, 228 kernel ticks, 59 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 107 reads, 220 writes
+hd0:1: 106 reads, 220 writes
 hd1:0: 105 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1029 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 6 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -763,9 +976,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-remove:
 
-Copying tests/vm/mmap-remove into /tmp/CGJAXuxrCQ.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/CGJAXuxrCQ.dsk...
-Writing command line to /tmp/zyjPIStfY8.dsk...
+Copying tests/vm/mmap-remove into /tmp/7wt6A74jbT.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/7wt6A74jbT.dsk...
+Writing command line to /tmp/g3iP6lIgpM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -775,7 +988,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -794,15 +1007,15 @@ Executing 'mmap-remove':
 (mmap-remove) create "another"
 mmap-remove: exit(-1)
 Execution of 'mmap-remove' complete.
-Timer: 384 ticks
-Thread: 31 idle ticks, 233 kernel ticks, 123 user ticks
+Timer: 374 ticks
+Thread: 31 idle ticks, 230 kernel ticks, 116 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 148 reads, 311 writes
+hd0:1: 146 reads, 311 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1143 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -813,8 +1026,8 @@ run: try to mmap invalid fd: FAILED
 
 OUTPUT FROM tests/vm/mmap-bad-fd:
 
-Copying tests/vm/mmap-bad-fd into /tmp/BGgJv7l_Hf.dsk...
-Writing command line to /tmp/ePodhL_dBA.dsk...
+Copying tests/vm/mmap-bad-fd into /tmp/9ySQ5WbSIg.dsk...
+Writing command line to /tmp/wkpboKDQkV.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -824,7 +1037,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-bad-fd run mmap-bad-fd
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -839,15 +1052,15 @@ Executing 'mmap-bad-fd':
 (mmap-bad-fd) try to mmap invalid fd: FAILED
 mmap-bad-fd: exit(1)
 Execution of 'mmap-bad-fd' complete.
-Timer: 295 ticks
-Thread: 30 idle ticks, 206 kernel ticks, 62 user ticks
+Timer: 285 ticks
+Thread: 30 idle ticks, 202 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 67 reads, 208 writes
+hd0:1: 66 reads, 208 writes
 hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 994 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -882,10 +1095,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-inherit:
 
-Copying tests/vm/mmap-inherit into /tmp/A3k6xaR347.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/A3k6xaR347.dsk...
-Copying tests/vm/child-inherit into /tmp/A3k6xaR347.dsk...
-Writing command line to /tmp/rd0Q0YwiXE.dsk...
+Copying tests/vm/mmap-inherit into /tmp/G841Nb2zP7.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/G841Nb2zP7.dsk...
+Copying tests/vm/child-inherit into /tmp/G841Nb2zP7.dsk...
+Writing command line to /tmp/Jd7wzvlLIA.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -895,7 +1108,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -912,15 +1125,15 @@ Executing 'mmap-inherit':
 (mmap-inherit) mmap "sample.txt"
 mmap-inherit: exit(-1)
 Execution of 'mmap-inherit' complete.
-Timer: 407 ticks
-Thread: 31 idle ticks, 313 kernel ticks, 65 user ticks
+Timer: 393 ticks
+Thread: 32 idle ticks, 308 kernel ticks, 55 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 131 reads, 426 writes
+hd0:1: 129 reads, 426 writes
 hd1:0: 207 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1113 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -931,9 +1144,9 @@ run: try to mmap at address 0: FAILED
 
 OUTPUT FROM tests/vm/mmap-null:
 
-Copying tests/vm/mmap-null into /tmp/GRKFfmMEsR.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/GRKFfmMEsR.dsk...
-Writing command line to /tmp/4wXRHxPY_N.dsk...
+Copying tests/vm/mmap-null into /tmp/pWONHm1UJg.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/pWONHm1UJg.dsk...
+Writing command line to /tmp/AwBHAbyfoy.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -943,7 +1156,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-null put sample.txt run mmap-null
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -960,15 +1173,15 @@ Executing 'mmap-null':
 (mmap-null) try to mmap at address 0: FAILED
 mmap-null: exit(1)
 Execution of 'mmap-null' complete.
-Timer: 327 ticks
-Thread: 30 idle ticks, 231 kernel ticks, 69 user ticks
+Timer: 319 ticks
+Thread: 30 idle ticks, 227 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 97 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1070 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -979,9 +1192,9 @@ run: try to mmap at misaligned address: FAILED
 
 OUTPUT FROM tests/vm/mmap-misalign:
 
-Copying tests/vm/mmap-misalign into /tmp/Wek7FLtiLY.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/Wek7FLtiLY.dsk...
-Writing command line to /tmp/71rxgr1Xkr.dsk...
+Copying tests/vm/mmap-misalign into /tmp/bVsql18lBO.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/bVsql18lBO.dsk...
+Writing command line to /tmp/c0RoPHMcX8.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -991,7 +1204,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -1008,15 +1221,15 @@ Executing 'mmap-misalign':
 (mmap-misalign) try to mmap at misaligned address: FAILED
 mmap-misalign: exit(1)
 Execution of 'mmap-misalign' complete.
-Timer: 331 ticks
-Thread: 32 idle ticks, 230 kernel ticks, 72 user ticks
+Timer: 323 ticks
+Thread: 32 idle ticks, 226 kernel ticks, 68 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 97 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1128 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1027,9 +1240,9 @@ run: try to mmap over code segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-code:
 
-Copying tests/vm/mmap-over-code into /tmp/5IeqC5taKf.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/5IeqC5taKf.dsk...
-Writing command line to /tmp/_WOFNBV3dE.dsk...
+Copying tests/vm/mmap-over-code into /tmp/y0jF4ZpAPa.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/y0jF4ZpAPa.dsk...
+Writing command line to /tmp/Gwcm4EbReL.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -1039,7 +1252,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -1056,15 +1269,15 @@ Executing 'mmap-over-code':
 (mmap-over-code) try to mmap over code segment: FAILED
 mmap-over-code: exit(1)
 Execution of 'mmap-over-code' complete.
-Timer: 331 ticks
-Thread: 32 idle ticks, 230 kernel ticks, 72 user ticks
+Timer: 323 ticks
+Thread: 32 idle ticks, 226 kernel ticks, 68 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 97 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1130 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1075,9 +1288,9 @@ run: try to mmap over data segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-data:
 
-Copying tests/vm/mmap-over-data into /tmp/CWG_mFT8yo.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/CWG_mFT8yo.dsk...
-Writing command line to /tmp/z71FlOzUIj.dsk...
+Copying tests/vm/mmap-over-data into /tmp/ZJlRzBfc78.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ZJlRzBfc78.dsk...
+Writing command line to /tmp/WwNvfDNWse.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -1087,7 +1300,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -1104,15 +1317,15 @@ Executing 'mmap-over-data':
 (mmap-over-data) try to mmap over data segment: FAILED
 mmap-over-data: exit(1)
 Execution of 'mmap-over-data' complete.
-Timer: 333 ticks
-Thread: 32 idle ticks, 231 kernel ticks, 72 user ticks
+Timer: 323 ticks
+Thread: 32 idle ticks, 226 kernel ticks, 68 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 97 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1130 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1123,9 +1336,9 @@ run: try to mmap over stack segment: FAILED
 
 OUTPUT FROM tests/vm/mmap-over-stk:
 
-Copying tests/vm/mmap-over-stk into /tmp/LLphumz6Y3.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/LLphumz6Y3.dsk...
-Writing command line to /tmp/TUaGByV1Bg.dsk...
+Copying tests/vm/mmap-over-stk into /tmp/ABWKMTM2Xt.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ABWKMTM2Xt.dsk...
+Writing command line to /tmp/4F9QAEre4s.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -1135,7 +1348,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -1152,15 +1365,15 @@ Executing 'mmap-over-stk':
 (mmap-over-stk) try to mmap over stack segment: FAILED
 mmap-over-stk: exit(1)
 Execution of 'mmap-over-stk' complete.
-Timer: 331 ticks
-Thread: 33 idle ticks, 230 kernel ticks, 70 user ticks
+Timer: 324 ticks
+Thread: 32 idle ticks, 227 kernel ticks, 67 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 216 writes
+hd0:1: 97 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1122 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 5 page faults
 Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1171,9 +1384,9 @@ run: try to mmap "zeros" again: FAILED
 
 OUTPUT FROM tests/vm/mmap-overlap:
 
-Copying tests/vm/mmap-overlap into /tmp/rptpt4cpEw.dsk...
-Copying tests/vm/zeros into /tmp/rptpt4cpEw.dsk...
-Writing command line to /tmp/b8wro0aszv.dsk...
+Copying tests/vm/mmap-overlap into /tmp/TKVn6nw7tR.dsk...
+Copying tests/vm/zeros into /tmp/TKVn6nw7tR.dsk...
+Writing command line to /tmp/Tmj_1hZetw.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -1183,7 +1396,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -1202,13 +1415,13 @@ Executing 'mmap-overlap':
 (mmap-overlap) try to mmap "zeros" again: FAILED
 mmap-overlap: exit(1)
 Execution of 'mmap-overlap' complete.
-Timer: 347 ticks
-Thread: 30 idle ticks, 238 kernel ticks, 81 user ticks
+Timer: 334 ticks
+Thread: 31 idle ticks, 233 kernel ticks, 72 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 110 reads, 242 writes
+hd0:1: 101 reads, 242 writes
 hd1:0: 116 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1155 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 4 page faults
 Powering off...

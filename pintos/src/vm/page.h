@@ -40,8 +40,8 @@ bool suppl_page_table_insert (struct hash *, struct spte *);
 struct spte *suppl_page_table_find (struct hash *, void *);
 void suppl_page_table_del_page (struct hash *, struct spte *);
 
-//void suppl_page_table_set_page_status (struct hash *, void *, enum pg_status);
-
 void suppl_page_table_print (struct hash *);
+
+void print_spte (struct spte *);
 
 #endif

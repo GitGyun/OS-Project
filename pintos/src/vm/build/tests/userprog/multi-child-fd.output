@@ -1,7 +1,7 @@
-Copying tests/userprog/multi-child-fd into /tmp/XiEZGRTmMF.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/XiEZGRTmMF.dsk...
-Copying tests/userprog/child-close into /tmp/XiEZGRTmMF.dsk...
-Writing command line to /tmp/npwUIBUdHP.dsk...
+Copying tests/userprog/multi-child-fd into /tmp/jB7SpXS0I8.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/jB7SpXS0I8.dsk...
+Copying tests/userprog/child-close into /tmp/jB7SpXS0I8.dsk...
+Writing command line to /tmp/UGO4o_PyLt.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -11,7 +11,7 @@ squish-pty bochs -q
 Kernel command line: -q -f put multi-child-fd put sample.txt put child-close run multi-child-fd
 Pintos booting with 4,096 kB RAM...
 371 pages available in kernel pool.
-371 pages available in user pool.
+370 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -34,7 +34,7 @@ child-close: exit(0)
 multi-child-fd: exit(0)
 Execution of 'multi-child-fd' complete.
 Timer: 470 ticks
-Thread: 32 idle ticks, 318 kernel ticks, 122 user ticks
+Thread: 31 idle ticks, 318 kernel ticks, 123 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 178 reads, 438 writes
 hd1:0: 213 reads, 0 writes

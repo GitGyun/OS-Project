@@ -5,11 +5,12 @@
 #include "vm/swap.h"
 #include <stdio.h>
 
+extern struct semaphpore paging_lock;
+
 static unsigned spte_hash (const struct hash_elem *, void *);
 static bool spte_cmp_upage (const struct hash_elem *,
                             const struct hash_elem *, void *);
 static void spt_clear_func (struct hash_elem *, void *);
-
 
 
 /* Initialize the supplemental page table. Called by load() */
@@ -26,12 +27,10 @@ suppl_page_table_create (void)
 void
 suppl_page_table_del (struct hash *spt)
 {
-  pgl_acquire ();
-
+  sema_down (&paging_lock);
   hash_destroy (spt, spt_clear_func);
   free (spt);
-
-  pgl_release ();
+  sema_up (&paging_lock);
 }
 
 /* Create and initialize new supplemental page table entry. */
@@ -52,9 +51,9 @@ spte_create (void *upage, void *kpage)
 bool
 suppl_page_table_insert (struct hash *spt, struct spte *p)
 {
-  pgl_acquire ();
+  sema_down (&paging_lock);
   bool success = (hash_insert (spt, &p->elem) == NULL);
-  pgl_release ();
+  sema_up (&paging_lock);
 
   return success;
 }
@@ -63,34 +62,17 @@ suppl_page_table_insert (struct hash *spt, struct spte *p)
 struct spte *
 suppl_page_table_find (struct hash *spt, void *upage)
 {
-  pgl_acquire ();
-
   struct spte p;
   p.upage = upage;
 
+  sema_down (&paging_lock);
   struct hash_elem *e = hash_find (spt, &p.elem);
-
-  pgl_release ();
+  sema_up (&paging_lock);
 
   if (e != NULL)
     return hash_entry (e, struct spte, elem);
   return NULL;
 }
-
-/* Change status of the page */
-/*
-void
-suppl_page_table_set_page_status (struct hash *spt, void *upage, enum pg_status stat)
-{
-  pgl_acquire ();
-
-  struct spte *p = suppl_page_table_find (spt, upage);
-  if (p != NULL)
-    p->stat = stat;
-
-  pgl_release ();
-}
-*/
 
 
 
@@ -145,4 +127,15 @@ spt_clear_func (struct hash_elem *e, void *aux UNUSED)
     }
 
   free (p);
+}
+
+void
+print_spte (struct spte *p)
+{
+  printf ("spte with kpage %p, upage %p, status %s, wrtable %s, mapped %s, file %p\n",
+          p->kpage, p->upage,
+          p->stat == PG_ON_MEMORY? "PG_ON_MEMORY" : "PG_EVICTED",
+          p->writable? "true" : "false",
+          p->mapped? "true" : "false",
+          p->file);
 }
