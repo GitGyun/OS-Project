@@ -1,0 +1,9 @@
+Copying tests/filesys/extended/dir-open into /tmp/babLwL2rZN.dsk...
+Copying tests/filesys/extended/tar into /tmp/babLwL2rZN.dsk...
+Writing command line to /tmp/NwGmllW93k.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================

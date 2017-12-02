@@ -1,6 +1,6 @@
-Copying tests/userprog/wait-twice into /tmp/ispHe9pz0F.dsk...
-Copying tests/userprog/child-simple into /tmp/ispHe9pz0F.dsk...
-Writing command line to /tmp/a8TLj2PijC.dsk...
+Copying tests/userprog/wait-twice into /tmp/hb5XGWzfmP.dsk...
+Copying tests/userprog/child-simple into /tmp/hb5XGWzfmP.dsk...
+Writing command line to /tmp/uc7W2WIvJs.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -28,8 +28,8 @@ child-simple: exit(81)
 (wait-twice) end
 wait-twice: exit(0)
 Execution of 'wait-twice' complete.
-Timer: 411 ticks
-Thread: 32 idle ticks, 295 kernel ticks, 86 user ticks
+Timer: 410 ticks
+Thread: 32 idle ticks, 294 kernel ticks, 86 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 141 reads, 406 writes
 hd1:0: 198 reads, 0 writes

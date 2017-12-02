@@ -1,5 +1,5 @@
-Copying tests/vm/pt-grow-bad into /tmp/0up10GNaJC.dsk...
-Writing command line to /tmp/8CvXp_bNim.dsk...
+Copying tests/vm/pt-grow-bad into /tmp/znC6ZiiVo2.dsk...
+Writing command line to /tmp/bwRfQFyo0Q.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'pt-grow-bad':
 (pt-grow-bad) begin
 pt-grow-bad: exit(-1)
 Execution of 'pt-grow-bad' complete.
-Timer: 277 ticks
-Thread: 31 idle ticks, 200 kernel ticks, 48 user ticks
+Timer: 288 ticks
+Thread: 30 idle ticks, 204 kernel ticks, 57 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes

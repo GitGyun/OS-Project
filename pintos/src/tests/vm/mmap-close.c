@@ -22,6 +22,6 @@ test_main (void)
 
   if (memcmp (ACTUAL, sample, strlen (sample)))
     fail ("read of mmap'd file reported bad data");
-
+  
   munmap (map);
 }

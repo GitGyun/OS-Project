@@ -1,0 +1,8 @@
+Writing command line to /tmp/mYXUpwzrrM.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Copying tests/filesys/extended/dir-under-file.tar out of /tmp/Iq1kZCFquy.dsk...

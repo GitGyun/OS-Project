@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-seq into /tmp/xIqH5pDHEv.dsk...
-Copying tests/vm/child-sort into /tmp/xIqH5pDHEv.dsk...
-Writing command line to /tmp/3ChxRL9SrO.dsk...
+Copying tests/vm/page-merge-seq into /tmp/6sYz2PmSRe.dsk...
+Copying tests/vm/child-sort into /tmp/6sYz2PmSRe.dsk...
+Writing command line to /tmp/wttACF7XWf.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -61,10 +61,10 @@ child-sort: exit(123)
 (page-merge-seq) end
 page-merge-seq: exit(0)
 Execution of 'page-merge-seq' complete.
-Timer: 28550 ticks
-Thread: 63 idle ticks, 399 kernel ticks, 28091 user ticks
+Timer: 30260 ticks
+Thread: 57 idle ticks, 402 kernel ticks, 29804 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 4992 reads, 4590 writes
+hd0:1: 5022 reads, 4590 writes
 hd1:0: 209 reads, 0 writes
 hd1:1: 488 reads, 1608 writes
 Console: 1978 characters output

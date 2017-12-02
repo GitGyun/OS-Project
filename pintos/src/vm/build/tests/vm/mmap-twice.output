@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-twice into /tmp/8nAjQ2OpYl.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/8nAjQ2OpYl.dsk...
-Writing command line to /tmp/VncfwVxi9a.dsk...
+Copying tests/vm/mmap-twice into /tmp/UxxQuW8jGe.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/UxxQuW8jGe.dsk...
+Writing command line to /tmp/P0vyyXkxHi.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,15 +27,17 @@ Executing 'mmap-twice':
 (mmap-twice) open "sample.txt" #1
 (mmap-twice) mmap "sample.txt" #1 at 0x20000000
 (mmap-twice) compare mmap'd file 0 against data
-mmap-twice: exit(-1)
+(mmap-twice) compare mmap'd file 1 against data
+(mmap-twice) end
+mmap-twice: exit(0)
 Execution of 'mmap-twice' complete.
-Timer: 331 ticks
-Thread: 31 idle ticks, 229 kernel ticks, 73 user ticks
+Timer: 373 ticks
+Thread: 30 idle ticks, 236 kernel ticks, 109 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 102 reads, 222 writes
+hd0:1: 106 reads, 222 writes
 hd1:0: 106 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1179 characters output
+Console: 1244 characters output
 Keyboard: 0 keys pressed
-Exception: 5 page faults
+Exception: 6 page faults
 Powering off...

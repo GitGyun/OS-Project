@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-exit into /tmp/A8YpZMBUvs.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/A8YpZMBUvs.dsk...
-Writing command line to /tmp/BNqN7qfl3R.dsk...
+Copying tests/vm/mmap-exit into /tmp/DbZFn8VwmQ.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/DbZFn8VwmQ.dsk...
+Writing command line to /tmp/IuWeowiNOs.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,17 +26,21 @@ Executing 'mmap-exit':
 (child-mm-wrt) create "sample.txt"
 (child-mm-wrt) open "sample.txt"
 (child-mm-wrt) mmap "sample.txt"
-child-mm-wrt: exit(-1)
-(mmap-exit) wait for child (should return 0): FAILED
-mmap-exit: exit(1)
+(child-mm-wrt) end
+child-mm-wrt: exit(0)
+(mmap-exit) open "sample.txt" for verification
+(mmap-exit) verified contents of "sample.txt"
+(mmap-exit) close "sample.txt"
+(mmap-exit) end
+mmap-exit: exit(0)
 Execution of 'mmap-exit' complete.
-Timer: 455 ticks
-Thread: 32 idle ticks, 286 kernel ticks, 139 user ticks
+Timer: 516 ticks
+Thread: 33 idle ticks, 291 kernel ticks, 195 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 171 reads, 424 writes
+hd0:1: 189 reads, 426 writes
 hd1:0: 204 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1162 characters output
+Console: 1267 characters output
 Keyboard: 0 keys pressed
-Exception: 10 page faults
+Exception: 11 page faults
 Powering off...

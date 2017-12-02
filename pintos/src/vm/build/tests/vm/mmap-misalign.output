@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-misalign into /tmp/bVsql18lBO.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/bVsql18lBO.dsk...
-Writing command line to /tmp/c0RoPHMcX8.dsk...
+Copying tests/vm/mmap-misalign into /tmp/10GMeWpMKM.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/10GMeWpMKM.dsk...
+Writing command line to /tmp/cwrFp4Y6Nj.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,16 +24,16 @@ Executing 'mmap-misalign':
 (mmap-misalign) begin
 (mmap-misalign) open "sample.txt"
 (mmap-misalign) try to mmap at misaligned address
-(mmap-misalign) try to mmap at misaligned address: FAILED
-mmap-misalign: exit(1)
+(mmap-misalign) end
+mmap-misalign: exit(0)
 Execution of 'mmap-misalign' complete.
-Timer: 323 ticks
-Thread: 32 idle ticks, 226 kernel ticks, 68 user ticks
+Timer: 332 ticks
+Thread: 31 idle ticks, 230 kernel ticks, 74 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 216 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1128 characters output
+Console: 1090 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

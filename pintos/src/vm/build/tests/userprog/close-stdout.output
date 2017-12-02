@@ -1,5 +1,5 @@
-Copying tests/userprog/close-stdout into /tmp/quvnMKuqjB.dsk...
-Writing command line to /tmp/L4T7jCZyxE.dsk...
+Copying tests/userprog/close-stdout into /tmp/CRKFMnnzXa.dsk...
+Writing command line to /tmp/X5gfWOhI9k.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -23,8 +23,8 @@ Executing 'close-stdout':
 (close-stdout) end
 close-stdout: exit(0)
 Execution of 'close-stdout' complete.
-Timer: 280 ticks
-Thread: 30 idle ticks, 201 kernel ticks, 51 user ticks
+Timer: 291 ticks
+Thread: 30 idle ticks, 204 kernel ticks, 60 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes

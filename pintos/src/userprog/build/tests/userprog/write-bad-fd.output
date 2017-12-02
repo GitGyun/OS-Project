@@ -1,5 +1,5 @@
-Copying tests/userprog/write-bad-fd into /tmp/rhSA_aeqvs.dsk...
-Writing command line to /tmp/WObcsTY7qz.dsk...
+Copying tests/userprog/write-bad-fd into /tmp/vApqU7JyNT.dsk...
+Writing command line to /tmp/vWh6FZR8IM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'write-bad-fd':
 (write-bad-fd) end
 write-bad-fd: exit(0)
 Execution of 'write-bad-fd' complete.
-Timer: 263 ticks
-Thread: 31 idle ticks, 196 kernel ticks, 38 user ticks
+Timer: 262 ticks
+Thread: 31 idle ticks, 196 kernel ticks, 37 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 67 reads, 208 writes
 hd1:0: 100 reads, 0 writes

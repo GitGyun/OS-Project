@@ -1,5 +1,5 @@
-Copying tests/filesys/base/sm-create into /tmp/Kkmg4eypu1.dsk...
-Writing command line to /tmp/CuRrSj0Shb.dsk...
+Copying tests/filesys/base/sm-create into /tmp/NoqJAKvE6Z.dsk...
+Writing command line to /tmp/ipPM5BTait.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,13 +27,13 @@ Executing 'sm-create':
 (sm-create) end
 sm-create: exit(0)
 Execution of 'sm-create' complete.
-Timer: 328 ticks
-Thread: 30 idle ticks, 203 kernel ticks, 97 user ticks
+Timer: 339 ticks
+Thread: 31 idle ticks, 205 kernel ticks, 105 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 104 reads, 230 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1059 characters output
+Console: 1060 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

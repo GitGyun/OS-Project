@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-overlap into /tmp/TKVn6nw7tR.dsk...
-Copying tests/vm/zeros into /tmp/TKVn6nw7tR.dsk...
-Writing command line to /tmp/Tmj_1hZetw.dsk...
+Copying tests/vm/mmap-overlap into /tmp/UXcOGGFcZu.dsk...
+Copying tests/vm/zeros into /tmp/UXcOGGFcZu.dsk...
+Writing command line to /tmp/ryGbaxZ7JV.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,16 +26,16 @@ Executing 'mmap-overlap':
 (mmap-overlap) mmap "zeros"
 (mmap-overlap) open "zeros" again
 (mmap-overlap) try to mmap "zeros" again
-(mmap-overlap) try to mmap "zeros" again: FAILED
-mmap-overlap: exit(1)
+(mmap-overlap) end
+mmap-overlap: exit(0)
 Execution of 'mmap-overlap' complete.
-Timer: 334 ticks
-Thread: 31 idle ticks, 233 kernel ticks, 72 user ticks
+Timer: 343 ticks
+Thread: 30 idle ticks, 235 kernel ticks, 80 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 101 reads, 242 writes
 hd1:0: 116 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1155 characters output
+Console: 1125 characters output
 Keyboard: 0 keys pressed
 Exception: 4 page faults
 Powering off...

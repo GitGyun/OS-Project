@@ -1,6 +1,6 @@
-Copying tests/userprog/rox-multichild into /tmp/rz_TZHQ2jj.dsk...
-Copying tests/userprog/child-rox into /tmp/rz_TZHQ2jj.dsk...
-Writing command line to /tmp/bSPt5KkatD.dsk...
+Copying tests/userprog/rox-multichild into /tmp/A_CMtPXozZ.dsk...
+Copying tests/userprog/child-rox into /tmp/A_CMtPXozZ.dsk...
+Writing command line to /tmp/A9Fb4lORkF.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -59,8 +59,8 @@ child-rox: exit(12)
 (rox-multichild) end
 rox-multichild: exit(0)
 Execution of 'rox-multichild' complete.
-Timer: 786 ticks
-Thread: 31 idle ticks, 324 kernel ticks, 434 user ticks
+Timer: 839 ticks
+Thread: 32 idle ticks, 327 kernel ticks, 483 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 337 reads, 438 writes
 hd1:0: 213 reads, 0 writes

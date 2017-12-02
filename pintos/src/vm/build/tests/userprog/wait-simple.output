@@ -1,6 +1,6 @@
-Copying tests/userprog/wait-simple into /tmp/RCM2cdU3mb.dsk...
-Copying tests/userprog/child-simple into /tmp/RCM2cdU3mb.dsk...
-Writing command line to /tmp/dM6i2eHyC2.dsk...
+Copying tests/userprog/wait-simple into /tmp/oxXPoW4Y6O.dsk...
+Copying tests/userprog/child-simple into /tmp/oxXPoW4Y6O.dsk...
+Writing command line to /tmp/mR7OlqpW3Z.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -28,11 +28,11 @@ child-simple: exit(81)
 (wait-simple) end
 wait-simple: exit(0)
 Execution of 'wait-simple' complete.
-Timer: 418 ticks
-Thread: 30 idle ticks, 285 kernel ticks, 105 user ticks
+Timer: 438 ticks
+Thread: 30 idle ticks, 289 kernel ticks, 122 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 139 reads, 404 writes
-hd1:0: 197 reads, 0 writes
+hd0:1: 139 reads, 406 writes
+hd1:0: 198 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1070 characters output
 Keyboard: 0 keys pressed

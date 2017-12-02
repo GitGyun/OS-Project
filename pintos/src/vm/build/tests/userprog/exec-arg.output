@@ -1,6 +1,6 @@
-Copying tests/userprog/exec-arg into /tmp/Wc9YdOHumZ.dsk...
-Copying tests/userprog/child-args into /tmp/Wc9YdOHumZ.dsk...
-Writing command line to /tmp/AdbJnTrGlw.dsk...
+Copying tests/userprog/exec-arg into /tmp/wseJTAfUZV.dsk...
+Copying tests/userprog/child-args into /tmp/wseJTAfUZV.dsk...
+Writing command line to /tmp/MaXVsMXZot.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -32,8 +32,8 @@ child-args: exit(0)
 (exec-arg) end
 exec-arg: exit(0)
 Execution of 'exec-arg' complete.
-Timer: 431 ticks
-Thread: 31 idle ticks, 284 kernel ticks, 119 user ticks
+Timer: 455 ticks
+Thread: 31 idle ticks, 287 kernel ticks, 139 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 131 reads, 406 writes
 hd1:0: 198 reads, 0 writes

@@ -1,6 +1,6 @@
-Copying tests/userprog/read-zero into /tmp/6g5ZNjQ3Ob.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/6g5ZNjQ3Ob.dsk...
-Writing command line to /tmp/MpJEOm6LY6.dsk...
+Copying tests/userprog/read-zero into /tmp/1twra8MW38.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/1twra8MW38.dsk...
+Writing command line to /tmp/2ZIjGiaghQ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,8 +26,8 @@ Executing 'read-zero':
 (read-zero) end
 read-zero: exit(0)
 Execution of 'read-zero' complete.
-Timer: 313 ticks
-Thread: 30 idle ticks, 228 kernel ticks, 58 user ticks
+Timer: 324 ticks
+Thread: 30 idle ticks, 229 kernel ticks, 68 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 214 writes
 hd1:0: 102 reads, 0 writes

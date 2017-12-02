@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-inherit into /tmp/G841Nb2zP7.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/G841Nb2zP7.dsk...
-Copying tests/vm/child-inherit into /tmp/G841Nb2zP7.dsk...
-Writing command line to /tmp/Jd7wzvlLIA.dsk...
+Copying tests/vm/mmap-inherit into /tmp/cJ9UOwckB_.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/cJ9UOwckB_.dsk...
+Copying tests/vm/child-inherit into /tmp/cJ9UOwckB_.dsk...
+Writing command line to /tmp/1iAuJsldQD.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,15 +26,20 @@ Executing 'mmap-inherit':
 (mmap-inherit) begin
 (mmap-inherit) open "sample.txt"
 (mmap-inherit) mmap "sample.txt"
-mmap-inherit: exit(-1)
+(mmap-inherit) exec "child-inherit"
+(child-inherit) begin
+child-inherit: exit(-1)
+(mmap-inherit) checking that mmap'd file still has same data
+(mmap-inherit) end
+mmap-inherit: exit(0)
 Execution of 'mmap-inherit' complete.
-Timer: 393 ticks
-Thread: 32 idle ticks, 308 kernel ticks, 55 user ticks
+Timer: 495 ticks
+Thread: 31 idle ticks, 319 kernel ticks, 148 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 129 reads, 426 writes
+hd0:1: 173 reads, 426 writes
 hd1:0: 207 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1113 characters output
+Console: 1275 characters output
 Keyboard: 0 keys pressed
-Exception: 5 page faults
+Exception: 10 page faults
 Powering off...

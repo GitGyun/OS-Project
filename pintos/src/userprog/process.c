@@ -32,7 +32,7 @@
     e.g.)
       int a = 3;
       void *ptr = &a;
-      ptr = ptr + 2;         // ptr increased by 2 byte.
+      ptr += 2;         // ptr increased by 2 byte.
    See
     https://gcc.gnu.org/onlinedocs/gcc-4.1.2/gcc/Pointer-Arith.html
    In here, however, the pointers are type cast to uint8_t
@@ -246,6 +246,15 @@ process_exit (void)
   struct thread *curr = thread_current ();
   uint32_t *pd;
 
+#ifdef VM
+  struct list *ml = &curr->mmap_list;
+  while (!list_empty (ml))
+    {
+      struct mmap_elem *me = list_entry (list_front (ml), struct mmap_elem, elem);
+      syscall_munmap (me->mapid);
+    }
+#endif
+
   /* Close all file of the current process */
   struct list *fl = &curr->fd_list;
   struct list_elem *e;
@@ -271,6 +280,10 @@ process_exit (void)
      deallocate frames and swap slots. */
   if (spt != NULL)
     suppl_page_table_del (spt);
+
+  /* Close executable file. */
+  ASSERT (curr->executable != NULL)
+  file_close (curr->executable);
 #endif
 
   /* Destroy the current process's page directory and switch back
@@ -496,14 +509,16 @@ load (const char *file_name, void (**eip) (void), void **esp)
   success = true;
 
  done:
-#ifndef VM
   /* We arrive here whether the load is successful or not. */
+#ifdef VM
+  t->executable = file;
+#else
   file_close (file);
 #endif
 
   return success;
 }
-
+
 /* load() helpers. */
 
 #ifndef VM
@@ -552,9 +567,12 @@ validate_segment (const struct Elf32_Phdr *phdr, struct file *file)
   /* Notice: replace 'p_vaddr' with 'p_offset'.
      See
        http://klms.kaist.ac.kr/mod/ubboard/article.php?id=205606&bwid=83625 */
-  // if (phdr->p_vaddr < PGSIZE)
   /* ========================================= */
+#if 0
+  if (phdr->p_vaddr < PGSIZE)
+#else
   if (phdr->p_offset < PGSIZE)
+#endif
     return false;
 
   /* It's okay. */
@@ -583,22 +601,24 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
   ASSERT (pg_ofs (upage) == 0);
   ASSERT (ofs % PGSIZE == 0);
 
-  bool debug = false;
+  //printf ("load segment: ofs %d, upage %p, read_bytes %u, zero_bytes %u, writable %s\n",
+  //        ofs, upage, read_bytes, zero_bytes,
+  //        writable? "true" : "false");
 
 #ifdef VM
-  if (debug)
-    printf ("load segment ::::::: ====================\n");
-
+#if 1
   off_t page_ofs = ofs;
   while (read_bytes > 0 || zero_bytes > 0)
     {
       size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;
       size_t page_zero_bytes = PGSIZE - page_read_bytes;
 
-      struct spte *p = spte_create (upage, NULL);
+      struct spte *p = malloc (sizeof (struct spte));
       ASSERT (p != NULL);
 
-      p->stat = PG_EVICTED;
+      p->kpage = NULL;
+      p->upage = upage;
+
       p->file = file;
       p->ofs = page_ofs;
       p->page_read_bytes = page_read_bytes;
@@ -608,16 +628,43 @@ load_segment (struct file *file, off_t ofs, uint8_t *upage,
 
       suppl_page_table_insert (thread_current ()->suppl_page_table, p);
 
-      if (debug)
-        printf ("(%2d) load segment: page ofs %d, upage %p, pg_read_bytes %u, pg_zero_bytes %u, writable %s\n",
-                thread_tid (), page_ofs, upage, page_read_bytes, page_zero_bytes,
-                writable? "true" : "false");
+      //printf ("load segment: page ofs %d, upage %p, pg_read_bytes %u, pg_zero_bytes %u, writable %s\n",
+      //        page_ofs, upage, page_read_bytes, page_zero_bytes,
+      //        writable? "true" : "false");
+      //printf ("set page stat EVICTED; src FILE\n");
 
       page_ofs += page_read_bytes;
       read_bytes -= page_read_bytes;
       zero_bytes -= page_zero_bytes;
       upage += PGSIZE;
     }
+#else
+  file_seek (file, ofs);
+  while (read_bytes > 0 || zero_bytes > 0)
+    {
+      /* Do calculate how to fill this page.
+         We will read PAGE_READ_BYTES bytes from FILE
+         and zero the final PAGE_ZERO_BYTES bytes. */
+      size_t page_read_bytes = read_bytes < PGSIZE ? read_bytes : PGSIZE;
+      size_t page_zero_bytes = PGSIZE - page_read_bytes;
+
+      /* Get a page of memory. */
+      uint8_t *kpage = frame_alloc (upage, PAL_USER | PAL_ZERO, writable);
+
+      /* Load this page. */
+      if (file_read (file, kpage, page_read_bytes) != (int) page_read_bytes)
+        {
+          palloc_free_page (kpage);
+          return false;
+        }
+      memset (kpage + page_read_bytes, 0, page_zero_bytes);
+
+      /* Advance. */
+      read_bytes -= page_read_bytes;
+      zero_bytes -= page_zero_bytes;
+      upage += PGSIZE;
+    }
+#endif
 #else
   file_seek (file, ofs);
   while (read_bytes > 0 || zero_bytes > 0)
@@ -668,20 +715,16 @@ setup_stack (void **esp)
 #ifdef VM
   kpage = frame_alloc (((uint8_t *) PHYS_BASE) - PGSIZE,
                        PAL_USER | PAL_ZERO, true);
-
-  struct fte *f = frame_table_find (kpage);
-  if (f != NULL)
+  if (kpage != NULL)
     {
-      struct hash *spt = f->process->suppl_page_table;
-      struct spte *p = suppl_page_table_find (spt, f->upage);
-      if (p != NULL)
-        p->stat = PG_ON_MEMORY;
+      struct fte *f = frame_table_find (kpage);
+      if (f == NULL)
+        return false;
 
       *esp = PHYS_BASE;
       return true;
     }
-  else
-    return false;
+  return false;
 #else
   kpage = palloc_get_page (PAL_USER | PAL_ZERO);
   if (kpage != NULL)
@@ -696,7 +739,6 @@ setup_stack (void **esp)
   return success;
 }
 
-#ifndef VM
 /* Adds a mapping from user virtual address UPAGE to kernel
    virtual address KPAGE to the page table.
    If WRITABLE is true, the user process may modify the page;
@@ -706,6 +748,7 @@ setup_stack (void **esp)
    with palloc_get_page().
    Returns true on success, false if UPAGE is already mapped or
    if memory allocation fails. */
+#ifndef VM
 static bool
 install_page (void *upage, void *kpage, bool writable)
 {

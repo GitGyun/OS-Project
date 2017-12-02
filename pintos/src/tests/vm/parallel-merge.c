@@ -10,7 +10,7 @@
 #include "tests/lib.h"
 #include "tests/main.h"
 
-#define CHUNK_SIZE (16)//(128 * 1024)
+#define CHUNK_SIZE (128 * 1024)
 #define CHUNK_CNT 8                             /* Number of chunks. */
 #define DATA_SIZE (CHUNK_CNT * CHUNK_SIZE)      /* Buffer size. */
 

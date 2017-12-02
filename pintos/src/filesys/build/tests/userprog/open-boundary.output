@@ -1,0 +1,38 @@
+Copying tests/userprog/open-boundary into /tmp/Za2ymfRssP.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/Za2ymfRssP.dsk...
+Writing command line to /tmp/4DRH8gcq9C.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put open-boundary put sample.txt run open-boundary
+Pintos booting with 4,096 kB RAM...
+367 pages available in kernel pool.
+366 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'open-boundary' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'open-boundary':
+(open-boundary) begin
+(open-boundary) open "sample.txt"
+(open-boundary) end
+open-boundary: exit(0)
+Execution of 'open-boundary' complete.
+Timer: 352 ticks
+Thread: 32 idle ticks, 248 kernel ticks, 74 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 12 reads, 154 writes
+hd1:0: 104 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1040 characters output
+Keyboard: 0 keys pressed
+Exception: 6 page faults
+Powering off...

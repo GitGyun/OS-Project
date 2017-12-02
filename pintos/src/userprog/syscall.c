@@ -11,12 +11,19 @@
 #include "filesys/filesys.h"
 #include "devices/input.h"
 #include "threads/vaddr.h"
+#include "userprog/exception.h"
+#ifdef VM
+#include "vm/swap.h"
+#endif
 
 #define INC_PTR(ptr, bytes) ptr = (((uint8_t *)(ptr)) + (bytes))
 
 static void syscall_handler (struct intr_frame *);
 static bool get_args (void *, int);
 static struct file *fd_to_file (int);
+#ifdef VM
+static struct mmap_elem *mapid_to_me (int);
+#endif
 
 static tid_t syscall_exec (const char *);
 static int syscall_wait (tid_t);
@@ -29,13 +36,16 @@ static int syscall_write (int, void *, unsigned);
 static void syscall_seek (int, unsigned);
 static unsigned syscall_tell (int);
 static void syscall_close (int);
+#ifdef VM
+static int syscall_mmap (int, void *);
+#endif
 
 /* Lock for file read, write, etc... */
 struct lock file_lock;
 
 uint32_t args[7];
 const int arg_nums[] = {0, 1, 1, 1, 5, 1, 1, 1, 7, 7,
-                        5, 1, 1, 2, 1, 1, 1, 2, 1, 1};
+                        5, 1, 1, 5, 1, 1, 1, 2, 1, 1};
 
 void
 syscall_init (void)
@@ -49,7 +59,7 @@ syscall_init (void)
      exit:     1      seek:    5
      exec:     1      tell:    1
      wait:     1      close:   1
-     create:   5      mmap:    2
+     create:   5      mmap:    5
      remove:   1      munmap:  1
      open:     1      chdir:   1
      filesize: 1      mkdir:   1
@@ -61,8 +71,6 @@ syscall_init (void)
 static void
 syscall_handler (struct intr_frame *f UNUSED)
 {
-  struct thread *t = thread_current ();
-
   if (is_kernel_vaddr (f->esp))
     syscall_exit (-1);
 
@@ -77,7 +85,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
 #ifdef VM
   /* Copy esp for page fault handling */
-  t->user_esp = f->esp;
+  thread_current ()->user_esp = f->esp;
 #endif
 
   switch (syscall_num)
@@ -165,6 +173,20 @@ syscall_handler (struct intr_frame *f UNUSED)
       syscall_close ((int)args[0]);
       break;
     }
+#ifdef VM
+    case SYS_MMAP:
+    {
+      int mapid = syscall_mmap ((int)args[3], (void *)args[4]);
+
+      f->eax = mapid;
+      break;
+    }
+    case SYS_MUNMAP:
+    {
+      syscall_munmap ((int)args[0]);
+      break;
+    }
+#endif
     }
 }
 
@@ -196,6 +218,9 @@ get_args (void *esp, int num)
 static struct file *
 fd_to_file (int fd)
 {
+  if (fd == 0 || fd == 1)
+    return NULL;
+
   struct thread *curr = thread_current ();
   struct list_elem *e;
   struct fd_elem *fe;
@@ -209,6 +234,25 @@ fd_to_file (int fd)
     }
   return NULL;
 }
+
+#ifdef VM
+static struct mmap_elem *
+mapid_to_me (int mapid)
+{
+  struct thread *curr = thread_current ();
+  struct list_elem *e;
+  struct mmap_elem *me;
+
+  for (e = list_begin (&curr->mmap_list);
+       e != list_end (&curr->mmap_list); e = list_next (e))
+    {
+      me = list_entry (e, struct mmap_elem, elem);
+      if (me->mapid == mapid)
+        return me;
+    }
+  return NULL;
+}
+#endif
 
 /* ================================= */
 /* Syscall handlers for each syscall */
@@ -412,7 +456,7 @@ syscall_write (int fd, void *buffer, unsigned size)
     }
 
   if (is_kernel_vaddr (buffer) ||
-      is_kernel_vaddr ((uint8_t *)buffer + size - 1))
+      is_kernel_vaddr ((uint8_t *) buffer + size - 1))
     {
       lock_release (&file_lock);
       syscall_exit (-1);
@@ -428,7 +472,7 @@ syscall_write (int fd, void *buffer, unsigned size)
     {
       putbuf (buffer, size);
       lock_release (&file_lock);
-      return (int)size;
+      return (int) size;
     }
 
   struct file *f = fd_to_file (fd);
@@ -438,7 +482,9 @@ syscall_write (int fd, void *buffer, unsigned size)
       return -1;
     }
 
-  int size_written = (int)file_write (f, buffer, size);
+  int size_written = (int) file_write (f, buffer, size);
+
+//  printf ("size actually written %d\n", size_written);
 
   lock_release (&file_lock);
   return size_written;
@@ -479,8 +525,25 @@ syscall_close (int fd)
 {
   lock_acquire (&file_lock);
 
-  struct list *fl = &thread_current ()->fd_list;
   struct list_elem *e;
+
+#ifdef VM
+  struct list *ml = &thread_current ()->mmap_list;
+  struct mmap_elem *me;
+
+  for (e = list_begin (ml); e != list_end (ml); e = list_next (e))
+    {
+      me = list_entry (e, struct mmap_elem, elem);
+      if (me->fd == fd)
+        {
+          /* If file is mapped, reject closing. */
+          lock_release (&file_lock);
+          return;
+        }
+    }
+#endif
+
+  struct list *fl = &thread_current ()->fd_list;
   struct fd_elem *fe;
 
   for (e = list_begin (fl); e != list_end (fl); e = list_next (e))
@@ -499,3 +562,101 @@ syscall_close (int fd)
 
   lock_release (&file_lock);
 }
+
+#ifdef VM
+static int
+syscall_mmap (int fd, void *addr)
+{
+  if (addr == NULL || pg_ofs (addr) != 0)
+    return -1;
+
+  struct thread *t = thread_current ();
+
+  struct file *file = fd_to_file (fd);
+  if (file == NULL)
+    return -1;
+
+  int length = file_length (file);
+  if (length == 0)
+    return -1;
+
+  int pg_num = (int) pg_round_up ((void *) length) / PGSIZE;
+  if (addr + PGSIZE*pg_num >= PHYS_BASE - MAX_STACK_SIZE)
+    return -1;
+
+  int i;
+  for (i = 0; i < pg_num; i++)
+    if (suppl_page_table_find (t->suppl_page_table, addr + PGSIZE*i) != NULL)
+      return -1;
+
+  struct mmap_elem *me = malloc (sizeof (struct mmap_elem));
+  if (me == NULL)
+    return -1;
+
+  for (i = 0; i < pg_num; i++)
+    {
+      struct spte *p = malloc (sizeof (struct spte));
+      ASSERT (p != NULL);
+
+      p->kpage = NULL;
+      p->upage = addr + PGSIZE*i;
+
+      p->writable = true;
+      p->mapped = true;
+
+      p->file = file;
+      p->ofs = PGSIZE*i;
+      p->page_read_bytes = (length > PGSIZE) ? PGSIZE : length;
+      p->page_zero_bytes = PGSIZE - p->page_read_bytes;
+
+      length -= PGSIZE;
+
+      suppl_page_table_insert (t->suppl_page_table, p);
+    }
+
+  int new_mapid = 0;
+  if (!list_empty (&t->mmap_list))
+    new_mapid = list_entry (list_end (&t->mmap_list), struct mmap_elem, elem)->mapid + 1;
+
+  me->mapid = new_mapid;
+  me->fd = fd;
+  me->file = file;
+  me->pg_num = pg_num;
+  me->addr = addr;
+
+  list_push_back (&t->mmap_list, &me->elem);
+
+  return new_mapid;
+}
+
+void
+syscall_munmap (int mapid)
+{
+  struct thread *t = thread_current ();
+  struct hash *spt = t->suppl_page_table;
+
+  struct mmap_elem *me = mapid_to_me (mapid);
+  if (me == NULL)
+    return;
+
+  int pg_num = me->pg_num;
+  void *addr = me->addr;
+
+  struct spte *p;
+  struct fte *f;
+  int i;
+  for (i = 0; i < pg_num; i++)
+    {
+      p = suppl_page_table_find (spt, addr + PGSIZE*i);
+      if (p->kpage != NULL)
+        {
+          f = frame_table_find (p->kpage);
+          swap_out (f);
+        }
+      suppl_page_table_del_page (spt, p);
+    }
+
+  list_remove (&me->elem);
+  free (me);
+}
+#endif

@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-stk into /tmp/zuzHL87LZT.dsk...
-Copying tests/vm/child-qsort into /tmp/zuzHL87LZT.dsk...
-Writing command line to /tmp/3_jfbJbX3v.dsk...
+Copying tests/vm/page-merge-stk into /tmp/agM_vNdX8N.dsk...
+Copying tests/vm/child-qsort into /tmp/agM_vNdX8N.dsk...
+Writing command line to /tmp/a7gnY8ZJyP.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -32,5 +32,34 @@ Executing 'page-merge-stk':
 (page-merge-stk) sort chunk 6
 (page-merge-stk) sort chunk 7
 (page-merge-stk) wait for child 0
-
-TIMEOUT after 60 seconds of host CPU time
+child-qsort: exit(72)
+child-qsort: exit(72)
+(page-merge-stk) wait for child 1
+child-qsort: exit(72)
+(page-merge-stk) wait for child 2
+child-qsort: exit(72)
+child-qsort: exit(72)
+child-qsort: exit(72)
+(page-merge-stk) wait for child 3
+child-qsort: exit(72)
+child-qsort: exit(72)
+(page-merge-stk) wait for child 4
+(page-merge-stk) wait for child 5
+(page-merge-stk) wait for child 6
+(page-merge-stk) wait for child 7
+(page-merge-stk) merge
+(page-merge-stk) verify
+(page-merge-stk) success, buf_idx=1,048,576
+(page-merge-stk) end
+page-merge-stk: exit(0)
+Execution of 'page-merge-stk' complete.
+Timer: 43291 ticks
+Thread: 52 idle ticks, 349 kernel ticks, 42893 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 4904 reads, 6626 writes
+hd1:0: 220 reads, 0 writes
+hd1:1: 1952 reads, 3136 writes
+Console: 1831 characters output
+Keyboard: 0 keys pressed
+Exception: 1049 page faults
+Powering off...

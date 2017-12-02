@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-remove into /tmp/7wt6A74jbT.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/7wt6A74jbT.dsk...
-Writing command line to /tmp/g3iP6lIgpM.dsk...
+Copying tests/vm/mmap-remove into /tmp/kUhaIkOmq1.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/kUhaIkOmq1.dsk...
+Writing command line to /tmp/EVKMs3QrN4.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,15 +27,16 @@ Executing 'mmap-remove':
 (mmap-remove) remove "sample.txt"
 (mmap-remove) try to open "sample.txt"
 (mmap-remove) create "another"
-mmap-remove: exit(-1)
+(mmap-remove) end
+mmap-remove: exit(0)
 Execution of 'mmap-remove' complete.
-Timer: 374 ticks
-Thread: 31 idle ticks, 230 kernel ticks, 116 user ticks
+Timer: 397 ticks
+Thread: 30 idle ticks, 235 kernel ticks, 135 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 146 reads, 311 writes
+hd0:1: 147 reads, 311 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1143 characters output
+Console: 1160 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

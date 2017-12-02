@@ -5,13 +5,10 @@
 #include "vm/swap.h"
 #include <stdio.h>
 
-extern struct semaphpore paging_lock;
-
 static unsigned spte_hash (const struct hash_elem *, void *);
 static bool spte_cmp_upage (const struct hash_elem *,
                             const struct hash_elem *, void *);
 static void spt_clear_func (struct hash_elem *, void *);
-
 
 /* Initialize the supplemental page table. Called by load() */
 struct hash *
@@ -27,33 +24,21 @@ suppl_page_table_create (void)
 void
 suppl_page_table_del (struct hash *spt)
 {
-  sema_down (&paging_lock);
+  pgl_acquire ();
+
   hash_destroy (spt, spt_clear_func);
   free (spt);
-  sema_up (&paging_lock);
-}
 
-/* Create and initialize new supplemental page table entry. */
-struct spte *
-spte_create (void *upage, void *kpage)
-{
-  struct spte *p = malloc (sizeof (struct spte));
-  p->kpage = kpage;
-  p->upage = upage;
-  p->writable = true;
-  p->mapped = false;
-  p->file = NULL;
-
-  return p;
+  pgl_release ();
 }
 
 /* Insert spte to the supplemental page table */
 bool
 suppl_page_table_insert (struct hash *spt, struct spte *p)
 {
-  sema_down (&paging_lock);
+  pgl_acquire ();
   bool success = (hash_insert (spt, &p->elem) == NULL);
-  sema_up (&paging_lock);
+  pgl_release ();
 
   return success;
 }
@@ -62,16 +47,46 @@ suppl_page_table_insert (struct hash *spt, struct spte *p)
 struct spte *
 suppl_page_table_find (struct hash *spt, void *upage)
 {
+  pgl_acquire ();
+
   struct spte p;
   p.upage = upage;
 
-  sema_down (&paging_lock);
   struct hash_elem *e = hash_find (spt, &p.elem);
-  sema_up (&paging_lock);
 
+  struct spte *p_found;
   if (e != NULL)
-    return hash_entry (e, struct spte, elem);
-  return NULL;
+    p_found = hash_entry (e, struct spte, elem);
+  else
+    p_found = NULL;
+
+  pgl_release ();
+
+  return p_found;
+}
+
+void
+suppl_page_table_del_page (struct hash *spt, struct spte *p)
+{
+  pgl_acquire ();
+
+  hash_delete (spt, &p->elem);
+  free (p);
+
+  pgl_release ();
+}
+
+/* Change status of the page */
+void
+suppl_page_table_set_evicted (struct hash *spt, void *upage)
+{
+  pgl_acquire ();
+
+  struct spte *p = suppl_page_table_find (spt, upage);
+  if (p != NULL)
+    p->kpage = NULL;
+
+  pgl_release ();
 }
 
 
@@ -102,40 +117,22 @@ spt_clear_func (struct hash_elem *e, void *aux UNUSED)
 {
   struct spte *p = hash_entry (e, struct spte, elem);
 
-  switch (p->stat)
+  if (p->kpage != NULL)
     {
-    case PG_ON_MEMORY:
-    {
-      /* Deallocate frame table entry */
       struct fte *f = frame_table_find (p->kpage);
       if (f != NULL)
         {
           ASSERT (f->process == thread_current ());
           frame_free (f->kpage);
         }
-      break;
+      else
+        PANIC ("Cannot find fte from frame table");
     }
-    case PG_EVICTED:
+  else
     {
       if (p->file == NULL)
-        /* Empty page slot in the swap disk */
         swap_table_set_available (p->pg_idx, true);
-      break;
-    }
-    default:
-      break;
     }
 
   free (p);
-}
-
-void
-print_spte (struct spte *p)
-{
-  printf ("spte with kpage %p, upage %p, status %s, wrtable %s, mapped %s, file %p\n",
-          p->kpage, p->upage,
-          p->stat == PG_ON_MEMORY? "PG_ON_MEMORY" : "PG_EVICTED",
-          p->writable? "true" : "false",
-          p->mapped? "true" : "false",
-          p->file);
 }

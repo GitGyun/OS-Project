@@ -1,5 +1,5 @@
-Copying tests/userprog/sc-bad-arg into /tmp/SQDxWoglAN.dsk...
-Writing command line to /tmp/6UVXFO_PrC.dsk...
+Copying tests/userprog/sc-bad-arg into /tmp/wyNk6Oqhg0.dsk...
+Writing command line to /tmp/Vd7WQA6IoD.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'sc-bad-arg':
 (sc-bad-arg) begin
 sc-bad-arg: exit(-1)
 Execution of 'sc-bad-arg' complete.
-Timer: 277 ticks
-Thread: 30 idle ticks, 201 kernel ticks, 48 user ticks
+Timer: 288 ticks
+Thread: 30 idle ticks, 203 kernel ticks, 57 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 208 writes
 hd1:0: 100 reads, 0 writes

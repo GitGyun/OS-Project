@@ -1,5 +1,5 @@
-Copying tests/vm/page-linear into /tmp/fcylPNqDNs.dsk...
-Writing command line to /tmp/Y1rOI9mkpK.dsk...
+Copying tests/vm/page-linear into /tmp/nqgoS0OS3q.dsk...
+Writing command line to /tmp/ArthvvVodi.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -28,8 +28,8 @@ Executing 'page-linear':
 (page-linear) end
 page-linear: exit(0)
 Execution of 'page-linear' complete.
-Timer: 35010 ticks
-Thread: 33 idle ticks, 205 kernel ticks, 34775 user ticks
+Timer: 36179 ticks
+Thread: 37 idle ticks, 207 kernel ticks, 35938 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 194 reads, 218 writes
 hd1:0: 105 reads, 0 writes

@@ -10,6 +10,7 @@
 
 #ifdef VM
 #include "vm/page.h"
+#include "filesys/file.h"
 #endif
 
 /* States in a thread's life cycle. */
@@ -124,9 +125,12 @@ struct thread
     struct list fd_list;                /* List of opened file descriptor */
 
 #ifdef VM
+    struct file *executable;
     void *user_esp;
 
     struct hash *suppl_page_table;
+
+    struct list mmap_list;
 #endif
 
     /* Owned by thread.c. */

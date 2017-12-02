@@ -1,0 +1,65 @@
+Copying tests/vm/page-merge-mm into /tmp/OvvNofdh1t.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/OvvNofdh1t.dsk...
+Writing command line to /tmp/fryLYmMs9d.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
+Pintos booting with 4,096 kB RAM...
+367 pages available in kernel pool.
+366 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'page-merge-mm' into the file system...
+Putting 'child-qsort-mm' into the file system...
+Executing 'page-merge-mm':
+(page-merge-mm) begin
+(page-merge-mm) init
+(page-merge-mm) sort chunk 0
+(page-merge-mm) sort chunk 1
+(page-merge-mm) sort chunk 2
+(page-merge-mm) sort chunk 3
+(page-merge-mm) sort chunk 4
+(page-merge-mm) sort chunk 5
+(page-merge-mm) sort chunk 6
+(page-merge-mm) sort chunk 7
+(page-merge-mm) wait for child 0
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+(page-merge-mm) wait for child 1
+(page-merge-mm) wait for child 2
+(page-merge-mm) wait for child 3
+(page-merge-mm) wait for child 4
+(page-merge-mm) wait for child 5
+(page-merge-mm) wait for child 6
+(page-merge-mm) wait for child 7
+(page-merge-mm) merge
+(page-merge-mm) verify
+(page-merge-mm) success, buf_idx=1,048,576
+(page-merge-mm) end
+page-merge-mm: exit(0)
+Execution of 'page-merge-mm' complete.
+Timer: 45759 ticks
+Thread: 59 idle ticks, 437 kernel ticks, 45266 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 4358 reads, 6552 writes
+hd1:0: 220 reads, 0 writes
+hd1:1: 1976 reads, 3192 writes
+Console: 1833 characters output
+Keyboard: 0 keys pressed
+Exception: 1052 page faults
+Powering off...

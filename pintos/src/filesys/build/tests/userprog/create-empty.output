@@ -1,0 +1,36 @@
+Copying tests/userprog/create-empty into /tmp/k5sxC2xyfP.dsk...
+Writing command line to /tmp/cz5oyx4X5J.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put create-empty run create-empty
+Pintos booting with 4,096 kB RAM...
+367 pages available in kernel pool.
+366 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'create-empty' into the file system...
+Executing 'create-empty':
+(create-empty) begin
+(create-empty) create(""): 0
+(create-empty) end
+create-empty: exit(0)
+Execution of 'create-empty' complete.
+Timer: 318 ticks
+Thread: 32 idle ticks, 222 kernel ticks, 67 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 10 reads, 145 writes
+hd1:0: 99 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 966 characters output
+Keyboard: 0 keys pressed
+Exception: 5 page faults
+Powering off...

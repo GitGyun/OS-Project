@@ -8,6 +8,8 @@
 #include "tests/lib.h"
 #include "tests/main.h"
 
+#include <stdio.h>
+
 #define ACTUAL ((void *) 0x10000000)
 
 void

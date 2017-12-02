@@ -1,5 +1,5 @@
-Copying tests/filesys/base/sm-seq-random into /tmp/Az7eOhXzi1.dsk...
-Writing command line to /tmp/eH9qhxAoTx.dsk...
+Copying tests/filesys/base/sm-seq-random into /tmp/EJfJNOQS0X.dsk...
+Writing command line to /tmp/Q4VtNdhKPe.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -30,8 +30,8 @@ Executing 'sm-seq-random':
 (sm-seq-random) end
 sm-seq-random: exit(0)
 Execution of 'sm-seq-random' complete.
-Timer: 370 ticks
-Thread: 31 idle ticks, 204 kernel ticks, 138 user ticks
+Timer: 384 ticks
+Thread: 31 idle ticks, 208 kernel ticks, 147 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 123 reads, 250 writes
 hd1:0: 103 reads, 0 writes

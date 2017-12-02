@@ -1,5 +1,5 @@
-Copying tests/vm/pt-bad-addr into /tmp/QNgEcnZLd0.dsk...
-Writing command line to /tmp/ONeWth_GEX.dsk...
+Copying tests/vm/pt-bad-addr into /tmp/IrhWg3NIeb.dsk...
+Writing command line to /tmp/zH_Tv5JXID.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,8 +22,8 @@ Executing 'pt-bad-addr':
 (pt-bad-addr) begin
 pt-bad-addr: exit(-1)
 Execution of 'pt-bad-addr' complete.
-Timer: 277 ticks
-Thread: 30 idle ticks, 201 kernel ticks, 48 user ticks
+Timer: 288 ticks
+Thread: 30 idle ticks, 204 kernel ticks, 57 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes

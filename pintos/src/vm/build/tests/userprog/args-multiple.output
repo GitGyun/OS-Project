@@ -1,5 +1,5 @@
-Copying tests/userprog/args-multiple into /tmp/_ahVMEVx_h.dsk...
-Writing command line to /tmp/CrQTegmB9z.dsk...
+Copying tests/userprog/args-multiple into /tmp/Pkty1ep0Mv.dsk...
+Writing command line to /tmp/YzQH4uHRox.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -30,8 +30,8 @@ Executing 'args-multiple some arguments for you!':
 (args) end
 args-multiple: exit(0)
 Execution of 'args-multiple some arguments for you!' complete.
-Timer: 305 ticks
-Thread: 30 idle ticks, 206 kernel ticks, 71 user ticks
+Timer: 317 ticks
+Thread: 30 idle ticks, 208 kernel ticks, 81 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 66 reads, 206 writes
 hd1:0: 99 reads, 0 writes

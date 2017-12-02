@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-read into /tmp/9z1OYm_qYw.dsk...
-Writing command line to /tmp/eovAeEAEXN.dsk...
+Copying tests/userprog/bad-read into /tmp/4RnvG39vQq.dsk...
+Writing command line to /tmp/AsbDd7siI9.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -22,13 +22,13 @@ Executing 'bad-read':
 (bad-read) begin
 bad-read: exit(-1)
 Execution of 'bad-read' complete.
-Timer: 276 ticks
-Thread: 31 idle ticks, 200 kernel ticks, 47 user ticks
+Timer: 287 ticks
+Thread: 31 idle ticks, 203 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 66 reads, 206 writes
-hd1:0: 99 reads, 0 writes
+hd0:1: 66 reads, 208 writes
+hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 891 characters output
+Console: 892 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

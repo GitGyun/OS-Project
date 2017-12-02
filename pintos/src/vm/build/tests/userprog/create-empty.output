@@ -1,5 +1,5 @@
-Copying tests/userprog/create-empty into /tmp/8b2vjGezIc.dsk...
-Writing command line to /tmp/E_2mx4pCqQ.dsk...
+Copying tests/userprog/create-empty into /tmp/Ko5YUt8Khd.dsk...
+Writing command line to /tmp/kpjJhmm5kg.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,8 +24,8 @@ Executing 'create-empty':
 (create-empty) end
 create-empty: exit(0)
 Execution of 'create-empty' complete.
-Timer: 289 ticks
-Thread: 30 idle ticks, 202 kernel ticks, 60 user ticks
+Timer: 300 ticks
+Thread: 30 idle ticks, 204 kernel ticks, 69 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 70 reads, 210 writes
 hd1:0: 99 reads, 0 writes
