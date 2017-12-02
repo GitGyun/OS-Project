@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-seq-random into /tmp/uqVlwOCFJR.dsk...
-Writing command line to /tmp/5p9Jwzzs7K.dsk...
+Copying tests/filesys/base/lg-seq-random into /tmp/orcSkm7ZMu.dsk...
+Writing command line to /tmp/RBi0sNWDQ9.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -30,13 +30,13 @@ Executing 'lg-seq-random':
 (lg-seq-random) end
 lg-seq-random: exit(0)
 Execution of 'lg-seq-random' complete.
-Timer: 1020 ticks
-Thread: 32 idle ticks, 226 kernel ticks, 765 user ticks
+Timer: 2299 ticks
+Thread: 32 idle ticks, 587 kernel ticks, 1684 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 274 reads, 449 writes
+hd0:1: 326 reads, 471 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1199 characters output
+Console: 1200 characters output
 Keyboard: 0 keys pressed
 Exception: 22 page faults
 Powering off...

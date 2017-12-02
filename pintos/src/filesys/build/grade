@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 45.0%
+TOTAL TESTING SCORE: 43.4%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -9,13 +9,13 @@ Test Set                                      Pts Max  % Ttl  % Max
 tests/filesys/extended/Rubric.functionality     0/ 34   0.0%/ 30.0%
 tests/filesys/extended/Rubric.robustness        0/ 10   0.0%/ 15.0%
 tests/filesys/extended/Rubric.persistence       0/ 23   0.0%/ 20.0%
-tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
+tests/filesys/base/Rubric                      28/ 30  18.7%/ 20.0%
 tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
 tests/userprog/Rubric.robustness               88/ 88   5.0%/  5.0%
-tests/vm/Rubric.functionality                  55/ 55   8.0%/  8.0%
+tests/vm/Rubric.functionality                  53/ 55   7.7%/  8.0%
 tests/vm/Rubric.robustness                     28/ 28   2.0%/  2.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  45.0%/110.0%
+Total                                                  43.4%/110.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -113,11 +113,11 @@ Functionality of base file system (tests/filesys/base/Rubric):
 	- Test synchronized multiprogram access to files.
 	     4/ 4 tests/filesys/base/syn-read
 	     4/ 4 tests/filesys/base/syn-write
-	     2/ 2 tests/filesys/base/syn-remove
+	  ** 0/ 2 tests/filesys/base/syn-remove
 
 	- Section summary.
-	     13/ 13 tests passed
-	     30/ 30 points subtotal
+	     12/ 13 tests passed
+	     28/ 30 points subtotal
 
 Functionality of system calls (tests/userprog/Rubric.functionality):
 	- Test argument passing on Pintos command line.
@@ -258,11 +258,11 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 	     3/ 3 tests/vm/mmap-clean
 
 	     2/ 2 tests/vm/mmap-close
-	     2/ 2 tests/vm/mmap-remove
+	  ** 0/ 2 tests/vm/mmap-remove
 
 	- Section summary.
-	     20/ 20 tests passed
-	     55/ 55 points subtotal
+	     19/ 20 tests passed
+	     53/ 55 points subtotal
 
 Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
 	- Test robustness of page table support.
@@ -299,9 +299,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-mkdir:
 
-Copying tests/filesys/extended/dir-mkdir into /tmp/IPNWBLCpcV.dsk...
-Copying tests/filesys/extended/tar into /tmp/IPNWBLCpcV.dsk...
-Writing command line to /tmp/NRnzG9B0Eh.dsk...
+Copying tests/filesys/extended/dir-mkdir into /tmp/J7QDbVPgQT.dsk...
+Copying tests/filesys/extended/tar into /tmp/J7QDbVPgQT.dsk...
+Writing command line to /tmp/NuOUGjNIOa.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -317,9 +317,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-mk-tree:
 
-Copying tests/filesys/extended/dir-mk-tree into /tmp/HM7XWlxAsQ.dsk...
-Copying tests/filesys/extended/tar into /tmp/HM7XWlxAsQ.dsk...
-Writing command line to /tmp/1nIXjgbA1F.dsk...
+Copying tests/filesys/extended/dir-mk-tree into /tmp/KHHVM9MRGC.dsk...
+Copying tests/filesys/extended/tar into /tmp/KHHVM9MRGC.dsk...
+Writing command line to /tmp/mh18pCT6No.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -335,9 +335,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-rmdir:
 
-Copying tests/filesys/extended/dir-rmdir into /tmp/fFaUECWukW.dsk...
-Copying tests/filesys/extended/tar into /tmp/fFaUECWukW.dsk...
-Writing command line to /tmp/ZNzuSVZ6jk.dsk...
+Copying tests/filesys/extended/dir-rmdir into /tmp/4le9AYw5vT.dsk...
+Copying tests/filesys/extended/tar into /tmp/4le9AYw5vT.dsk...
+Writing command line to /tmp/HIk6KzaYDT.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -353,9 +353,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-rm-tree:
 
-Copying tests/filesys/extended/dir-rm-tree into /tmp/2FkHq4ilWr.dsk...
-Copying tests/filesys/extended/tar into /tmp/2FkHq4ilWr.dsk...
-Writing command line to /tmp/9Y70gVkg68.dsk...
+Copying tests/filesys/extended/dir-rm-tree into /tmp/Dtvue5x5dG.dsk...
+Copying tests/filesys/extended/tar into /tmp/Dtvue5x5dG.dsk...
+Writing command line to /tmp/DiFlV1LLfd.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -371,9 +371,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-vine:
 
-Copying tests/filesys/extended/dir-vine into /tmp/8WMalnlZQZ.dsk...
-Copying tests/filesys/extended/tar into /tmp/8WMalnlZQZ.dsk...
-Writing command line to /tmp/ro5_tTxm0f.dsk...
+Copying tests/filesys/extended/dir-vine into /tmp/eeJP_5vXuW.dsk...
+Copying tests/filesys/extended/tar into /tmp/eeJP_5vXuW.dsk...
+Writing command line to /tmp/PohepxU3z4.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -389,9 +389,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-create:
 
-Copying tests/filesys/extended/grow-create into /tmp/uZ4HpzXkDw.dsk...
-Copying tests/filesys/extended/tar into /tmp/uZ4HpzXkDw.dsk...
-Writing command line to /tmp/a09U_a2qDJ.dsk...
+Copying tests/filesys/extended/grow-create into /tmp/kd2HHz5Ltz.dsk...
+Copying tests/filesys/extended/tar into /tmp/kd2HHz5Ltz.dsk...
+Writing command line to /tmp/7Lh7hy7FQ7.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -407,9 +407,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-seq-sm:
 
-Copying tests/filesys/extended/grow-seq-sm into /tmp/n838yNJ4mN.dsk...
-Copying tests/filesys/extended/tar into /tmp/n838yNJ4mN.dsk...
-Writing command line to /tmp/fC65BEsBGM.dsk...
+Copying tests/filesys/extended/grow-seq-sm into /tmp/GDy0ygAqzr.dsk...
+Copying tests/filesys/extended/tar into /tmp/GDy0ygAqzr.dsk...
+Writing command line to /tmp/5qpuZOVBbk.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -425,9 +425,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-seq-lg:
 
-Copying tests/filesys/extended/grow-seq-lg into /tmp/oSZMgdz59H.dsk...
-Copying tests/filesys/extended/tar into /tmp/oSZMgdz59H.dsk...
-Writing command line to /tmp/0TqI0Kw2_W.dsk...
+Copying tests/filesys/extended/grow-seq-lg into /tmp/X0OvrNluyc.dsk...
+Copying tests/filesys/extended/tar into /tmp/X0OvrNluyc.dsk...
+Writing command line to /tmp/6lBYvLt_US.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -443,9 +443,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-sparse:
 
-Copying tests/filesys/extended/grow-sparse into /tmp/KTI3kYjFpJ.dsk...
-Copying tests/filesys/extended/tar into /tmp/KTI3kYjFpJ.dsk...
-Writing command line to /tmp/W7TbtKYk0H.dsk...
+Copying tests/filesys/extended/grow-sparse into /tmp/QiPpExGd7C.dsk...
+Copying tests/filesys/extended/tar into /tmp/QiPpExGd7C.dsk...
+Writing command line to /tmp/EoQ0xreLZQ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -461,9 +461,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-two-files:
 
-Copying tests/filesys/extended/grow-two-files into /tmp/l9yTfXrBbA.dsk...
-Copying tests/filesys/extended/tar into /tmp/l9yTfXrBbA.dsk...
-Writing command line to /tmp/Tx09bEjite.dsk...
+Copying tests/filesys/extended/grow-two-files into /tmp/1feSOUWTF9.dsk...
+Copying tests/filesys/extended/tar into /tmp/1feSOUWTF9.dsk...
+Writing command line to /tmp/4Mur8VKGEU.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -479,9 +479,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-tell:
 
-Copying tests/filesys/extended/grow-tell into /tmp/W7tZIHC2Kz.dsk...
-Copying tests/filesys/extended/tar into /tmp/W7tZIHC2Kz.dsk...
-Writing command line to /tmp/bx0JHBmrsM.dsk...
+Copying tests/filesys/extended/grow-tell into /tmp/u0YzhOj8Q7.dsk...
+Copying tests/filesys/extended/tar into /tmp/u0YzhOj8Q7.dsk...
+Writing command line to /tmp/ChCavD9ShI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -497,9 +497,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-file-size:
 
-Copying tests/filesys/extended/grow-file-size into /tmp/D4umwz4B0V.dsk...
-Copying tests/filesys/extended/tar into /tmp/D4umwz4B0V.dsk...
-Writing command line to /tmp/RfTVkoSFPH.dsk...
+Copying tests/filesys/extended/grow-file-size into /tmp/5hND2JdFdb.dsk...
+Copying tests/filesys/extended/tar into /tmp/5hND2JdFdb.dsk...
+Writing command line to /tmp/XQxiH8zVwj.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -515,9 +515,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-dir-lg:
 
-Copying tests/filesys/extended/grow-dir-lg into /tmp/SWbc0Sg7tx.dsk...
-Copying tests/filesys/extended/tar into /tmp/SWbc0Sg7tx.dsk...
-Writing command line to /tmp/bUKx4dntbL.dsk...
+Copying tests/filesys/extended/grow-dir-lg into /tmp/VxPijhc6LY.dsk...
+Copying tests/filesys/extended/tar into /tmp/VxPijhc6LY.dsk...
+Writing command line to /tmp/CgKlDiP7D3.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -533,9 +533,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-root-sm:
 
-Copying tests/filesys/extended/grow-root-sm into /tmp/bsJI58rtuZ.dsk...
-Copying tests/filesys/extended/tar into /tmp/bsJI58rtuZ.dsk...
-Writing command line to /tmp/6r1yH12Y82.dsk...
+Copying tests/filesys/extended/grow-root-sm into /tmp/dBg6rId6gP.dsk...
+Copying tests/filesys/extended/tar into /tmp/dBg6rId6gP.dsk...
+Writing command line to /tmp/FUmqoaNvpD.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -551,9 +551,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/grow-root-lg:
 
-Copying tests/filesys/extended/grow-root-lg into /tmp/3un34gZmYC.dsk...
-Copying tests/filesys/extended/tar into /tmp/3un34gZmYC.dsk...
-Writing command line to /tmp/qMPrugUXsE.dsk...
+Copying tests/filesys/extended/grow-root-lg into /tmp/F2TytmfzDh.dsk...
+Copying tests/filesys/extended/tar into /tmp/F2TytmfzDh.dsk...
+Writing command line to /tmp/m4ykZXb4oV.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -569,10 +569,10 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/syn-rw:
 
-Copying tests/filesys/extended/syn-rw into /tmp/yk9Z_3jx0_.dsk...
-Copying tests/filesys/extended/tar into /tmp/yk9Z_3jx0_.dsk...
-Copying tests/filesys/extended/child-syn-rw into /tmp/yk9Z_3jx0_.dsk...
-Writing command line to /tmp/v80tDP9tSx.dsk...
+Copying tests/filesys/extended/syn-rw into /tmp/DSMTI9cQoI.dsk...
+Copying tests/filesys/extended/tar into /tmp/DSMTI9cQoI.dsk...
+Copying tests/filesys/extended/child-syn-rw into /tmp/DSMTI9cQoI.dsk...
+Writing command line to /tmp/kj19Bn6jhI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -588,9 +588,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-empty-name:
 
-Copying tests/filesys/extended/dir-empty-name into /tmp/T3duJoJSYo.dsk...
-Copying tests/filesys/extended/tar into /tmp/T3duJoJSYo.dsk...
-Writing command line to /tmp/o1s4TP2DeY.dsk...
+Copying tests/filesys/extended/dir-empty-name into /tmp/mO0q5CGvYa.dsk...
+Copying tests/filesys/extended/tar into /tmp/mO0q5CGvYa.dsk...
+Writing command line to /tmp/PRLDU2fHfD.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -606,9 +606,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-open:
 
-Copying tests/filesys/extended/dir-open into /tmp/etRA2hNsbF.dsk...
-Copying tests/filesys/extended/tar into /tmp/etRA2hNsbF.dsk...
-Writing command line to /tmp/SaTfrW9QoE.dsk...
+Copying tests/filesys/extended/dir-open into /tmp/E730RjI49r.dsk...
+Copying tests/filesys/extended/tar into /tmp/E730RjI49r.dsk...
+Writing command line to /tmp/QCAhV5HbJy.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -624,9 +624,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-over-file:
 
-Copying tests/filesys/extended/dir-over-file into /tmp/rFDqwOJ9bX.dsk...
-Copying tests/filesys/extended/tar into /tmp/rFDqwOJ9bX.dsk...
-Writing command line to /tmp/nyIHUnZoDP.dsk...
+Copying tests/filesys/extended/dir-over-file into /tmp/DaV2SUwciy.dsk...
+Copying tests/filesys/extended/tar into /tmp/DaV2SUwciy.dsk...
+Writing command line to /tmp/95SAVRY8im.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -642,9 +642,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-under-file:
 
-Copying tests/filesys/extended/dir-under-file into /tmp/S4DqPkIwwp.dsk...
-Copying tests/filesys/extended/tar into /tmp/S4DqPkIwwp.dsk...
-Writing command line to /tmp/Y4flZijysz.dsk...
+Copying tests/filesys/extended/dir-under-file into /tmp/UV_X74a8Zj.dsk...
+Copying tests/filesys/extended/tar into /tmp/UV_X74a8Zj.dsk...
+Writing command line to /tmp/A9hRXCcpE3.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -660,9 +660,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-rm-cwd:
 
-Copying tests/filesys/extended/dir-rm-cwd into /tmp/rDjvDUR5_0.dsk...
-Copying tests/filesys/extended/tar into /tmp/rDjvDUR5_0.dsk...
-Writing command line to /tmp/qUD1pr1iF3.dsk...
+Copying tests/filesys/extended/dir-rm-cwd into /tmp/FW50gtOXA9.dsk...
+Copying tests/filesys/extended/tar into /tmp/FW50gtOXA9.dsk...
+Writing command line to /tmp/kv4fig2oZb.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -678,9 +678,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-rm-parent:
 
-Copying tests/filesys/extended/dir-rm-parent into /tmp/yZMNwhjwRP.dsk...
-Copying tests/filesys/extended/tar into /tmp/yZMNwhjwRP.dsk...
-Writing command line to /tmp/lSpoBPC3ao.dsk...
+Copying tests/filesys/extended/dir-rm-parent into /tmp/uJQmhMWl2G.dsk...
+Copying tests/filesys/extended/tar into /tmp/uJQmhMWl2G.dsk...
+Writing command line to /tmp/mP1lwqU8Te.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -696,9 +696,9 @@ Run didn't start up properly: no "Pintos booting" message
 
 OUTPUT FROM tests/filesys/extended/dir-rm-root:
 
-Copying tests/filesys/extended/dir-rm-root into /tmp/S_hC_yaiSA.dsk...
-Copying tests/filesys/extended/tar into /tmp/S_hC_yaiSA.dsk...
-Writing command line to /tmp/w1iporcTfR.dsk...
+Copying tests/filesys/extended/dir-rm-root into /tmp/6r4p4CIsqQ.dsk...
+Copying tests/filesys/extended/tar into /tmp/6r4p4CIsqQ.dsk...
+Writing command line to /tmp/HXxhZ4N2pP.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -714,14 +714,14 @@ Prerequisite test tests/filesys/extended/dir-empty-name failed.
 
 OUTPUT FROM tests/filesys/extended/dir-empty-name-persistence:
 
-Writing command line to /tmp/fvpMru4z5q.dsk...
+Writing command line to /tmp/VI7I2lY6cI.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-empty-name.tar out of /tmp/jYyicIrjv0.dsk...
+Copying tests/filesys/extended/dir-empty-name.tar out of /tmp/HvnPzoDVdU.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -731,14 +731,14 @@ Prerequisite test tests/filesys/extended/dir-mk-tree failed.
 
 OUTPUT FROM tests/filesys/extended/dir-mk-tree-persistence:
 
-Writing command line to /tmp/A03kE5h6lb.dsk...
+Writing command line to /tmp/D1c9Sa_aSC.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-mk-tree.tar out of /tmp/dMl52DXoLv.dsk...
+Copying tests/filesys/extended/dir-mk-tree.tar out of /tmp/TRTnepq84f.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -748,14 +748,14 @@ Prerequisite test tests/filesys/extended/dir-mkdir failed.
 
 OUTPUT FROM tests/filesys/extended/dir-mkdir-persistence:
 
-Writing command line to /tmp/IGutrGmIMY.dsk...
+Writing command line to /tmp/PvPeCho9el.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-mkdir.tar out of /tmp/BgPELo5wWv.dsk...
+Copying tests/filesys/extended/dir-mkdir.tar out of /tmp/KDIV69nHSQ.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -765,14 +765,14 @@ Prerequisite test tests/filesys/extended/dir-open failed.
 
 OUTPUT FROM tests/filesys/extended/dir-open-persistence:
 
-Writing command line to /tmp/wSRsnyAEmV.dsk...
+Writing command line to /tmp/jHQAV6c1nb.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-open.tar out of /tmp/9FBY__ZvAG.dsk...
+Copying tests/filesys/extended/dir-open.tar out of /tmp/qbFSvYpl71.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -782,14 +782,14 @@ Prerequisite test tests/filesys/extended/dir-over-file failed.
 
 OUTPUT FROM tests/filesys/extended/dir-over-file-persistence:
 
-Writing command line to /tmp/xNobSgSIJa.dsk...
+Writing command line to /tmp/Ihi4_GPT4r.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-over-file.tar out of /tmp/aqheDNWH_4.dsk...
+Copying tests/filesys/extended/dir-over-file.tar out of /tmp/Goo2JTghC4.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -799,14 +799,14 @@ Prerequisite test tests/filesys/extended/dir-rm-cwd failed.
 
 OUTPUT FROM tests/filesys/extended/dir-rm-cwd-persistence:
 
-Writing command line to /tmp/CSd4cPFYZt.dsk...
+Writing command line to /tmp/Nq0kZOJkPp.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-rm-cwd.tar out of /tmp/Aom9W3oUAz.dsk...
+Copying tests/filesys/extended/dir-rm-cwd.tar out of /tmp/nEO8raZfVk.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -816,14 +816,14 @@ Prerequisite test tests/filesys/extended/dir-rm-parent failed.
 
 OUTPUT FROM tests/filesys/extended/dir-rm-parent-persistence:
 
-Writing command line to /tmp/4w9BhaSmjF.dsk...
+Writing command line to /tmp/4D9pmDFfXq.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-rm-parent.tar out of /tmp/pTxqSQPpMM.dsk...
+Copying tests/filesys/extended/dir-rm-parent.tar out of /tmp/RJpctERt9m.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -833,14 +833,14 @@ Prerequisite test tests/filesys/extended/dir-rm-root failed.
 
 OUTPUT FROM tests/filesys/extended/dir-rm-root-persistence:
 
-Writing command line to /tmp/2_gFgEeJDi.dsk...
+Writing command line to /tmp/vjj5_5YoVx.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-rm-root.tar out of /tmp/WDektauK6m.dsk...
+Copying tests/filesys/extended/dir-rm-root.tar out of /tmp/wQJbyRuTP_.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -850,14 +850,14 @@ Prerequisite test tests/filesys/extended/dir-rm-tree failed.
 
 OUTPUT FROM tests/filesys/extended/dir-rm-tree-persistence:
 
-Writing command line to /tmp/t5k2XCxYG_.dsk...
+Writing command line to /tmp/Ht5UCMDKLA.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-rm-tree.tar out of /tmp/dCmfjFIv3T.dsk...
+Copying tests/filesys/extended/dir-rm-tree.tar out of /tmp/94xWmRJg8o.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -867,14 +867,14 @@ Prerequisite test tests/filesys/extended/dir-rmdir failed.
 
 OUTPUT FROM tests/filesys/extended/dir-rmdir-persistence:
 
-Writing command line to /tmp/YFSNhulITz.dsk...
+Writing command line to /tmp/0kzPWTfNRh.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-rmdir.tar out of /tmp/X0pB6IprFo.dsk...
+Copying tests/filesys/extended/dir-rmdir.tar out of /tmp/BDEcC1krBH.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -884,14 +884,14 @@ Prerequisite test tests/filesys/extended/dir-under-file failed.
 
 OUTPUT FROM tests/filesys/extended/dir-under-file-persistence:
 
-Writing command line to /tmp/JLA2Oey6rb.dsk...
+Writing command line to /tmp/TO3i2geKY6.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-under-file.tar out of /tmp/vrsj_2XExv.dsk...
+Copying tests/filesys/extended/dir-under-file.tar out of /tmp/SLof9wspA9.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -901,14 +901,14 @@ Prerequisite test tests/filesys/extended/dir-vine failed.
 
 OUTPUT FROM tests/filesys/extended/dir-vine-persistence:
 
-Writing command line to /tmp/ycXKAjzxVI.dsk...
+Writing command line to /tmp/jqviod_oSa.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/dir-vine.tar out of /tmp/g9PjC6Da_y.dsk...
+Copying tests/filesys/extended/dir-vine.tar out of /tmp/H_XyYJ7STH.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -918,14 +918,14 @@ Prerequisite test tests/filesys/extended/grow-create failed.
 
 OUTPUT FROM tests/filesys/extended/grow-create-persistence:
 
-Writing command line to /tmp/bkdqaqcwnn.dsk...
+Writing command line to /tmp/zAIaOEvUHd.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-create.tar out of /tmp/D9aX9QCWbU.dsk...
+Copying tests/filesys/extended/grow-create.tar out of /tmp/SK_qon02pS.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -935,14 +935,14 @@ Prerequisite test tests/filesys/extended/grow-dir-lg failed.
 
 OUTPUT FROM tests/filesys/extended/grow-dir-lg-persistence:
 
-Writing command line to /tmp/kq4xt3mXsv.dsk...
+Writing command line to /tmp/xlRf39SDR9.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-dir-lg.tar out of /tmp/HQzVsyQ10Y.dsk...
+Copying tests/filesys/extended/grow-dir-lg.tar out of /tmp/851xOHpjIf.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -952,14 +952,14 @@ Prerequisite test tests/filesys/extended/grow-file-size failed.
 
 OUTPUT FROM tests/filesys/extended/grow-file-size-persistence:
 
-Writing command line to /tmp/AaZPtJLXWI.dsk...
+Writing command line to /tmp/hXHp3aM9YS.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-file-size.tar out of /tmp/jhunB6r02W.dsk...
+Copying tests/filesys/extended/grow-file-size.tar out of /tmp/DknPBt5PkK.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -969,14 +969,14 @@ Prerequisite test tests/filesys/extended/grow-root-lg failed.
 
 OUTPUT FROM tests/filesys/extended/grow-root-lg-persistence:
 
-Writing command line to /tmp/fTwiuXnotO.dsk...
+Writing command line to /tmp/WFG_FtZ2hM.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-root-lg.tar out of /tmp/sKi65H1hd1.dsk...
+Copying tests/filesys/extended/grow-root-lg.tar out of /tmp/80YLBIkIBC.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -986,14 +986,14 @@ Prerequisite test tests/filesys/extended/grow-root-sm failed.
 
 OUTPUT FROM tests/filesys/extended/grow-root-sm-persistence:
 
-Writing command line to /tmp/0FoMXz0zoT.dsk...
+Writing command line to /tmp/_XkCAQYDle.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-root-sm.tar out of /tmp/xLBPbe2qpn.dsk...
+Copying tests/filesys/extended/grow-root-sm.tar out of /tmp/33GZmzyN8r.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -1003,14 +1003,14 @@ Prerequisite test tests/filesys/extended/grow-seq-lg failed.
 
 OUTPUT FROM tests/filesys/extended/grow-seq-lg-persistence:
 
-Writing command line to /tmp/EattGMHb1P.dsk...
+Writing command line to /tmp/w89SqKu_KY.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-seq-lg.tar out of /tmp/oS67KIB4vf.dsk...
+Copying tests/filesys/extended/grow-seq-lg.tar out of /tmp/EGkr2WIrni.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -1020,14 +1020,14 @@ Prerequisite test tests/filesys/extended/grow-seq-sm failed.
 
 OUTPUT FROM tests/filesys/extended/grow-seq-sm-persistence:
 
-Writing command line to /tmp/BMhF9xvhVd.dsk...
+Writing command line to /tmp/5Brb0OQTMU.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-seq-sm.tar out of /tmp/nTbb8xxKkB.dsk...
+Copying tests/filesys/extended/grow-seq-sm.tar out of /tmp/tm6CVcgEqJ.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -1037,14 +1037,14 @@ Prerequisite test tests/filesys/extended/grow-sparse failed.
 
 OUTPUT FROM tests/filesys/extended/grow-sparse-persistence:
 
-Writing command line to /tmp/_ZupS0n721.dsk...
+Writing command line to /tmp/pQlpE8WNvJ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-sparse.tar out of /tmp/jcbB5fA1Mp.dsk...
+Copying tests/filesys/extended/grow-sparse.tar out of /tmp/bcwvXmsIWE.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -1054,14 +1054,14 @@ Prerequisite test tests/filesys/extended/grow-tell failed.
 
 OUTPUT FROM tests/filesys/extended/grow-tell-persistence:
 
-Writing command line to /tmp/iZ4DlXkc8a.dsk...
+Writing command line to /tmp/gIjvKJHK56.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-tell.tar out of /tmp/orwRWEB7Tz.dsk...
+Copying tests/filesys/extended/grow-tell.tar out of /tmp/7S7TmY10AB.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -1071,14 +1071,14 @@ Prerequisite test tests/filesys/extended/grow-two-files failed.
 
 OUTPUT FROM tests/filesys/extended/grow-two-files-persistence:
 
-Writing command line to /tmp/BkOpsUUZeW.dsk...
+Writing command line to /tmp/zao8488e0I.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/grow-two-files.tar out of /tmp/oP9BSiprAE.dsk...
+Copying tests/filesys/extended/grow-two-files.tar out of /tmp/keOgKknC0m.dsk...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -1088,11 +1088,121 @@ Prerequisite test tests/filesys/extended/syn-rw failed.
 
 OUTPUT FROM tests/filesys/extended/syn-rw-persistence:
 
-Writing command line to /tmp/Xv228NLpPT.dsk...
+Writing command line to /tmp/VgCkzXcHIH.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
                Built from SVN snapshot on April 9, 2017
                   Compiled on Sep  7 2017 at 15:54:38
 ========================================================================
-Copying tests/filesys/extended/syn-rw.tar out of /tmp/G1k2k2PtCg.dsk...
+Copying tests/filesys/extended/syn-rw.tar out of /tmp/zbSHvxrzQR.dsk...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/filesys/base/syn-remove FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/malloc.c:278 in block_to_arena(): assertion `a->desc == NULL || (pg_ofs (b) - sizeof *a) % a->desc->block_size == 0' failed.
+Call stack: 0xc0106aea
+Translation of call stack:
+0xc0106aea: debug_panic (.../../lib/kernel/debug.c:34)
+
+OUTPUT FROM tests/filesys/base/syn-remove:
+
+Copying tests/filesys/base/syn-remove into /tmp/SyZ9XKdn6D.dsk...
+Writing command line to /tmp/j1ADSBguwG.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put syn-remove run syn-remove
+Pintos booting with 4,096 kB RAM...
+367 pages available in kernel pool.
+366 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'syn-remove' into the file system...
+Executing 'syn-remove':
+(syn-remove) begin
+(syn-remove) create "deleteme"
+(syn-remove) open "deleteme"
+(syn-remove) remove "deleteme"
+(syn-remove) write "deleteme"
+(syn-remove) seek "deleteme" to 0
+(syn-remove) read "deleteme"
+(syn-remove) close "deleteme"
+Kernel PANIC at ../../threads/malloc.c:278 in block_to_arena(): assertion `a->desc == NULL || (pg_ofs (b) - sizeof *a) % a->desc->block_size == 0' failed.
+Call stack: 0xc0106aeasyn-remove: exit(-1)
+Execution of 'syn-remove' complete.
+Timer: 814 ticks
+Thread: 33 idle ticks, 593 kernel ticks, 190 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 51 reads, 182 writes
+hd1:0: 105 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1298 characters output
+Keyboard: 0 keys pressed
+Exception: 6 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/vm/mmap-remove FAILURE:
+
+Kernel panic in run: PANIC at ../../threads/malloc.c:278 in block_to_arena(): assertion `a->desc == NULL || (pg_ofs (b) - sizeof *a) % a->desc->block_size == 0' failed.
+Call stack: 0xc0106aea
+Translation of call stack:
+0xc0106aea: debug_panic (.../../lib/kernel/debug.c:34)
+
+OUTPUT FROM tests/vm/mmap-remove:
+
+Copying tests/vm/mmap-remove into /tmp/AfqAeavhiy.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/AfqAeavhiy.dsk...
+Writing command line to /tmp/7JkIgcYlIZ.dsk...
+squish-pty bochs -q
+========================================================================
+                       Bochs x86 Emulator 2.6.9
+               Built from SVN snapshot on April 9, 2017
+                  Compiled on Sep  7 2017 at 15:54:38
+========================================================================
+Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
+Pintos booting with 4,096 kB RAM...
+367 pages available in kernel pool.
+366 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-remove' into the file system...
+Putting 'sample.txt' into the file system...
+Executing 'mmap-remove':
+(mmap-remove) begin
+(mmap-remove) open "sample.txt"
+(mmap-remove) mmap "sample.txt"
+(mmap-remove) remove "sample.txt"
+(mmap-remove) try to open "sample.txt"
+(mmap-remove) create "another"
+(mmap-remove) end
+mmap-remove: exit(0)
+Kernel PANIC at ../../threads/malloc.c:278 in block_to_arena(): assertion `a->desc == NULL || (pg_ofs (b) - sizeof *a) % a->desc->block_size == 0' failed.
+Call stack: 0xc0106aeammap-remove: exit(-1)
+Execution of 'mmap-remove' complete.
+Timer: 1145 ticks
+Thread: 32 idle ticks, 651 kernel ticks, 465 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 60 reads, 267 writes
+hd1:0: 107 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1359 characters output
+Keyboard: 0 keys pressed
+Exception: 6 page faults
+Powering off...

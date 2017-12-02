@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-over-stk into /tmp/TPi0fDdeTC.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/TPi0fDdeTC.dsk...
-Writing command line to /tmp/5QcbDe_MzX.dsk...
+Copying tests/vm/mmap-over-stk into /tmp/gHp_2DXz6V.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/gHp_2DXz6V.dsk...
+Writing command line to /tmp/VwUmhCyX6h.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,13 +27,13 @@ Executing 'mmap-over-stk':
 (mmap-over-stk) end
 mmap-over-stk: exit(0)
 Execution of 'mmap-over-stk' complete.
-Timer: 350 ticks
-Thread: 32 idle ticks, 249 kernel ticks, 72 user ticks
+Timer: 764 ticks
+Thread: 32 idle ticks, 633 kernel ticks, 103 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 12 reads, 152 writes
+hd0:1: 47 reads, 169 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1087 characters output
+Console: 1088 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

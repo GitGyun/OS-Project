@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-mm into /tmp/OvvNofdh1t.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/OvvNofdh1t.dsk...
-Writing command line to /tmp/fryLYmMs9d.dsk...
+Copying tests/vm/page-merge-mm into /tmp/WmNBe43bT2.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/WmNBe43bT2.dsk...
+Writing command line to /tmp/Pqh_CM9Org.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -53,13 +53,13 @@ child-qsort-mm: exit(80)
 (page-merge-mm) end
 page-merge-mm: exit(0)
 Execution of 'page-merge-mm' complete.
-Timer: 45759 ticks
-Thread: 59 idle ticks, 437 kernel ticks, 45266 user ticks
+Timer: 79538 ticks
+Thread: 189 idle ticks, 1268 kernel ticks, 78083 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 4358 reads, 6552 writes
+hd0:1: 6998 reads, 6675 writes
 hd1:0: 220 reads, 0 writes
 hd1:1: 1976 reads, 3192 writes
-Console: 1833 characters output
+Console: 1835 characters output
 Keyboard: 0 keys pressed
 Exception: 1052 page faults
 Powering off...

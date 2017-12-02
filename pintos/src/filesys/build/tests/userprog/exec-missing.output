@@ -1,5 +1,5 @@
-Copying tests/userprog/exec-missing into /tmp/isQAq0HtMA.dsk...
-Writing command line to /tmp/eeNwLlf9qE.dsk...
+Copying tests/userprog/exec-missing into /tmp/mTrXWlrqyN.dsk...
+Writing command line to /tmp/LSUhlNugQj.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,13 +24,13 @@ Executing 'exec-missing':
 (exec-missing) end
 exec-missing: exit(0)
 Execution of 'exec-missing' complete.
-Timer: 326 ticks
-Thread: 32 idle ticks, 222 kernel ticks, 75 user ticks
+Timer: 716 ticks
+Thread: 30 idle ticks, 570 kernel ticks, 118 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 9 reads, 143 writes
+hd0:1: 39 reads, 159 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 976 characters output
+Console: 978 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

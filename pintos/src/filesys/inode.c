@@ -8,18 +8,28 @@
 #include "threads/malloc.h"
 
 #include "filesys/cache.h"
+#include <stdio.h>
 
 /* Identifies an inode. */
 #define INODE_MAGIC 0x494e4f44
+
+#define IBLOCKS_LENGTH 32
 
 /* On-disk inode.
    Must be exactly DISK_SECTOR_SIZE bytes long. */
 struct inode_disk
   {
-    disk_sector_t start;                /* First data sector. */
-    off_t length;                       /* File size in bytes. */
-    unsigned magic;                     /* Magic number. */
-    uint32_t unused[125];               /* Not used. */
+    disk_sector_t indirect_blocks[IBLOCKS_LENGTH];
+    off_t length;
+    unsigned magic;
+    uint8_t unused[DISK_SECTOR_SIZE - 4*IBLOCKS_LENGTH - 8];
+  };
+
+/* On-disk inode for (double) indirect blocks. */
+struct inode_disk_iblock
+  {
+    disk_sector_t indirect_blocks[IBLOCKS_LENGTH];
+    uint8_t unused[DISK_SECTOR_SIZE - 4*IBLOCKS_LENGTH];
   };
 
 /* Returns the number of sectors to allocate for an inode SIZE
@@ -49,8 +59,26 @@ static disk_sector_t
 byte_to_sector (const struct inode *inode, off_t pos)
 {
   ASSERT (inode != NULL);
-  if (pos < inode->data.length)
-    return inode->data.start + pos / DISK_SECTOR_SIZE;
+  if (0 <= pos && pos < inode->data.length)
+    {
+      int idx = pos / DISK_SECTOR_SIZE;
+      int idx1 = idx / (IBLOCKS_LENGTH * IBLOCKS_LENGTH);
+      int idx2 = (idx / IBLOCKS_LENGTH) % IBLOCKS_LENGTH;
+      int idx3 = idx % IBLOCKS_LENGTH;
+
+      disk_sector_t sec_no1 = inode->data.indirect_blocks[idx1];
+      struct inode_disk_iblock *iblock1 = malloc (sizeof (struct inode_disk_iblock));
+      buffer_cache_disk_read (sec_no1, iblock1);
+
+      disk_sector_t sec_no2 = iblock1->indirect_blocks[idx2];
+      struct inode_disk_iblock *iblock2 = malloc (sizeof (struct inode_disk_iblock));
+      buffer_cache_disk_read (sec_no2, iblock2);
+
+      disk_sector_t sec_no3 = iblock2->indirect_blocks[idx3];
+      free (iblock1);
+      free (iblock2);
+      return sec_no3;
+    }
   else
     return -1;
 }
@@ -86,23 +114,56 @@ inode_create (disk_sector_t sector, off_t length)
   disk_inode = calloc (1, sizeof *disk_inode);
   if (disk_inode != NULL)
     {
-      size_t sectors = bytes_to_sectors (length);
       disk_inode->length = length;
       disk_inode->magic = INODE_MAGIC;
-      if (free_map_allocate (sectors, &disk_inode->start))
-        {
-          buffer_cache_disk_write (sector, disk_inode);
-          if (sectors > 0)
-            {
-              static char zeros[DISK_SECTOR_SIZE];
-              size_t i;
 
-              for (i = 0; i < sectors; i++)
-                buffer_cache_disk_write (disk_inode->start + i, zeros);
+      int idx = length / DISK_SECTOR_SIZE;
+      int idx1 = idx / (IBLOCKS_LENGTH * IBLOCKS_LENGTH);
+      int idx2 = (idx / IBLOCKS_LENGTH) % IBLOCKS_LENGTH;
+      int idx3 = idx % IBLOCKS_LENGTH;
+
+      int i, j, k;
+      for (i = 0; i <= idx1; i++)
+        {
+          /* Allocate primary inode_disk_iblocks. */
+          free_map_allocate (1, &disk_inode->indirect_blocks[i]);
+
+          struct inode_disk_iblock *iblock1
+              = malloc (sizeof (struct inode_disk_iblock));
+          buffer_cache_disk_read (disk_inode->indirect_blocks[i], iblock1);
+
+          int iblock_no1 = ((i == idx1)? idx2 : IBLOCKS_LENGTH - 1);
+          for (j = 0; j <= iblock_no1; j++)
+            {
+              /* Allocate secondary inode_disk_iblocks. */
+              free_map_allocate (1, &iblock1->indirect_blocks[j]);
+
+              struct inode_disk_iblock *iblock2
+                  = malloc (sizeof (struct inode_disk_iblock));
+              buffer_cache_disk_read (iblock1->indirect_blocks[j], iblock2);
+
+              int iblock_no2 = ((i == idx1 && j == idx2)? idx3 : IBLOCKS_LENGTH - 1);
+              for (k = 0; k <= iblock_no2; k++)
+                {
+                  /* Allocate file data sectors. */
+                  free_map_allocate (1, &iblock2->indirect_blocks[k]);
+
+                  static char zeros[DISK_SECTOR_SIZE];
+                  buffer_cache_disk_write (iblock2->indirect_blocks[k], zeros);
+                }
+
+              buffer_cache_disk_write (iblock1->indirect_blocks[j], iblock2);
+              free (iblock2);
             }
-          success = true;
+
+          buffer_cache_disk_write (disk_inode->indirect_blocks[i], iblock1);
+          free (iblock1);
         }
+
+      buffer_cache_disk_write (sector, disk_inode);
       free (disk_inode);
+
+      success = true;
     }
   return success;
 }
@@ -178,9 +239,41 @@ inode_close (struct inode *inode)
       /* Deallocate blocks if removed. */
       if (inode->removed)
         {
-          free_map_release (inode->sector, 1);
-          free_map_release (inode->data.start,
-                            bytes_to_sectors (inode->data.length));
+            struct inode_disk *disk_inode = &inode->data;
+            int length = inode->data.length;
+
+            int idx = length / DISK_SECTOR_SIZE;
+            int idx1 = idx / (IBLOCKS_LENGTH * IBLOCKS_LENGTH);
+            int idx2 = (idx / IBLOCKS_LENGTH) % IBLOCKS_LENGTH;
+            int idx3 = idx % IBLOCKS_LENGTH;
+
+            int i, j, k;
+            for (i = 0; i <= idx1; i++)
+              {
+                struct inode_disk_iblock *iblock1
+                    = malloc (sizeof (struct inode_disk_iblock));
+                buffer_cache_disk_read (disk_inode->indirect_blocks[i], iblock1);
+
+                int iblock_no1 = ((i == idx1)? idx2 : IBLOCKS_LENGTH - 1);
+                for (j = 0; j <= iblock_no1; j++)
+                  {
+                    struct inode_disk_iblock *iblock2
+                        = malloc (sizeof (struct inode_disk_iblock));
+                    buffer_cache_disk_read (iblock1->indirect_blocks[j], iblock2);
+
+                    int iblock_no2 = ((i == idx1 && j == idx2)? idx3 : IBLOCKS_LENGTH - 1);
+                    for (k = 0; k <= iblock_no2; k++)
+                      free_map_release (iblock2->indirect_blocks[k], 1);
+
+                    free (iblock2);
+                    free_map_release (iblock1->indirect_blocks[j], 1);
+                  }
+
+                free (iblock1);
+                free_map_release (disk_inode->indirect_blocks[i], 1);
+              }
+
+            free_map_release (inode->sector, 1);
         }
 
       free (inode);

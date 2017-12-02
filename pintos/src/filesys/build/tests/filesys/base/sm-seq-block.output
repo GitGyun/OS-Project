@@ -1,5 +1,5 @@
-Copying tests/filesys/base/sm-seq-block into /tmp/hlSq3ec6K5.dsk...
-Writing command line to /tmp/rtRXIlLyMl.dsk...
+Copying tests/filesys/base/sm-seq-block into /tmp/GKfTmrR9hV.dsk...
+Writing command line to /tmp/xBY8zo_v9J.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -30,10 +30,10 @@ Executing 'sm-seq-block':
 (sm-seq-block) end
 sm-seq-block: exit(0)
 Execution of 'sm-seq-block' complete.
-Timer: 408 ticks
-Thread: 32 idle ticks, 226 kernel ticks, 153 user ticks
+Timer: 889 ticks
+Thread: 30 idle ticks, 588 kernel ticks, 273 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 35 reads, 176 writes
+hd0:1: 72 reads, 194 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1182 characters output

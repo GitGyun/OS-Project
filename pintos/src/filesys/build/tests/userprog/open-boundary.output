@@ -1,6 +1,6 @@
-Copying tests/userprog/open-boundary into /tmp/Za2ymfRssP.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/Za2ymfRssP.dsk...
-Writing command line to /tmp/4DRH8gcq9C.dsk...
+Copying tests/userprog/open-boundary into /tmp/MclY8Gx6Mn.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/MclY8Gx6Mn.dsk...
+Writing command line to /tmp/OUlqqaY4dX.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,13 +26,13 @@ Executing 'open-boundary':
 (open-boundary) end
 open-boundary: exit(0)
 Execution of 'open-boundary' complete.
-Timer: 352 ticks
-Thread: 32 idle ticks, 248 kernel ticks, 74 user ticks
+Timer: 768 ticks
+Thread: 31 idle ticks, 637 kernel ticks, 103 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 12 reads, 154 writes
+hd0:1: 45 reads, 172 writes
 hd1:0: 104 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1040 characters output
+Console: 1041 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

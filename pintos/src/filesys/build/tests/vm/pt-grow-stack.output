@@ -1,5 +1,5 @@
-Copying tests/vm/pt-grow-stack into /tmp/2Ksdhp9my4.dsk...
-Writing command line to /tmp/_rAJ7CzmwN.dsk...
+Copying tests/vm/pt-grow-stack into /tmp/XMInN_yBCQ.dsk...
+Writing command line to /tmp/fHdWZCXpET.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,13 +24,13 @@ Executing 'pt-grow-stack':
 (pt-grow-stack) end
 pt-grow-stack: exit(0)
 Execution of 'pt-grow-stack' complete.
-Timer: 341 ticks
-Thread: 31 idle ticks, 232 kernel ticks, 81 user ticks
+Timer: 752 ticks
+Thread: 31 idle ticks, 612 kernel ticks, 111 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 9 reads, 163 writes
+hd0:1: 36 reads, 178 writes
 hd1:0: 109 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 979 characters output
+Console: 981 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

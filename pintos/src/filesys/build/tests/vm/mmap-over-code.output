@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-over-code into /tmp/jNDWAjERiV.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/jNDWAjERiV.dsk...
-Writing command line to /tmp/HpWZ9nwhlg.dsk...
+Copying tests/vm/mmap-over-code into /tmp/5253eUrKJi.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/5253eUrKJi.dsk...
+Writing command line to /tmp/FWRXjvPiK3.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,13 +27,13 @@ Executing 'mmap-over-code':
 (mmap-over-code) end
 mmap-over-code: exit(0)
 Execution of 'mmap-over-code' complete.
-Timer: 351 ticks
-Thread: 31 idle ticks, 251 kernel ticks, 72 user ticks
+Timer: 764 ticks
+Thread: 35 idle ticks, 628 kernel ticks, 103 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 12 reads, 152 writes
+hd0:1: 47 reads, 169 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1096 characters output
+Console: 1097 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

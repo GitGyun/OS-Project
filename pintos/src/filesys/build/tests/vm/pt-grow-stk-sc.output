@@ -1,5 +1,5 @@
-Copying tests/vm/pt-grow-stk-sc into /tmp/_4HafvTA66.dsk...
-Writing command line to /tmp/iM0uf4FkY6.dsk...
+Copying tests/vm/pt-grow-stk-sc into /tmp/jOPvpMWsZF.dsk...
+Writing command line to /tmp/RLl5N1_G39.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -29,10 +29,10 @@ Executing 'pt-grow-stk-sc':
 (pt-grow-stk-sc) end
 pt-grow-stk-sc: exit(0)
 Execution of 'pt-grow-stk-sc' complete.
-Timer: 376 ticks
-Thread: 31 idle ticks, 226 kernel ticks, 121 user ticks
+Timer: 805 ticks
+Thread: 33 idle ticks, 587 kernel ticks, 187 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 14 reads, 158 writes
+hd0:1: 51 reads, 175 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1193 characters output

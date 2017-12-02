@@ -1,5 +1,5 @@
-Copying tests/userprog/rox-simple into /tmp/m_BQtW0b69.dsk...
-Writing command line to /tmp/oITVfp1ivO.dsk...
+Copying tests/userprog/rox-simple into /tmp/IZtYiWkvuf.dsk...
+Writing command line to /tmp/BF0rf9IEjH.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,13 +26,13 @@ Executing 'rox-simple':
 (rox-simple) end
 rox-simple: exit(0)
 Execution of 'rox-simple' complete.
-Timer: 323 ticks
-Thread: 31 idle ticks, 223 kernel ticks, 71 user ticks
+Timer: 704 ticks
+Thread: 31 idle ticks, 572 kernel ticks, 103 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 8 reads, 145 writes
+hd0:1: 39 reads, 161 writes
 hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1022 characters output
+Console: 1024 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

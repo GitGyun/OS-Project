@@ -1,6 +1,6 @@
-Copying tests/userprog/write-zero into /tmp/JrbuEroIaF.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/JrbuEroIaF.dsk...
-Writing command line to /tmp/LCueZZHbQw.dsk...
+Copying tests/userprog/write-zero into /tmp/JmW3GLUx_4.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/JmW3GLUx_4.dsk...
+Writing command line to /tmp/8gOHsqUvTU.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -26,10 +26,10 @@ Executing 'write-zero':
 (write-zero) end
 write-zero: exit(0)
 Execution of 'write-zero' complete.
-Timer: 342 ticks
-Thread: 30 idle ticks, 249 kernel ticks, 66 user ticks
+Timer: 752 ticks
+Thread: 32 idle ticks, 626 kernel ticks, 96 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 11 reads, 150 writes
+hd0:1: 47 reads, 167 writes
 hd1:0: 102 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1013 characters output

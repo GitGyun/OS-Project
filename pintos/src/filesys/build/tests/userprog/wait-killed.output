@@ -1,6 +1,6 @@
-Copying tests/userprog/wait-killed into /tmp/zW2dIY1Lmc.dsk...
-Copying tests/userprog/child-bad into /tmp/zW2dIY1Lmc.dsk...
-Writing command line to /tmp/nMFsgQtc22.dsk...
+Copying tests/userprog/wait-killed into /tmp/blG_uMu5LT.dsk...
+Copying tests/userprog/child-bad into /tmp/blG_uMu5LT.dsk...
+Writing command line to /tmp/OtHY0Gg9Jd.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -28,13 +28,13 @@ child-bad: exit(-1)
 (wait-killed) end
 wait-killed: exit(0)
 Execution of 'wait-killed' complete.
-Timer: 503 ticks
-Thread: 31 idle ticks, 341 kernel ticks, 133 user ticks
+Timer: 1314 ticks
+Thread: 33 idle ticks, 1091 kernel ticks, 192 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 41 reads, 340 writes
+hd0:1: 97 reads, 362 writes
 hd1:0: 198 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1059 characters output
+Console: 1061 characters output
 Keyboard: 0 keys pressed
 Exception: 11 page faults
 Powering off...

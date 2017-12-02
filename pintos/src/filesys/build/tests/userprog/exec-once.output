@@ -1,6 +1,6 @@
-Copying tests/userprog/exec-once into /tmp/DkPEzaFCq6.dsk...
-Copying tests/userprog/child-simple into /tmp/DkPEzaFCq6.dsk...
-Writing command line to /tmp/sNinTu4RLo.dsk...
+Copying tests/userprog/exec-once into /tmp/iL5Yo4K1tM.dsk...
+Copying tests/userprog/child-simple into /tmp/iL5Yo4K1tM.dsk...
+Writing command line to /tmp/gE5Bidx0oS.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,13 +27,13 @@ child-simple: exit(81)
 (exec-once) end
 exec-once: exit(0)
 Execution of 'exec-once' complete.
-Timer: 492 ticks
-Thread: 30 idle ticks, 343 kernel ticks, 122 user ticks
+Timer: 1305 ticks
+Thread: 32 idle ticks, 1084 kernel ticks, 192 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 47 reads, 338 writes
+hd0:1: 100 reads, 360 writes
 hd1:0: 197 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1021 characters output
+Console: 1024 characters output
 Keyboard: 0 keys pressed
 Exception: 9 page faults
 Powering off...

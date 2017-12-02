@@ -1,5 +1,5 @@
-Copying tests/userprog/create-bound into /tmp/RbbFnR0wGx.dsk...
-Writing command line to /tmp/5rbSiuDd97.dsk...
+Copying tests/userprog/create-bound into /tmp/YQPb69E9NW.dsk...
+Writing command line to /tmp/Y0MjlVvKiW.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -24,13 +24,13 @@ Executing 'create-bound':
 (create-bound) end
 create-bound: exit(0)
 Execution of 'create-bound' complete.
-Timer: 336 ticks
-Thread: 32 idle ticks, 225 kernel ticks, 82 user ticks
+Timer: 749 ticks
+Thread: 30 idle ticks, 582 kernel ticks, 139 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 10 reads, 152 writes
+hd0:1: 40 reads, 171 writes
 hd1:0: 102 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 975 characters output
+Console: 976 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

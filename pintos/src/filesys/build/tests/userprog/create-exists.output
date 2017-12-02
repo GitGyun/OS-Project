@@ -1,5 +1,5 @@
-Copying tests/userprog/create-exists into /tmp/m0aROv_Fob.dsk...
-Writing command line to /tmp/kQ39ibH4iQ.dsk...
+Copying tests/userprog/create-exists into /tmp/gShJy1a9Dr.dsk...
+Writing command line to /tmp/yHwLgZInFZ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -28,10 +28,10 @@ Executing 'create-exists':
 (create-exists) end
 create-exists: exit(0)
 Execution of 'create-exists' complete.
-Timer: 380 ticks
-Thread: 32 idle ticks, 222 kernel ticks, 128 user ticks
+Timer: 879 ticks
+Thread: 35 idle ticks, 575 kernel ticks, 272 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 13 reads, 153 writes
+hd0:1: 75 reads, 188 writes
 hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1131 characters output

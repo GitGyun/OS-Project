@@ -1,6 +1,6 @@
-Copying tests/userprog/close-twice into /tmp/PupmOC09Qe.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/PupmOC09Qe.dsk...
-Writing command line to /tmp/4iLjAZIZ6w.dsk...
+Copying tests/userprog/close-twice into /tmp/LImNX2rB9u.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/LImNX2rB9u.dsk...
+Writing command line to /tmp/Vv_AJ4JWO_.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -28,13 +28,13 @@ Executing 'close-twice':
 (close-twice) end
 close-twice: exit(0)
 Execution of 'close-twice' complete.
-Timer: 350 ticks
-Thread: 32 idle ticks, 247 kernel ticks, 74 user ticks
+Timer: 760 ticks
+Thread: 31 idle ticks, 627 kernel ticks, 105 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 11 reads, 150 writes
+hd0:1: 47 reads, 167 writes
 hd1:0: 102 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1094 characters output
+Console: 1095 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

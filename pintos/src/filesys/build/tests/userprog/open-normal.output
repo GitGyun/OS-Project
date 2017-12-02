@@ -1,6 +1,6 @@
-Copying tests/userprog/open-normal into /tmp/hKV_D2yeSw.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/hKV_D2yeSw.dsk...
-Writing command line to /tmp/nCF7wQw5O5.dsk...
+Copying tests/userprog/open-normal into /tmp/fMXYq74qE8.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/fMXYq74qE8.dsk...
+Writing command line to /tmp/9N_p6w_esW.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -25,10 +25,10 @@ Executing 'open-normal':
 (open-normal) end
 open-normal: exit(0)
 Execution of 'open-normal' complete.
-Timer: 338 ticks
-Thread: 31 idle ticks, 247 kernel ticks, 62 user ticks
+Timer: 748 ticks
+Thread: 31 idle ticks, 627 kernel ticks, 93 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 11 reads, 150 writes
+hd0:1: 47 reads, 167 writes
 hd1:0: 102 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 990 characters output

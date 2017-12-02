@@ -1,5 +1,5 @@
-Copying tests/filesys/base/sm-full into /tmp/hQPZB6SOOv.dsk...
-Writing command line to /tmp/yRB9ZupiWI.dsk...
+Copying tests/filesys/base/sm-full into /tmp/6dsCa4Zmpi.dsk...
+Writing command line to /tmp/MZ_f9Heq2r.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -30,10 +30,10 @@ Executing 'sm-full':
 (sm-full) end
 sm-full: exit(0)
 Execution of 'sm-full' complete.
-Timer: 391 ticks
-Thread: 30 idle ticks, 226 kernel ticks, 137 user ticks
+Timer: 861 ticks
+Thread: 32 idle ticks, 585 kernel ticks, 246 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 26 reads, 176 writes
+hd0:1: 64 reads, 194 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1093 characters output

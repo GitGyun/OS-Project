@@ -1,5 +1,5 @@
-Copying tests/userprog/wait-bad-pid into /tmp/7qNqDamwum.dsk...
-Writing command line to /tmp/bdNdmqy0zf.dsk...
+Copying tests/userprog/wait-bad-pid into /tmp/b1hn87Uux7.dsk...
+Writing command line to /tmp/AO_xXWrvOH.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -23,13 +23,13 @@ Executing 'wait-bad-pid':
 (wait-bad-pid) end
 wait-bad-pid: exit(0)
 Execution of 'wait-bad-pid' complete.
-Timer: 309 ticks
-Thread: 32 idle ticks, 222 kernel ticks, 58 user ticks
+Timer: 685 ticks
+Thread: 31 idle ticks, 572 kernel ticks, 86 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 9 reads, 143 writes
+hd0:1: 37 reads, 159 writes
 hd1:0: 99 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 936 characters output
+Console: 937 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

@@ -1,5 +1,5 @@
-Copying tests/userprog/open-empty into /tmp/KlWYmJ7svo.dsk...
-Writing command line to /tmp/K5kYM1TGIB.dsk...
+Copying tests/userprog/open-empty into /tmp/gfalAAhcyR.dsk...
+Writing command line to /tmp/0m9VqeoWZQ.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -23,13 +23,13 @@ Executing 'open-empty':
 (open-empty) end
 open-empty: exit(0)
 Execution of 'open-empty' complete.
-Timer: 317 ticks
-Thread: 30 idle ticks, 224 kernel ticks, 66 user ticks
+Timer: 710 ticks
+Thread: 31 idle ticks, 572 kernel ticks, 110 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 8 reads, 145 writes
+hd0:1: 39 reads, 161 writes
 hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 921 characters output
+Console: 923 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

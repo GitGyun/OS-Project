@@ -1,5 +1,5 @@
-Copying tests/filesys/base/lg-random into /tmp/ZY9bNCgZvk.dsk...
-Writing command line to /tmp/sHahw3YTj_.dsk...
+Copying tests/filesys/base/lg-random into /tmp/wHSAPHXDJa.dsk...
+Writing command line to /tmp/OKYS99zF4R.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -28,13 +28,13 @@ Executing 'lg-random':
 (lg-random) end
 lg-random: exit(0)
 Execution of 'lg-random' complete.
-Timer: 910 ticks
-Thread: 38 idle ticks, 228 kernel ticks, 646 user ticks
+Timer: 2138 ticks
+Thread: 45 idle ticks, 597 kernel ticks, 1498 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 160 reads, 458 writes
+hd0:1: 405 reads, 482 writes
 hd1:0: 106 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1082 characters output
+Console: 1084 characters output
 Keyboard: 0 keys pressed
 Exception: 23 page faults
 Powering off...

@@ -1,6 +1,6 @@
-Copying tests/userprog/write-normal into /tmp/_I9vzdgLy7.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/_I9vzdgLy7.dsk...
-Writing command line to /tmp/N1Ellp3bZp.dsk...
+Copying tests/userprog/write-normal into /tmp/kvuNzqe2Np.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/kvuNzqe2Np.dsk...
+Writing command line to /tmp/Dnx3Pgo0dy.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -27,13 +27,13 @@ Executing 'write-normal':
 (write-normal) end
 write-normal: exit(0)
 Execution of 'write-normal' complete.
-Timer: 365 ticks
-Thread: 33 idle ticks, 248 kernel ticks, 86 user ticks
+Timer: 815 ticks
+Thread: 32 idle ticks, 631 kernel ticks, 155 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 13 reads, 155 writes
+hd0:1: 54 reads, 175 writes
 hd1:0: 103 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1062 characters output
+Console: 1063 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

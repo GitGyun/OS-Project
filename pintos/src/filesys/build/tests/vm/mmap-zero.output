@@ -1,5 +1,5 @@
-Copying tests/vm/mmap-zero into /tmp/uwnM9MKrLr.dsk...
-Writing command line to /tmp/t8OIz4DPOE.dsk...
+Copying tests/vm/mmap-zero into /tmp/_bTi1avb_d.dsk...
+Writing command line to /tmp/QtOW4XIvTl.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -25,13 +25,13 @@ Executing 'mmap-zero':
 (mmap-zero) mmap "empty"
 mmap-zero: exit(-1)
 Execution of 'mmap-zero' complete.
-Timer: 337 ticks
-Thread: 31 idle ticks, 224 kernel ticks, 84 user ticks
+Timer: 745 ticks
+Thread: 30 idle ticks, 573 kernel ticks, 144 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 10 reads, 148 writes
+hd0:1: 47 reads, 167 writes
 hd1:0: 100 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 987 characters output
+Console: 988 characters output
 Keyboard: 0 keys pressed
 Exception: 6 page faults
 Powering off...

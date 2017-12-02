@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-clean into /tmp/ltrS1HePVg.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/ltrS1HePVg.dsk...
-Writing command line to /tmp/O2l47kolS0.dsk...
+Copying tests/vm/mmap-clean into /tmp/ULmNWuPGpy.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ULmNWuPGpy.dsk...
+Writing command line to /tmp/oj7WBQLNW_.dsk...
 squish-pty bochs -q
 ========================================================================
                        Bochs x86 Emulator 2.6.9
@@ -32,13 +32,13 @@ Executing 'mmap-clean':
 (mmap-clean) end
 mmap-clean: exit(0)
 Execution of 'mmap-clean' complete.
-Timer: 379 ticks
-Thread: 34 idle ticks, 253 kernel ticks, 95 user ticks
+Timer: 812 ticks
+Thread: 33 idle ticks, 647 kernel ticks, 134 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 14 reads, 161 writes
+hd0:1: 44 reads, 176 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1222 characters output
+Console: 1223 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...
